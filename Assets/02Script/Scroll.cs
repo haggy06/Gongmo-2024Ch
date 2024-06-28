@@ -5,27 +5,31 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Scroll : MonoBehaviour
 {
-    private readonly Vector2 topPosition = new Vector2(0, 24f);
+    private readonly Vector2 topPosition = new Vector2(0, 48f);
 
     [SerializeField, Tooltip("Background면 true, Foreground면 false")]
     private bool background;
-    private double resetTime;
+    private float resetTime;
     [SerializeField]
     private float scrollSpeed = 6f;
 
     public bool scrolling = false;
 
     [SerializeField]
-    private double time = 0f; // 오차 == 화면 어그러짐이므로 오차가 적은 double 사용
+    private float time = 0f;
 
     private ScrollManager scrollManager;
     private void Awake()
     {
-        resetTime = 36 / scrollSpeed;
-        time = (36 - (transform.localPosition.y + 12)) / scrollSpeed;
+        resetTime = 72f / scrollSpeed;
+        time = (72f - (transform.localPosition.y + 24f)) / scrollSpeed;
 
         scrollManager = transform.root.GetComponent<ScrollManager>();
-        scrollManager.ScrollSwitchEvent += (isOn) => scrolling = isOn;
+        GameManager.BossEvent += SwitchScroll;
+    }
+    private void SwitchScroll(bool isOn)
+    {
+        scrolling = isOn;
     }
     private void FixedUpdate()
     {
@@ -33,7 +37,7 @@ public class Scroll : MonoBehaviour
         {
             transform.Translate(Vector2.down * scrollSpeed * Time.fixedDeltaTime);
 
-            time += Time.deltaTime;
+            time += Time.fixedDeltaTime;
             if (time >= resetTime)
             {
                 transform.localPosition = topPosition;

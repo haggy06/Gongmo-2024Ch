@@ -27,7 +27,7 @@ public class AttackBase : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<HitBase>(out HitBase hitBase) && !hitBase.Invincible ) // collision에 HitBase가 있고 무적 상태가 아닐 경우
+        if (collision.TryGetComponent<HitBase>(out HitBase hitBase) && MyCalculator.CompareEntity(hitBase.EntityType, target) && !hitBase.Invincible ) // collision에 HitBase가 있고 목표 타입이며 무적 상태가 아닐 경우
         {
             hitBase.HitBy(this);
 

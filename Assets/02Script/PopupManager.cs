@@ -234,6 +234,7 @@ public class PopupManager : MonoBehaviour
         if (GameManager.Level >= GameManager.levelUpTable.Length) // 최대 레벨을 찍거나 넘었을 경우
         {
             levelText.text = "Lv.MAX";
+            levelFill.fillAmount = 1f;
         }
         else
         {
@@ -282,6 +283,18 @@ public class PopupManager : MonoBehaviour
     public void ChangeBossHP(float curHP, float maxHP)
     {
         bossHPFill.fillAmount = curHP / maxHP;
+    }
+
+    public void OpenGameEndPopup()
+    {
+        gameEndPopup.PopupOpen();
+
+        gameEndText.text = GameManager.GameStatus == GameStatus.GameClear ? "게임 클리어!!!" : "게임 오버...";
+
+        finalScoreText.text = "최종 스코어 : " + GameManager.Score.ToString();
+        highScoreText.text = "최고 스코어 : " + GameManager.HighScore.ToString();
+
+        cheatCheck.SetActive(GameManager.UseCheat);
     }
     #endregion
 }

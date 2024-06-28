@@ -4,6 +4,7 @@ using System.IO;
 using System.Numerics;
 using UnityEngine;
 
+using System;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        highScore = PlayerPrefs.GetInt("HighScore");
         SceneManager.activeSceneChanged += SceneChanged;
     }
 
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
     }
     private void SceneChanged(Scene replacedScene, Scene newScene)
     {
+        GameStatus = GameStatus.Play;
+
         CameraResolutionLock.SetResolution(4f, 3f);
 
         if (newScene.buildIndex == (int)SCENE.Play) // 플레이 화면일 경우
@@ -77,79 +81,142 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MoveScene(SCENE targetScene)
-    {
+    public static event Action StageChangeEvent = () => { };
+    /// <summary>
+    /// bool : 보스 등장의 경우 true, 퇴장일 경우 false;
+    /// </summary>
+    public static event Action<bool> BossEvent = (_) => { };
 
+    [SerializeField]
+    private int highScore = 0;
+    public static int HighScore
+    {
+        get => Inst.highScore;
+        set
+        {
+            Inst.highScore = value;
+            PlayerPrefs.SetInt("HighScore", Inst.highScore);
+        }
+    }
+    #region _Play Status_
+    [Header("Play Status")]
+
+    [SerializeField]
+    private bool useCheat = false;
+    public static bool UseCheat
+    {
+        get => Inst.useCheat;
+        set
+        {
+            Inst.useCheat = value;
+
+
+        }
     }
 
-    #region _Play Stat_
     private static PoolObject curBullet;
     public static PoolObject CurBullet => curBullet;
 
-    private static int curHP = 200;
+    [SerializeField]
+    private int curHP = 200;
     public static int CurHP
     {
-        get => curHP;
+        get => Inst.curHP;
         set
         {
-            curHP = Mathf.Clamp(value, 0, maxHP); // hp가 음수가 되거나 최대 체력을 넘지 않게 제한
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 curHP가 변경되지 않음");
+                return;
+            }
+
+            Inst.curHP = Mathf.Clamp(value, 0, Inst.maxHP); // hp가 음수가 되거나 최대 체력을 넘지 않게 제한
             PopupManager.Inst.ChangeHP();
         }
     }
 
-    private static int maxHP = 200;
+    [SerializeField]
+    private int maxHP = 200;
     public static int MaxHP
     {
-        get => maxHP;
+        get => Inst.maxHP;
         set
         {
-            maxHP = value;
-            CurHP = curHP; // CurHP 프로퍼티 실행(체력 Clamp 및 UI 새로고침 용도)
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 maxHP가 변경되지 않음");
+                return;
+            }
+
+            Inst.maxHP = value;
+            CurHP = Inst.curHP; // CurHP 프로퍼티 실행(체력 Clamp 및 UI 새로고침 용도)
         }
     }
 
-    private static float damageScope = 1f;
+    [SerializeField]
+    private float damageScope = 1f;
     public static float DamageScope
     {
-        get => damageScope;
+        get => Inst.damageScope;
         set
         {
-            damageScope = Mathf.Clamp(value, 1f, float.PositiveInfinity);
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 damageScope가 변경되지 않음");
+                return;
+            }
+
+            Inst.damageScope = Mathf.Clamp(value, 1f, float.PositiveInfinity);
         }
     }
 
-    private static float skill = 0f;
+    [SerializeField]
+    private float skill = 0f;
     public static float Skill
     {
-        get => skill;
+        get => Inst.skill;
         set
         {
-            skill = Mathf.Clamp(value, 0f, 100f);
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 skill이 변경되지 않음");
+                return;
+            }
+
+            Inst.skill = Mathf.Clamp(value, 0f, 100f);
 
             PopupManager.Inst.ChangeSkill();
         }
     }
 
     public static readonly int[] levelUpTable = { 0, 50, 100, 200, 400, 800, 1600 };
-    private static int exp = 0;
+
+    [SerializeField]
+    private int exp = 0;
     public static int EXP
     {
-        get => exp;
+        get => Inst.exp;
         set
         {
-            exp = value;
-            if (level < levelUpTable.Length) // 최대 레벨을 찍지 못했을 경우
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 exp가 변경되지 않음");
+                return;
+            }
+
+            Inst.exp = value;
+            if (Inst.level < levelUpTable.Length) // 최대 레벨을 찍지 못했을 경우
             {
                 int levelUP = 0;
-                while (exp - levelUpTable[level + levelUP] >= 0) // 레벨업이 가능한 동안 반복
+                while (Inst.exp - levelUpTable[Inst.level + levelUP] >= 0) // 레벨업이 가능한 동안 반복
                 {
                     levelUP++; // 오른 레벨 + 1
-                    exp -= levelUpTable[level + levelUP]; // 레벨업에 쓰인 경험치 빼줌
+                    Inst.exp -= levelUpTable[Inst.level + levelUP]; // 레벨업에 쓰인 경험치 빼줌
 
-                    if (level + levelUP >= levelUpTable.Length) // 최대 레벨을 찍거나 넘었을 경우
+                    if (Inst.level + levelUP >= levelUpTable.Length) // 최대 레벨을 찍거나 넘었을 경우
                     {
                         Level += levelUP; // 레벨업을 하고
-                        exp = 0; // EXP를 0으로 맞춘 뒤
+                        Inst.exp = 0; // EXP를 0으로 맞춘 뒤
                         break; // While 문 탈출 (냅두면 인덱스 오류 남)
                     }
                 }
@@ -160,48 +227,76 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private static int level = 1;
+    [SerializeField]
+    private int level = 1;
     public static int Level
     {
-        get => level;
+        get => Inst.level;
         set
         {
-            int levelDiff = value - level; // 레벨의 변화량을 나타냄
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 level이 변경되지 않음");
+                return;
+            }
+
+            int levelDiff = value - Inst.level; // 레벨의 변화량을 나타냄
 
             if (levelDiff > 0) // 레벨 업
             {
+                if (Inst.level >= levelUpTable.Length) // 이미 최대 레벨일 경우
+                {
+                    Debug.Log("최고 레벨입니다.");
+                    return;
+                }
+
                 float rate = 1.1f * levelDiff;
-                MaxHP = (int)(maxHP * rate); // 체력 10프로 UP
-                DamageScope = (int)(damageScope * rate); // 공격력 10프로 UP
+                MaxHP = (int)(Inst.maxHP * rate); // 체력 10프로 UP
+                DamageScope = (int)(Inst.damageScope * rate); // 공격력 10프로 UP
                 CurHP = MaxHP;
             }
             else if (levelDiff < 0) // 레벨 다운
             {
-                float rate = (10f / 11f) * levelDiff;
-                MaxHP = Mathf.Clamp((int)(maxHP * rate), 200, int.MaxValue); // 체력 롤백(시작 체력 밑으론 떨어지지 않음)
-                DamageScope = Mathf.Clamp(damageScope * rate, 1f, float.PositiveInfinity); // 공격력 롤백(1배 밑으론 떨어지지 않음)
+                if (Inst.level <= 1) // 최저 레벨일 경우
+                {
+                    Debug.Log("최저 레벨입니다.");
+                    return;
+                }
+
+                float rate = (10f / 11f) * Mathf.Abs(levelDiff);
+                MaxHP = Mathf.Clamp((int)(Inst.maxHP * rate), 200, int.MaxValue); // 체력 롤백(시작 체력 밑으론 떨어지지 않음)
+                DamageScope = Mathf.Clamp(Inst.damageScope * rate, 1f, float.PositiveInfinity); // 공격력 롤백(1배 밑으론 떨어지지 않음)
             }
 
-            level = value;
+            Inst.level = value;
 
             PopupManager.Inst.ChangeLevel();
         }
     }
 
     public static readonly int[] stageUpTable = { 0, 2000, 5000 };
-    private static int score = 0;
+
+    [SerializeField]
+    private int score = 0;
     public static int Score
     {
-        get => score;
+
+        get => Inst.score;
         set
         {
-            score = value;
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 score가 변경되지 않음");
+                return;
+            }
+
+            Inst.score = value;
 
             PopupManager.Inst.ChangeScore();
 
-            if (stage < stageUpTable.Length) // 최종 스테이지가 아닐 경우
+            if (Inst.stage < stageUpTable.Length) // 최종 스테이지가 아닐 경우
             {
-                if (stageUpTable[stage] <= stage) // 다음 스테이지로 갈 수 있을 만큼 스코어가 쌓였을 경우
+                if (stageUpTable[Inst.stage] <= Inst.score) // 다음 스테이지로 갈 수 있을 만큼 스코어가 쌓였을 경우
                 {
                     Stage++;
                 }
@@ -209,29 +304,85 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private static int stage = 1;
+    [SerializeField]
+    private int stage = 1;
     public static int Stage
     {
-        get => stage;
+        get => Inst.stage;
         set
         {
-            stage = value;
+            Inst.stage = value;
             PopupManager.Inst.ChangeStage();
+
+            StageChangeEvent.Invoke();
         }
     }
 
-    private static WeaponType curWeaponType = WeaponType.Normal;
+    [SerializeField]
+    private WeaponType curWeaponType = WeaponType.Normal;
     public static WeaponType CurWeaponType
     {
-        get => curWeaponType;
+        get => Inst.curWeaponType;
         set
         {
-            curWeaponType = value;
+            if (Inst.gameStatus != GameStatus.Play) // 죽거나 클리어했을 경우
+            {
+                Debug.Log("게임이 끝나 curWeaponType이 변경되지 않음");
+                return;
+            }
+
+            Inst.curWeaponType = value;
             curBullet = Inst.weaponList[(int)value].bullet;
             PopupManager.Inst.ChangeWeapon();
         }
     }
     #endregion
+    [SerializeField]
+    private GameStatus gameStatus = GameStatus.Play;
+    public static GameStatus GameStatus
+    {
+        get => Inst.gameStatus;
+        set
+        {
+            Inst.gameStatus = value;
+            if (true) // 새로운 게임 상태가 들어왔을 경우
+            {
+                switch (Inst.gameStatus)
+                {
+                    case GameStatus.Play:
+
+                        break;
+
+                    case GameStatus.GameOver:
+                        GameEnd();
+                        break;
+
+                    case GameStatus.GameClear:
+                        GameEnd();
+                        break;
+                }
+
+            }
+        }
+    }
+
+    private static void GameEnd()
+    {
+        if (Inst.highScore < Inst.score) // 기록 경신했을 경우
+        {
+            HighScore = Inst.score;
+        }
+
+        PopupManager.Inst.OpenGameEndPopup();
+    }
+}
+
+public enum GameStatus
+{
+    Play,
+    GameOver,
+    GameClear,
+
 }
 
 public enum WeaponType

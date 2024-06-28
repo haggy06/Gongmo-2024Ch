@@ -28,10 +28,17 @@ public class PlayerHit : HitBase
     {
         GameManager.CurHP -= attack.Damage;
 
-        StartCoroutine("DamageInvincible");
+        if (GameManager.CurHP <= 0) // 죽었을 경우
+        {
+            DeadBy(attack);
+        }
+        else // 살았을 경우
+        {
+            StartCoroutine("DamageInvincible");
+        }
     }
     [SerializeField]
-    private float hitInvincibleTime = 3f;
+    private float hitInvincibleTime = 1.5f;
     private IEnumerator DamageInvincible()
     {
         InvincibleCount++;
@@ -52,6 +59,9 @@ public class PlayerHit : HitBase
 
     protected override void DeadBy(AttackBase attack)
     {
+        GameManager.GameStatus = GameStatus.GameOver;
 
+        GetComponentInParent<PlayerController>().enabled = false;
+        GetComponentInParent<Rigidbody2D>().simulated = false;
     }
 }
