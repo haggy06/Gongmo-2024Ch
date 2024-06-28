@@ -478,6 +478,7 @@ MonoBehaviour:
   background: 1
   scrollSpeed: 4
   scrolling: 1
+  time: 0
 --- !u!1 &88479824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +1736,7 @@ MonoBehaviour:
   background: 0
   scrollSpeed: 6
   scrolling: 1
+  time: 0
 --- !u!1 &469434772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,8 +1835,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: 1
-  scrollSpeed: 4
+  scrollSpeed: 3
   scrolling: 1
+  time: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,6 +2600,7 @@ MonoBehaviour:
   background: 0
   scrollSpeed: 6
   scrolling: 1
+  time: 0
 --- !u!1 &692945989
 GameObject:
   m_ObjectHideFlags: 0
@@ -5497,6 +5501,7 @@ MonoBehaviour:
   background: 1
   scrollSpeed: 4
   scrolling: 1
+  time: 0
 --- !u!1 &1558742082
 GameObject:
   m_ObjectHideFlags: 0
@@ -5929,6 +5934,7 @@ MonoBehaviour:
   background: 0
   scrollSpeed: 6
   scrolling: 1
+  time: 0
 --- !u!1 &1641972501
 GameObject:
   m_ObjectHideFlags: 0
