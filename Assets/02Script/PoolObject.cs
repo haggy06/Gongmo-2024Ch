@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+
 public class PoolObject : MonoBehaviour
 {
     [SerializeField, Tooltip("이 오브젝트의 ID.")]
@@ -19,7 +21,15 @@ public class PoolObject : MonoBehaviour
     {
         ObjectReturned();
 
-        parentPool.SetPoolObject(this);
+        try
+        {
+            parentPool.SetPoolObject(this);
+        }
+        catch (NullReferenceException) 
+        {
+            Debug.Log(name + "에 연결된 풀 없음");
+            Destroy(gameObject);
+        }
     }
 
     public virtual void ExitFromPool()

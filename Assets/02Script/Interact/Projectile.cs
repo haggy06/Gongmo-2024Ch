@@ -7,26 +7,35 @@ public class Projectile : PoolObject
 {
     [Header("Bullet Setting")]
     [SerializeField]
-    private float lifeTime = 5f;
+    protected int attackableCount = 1;
+    protected int nowAttackCount = 0;
+    [SerializeField]
+    protected float lifeTime = 5f;
     [SerializeField]
     protected float speed = 10f;
 
-    private AttackBase attack;
-    public AttackBase Attack => attack;
-
     protected virtual void Awake()
     {
-        attack = GetComponent<AttackBase>();
-        attack.AttackSuccessEvent += (_) => ReturnToPool();
+        AttackBase attack = GetComponent<AttackBase>();
+        attack.AttackSuccessEvent += AttackSuccess;
+    }
+    protected virtual void AttackSuccess(HitBase hitBase)
+    {
+        nowAttackCount++;
+        if (nowAttackCount >= attackableCount)
+        {
+            ReturnToPool();
+        }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         transform.Translate(Vector2.right * speed * Time.fixedDeltaTime); // 오브젝트 방향 기준 앞(오른쪽)으로 평행이동
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
+        nowAttackCount = 0;
         StartCoroutine("AutoReturn");
     }
 
