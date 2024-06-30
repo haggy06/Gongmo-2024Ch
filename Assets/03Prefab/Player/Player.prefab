@@ -53,6 +53,17 @@ MonoBehaviour:
   defaultVelo: {x: 0, y: 0}
   shootTerm: 0.1
   damagePercent: 1
+  itemList:
+  - {fileID: 2896431963626883825, guid: 60518168bcfc3fa4bb39f35d9547053c, type: 3}
+  - {fileID: 8660227603581485537, guid: 14f2b8ea8ae7ce142bb9fbe804c0a03f, type: 3}
+  - {fileID: 6483861604316889230, guid: 3f3593177d3033948bd3ba03045c3583, type: 3}
+  weaponList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!50 &548287120971338068
 Rigidbody2D:
   serializedVersion: 4

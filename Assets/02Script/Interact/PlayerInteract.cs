@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHit : HitBase
+public class PlayerInteract : HitBase
 {
     private int invincibleCount = 0;
     public int InvincibleCount
@@ -56,6 +56,23 @@ public class PlayerHit : HitBase
         sprite.color = Color.white;
         InvincibleCount--;
     }
+    private IEnumerator ItemInvincible()
+    {
+        InvincibleCount++;
+        
+        float time = 0f;
+        while (time <= 7f)
+        {
+            time += 0.2f;
+
+            sprite.color = sprite.color.b < 0.5f ? Color.white : Color.yellow; // ³ë¶ö ¶© ÇÏ¾é°Ô, ÇÏ¾â ¶© ³ë¶þ°Ô ¸¸µç´Ù.
+
+            yield return YieldReturn.WaitForSeconds(0.2f);
+        }
+
+        sprite.color = Color.white;
+        InvincibleCount--;
+    }
 
     protected override void DeadBy(AttackBase attack)
     {
@@ -63,5 +80,27 @@ public class PlayerHit : HitBase
 
         GetComponentInParent<PlayerController>().enabled = false;
         GetComponentInParent<Rigidbody2D>().simulated = false;
+    }
+
+    public void GetItem(Item item)
+    {
+        switch (item.ItemType)
+        {
+            case ItemType.Heal:
+                GameManager.CurHP = GameManager.MaxHP;
+                break;
+
+            case ItemType.Invincible:
+                StartCoroutine("ItemInvincible");
+                break;
+
+            case ItemType.Bomb:
+                Debug.Log("Äç!!!");
+                break;
+
+            case ItemType.Weapon:
+                GameManager.CurWeaponType = item.WeaponType;
+                break;
+        }
     }
 }

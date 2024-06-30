@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolObjectID: 0
   parentPool: {fileID: 0}
+  attackableCount: 1
   lifeTime: 5
   speed: 10
 --- !u!114 &6606192803830483056
@@ -152,4 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 2
   target: 1
-  damage: 1
+  damage: 0

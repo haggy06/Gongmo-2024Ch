@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region _About Attack_
+    [Header("About Attack")]
+
     [SerializeField]
     private float shootTerm = 0.1f;
 
@@ -27,19 +30,89 @@ public class PlayerController : MonoBehaviour
     private float damagePercent = 1f;
 
     private bool attackCoolDown = true;
+
+    private IEnumerator Attack()
+    {
+        PoolObject bullet = playerPool.GetPoolObject(GameManager.CurBullet.bullet); // 현재 장착된 총알 발사
+
+        bullet.transform.position = transform.position;
+        bullet.transform.eulerAngles = Vector3.forward * 90f;
+
+        attackCoolDown = false;
+
+        yield return YieldReturn.WaitForSeconds(GameManager.CurBullet.coolDown);
+
+        attackCoolDown = true;
+    }
+    #endregion
+
+    #region _About Item_
+    [Header("About Item")]
+
+    [SerializeField]
+    private Item[] itemList = new Item[3]; // 회복, 무적, 폭탄 아이템. 어차피 랜덤 생성이니 순서는 크게 상관없음.
+    [SerializeField]
+    private Item[] weaponList = new Item[6]; // 무기 아이템. 1, 1+, 1++, 2, 2+, 2++ 순서로 넣음.
+
+    public void SpawnItem()
+    {
+        playerPool.GetPoolObject(itemList[Random.Range(0, 3)]).transform.position = Vector2.zero;
+    }
+    public void SpawnItem(Vector2 position)
+    {
+        playerPool.GetPoolObject(itemList[Random.Range(0, 3)]).transform.position = position;
+    }
+
+    public void SpawnWeapon()
+    {
+        playerPool.GetPoolObject(weaponList[RandomWeapon() - 1]).transform.position = Vector2.zero; // WeaponType.Normal에 해당하는 값이 생략되어 있으므로 나온 값 - 1을 해줘 인덱스를 맞춘다.
+    }
+    public void SpawnWeapon(Vector2 position)
+    {
+        playerPool.GetPoolObject(weaponList[RandomWeapon() - 1]).transform.position = position; // WeaponType.Normal에 해당하는 값이 생략되어 있으므로 나온 값 - 1을 해줘 인덱스를 맞춘다.
+    }
+    private int RandomWeapon()
+    {
+        int weaponType;
+        // 0은 무기 1, 1은 무기 2가 나온 상황임.
+        if (Random.Range(0, 2) == 0) // 무기 1의 경우
+        {
+            if (GameManager.CurWeaponType <= WeaponType.Green1 && GameManager.CurWeaponType <= WeaponType.Green3) // 무기 1을 장착한 상태였을 경우
+            {
+                weaponType = Mathf.Clamp((int)GameManager.CurWeaponType + 1, (int)WeaponType.Green1, (int)WeaponType.Green3); // 현재 무기에 + 1강화 붙임(최대 강화를 넘지 않음)
+            }
+            else // 다른 무기를 장착한 상태였을 경우
+            {
+                weaponType = (int)WeaponType.Green1; // 기본 무기 1 지급
+            }
+        }
+        else // 무기 2의 경우
+        {
+            if (GameManager.CurWeaponType <= WeaponType.Red1 && GameManager.CurWeaponType <= WeaponType.Red3) // 무기 2를 장착한 상태였을 경우
+            {
+                weaponType = Mathf.Clamp((int)GameManager.CurWeaponType + 1, (int)WeaponType.Red1, (int)WeaponType.Red3); // 현재 무기에 + 1강화 붙임(최대 강화를 넘지 않음)
+            }
+            else // 다른 무기를 장착한 상태였을 경우
+            {
+                weaponType = (int)WeaponType.Red1; // 기본 무기 2 지급
+            }
+        }
+
+        return weaponType;
+    }
     #endregion
 
     private Rigidbody2D rigid2D;
     private ObjectPool playerPool;
 
-    private PlayerHit hit;
+    private PlayerInteract hit;
 
     private void Awake()
     {
         rigid2D = GetComponent<Rigidbody2D>();
         playerPool = GetComponentInChildren<ObjectPool>();
 
-        hit = GetComponentInChildren<PlayerHit>();
+        hit = GetComponentInChildren<PlayerInteract>();
     }
     private bool useInvincibleCheat = false;
     private void Update()
@@ -99,6 +172,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("아이템 랜덤생성");
 
             GameManager.UseCheat = true;
+            SpawnItem();
             // todo : 아이템 랜덤생성
         }
 
@@ -127,22 +201,9 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
     }
-    private IEnumerator Attack()
-    {
-        PoolObject bullet = playerPool.GetPoolObject(GameManager.CurBullet); // 현재 장착된 총알 발사
-
-        bullet.transform.position = transform.position;
-        bullet.transform.eulerAngles = Vector3.forward * 90f;
-
-        attackCoolDown = false;
-
-        yield return YieldReturn.WaitForSeconds(shootTerm);
-
-        attackCoolDown = true;
-    }
 
     private void FixedUpdate()
     {
         rigid2D.velocity = defaultVelo + (move * moveSpeed);
-    }
+    }    
 }

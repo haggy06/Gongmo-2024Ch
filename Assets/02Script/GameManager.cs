@@ -114,8 +114,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private static PoolObject curBullet;
-    public static PoolObject CurBullet => curBullet;
+    private static Weapon curBullet;
+    public static Weapon CurBullet => curBullet;
 
     [SerializeField]
     private int curHP = 200;
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static readonly int[] levelUpTable = { 0, 50, 100, 200, 400, 800, 1600 };
+    public static readonly int[] levelUpTable = { 0, 100, 250, 600, 1000 };
 
     [SerializeField]
     private int exp = 0;
@@ -332,7 +332,7 @@ public class GameManager : MonoBehaviour
             }
 
             Inst.curWeaponType = value;
-            curBullet = Inst.weaponList[(int)value].bullet;
+            curBullet = Inst.weaponList[(int)value];
             PopupManager.Inst.ChangeWeapon();
         }
     }
