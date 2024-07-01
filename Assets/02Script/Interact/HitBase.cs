@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class HitBase : MonoBehaviour
 {
     [SerializeField]
-    protected EntityType entityType;
+    protected EntityType entityType = EntityType.Enemy;
     public EntityType EntityType => entityType;
 
     [SerializeField]
@@ -14,13 +14,14 @@ public abstract class HitBase : MonoBehaviour
 
     [Space(5)]
     [SerializeField]
-    private float maxHP = 10f;
+    protected int maxHP = 10;
     [SerializeField]
-    private float curHP = 0f;
-    private void Awake()
+    protected int curHP = 0;
+    private void OnEnable()
     {
         Init();
     }
+
     public virtual void Init()
     {
         invincible = false;
@@ -32,9 +33,9 @@ public abstract class HitBase : MonoBehaviour
     {
         float damageScope = attack.Owner == EntityType.Player ? GameManager.DamageScope : 1f; // 플레이어의 공격일 경우 대미지 배율 적용
 
-        curHP = Mathf.Clamp(curHP - attack.Damage * damageScope, 0f, maxHP);
+        curHP = Mathf.Clamp(curHP - (int)(attack.Damage * damageScope), 0, maxHP);
 
-        if (Mathf.Approximately(curHP, 0f)) // HP가 0이 되었을 때
+        if (curHP <= 0) // HP가 0이 되었을 때
         {
             DeadBy(attack); // 사망 처리
         }

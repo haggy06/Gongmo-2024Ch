@@ -20,4 +20,20 @@ public static class MyCalculator
         vec = vec.normalized;
         return Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
     }
+
+    public static float SinWave(float time, float peek1, float peek2)
+    {
+        return Mathf.Cos(time) * (peek1 - peek2) / 2f + (peek1 + peek2) / 2f;
+    }
+    public static Color SinWave(float time, Color peek1, Color peek2)
+    {
+        Color value;
+
+        value.r = Mathf.Cos(time) * (peek1.r - peek2.r) / 2f + (peek1.r + peek2.r) / 2f;
+        value.g = Mathf.Cos(time) * (peek1.g - peek2.g) / 2f + (peek1.g + peek2.g) / 2f;
+        value.b = Mathf.Cos(time) * (peek1.b - peek2.b) / 2f + (peek1.b + peek2.b) / 2f;
+        value.a = Mathf.Cos(time) * (peek1.a - peek2.a) / 2f + (peek1.a + peek2.a) / 2f;
+
+        return value;
+    }
 }

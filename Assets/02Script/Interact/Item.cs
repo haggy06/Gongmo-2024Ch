@@ -29,6 +29,24 @@ public class Item : PoolObject
     {
         GetComponent<Rigidbody2D>().velocity = MyCalculator.Deg2Vec((Random.Range(0, 4) * 90f) + 45f) * speed; // 45, 135, 225, 315도 중 한 쪽으로 튐
     }
+
+    public void InitItem(ItemType itemType)
+    {
+        if (itemType == ItemType.Weapon)
+        {
+            Debug.LogWarning("무기 타입 아이템은 WeaponType을 넣어줘야 합니다.");
+            return;
+        }
+
+        this.itemType = itemType;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Inst.ItemIconList[(int)itemType];
+    }
+    public void InitItem(WeaponType weaponType)
+    {
+        itemType = ItemType.Weapon;
+        this.weaponType = weaponType;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Inst.WeaponList[(int)weaponType].icon;
+    }
 }
 
 public enum ItemType

@@ -50,51 +50,63 @@ public class PlayerController : MonoBehaviour
     [Header("About Item")]
 
     [SerializeField]
-    private Item[] itemList = new Item[3]; // 회복, 무적, 폭탄 아이템. 어차피 랜덤 생성이니 순서는 크게 상관없음.
-    [SerializeField]
-    private Item[] weaponList = new Item[6]; // 무기 아이템. 1, 1+, 1++, 2, 2+, 2++ 순서로 넣음.
+    private Item item;
 
     public void SpawnItem()
     {
-        playerPool.GetPoolObject(itemList[Random.Range(0, 3)]).transform.position = Vector2.zero;
+        Item item = (Item)playerPool.GetPoolObject(this.item);
+
+        item.transform.position = Vector2.zero;
+        item.InitItem((ItemType)Random.Range(0, 3));
     }
     public void SpawnItem(Vector2 position)
     {
-        playerPool.GetPoolObject(itemList[Random.Range(0, 3)]).transform.position = position;
+        Item item = (Item)playerPool.GetPoolObject(this.item);
+
+        item.transform.position = position;
+        item.InitItem((ItemType)Random.Range(0, 3));
     }
 
     public void SpawnWeapon()
     {
-        playerPool.GetPoolObject(weaponList[RandomWeapon() - 1]).transform.position = Vector2.zero; // WeaponType.Normal에 해당하는 값이 생략되어 있으므로 나온 값 - 1을 해줘 인덱스를 맞춘다.
+        Item item = (Item)playerPool.GetPoolObject(this.item);
+
+        item.transform.position = Vector2.zero;
+        item.InitItem(RandomWeapon());
     }
     public void SpawnWeapon(Vector2 position)
     {
-        playerPool.GetPoolObject(weaponList[RandomWeapon() - 1]).transform.position = position; // WeaponType.Normal에 해당하는 값이 생략되어 있으므로 나온 값 - 1을 해줘 인덱스를 맞춘다.
+        Item item = (Item)playerPool.GetPoolObject(this.item);
+
+        item.transform.position = position;
+        item.InitItem(RandomWeapon());
     }
-    private int RandomWeapon()
+    private WeaponType RandomWeapon()
     {
-        int weaponType;
+        WeaponType weaponType;
         // 0은 무기 1, 1은 무기 2가 나온 상황임.
         if (Random.Range(0, 2) == 0) // 무기 1의 경우
         {
-            if (GameManager.CurWeaponType <= WeaponType.Green1 && GameManager.CurWeaponType <= WeaponType.Green3) // 무기 1을 장착한 상태였을 경우
+            if (WeaponType.Green1 <= GameManager.CurWeaponType && GameManager.CurWeaponType <= WeaponType.Green3) // 무기 1을 장착한 상태였을 경우
             {
-                weaponType = Mathf.Clamp((int)GameManager.CurWeaponType + 1, (int)WeaponType.Green1, (int)WeaponType.Green3); // 현재 무기에 + 1강화 붙임(최대 강화를 넘지 않음)
+                Debug.Log("강화된 무기 생성");
+                weaponType = (WeaponType)Mathf.Clamp((int)GameManager.CurWeaponType + 1, (int)WeaponType.Green1, (int)WeaponType.Green3); // 현재 무기에 + 1강화 붙임(최대 강화를 넘지 않음)
             }
             else // 다른 무기를 장착한 상태였을 경우
             {
-                weaponType = (int)WeaponType.Green1; // 기본 무기 1 지급
+                weaponType = WeaponType.Green1; // 기본 무기 1 지급
             }
         }
         else // 무기 2의 경우
         {
-            if (GameManager.CurWeaponType <= WeaponType.Red1 && GameManager.CurWeaponType <= WeaponType.Red3) // 무기 2를 장착한 상태였을 경우
+            if (WeaponType.Red1 <= GameManager.CurWeaponType && GameManager.CurWeaponType <= WeaponType.Red3) // 무기 2를 장착한 상태였을 경우
             {
-                weaponType = Mathf.Clamp((int)GameManager.CurWeaponType + 1, (int)WeaponType.Red1, (int)WeaponType.Red3); // 현재 무기에 + 1강화 붙임(최대 강화를 넘지 않음)
+                Debug.Log("강화된 무기 생성");
+                weaponType = (WeaponType)Mathf.Clamp((int)GameManager.CurWeaponType + 1, (int)WeaponType.Red1, (int)WeaponType.Red3); // 현재 무기에 + 1강화 붙임(최대 강화를 넘지 않음)
             }
             else // 다른 무기를 장착한 상태였을 경우
             {
-                weaponType = (int)WeaponType.Red1; // 기본 무기 2 지급
+                weaponType = WeaponType.Red1; // 기본 무기 2 지급
             }
         }
 
@@ -119,6 +131,8 @@ public class PlayerController : MonoBehaviour
     {
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
+        move = move.normalized;
+
 
         if (attackCoolDown && Input.GetKey(KeyCode.X)) // 공격
         {
@@ -164,6 +178,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("무기 랜덤생성");
 
             GameManager.UseCheat = true;
+            SpawnWeapon();
             // todo : 무기 랜덤생성
         }
 

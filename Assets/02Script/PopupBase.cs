@@ -10,7 +10,6 @@ public class PopupBase : MonoBehaviour
     private float fadeDuration = 0.5f;
     public float FadeDuration => fadeDuration;
 
-    [SerializeField]
     private CanvasGroup popup;
     public CanvasGroup Popup
     {

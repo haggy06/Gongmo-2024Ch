@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField]
+    private Sprite[] itemIconList = new Sprite[3];
+    public Sprite[] ItemIconList => itemIconList;
+
+    [SerializeField]
     private Weapon[] weaponList = new Weapon[7];
     public Weapon[] WeaponList  => weaponList;
 
@@ -54,23 +58,22 @@ public class GameManager : MonoBehaviour
 
         CameraResolutionLock.SetResolution(4f, 3f);
 
-        if (newScene.buildIndex == (int)SCENE.Play) // 플레이 화면일 경우
-        {
-            MaxHP = 200;
-            CurHP = MaxHP;
+        #region _Reset PlayData_
+        MaxHP = 200;
+        CurHP = MaxHP;
 
-            DamageScope = 1f;
+        DamageScope = 1f;
 
-            Skill = 0f;
+        Skill = 0f;
 
-            EXP = 0;
-            Level = 1;
+        EXP = 0;
+        Level = 1;
 
-            Score = 0;
-            Stage = 1;
+        Score = 0;
+        Stage = 1;
 
-            CurWeaponType = WeaponType.Normal;
-        }
+        CurWeaponType = WeaponType.Normal;
+        #endregion
     }
     #endregion
     private void FixedUpdate()

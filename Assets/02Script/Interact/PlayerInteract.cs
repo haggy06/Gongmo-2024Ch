@@ -99,6 +99,7 @@ public class PlayerInteract : HitBase
                 break;
 
             case ItemType.Weapon:
+                Debug.Log("무기 변경 => " + item.WeaponType);
                 GameManager.CurWeaponType = item.WeaponType;
                 break;
         }

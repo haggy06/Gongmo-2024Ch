@@ -44,28 +44,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06839dadd8aa7f40ad7866674dcc02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIconList:
+  - {fileID: 21300040, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - {fileID: 21300052, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   weaponList:
   - name: "\uD3C9\uBC94\uD55C \uCD1D"
     icon: {fileID: 21300078, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     bullet: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
-  - name: "\uD3C9\uBC94\uD55C \uCD1D"
+    coolDown: 0.5
+  - name: "\uAE30\uAD00\uCD1D"
     icon: {fileID: 21300080, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     bullet: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
-  - name: "\uD3C9\uBC94\uD55C \uCD1D"
+    coolDown: 0.25
+  - name: "\uAE30\uAD00\uCD1D+"
     icon: {fileID: 21300082, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     bullet: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
-  - name: "\uD3C9\uBC94\uD55C \uCD1D"
+    coolDown: 0.2
+  - name: "\uAE30\uAD00\uCD1D++"
     icon: {fileID: 21300084, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     bullet: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
-  - name: "\uD3C9\uBC94\uD55C \uCD1D"
+    coolDown: 0.1
+  - name: "\uD655\uC0B0 \uCD1D"
     icon: {fileID: 21300086, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     bullet: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
-  - name: 
-    icon: {fileID: 0}
-    bullet: {fileID: 0}
-  - name: 
-    icon: {fileID: 0}
-    bullet: {fileID: 0}
+    coolDown: 0.2
+  - name: "\uD655\uC0B0 \uCD1D+"
+    icon: {fileID: 21300088, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    bullet: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
+    coolDown: 0.15
+  - name: "\uD655\uC0B0 \uCD1D++"
+    icon: {fileID: 21300098, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    bullet: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
+    coolDown: 0.5
+  highScore: 0
   useCheat: 0
   curHP: 200
   maxHP: 200

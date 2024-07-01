@@ -51,17 +51,23 @@ public class PopupManager : MonoBehaviour
     [SerializeField]
     private Image hpFill;
     [SerializeField]
+    private ImageBlink hpIcon;
+    [SerializeField]
     private TextMeshProUGUI hpText; // "현재 체력 / 최대 체력"
 
     [Space(5)]
     [SerializeField]
     private Image skillFill;
     [SerializeField]
+    private ImageBlink skillIcon;
+    [SerializeField]
     private TextMeshProUGUI skillText; // "현재 충전율(%)"
 
     [Space(5)]
     [SerializeField]
     private Image levelFill;
+    [SerializeField]
+    private ImageBlink levelIcon;
     [SerializeField]
     private TextMeshProUGUI levelText; // "Lv.현재 레벨"
 
@@ -220,12 +226,28 @@ public class PopupManager : MonoBehaviour
     public void ChangeHP()
     {
         hpFill.fillAmount = (float)GameManager.CurHP / GameManager.MaxHP;
+        if (hpFill.fillAmount <= 0.25f) // 피가 1/4 이하일 경우
+        {
+            hpIcon.BlinkStart();
+        }
+        else
+        {
+            hpIcon.BlinkStop();
+        }
 
         hpText.text = GameManager.CurHP + " / " + GameManager.MaxHP;
     }
     public void ChangeSkill()
     {
         skillFill.fillAmount = GameManager.Skill / 100f;
+        if (Mathf.Approximately(skillFill.fillAmount, 1f)) // 충전율이 100프로일 경우
+        {
+            skillIcon.BlinkStart();
+        }
+        else
+        {
+            skillIcon.BlinkStop();
+        }
 
         skillText.text = GameManager.Skill.ToString("F1") + "%";
     }
@@ -235,10 +257,14 @@ public class PopupManager : MonoBehaviour
         {
             levelText.text = "Lv.MAX";
             levelFill.fillAmount = 1f;
+
+            levelIcon.Img.color = Color.yellow;
         }
         else
         {
             levelText.text = "Lv." + GameManager.Level.ToString();
+
+            levelIcon.Img.color = Color.white;
         }
     }
     public void ChangeEXP()
