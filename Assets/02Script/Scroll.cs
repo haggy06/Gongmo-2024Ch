@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Scroll : MonoBehaviour
 {
-    private readonly Vector2 topPosition = new Vector2(0, 48f);
+    private readonly Vector2 topPosition = new Vector2(0, 60f);
 
     [SerializeField, Tooltip("Background면 true, Foreground면 false")]
     private bool background;
@@ -21,8 +21,8 @@ public class Scroll : MonoBehaviour
     private ScrollManager scrollManager;
     private void Awake()
     {
-        resetTime = 60f / scrollSpeed;
-        time = (60f - (transform.localPosition.y + 12f)) / scrollSpeed; //  -12부터 48까지 움직인다.
+        resetTime = (topPosition.y + 12f) / scrollSpeed;
+        time = ((topPosition.y + 12f) - (transform.localPosition.y + 12f)) / scrollSpeed; //  -12부터 60까지 움직인다.
 
         scrollManager = transform.root.GetComponent<ScrollManager>();
         GameManager.BossEvent += SwitchScroll;
