@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606192803830483056, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
       propertyPath: target
-      value: -1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1018,8 +1018,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 20
   curHP: 0
-  skillPerHit: 0.5
-  skillPerDead: 5
+  skillPerHit: 7
+  skillPerDead: 79
   expPerDead: 20
 --- !u!58 &1480828483
 CircleCollider2D:

@@ -22,6 +22,12 @@ public class PlayerInteract : HitBase
         InvincibleCount = 0;
 
         sprite = GetComponent<SpriteRenderer>();
+
+        GameManager.LevelUPEvent += LevelUP;
+    }
+    private void OnDestroy()
+    {
+        GameManager.LevelUPEvent -= LevelUP;
     }
 
     public override void HitBy(AttackBase attack)
@@ -82,8 +88,12 @@ public class PlayerInteract : HitBase
         GetComponentInParent<Rigidbody2D>().simulated = false;
     }
 
+    [SerializeField]
+    private ParticleSystem[] particleList;
+    public ParticleSystem[] ParticleList => particleList;
     public void GetItem(Item item)
     {
+        particleList[(int)item.ItemType].Play();
         switch (item.ItemType)
         {
             case ItemType.Heal:
@@ -103,5 +113,32 @@ public class PlayerInteract : HitBase
                 GameManager.CurWeaponType = item.WeaponType;
                 break;
         }
+    }
+    public void GetItem(ItemType itemType)
+    {
+        particleList[(int)itemType].Play();
+        switch (itemType)
+        {
+            case ItemType.Heal:
+                GameManager.CurHP = GameManager.MaxHP;
+                break;
+
+            case ItemType.Invincible:
+                StartCoroutine("ItemInvincible");
+                break;
+
+            case ItemType.Bomb:
+                Debug.Log("쾅!!!");
+                break;
+
+            case ItemType.Weapon:
+                Debug.LogError("무기 변경 아이템은 ItemType을 사용해서 구현할 수 없습니다. ");
+                break;
+        }
+    }
+
+    public void LevelUP()
+    {
+        particleList[4].Play(); // 4번 인덱스 파티클 = 레벨업 파티클
     }
 }

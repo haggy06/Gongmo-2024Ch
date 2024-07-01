@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         CameraResolutionLock.SetResolution(4f, 3f);
 
         #region _Reset PlayData_
-        MaxHP = 200;
+        MaxHP = 250;
         CurHP = MaxHP;
 
         DamageScope = 1f;
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField]
-    private int maxHP = 200;
+    private int maxHP = 250;
     public static int MaxHP
     {
         get => Inst.maxHP;
@@ -230,6 +230,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static event Action LevelUPEvent = () => { };
     [SerializeField]
     private int level = 1;
     public static int Level
@@ -254,9 +255,10 @@ public class GameManager : MonoBehaviour
                 }
 
                 float rate = 1.1f * levelDiff;
-                MaxHP = (int)(Inst.maxHP * rate); // 체력 10프로 UP
-                DamageScope = (int)(Inst.damageScope * rate); // 공격력 10프로 UP
+                MaxHP = (int)Mathf.Round(Inst.maxHP * rate); // 체력 10프로 UP
+                DamageScope = Inst.damageScope * rate; // 공격력 10프로 UP
                 CurHP = MaxHP;
+                LevelUPEvent.Invoke();
             }
             else if (levelDiff < 0) // 레벨 다운
             {
@@ -267,7 +269,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 float rate = (10f / 11f) * Mathf.Abs(levelDiff);
-                MaxHP = Mathf.Clamp((int)(Inst.maxHP * rate), 200, int.MaxValue); // 체력 롤백(시작 체력 밑으론 떨어지지 않음)
+                MaxHP = Mathf.Clamp((int)Mathf.Round(Inst.maxHP * rate), 200, int.MaxValue); // 체력 롤백(시작 체력 밑으론 떨어지지 않음)
                 DamageScope = Mathf.Clamp(Inst.damageScope * rate, 1f, float.PositiveInfinity); // 공격력 롤백(1배 밑으론 떨어지지 않음)
             }
 

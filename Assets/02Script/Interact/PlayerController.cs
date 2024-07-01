@@ -117,14 +117,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigid2D;
     private ObjectPool playerPool;
 
-    private PlayerInteract hit;
+    private PlayerInteract interact;
 
     private void Awake()
     {
         rigid2D = GetComponent<Rigidbody2D>();
         playerPool = GetComponentInChildren<ObjectPool>();
 
-        hit = GetComponentInChildren<PlayerInteract>();
+        interact = GetComponentInChildren<PlayerInteract>();
     }
     private bool useInvincibleCheat = false;
     private void Update()
@@ -138,6 +138,12 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine("Attack");
         }
+        if (Input.GetKey(KeyCode.Space) && GameManager.Skill >= 100f) // 스킬
+        {
+            print("스킬 사용");
+            GameManager.Skill = 0f;
+             // todo : WeaponInfo에 스킬 프리팹 넣고 꺼내오기
+        }
 
         #region _Cheat Input_
         if (Input.GetKeyDown(KeyCode.F1)) // 무적 / 비무적
@@ -146,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
             GameManager.UseCheat = true;
             useInvincibleCheat = !useInvincibleCheat;
-            hit.InvincibleCount += useInvincibleCheat ? 1 : -1;
+            interact.InvincibleCount += useInvincibleCheat ? 1 : -1;
         }
 
         if (Input.GetKeyDown(KeyCode.F2)) // 레벨 + 1
@@ -170,6 +176,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("풀피");
 
             GameManager.UseCheat = true;
+
+            interact.GetItem(ItemType.Heal);
             GameManager.CurHP = GameManager.MaxHP;
         }
 
