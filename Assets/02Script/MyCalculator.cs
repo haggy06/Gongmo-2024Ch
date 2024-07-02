@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 public static class MyCalculator
 {
-    public static bool CompareEntity(EntityType entity1, EntityType entity2)
+    public static bool CompareFlag(int flag1, int flag2)
     {
-        return ((int)entity1 & (int)entity2) != 0 ? true : false;
+        return (flag1 & flag2) != 0 ? true : false;
     }
 
     public static float Distance(Vector2 pos1, Vector2 pos2)

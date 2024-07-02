@@ -35,8 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         PoolObject bullet = playerPool.GetPoolObject(GameManager.CurBullet.bullet); // 현재 장착된 총알 발사
 
-        bullet.transform.position = transform.position;
-        bullet.transform.eulerAngles = Vector3.forward * 90f;
+        bullet.Init(transform.position, 90f);
 
         attackCoolDown = false;
 

@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemyInteract : HitBase
 {
     [Header("Enemy Info")]
-    [SerializeField]
-    private float skillPerHit = 0.25f;
+    [SerializeField, Range(0f, 1f), Tooltip("받은 대미지의 몇 퍼센트를 스킬로 치환해줄 지 정하는 필드")]
+    private float skillEff = 0.1f;
 
     [Space(5)]
     [SerializeField]
@@ -24,7 +24,7 @@ public class EnemyInteract : HitBase
     public override void HitBy(AttackBase attack)
     {
         base.HitBy(attack);
-
+        
         if (curHP <= 0) // 사망 시
             return;
 
@@ -33,7 +33,7 @@ public class EnemyInteract : HitBase
 
         if (attack.Owner == EntityType.Player) // 플레이어에게 맞았을 경우
         {
-            GameManager.Skill += skillPerHit;
+            GameManager.Skill += attack.Damage * damageScope * skillEff;
         }
     }
     private IEnumerator HitBlink()

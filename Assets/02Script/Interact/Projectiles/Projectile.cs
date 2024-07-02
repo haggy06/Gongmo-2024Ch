@@ -11,6 +11,7 @@ public class Projectile : PoolObject
     protected int nowAttackCount = 0;
     [SerializeField]
     protected float lifeTime = 5f;
+    public float LifeTime => lifeTime;
     [SerializeField]
     protected float speed = 10f;
 

@@ -31,7 +31,11 @@ public class PoolObject : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    public virtual void Init(Vector2 position, float angle)
+    {
+        transform.position = position;
+        transform.eulerAngles = Vector3.forward * angle;
+    }
     public virtual void ExitFromPool()
     {
         gameObject.SetActive(true);

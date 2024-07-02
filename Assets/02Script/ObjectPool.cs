@@ -39,6 +39,7 @@ public class ObjectPool : MonoBehaviour
         value.ExitFromPool();
         return value;
     }
+
     public void SetPoolObject(PoolObject poolObject)
     {
         if (poolDictionary.TryGetValue(poolObject.PoolObjectID, out Stack<PoolObject> pool)) // poolDictionary에서 poolObject에 해당하는 풀을 불러옴
@@ -88,7 +89,8 @@ public class ObjectPool : MonoBehaviour
                 PoolObject obj = Instantiate(poolObject.gameObject, container).GetComponent<PoolObject>(); // 오브젝트를 컨테이너 자식으로 새로 만들고
 
                 obj.parentPool = this; // 이 풀을 기억시킨 후
-                obj.ReturnToPool(); // 풀에 넣어둠
+                //obj.ReturnToPool(); // 풀에 넣어둠
+                obj.gameObject.SetActive(false);
             }
         }
 

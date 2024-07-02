@@ -29,11 +29,12 @@ public abstract class HitBase : MonoBehaviour
         curHP = maxHP;
     }
 
+    protected float damageScope;
     public virtual void HitBy(AttackBase attack)
     {
-        float damageScope = attack.Owner == EntityType.Player ? GameManager.DamageScope : 1f; // 플레이어의 공격일 경우 대미지 배율 적용
+        damageScope = attack.Owner == EntityType.Player ? GameManager.DamageScope : 1f; // 플레이어의 공격일 경우 대미지 배율 적용
 
-        curHP = Mathf.Clamp(curHP - (int)(attack.Damage * damageScope), 0, maxHP);
+        curHP = Mathf.Clamp(curHP - (int)Mathf.Round(attack.Damage * damageScope), 0, maxHP);
 
         if (curHP <= 0) // HP가 0이 되었을 때
         {
