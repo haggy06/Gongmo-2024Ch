@@ -15,9 +15,10 @@ public class Projectile : PoolObject
     [SerializeField]
     protected float speed = 10f;
 
+    private AttackBase attack;
     protected virtual void Awake()
     {
-        AttackBase attack = GetComponent<AttackBase>();
+        attack = GetComponent<AttackBase>();
         attack.AttackSuccessEvent += AttackSuccess;
     }
     protected virtual void AttackSuccess(HitBase hitBase)
@@ -36,6 +37,8 @@ public class Projectile : PoolObject
 
     protected virtual void OnEnable()
     {
+        attack.canAttack = true;
+
         nowAttackCount = 0;
         StartCoroutine("AutoReturn");
     }

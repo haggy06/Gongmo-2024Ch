@@ -10,11 +10,16 @@ public class PoolObject : MonoBehaviour
     private int poolObjectID;
     public int PoolObjectID => poolObjectID;
 
+    [SerializeField]
+    private bool destroyWhenBomb = true;
     [HideInInspector]
     public ObjectPool parentPool;
 
     protected virtual void ObjectReturned()
     {
+        if (destroyWhenBomb)
+            PlayerInteract.BombEvent -= ReturnToPool;
+
         gameObject.SetActive(false);
     }
     public void ReturnToPool()
@@ -35,6 +40,9 @@ public class PoolObject : MonoBehaviour
     {
         transform.position = position;
         transform.eulerAngles = Vector3.forward * angle;
+
+        if (destroyWhenBomb)
+            PlayerInteract.BombEvent += ReturnToPool;
     }
     public virtual void ExitFromPool()
     {

@@ -137,6 +137,8 @@ MonoBehaviour:
   owner: 4
   target: 2
   damage: 20
+  canAttack: 1
+  attackTerm: 0.25
 --- !u!114 &8305008781918485234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 1
+  destroyWhenBomb: 0
   parentPool: {fileID: 0}
   attackableCount: 1
   lifeTime: 2

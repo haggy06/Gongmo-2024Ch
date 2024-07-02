@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private static Weapon curBullet;
-    public static Weapon CurBullet => curBullet;
+    private static Weapon curWeapon;
+    public static Weapon CurWeapon => curWeapon;
 
     [SerializeField]
     private int curHP = 200;
@@ -345,7 +345,7 @@ public class GameManager : MonoBehaviour
             }
 
             Inst.curWeaponType = value;
-            curBullet = Inst.weaponList[(int)value];
+            curWeapon = Inst.weaponList[(int)value];
             PopupManager.Inst.ChangeWeapon();
         }
     }

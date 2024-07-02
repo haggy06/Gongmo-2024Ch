@@ -33,13 +33,13 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        PoolObject bullet = playerPool.GetPoolObject(GameManager.CurBullet.bullet); // 현재 장착된 총알 발사
+        PoolObject bullet = playerPool.GetPoolObject(GameManager.CurWeapon.bullet); // 현재 장착된 총알 발사
 
         bullet.Init(transform.position, 90f);
 
         attackCoolDown = false;
 
-        yield return YieldReturn.WaitForSeconds(GameManager.CurBullet.coolDown);
+        yield return YieldReturn.WaitForSeconds(GameManager.CurWeapon.coolDown);
 
         attackCoolDown = true;
     }
@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
 
         interact = GetComponentInChildren<PlayerInteract>();
     }
+
     private bool useInvincibleCheat = false;
     private void Update()
     {
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
         {
             print("스킬 사용");
             GameManager.Skill = 0f;
-             // todo : WeaponInfo에 스킬 프리팹 넣고 꺼내오기
+            playerPool.GetPoolObject(GameManager.CurWeapon.skill).Init(transform.position, 90f);
         }
 
         #region _Cheat Input_

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+
 public class PlayerInteract : HitBase
 {
     private int invincibleCount = 0;
@@ -28,6 +30,7 @@ public class PlayerInteract : HitBase
     private void OnDestroy()
     {
         GameManager.LevelUPEvent -= LevelUP;
+        BombEvent = () => Debug.Log("Æø8 ÀÌº¥Æ®"); // Bomb ÀÌº¥Æ® ÃÊ±âÈ­(NullReferenceException ¹æÁö)
     }
 
     public override void HitBy(AttackBase attack)
@@ -90,6 +93,8 @@ public class PlayerInteract : HitBase
 
     [SerializeField]
     private ParticleSystem[] particleList;
+
+    public static event Action BombEvent = () => Debug.Log("Æø8 ÀÌº¥Æ®");
     public ParticleSystem[] ParticleList => particleList;
     public void GetItem(Item item)
     {
@@ -105,7 +110,7 @@ public class PlayerInteract : HitBase
                 break;
 
             case ItemType.Bomb:
-                Debug.Log("Äç!!!");
+                BombEvent.Invoke();
                 break;
 
             case ItemType.Weapon:
@@ -128,7 +133,7 @@ public class PlayerInteract : HitBase
                 break;
 
             case ItemType.Bomb:
-                Debug.Log("Äç!!!");
+                BombEvent.Invoke();
                 break;
 
             case ItemType.Weapon:
