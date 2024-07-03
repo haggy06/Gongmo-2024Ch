@@ -33,13 +33,13 @@ public abstract class EnemyBase : PoolObject
     {
         base.ObjectReturned();
 
-
+        StopCoroutine("PatternRepeat");
     }
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
 
-
+        StartCoroutine("PatternRepeat");
     }
     private IEnumerator PatternRepeat()
     {
@@ -53,20 +53,35 @@ public abstract class EnemyBase : PoolObject
 
                 foreach (int caseNumber in patternArray)
                 {
-                    Pattern(caseNumber);
+                    this.caseNumber = caseNumber;
+                    Pattern(this.caseNumber, true);
 
                     yield return YieldReturn.WaitForSeconds(patternTermInList);
                 }
             }
             else // 패턴 리스트를 사용하지 않을 경우
             {
-                Pattern(Random.Range(0, patternNumber)); // 랜덤한 패턴 실행
+                caseNumber = Random.Range(0, patternNumber);
+                Pattern(caseNumber); // 랜덤한 패턴 실행
             }
         }
     }
 
+    protected int caseNumber;
     protected abstract void HalfHP();
     protected abstract void MoribundHP();
     protected abstract void Dead(AttackBase attack);
-    protected abstract void Pattern(int caseNumber);
+    protected abstract void Pattern(int caseNumber, bool isListPattern = false);
+}
+
+public static class PatternCheck
+{
+    public static bool shortDistance(Vector2 detectionCenter, float detectionRadius)
+    {
+        return MyCalculator.Distance(detectionCenter, PlayerController.Player.transform.position) <= detectionRadius;
+    }
+    public static bool LongDistance(Vector2 detectionCenter, float detectionRadius)
+    {
+        return MyCalculator.Distance(detectionCenter, PlayerController.Player.transform.position) > detectionRadius;
+    }
 }

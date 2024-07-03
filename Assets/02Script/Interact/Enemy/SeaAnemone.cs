@@ -7,6 +7,18 @@ public class SeaAnemone : EnemyBase
     [SerializeField]
     private float scrollSpeed = 4f;
 
+    [Header("Tentacle Scratch")]
+    [SerializeField]
+    private Collider2D tenacleAttack;
+    [SerializeField]
+    private ParticleSystem scratchEffect;
+
+    [Header("Spread Projectile")]
+    [SerializeField]
+    private PoolObject anemoneProjectile;
+    [SerializeField]
+    private int projectileNumber = 8;
+
     protected override void Awake()
     {
         base.Awake();
@@ -33,12 +45,31 @@ public class SeaAnemone : EnemyBase
         
     }
 
-    protected override void Pattern(int caseNumber)
+    protected override void Pattern(int caseNumber, bool isListPattern = false) // 말미잘은 리스트를 안 쓰니 패스
     {
         switch (caseNumber)
         {
-            case 0:
+            case 0: // 촉수 할퀴기
+                if (PatternCheck.shortDistance(transform.position, 3f)) // 근접 공격이 가능할 경우
+                {
+                    tenacleAttack.enabled = true;
+                    scratchEffect.Play();
+                }
+                else // 근접 공격이 물가능할 경우
+                {
+                    goto ProjPattern;
+                    //Pattern(1); // 산탄 발사 실행
+                }
+                break;
 
+            case 1: // 산탄 발사
+            ProjPattern:
+                float angleDiff = 360f / projectileNumber;
+                for (int i = 0; i < projectileNumber; i++)
+                {
+                    PoolObject proj = parentPool.GetPoolObject(anemoneProjectile);
+                    proj.Init(transform.position, 90f + (angleDiff * i));
+                }
                 break;
         }
     }
