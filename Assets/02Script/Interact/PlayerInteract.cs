@@ -35,7 +35,7 @@ public class PlayerInteract : HitBase
 
     public override void HitBy(AttackBase attack)
     {
-        GameManager.CurHP -= attack.Damage;
+        GameManager.CurHP -= (int)Mathf.Round(attack.Damage * (1f - damageResistance));
 
         if (GameManager.CurHP <= 0) // 죽었을 경우
         {
@@ -145,5 +145,15 @@ public class PlayerInteract : HitBase
     public void LevelUP()
     {
         particleList[4].Play(); // 4번 인덱스 파티클 = 레벨업 파티클
+    }
+
+    protected override void HalfHP()
+    {
+
+    }
+
+    protected override void MoribundHP()
+    {
+
     }
 }

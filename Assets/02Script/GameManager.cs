@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         CameraResolutionLock.SetResolution(4f, 3f);
 
+        BossEvent = (_) => { }; // BossEvent 초기화
         #region _Reset PlayData_
         MaxHP = 250;
         CurHP = MaxHP;
@@ -85,9 +86,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static event Action StageChangeEvent = () => { };
-    /// <summary>
-    /// bool : 보스 등장의 경우 true, 퇴장일 경우 false;
-    /// </summary>
+    /// <summary> 보스 등장의 경우 true, 퇴장일 경우 false </summary>
     public static event Action<bool> BossEvent = (_) => { };
 
     [SerializeField]

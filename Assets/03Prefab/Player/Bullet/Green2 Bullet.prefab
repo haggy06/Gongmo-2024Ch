@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9168283278340749838}
   - component: {fileID: 7375373232685056646}
   - component: {fileID: 7635749662571287014}
+  - component: {fileID: 7550500796514344939}
   m_Layer: 7
   m_Name: Green2 Bullet
   m_TagString: Player
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3945928038598474533}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2486997, y: 4.44, z: 0}
+  m_LocalPosition: {x: 1.2487, y: 4.44, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 4
   target: 2
-  damage: 23
+  damage: 15
   canAttack: 1
   attackTerm: 0.25
 --- !u!114 &7635749662571287014
@@ -157,3 +158,39 @@ MonoBehaviour:
   attackableCount: 1
   lifeTime: 1.5
   speed: 20
+  driftTime: 1
+  spreadTiming: 1
+  subProjectile: {fileID: 0}
+  projPair: 1
+  angleDiff: 0
+  useTracking: 0
+  target: {fileID: 0}
+  targetEntity: 0
+  searchRadius: 5
+--- !u!50 &7550500796514344939
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945928038598474533}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2668732110936518384}
   - component: {fileID: 8726761541937328105}
   - component: {fileID: 4485185616413316756}
-  - component: {fileID: 5215509397128548157}
+  - component: {fileID: 812189721167494245}
+  - component: {fileID: 5073923552655893857}
   m_Layer: 7
   m_Name: Green3 Bullet
   m_TagString: Player
@@ -136,10 +137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 4
   target: 2
-  damage: 20
+  damage: 15
   canAttack: 1
   attackTerm: 0.25
---- !u!114 &5215509397128548157
+--- !u!114 &812189721167494245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6134532521862502000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440c5a6c273c0ca4d816ff326e9da836, type: 3}
+  m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 3
@@ -157,7 +158,39 @@ MonoBehaviour:
   attackableCount: 2
   lifeTime: 1
   speed: 25
-  spreadTiming: 2
-  subProjectile: {fileID: -1116386201744352309, guid: 7dc7ae70e27b2e24083fd6313586b5a6, type: 3}
+  spreadTiming: 3
+  subProjectile: {fileID: 7415817190923517243, guid: 7dc7ae70e27b2e24083fd6313586b5a6, type: 3}
   projPair: 1
   angleDiff: 30
+  useTracking: 0
+  target: {fileID: 0}
+  targetEntity: 0
+  driftTime: 1
+  searchRadius: 5
+--- !u!50 &5073923552655893857
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134532521862502000}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

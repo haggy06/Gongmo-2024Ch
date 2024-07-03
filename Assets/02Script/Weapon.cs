@@ -10,12 +10,14 @@ public struct Weapon
     public PoolObject skill;
 
     public float coolDown;
-    public Weapon(string name = "?", Sprite icon = null, PoolObject bullet = null, PoolObject skill = null, float coolDown = 0.1f)
+    public int skillGauge;
+    public Weapon(string name = "?", Sprite icon = null, PoolObject bullet = null, PoolObject skill = null, float coolDown = 0.1f, int skillGauge = 100)
     {
         this.name = name;
         this.icon = icon;
         this.bullet = bullet;
         this.skill = skill;
         this.coolDown = coolDown;
+        this.skillGauge = skillGauge;
     }
 }

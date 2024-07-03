@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 9105612756007392379}
   - component: {fileID: 7889541348166325494}
   - component: {fileID: 3021714056679662694}
-  - component: {fileID: 7619213123330159459}
+  - component: {fileID: 3176197672260619495}
+  - component: {fileID: 8973442859107917852}
   m_Layer: 7
   m_Name: Red3 Bullet
   m_TagString: Player
@@ -136,10 +137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 4
   target: 2
-  damage: 30
+  damage: 50
   canAttack: 1
   attackTerm: 0.25
---- !u!114 &7619213123330159459
+--- !u!114 &3176197672260619495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,16 +149,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 6636018878752097386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440c5a6c273c0ca4d816ff326e9da836, type: 3}
+  m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 6
-  destroyWhenBomb: 0
+  destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackableCount: 1
   lifeTime: 0.75
   speed: 10
-  spreadTiming: 4
+  driftTime: 1
+  spreadTiming: 9
   subProjectile: {fileID: 9148238175212477638, guid: 21bf3a5b04d00ce4a9f16e23445e07bb, type: 3}
-  projPair: 5
+  projPair: 8
   angleDiff: 18
+  useTracking: 0
+  target: {fileID: 0}
+  targetEntity: 0
+  searchRadius: 5
+--- !u!50 &8973442859107917852
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636018878752097386}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

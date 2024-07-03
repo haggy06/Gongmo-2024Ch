@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2957566889712804702}
   - component: {fileID: 1309696555705550660}
   - component: {fileID: 8936238774246648348}
+  - component: {fileID: 2507949877523949313}
   m_Layer: 7
   m_Name: Normal Bullet
   m_TagString: Player
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 4
   target: 2
-  damage: 15
+  damage: 10
   canAttack: 1
   attackTerm: 0.25
 --- !u!114 &8936238774246648348
@@ -157,3 +158,39 @@ MonoBehaviour:
   attackableCount: 1
   lifeTime: 3
   speed: 15
+  driftTime: 1
+  spreadTiming: 1
+  subProjectile: {fileID: 0}
+  projPair: 1
+  angleDiff: 0
+  useTracking: 0
+  target: {fileID: 0}
+  targetEntity: 0
+  searchRadius: 5
+--- !u!50 &2507949877523949313
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686915013781110290}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

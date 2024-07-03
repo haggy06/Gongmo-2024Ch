@@ -25,11 +25,7 @@ public class Scroll : MonoBehaviour
         time = ((topPosition.y + 12f) - (transform.localPosition.y + 12f)) / scrollSpeed; //  -12부터 60까지 움직인다.
 
         scrollManager = transform.root.GetComponent<ScrollManager>();
-        GameManager.BossEvent += SwitchScroll;
-    }
-    private void SwitchScroll(bool isOn)
-    {
-        scrolling = isOn;
+        GameManager.BossEvent += (isOn) => scrolling = !isOn;
     }
     private void FixedUpdate()
     {

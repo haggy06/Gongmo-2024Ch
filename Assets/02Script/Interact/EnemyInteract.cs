@@ -33,7 +33,7 @@ public class EnemyInteract : HitBase
 
         if (attack.Owner == EntityType.Player) // 플레이어에게 맞았을 경우
         {
-            GameManager.Skill += attack.Damage * damageScope * skillEff;
+            GameManager.Skill += (attack.Damage * damageScope / GameManager.CurWeapon.skillGauge) * 100f * skillEff; // 딜량/요구 딜량 * 100 * 대미지 효율
         }
     }
     private IEnumerator HitBlink()
@@ -52,7 +52,14 @@ public class EnemyInteract : HitBase
             GameManager.Skill += skillPerDead;
             GameManager.EXP += expPerDead;
         }
-        GetComponentInParent<PoolObject>().ReturnToPool();
-        //Destroy(gameObject);
+    }
+    protected override void HalfHP()
+    {
+        
+    }
+
+    protected override void MoribundHP()
+    {
+        
     }
 }

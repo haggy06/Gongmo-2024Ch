@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController player;
+    public static PlayerController Player => player;
+
     #region _About Move_
     [Header("About Move")]
 
@@ -21,14 +24,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region _About Attack_
-    [Header("About Attack")]
-
-    [SerializeField]
-    private float shootTerm = 0.1f;
-
-    [SerializeField]
-    private float damagePercent = 1f;
-
     private bool attackCoolDown = true;
 
     private IEnumerator Attack()
@@ -120,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        player = this; // 어차피 플레이어는 Play 씬에 하나밖에 없을 테고 DonDestroyOnLoad도 아니니 싱글톤을 복잡하게 만들지 않아도 될 듯 함.
+
         rigid2D = GetComponent<Rigidbody2D>();
         playerPool = GetComponentInChildren<ObjectPool>();
 

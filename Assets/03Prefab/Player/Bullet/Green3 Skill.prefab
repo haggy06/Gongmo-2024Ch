@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 4
   target: 2
-  damage: 5
+  damage: 15
   canAttack: 1
   attackTerm: 0.1
 --- !u!114 &7810671497281664122
@@ -168,7 +168,16 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   attackableCount: 1000
   lifeTime: 5
-  speed: 3
+  speed: 1.5
+  spreadTiming: 1
+  subProjectile: {fileID: 0}
+  projPair: 1
+  angleDiff: 0
+  useTracking: 0
+  target: {fileID: 0}
+  targetEntity: 0
+  driftTime: 1
+  searchRadius: 5
 --- !u!114 &1499007882920491725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,9 +192,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 12
   invincible: 0
-  maxHP: 200
+  maxHP: 500
   curHP: 0
-  damageResistance: 0.75
+  damageResistance: 0.8
 --- !u!50 &9007039129889426335
 Rigidbody2D:
   serializedVersion: 4

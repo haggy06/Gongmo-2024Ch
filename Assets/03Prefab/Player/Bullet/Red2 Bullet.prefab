@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7898340362717580411}
   - component: {fileID: 6006986668529485091}
   - component: {fileID: 9076433480174791032}
-  - component: {fileID: -981722309686139246}
+  - component: {fileID: -224579845666449201}
+  - component: {fileID: 7760559044799283423}
   m_Layer: 7
   m_Name: Red2 Bullet
   m_TagString: Player
@@ -139,7 +140,7 @@ MonoBehaviour:
   damage: 15
   canAttack: 1
   attackTerm: 0.25
---- !u!114 &-981722309686139246
+--- !u!114 &-224579845666449201
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7659409056425068879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440c5a6c273c0ca4d816ff326e9da836, type: 3}
+  m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 5
@@ -157,7 +158,39 @@ MonoBehaviour:
   attackableCount: 5
   lifeTime: 0.3
   speed: 20
+  driftTime: 1
   spreadTiming: 2
   subProjectile: {fileID: 9148238175212477638, guid: 76a4c0869a49f9a4982fd804c66db0c7, type: 3}
   projPair: 2
   angleDiff: 10
+  useTracking: 0
+  target: {fileID: 0}
+  targetEntity: 0
+  searchRadius: 5
+--- !u!50 &7760559044799283423
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659409056425068879}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
