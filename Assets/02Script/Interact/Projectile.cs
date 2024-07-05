@@ -22,7 +22,7 @@ public class Projectile : PoolObject
     [SerializeField]
     protected SpreadTiming spreadTiming = SpreadTiming.Nothing;
     [SerializeField]
-    protected Projectile subProjectile;
+    protected PoolObject subObject;
 
     [Space(5)]
     [SerializeField, Tooltip("자신의 위치에도 소환할지 결정.")]
@@ -63,13 +63,36 @@ public class Projectile : PoolObject
     {
         base.Init(position, angle);
 
+        attack.canAttack = true;
+        nowAttackCount = 0;
         target = null;
-        if (MyCalculator.CompareFlag((int)spreadTiming, (int)SpreadTiming.Fire))
+        if (MyCalculator.CompareFlag((int)spreadTiming, (int)SpreadTiming.Fire)) // 발사 시 보조 발사가 실행될 경우
         {
             SpawnSubProj();
         }
 
         rigid2D.velocity = MyCalculator.Deg2Vec(angle) * speed;
+
+
+        StartCoroutine("AutoReturn");
+    }
+    protected virtual IEnumerator AutoReturn()
+    {
+        yield return YieldReturn.WaitForSeconds(lifeTime);
+
+        if (gameObject.activeInHierarchy)
+        {
+            if (MyCalculator.CompareFlag((int)spreadTiming, (int)SpreadTiming.TimeOut)) // 타임오버 시 보조 발사가 실행될 경우
+                SpawnSubProj();
+
+            ReturnToPool();
+        }
+    }
+
+    public override void ReturnToPool()
+    {
+        StopCoroutine("AutoReturn");
+        base.ReturnToPool();
     }
 
     protected virtual void AttackSuccess(HitBase hitBase)
@@ -123,33 +146,7 @@ public class Projectile : PoolObject
 
             rigid2D.velocity = newVelo;
         }
-    }
-
-    protected virtual void OnEnable()
-    {
-        attack.canAttack = true;
-
-        nowAttackCount = 0;
-        StartCoroutine("AutoReturn");
-    }
-    public override void ReturnToPool()
-    {
-        StopCoroutine("AutoReturn");
-        base.ReturnToPool();
-    }
-
-    protected virtual IEnumerator AutoReturn()
-    {
-        yield return YieldReturn.WaitForSeconds(lifeTime);
-
-        if (gameObject.activeSelf)
-        {
-            if (MyCalculator.CompareFlag((int)spreadTiming, (int)SpreadTiming.TimeOut)) // 타임오버 시 보조 발사가 실행될 경우
-                SpawnSubProj();
-
-            ReturnToPool();
-        }
-    }
+    }    
 
     private void SpawnSubProj()
     {
@@ -157,16 +154,16 @@ public class Projectile : PoolObject
 
         if (spawnMyPos) // 자기 위치에도 생성할 경우
         {
-            projectile = parentPool.GetPoolObject(subProjectile);
+            projectile = parentPool.GetPoolObject(subObject);
             projectile.Init(transform.position, transform.eulerAngles.z);
         }
 
         for (int i = 1; i < projPair + 1; i++) // 1 ~ projPair까지의 수
         {
-            projectile = parentPool.GetPoolObject(subProjectile);
+            projectile = parentPool.GetPoolObject(subObject);
             projectile.Init(transform.position, transform.eulerAngles.z - angleDiff * i);
 
-            projectile = parentPool.GetPoolObject(subProjectile);
+            projectile = parentPool.GetPoolObject(subObject);
             projectile.Init(transform.position, transform.eulerAngles.z + angleDiff * i);
         }
     }

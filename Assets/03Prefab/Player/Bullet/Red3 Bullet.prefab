@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6636018878752097386}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2486997, y: 4.44, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,7 +159,7 @@ MonoBehaviour:
   lifeTime: 0.75
   speed: 15
   spreadTiming: 9
-  subProjectile: {fileID: 9148238175212477638, guid: 21bf3a5b04d00ce4a9f16e23445e07bb, type: 3}
+  subObject: {fileID: 9148238175212477638, guid: 21bf3a5b04d00ce4a9f16e23445e07bb, type: 3}
   spawnMyPos: 1
   projPair: 8
   angleDiff: 18

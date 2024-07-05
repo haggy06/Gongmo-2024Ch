@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 4
   target: 2
-  damage: 15
+  damage: 8
   canAttack: 1
   attackTerm: 0.25
 --- !u!114 &-224579845666449201
@@ -158,14 +158,15 @@ MonoBehaviour:
   attackableCount: 5
   lifeTime: 0.3
   speed: 20
-  driftTime: 1
   spreadTiming: 2
-  subProjectile: {fileID: 9148238175212477638, guid: 76a4c0869a49f9a4982fd804c66db0c7, type: 3}
+  subObject: {fileID: 9148238175212477638, guid: 76a4c0869a49f9a4982fd804c66db0c7, type: 3}
+  spawnMyPos: 0
   projPair: 2
   angleDiff: 10
   useTracking: 0
   target: {fileID: 0}
   targetEntity: 0
+  driftTime: 1
   searchRadius: 5
 --- !u!50 &7760559044799283423
 Rigidbody2D:

@@ -46,10 +46,19 @@ public class SeaAnemone : EnemyBase
 
     /* 말미잘 공격 패턴
      * 1. 촉수 할퀴기 (근접)
-     * 2. 산탄 발사 (제한 없음)
+     * 2. 산탄 발사 (원거리)
      */
     protected override void Pattern(int caseNumber, bool isListPattern = false) // 말미잘은 리스트를 안 쓰니 패스
     {
+        if (PatternCheck.shortDistance(transform.position, tentacleReach)) // 근접 공격이 가능할 경우
+        {
+            anim.SetInteger(EntityAnimHash.Pattern, 1); // 촉수 할퀴기
+        }
+        else // 근접 공격이 불가능할 경우
+        {
+            anim.SetInteger(EntityAnimHash.Pattern, 2); // 산탄 발사
+        }
+        /*
         switch (caseNumber)
         {
             case 0: // 촉수 할퀴기
@@ -68,6 +77,7 @@ public class SeaAnemone : EnemyBase
                 anim.SetInteger(EntityAnimHash.Pattern, 2);
                 break;
         }
+        */
     }
 
      // 실실적인 공격은 연결된 Animator에서 실행한다. (타이밍 맞추기 위해)

@@ -33,13 +33,13 @@ public class PlayerInteract : HitBase
         BombEvent = () => Debug.Log("폭8 이벤트"); // Bomb 이벤트 초기화(NullReferenceException 방지)
     }
 
-    public override void HitBy(AttackBase attack)
+    public override void Hit(EntityType victim, float damage)
     {
-        GameManager.CurHP -= (int)Mathf.Round(attack.Damage * (1f - damageResistance));
+        GameManager.CurHP -= (int)Mathf.Round(damage * (1f - damageResistance));
 
         if (GameManager.CurHP <= 0) // 죽었을 경우
         {
-            DeadBy(attack.Owner);
+            DeadBy(victim);
         }
         else // 살았을 경우
         {

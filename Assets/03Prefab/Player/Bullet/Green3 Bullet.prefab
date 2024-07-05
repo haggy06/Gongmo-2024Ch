@@ -159,7 +159,8 @@ MonoBehaviour:
   lifeTime: 1
   speed: 25
   spreadTiming: 3
-  subProjectile: {fileID: 7415817190923517243, guid: 7dc7ae70e27b2e24083fd6313586b5a6, type: 3}
+  subObject: {fileID: 7415817190923517243, guid: 7dc7ae70e27b2e24083fd6313586b5a6, type: 3}
+  spawnMyPos: 0
   projPair: 1
   angleDiff: 30
   useTracking: 0

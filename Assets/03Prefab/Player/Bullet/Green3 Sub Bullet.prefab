@@ -156,10 +156,11 @@ MonoBehaviour:
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   attackableCount: 1
-  lifeTime: 2
-  speed: 15
+  lifeTime: 10
+  speed: 10
   spreadTiming: 1
-  subProjectile: {fileID: 0}
+  subObject: {fileID: 0}
+  spawnMyPos: 0
   projPair: 1
   angleDiff: 0
   useTracking: 1

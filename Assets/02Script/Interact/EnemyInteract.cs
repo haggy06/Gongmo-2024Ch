@@ -17,6 +17,9 @@ public class EnemyInteract : HitBase
     [SerializeField]
     private int expPerDead = 20;
     public float ExpPerDead => expPerDead;
+    [SerializeField]
+    private int scorePerDead = 20;
+    public float ScorePerDead => scorePerDead;
 
     private SpriteRenderer sprite;
     protected override void Awake()
@@ -26,9 +29,9 @@ public class EnemyInteract : HitBase
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    public override void HitBy(AttackBase attack)
+    public override void Hit(EntityType victim, float damage)
     {
-        base.HitBy(attack);
+        base.Hit(victim, damage);
         
         if (curHP <= 0) // 사망 시
             return;
@@ -36,9 +39,9 @@ public class EnemyInteract : HitBase
         StopCoroutine("HitBlink");
         StartCoroutine("HitBlink");
 
-        if (attack.Owner == EntityType.Player) // 플레이어에게 맞았을 경우
+        if (victim == EntityType.Player) // 플레이어에게 맞았을 경우
         {
-            GameManager.Skill += (attack.Damage * damageScope / GameManager.CurWeapon.skillGauge) * 100f * skillEff; // 딜량/요구 딜량 * 100 * 대미지 효율
+            GameManager.Skill += (damage * damageScope / GameManager.CurWeapon.skillGauge) * 100f * skillEff; // 딜량/요구 딜량 * 100 * 대미지 효율
         }
     }
     private IEnumerator HitBlink()
@@ -56,6 +59,8 @@ public class EnemyInteract : HitBase
         {
             GameManager.Skill += skillPerDead;
             GameManager.EXP += expPerDead;
+
+            GameManager.Score += scorePerDead;
         }
     }
     protected override void HalfHP()

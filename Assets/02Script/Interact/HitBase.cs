@@ -16,9 +16,9 @@ public abstract class HitBase : MonoBehaviour
 
     [Space(5)]
     [SerializeField]
-    protected int maxHP = 10;
+    protected float maxHP = 10;
     [SerializeField]
-    protected int curHP = 0;
+    protected float curHP = 0;
 
     [Space(5)]
     [Range(0f, 1f)]
@@ -45,16 +45,16 @@ public abstract class HitBase : MonoBehaviour
     }
 
     protected float damageScope;
-    public virtual void HitBy(AttackBase attack)
+    public virtual void Hit(EntityType victim, float damage)
     {
         damageScope = 1f - damageResistance;
-        damageScope *= attack.Owner == EntityType.Player ? GameManager.DamageScope : 1f; // 플레이어의 공격일 경우 대미지 배율 적용
+        damageScope *= victim == EntityType.Player ? GameManager.DamageScope : 1f; // 플레이어의 공격일 경우 대미지 배율 적용
 
-        curHP = Mathf.Clamp(curHP - (int)Mathf.Round(attack.Damage * damageScope), 0, maxHP);
+        curHP = Mathf.Clamp(curHP - damage * damageScope, 0f, maxHP);
 
         if (curHP <= 0) // HP가 0이 되었을 때
         {
-            DeadEvent.Invoke(attack.Owner); // 사망 처리
+            DeadEvent.Invoke(victim); // 사망 처리
         }
         else if (curHP <= maxHP / 4f && !moribundHPInvoked) // HP가 1/4이하가 되었을 때
         {
@@ -69,7 +69,7 @@ public abstract class HitBase : MonoBehaviour
     }
     public virtual void InstantKill(EntityType entity)
     {
-        curHP = 0;
+        curHP = 0f;
         DeadEvent.Invoke(entity); // 사망 처리
     }
 
