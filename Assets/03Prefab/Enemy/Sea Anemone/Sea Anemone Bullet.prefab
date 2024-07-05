@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 2
   target: 4
-  damage: 10
+  damage: 30
   canAttack: 1
   attackTerm: 0.25
 --- !u!114 &401784265413754032
@@ -152,12 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11111111
+  poolObjectID: 10000
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackableCount: 1
-  lifeTime: 2
-  speed: 7
+  lifeTime: 1
+  speed: 10
   spreadTiming: 1
   subProjectile: {fileID: 0}
   projPair: 1
@@ -175,14 +175,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3756341054671888274}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -193,4 +193,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

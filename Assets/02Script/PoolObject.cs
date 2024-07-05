@@ -4,6 +4,7 @@ using UnityEngine;
 
 using System;
 
+[RequireComponent(typeof(Collider2D))]
 public class PoolObject : MonoBehaviour
 {
     [SerializeField, Tooltip("이 오브젝트의 ID.")]
@@ -18,11 +19,16 @@ public class PoolObject : MonoBehaviour
     protected virtual void ObjectReturned()
     {
         if (destroyWhenBomb)
-            PlayerInteract.BombEvent -= ReturnToPool;
+            PlayerInteract.BombEvent -= DestroyByBomb;
 
         gameObject.SetActive(false);
     }
-    public void ReturnToPool()
+    protected virtual void DestroyByBomb()
+    {
+        ReturnToPool();
+    }
+
+    public virtual void ReturnToPool()
     {
         ObjectReturned();
 
@@ -42,7 +48,7 @@ public class PoolObject : MonoBehaviour
         transform.eulerAngles = Vector3.forward * angle;
 
         if (destroyWhenBomb)
-            PlayerInteract.BombEvent += ReturnToPool;
+            PlayerInteract.BombEvent += DestroyByBomb;
     }
     public virtual void ExitFromPool()
     {

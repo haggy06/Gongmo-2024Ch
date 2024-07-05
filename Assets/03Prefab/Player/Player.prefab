@@ -9881,8 +9881,6 @@ MonoBehaviour:
   moveSpeed: 7
   move: {x: 0, y: 0}
   defaultVelo: {x: 0, y: 0}
-  shootTerm: 0.1
-  damagePercent: 1
   item: {fileID: 2896431963626883825, guid: 60518168bcfc3fa4bb39f35d9547053c, type: 3}
 --- !u!50 &548287120971338068
 Rigidbody2D:
@@ -24812,6 +24810,7 @@ MonoBehaviour:
   invincible: 0
   maxHP: 10
   curHP: 0
+  damageResistance: 0
   hitInvincibleTime: 1.5
   particleList:
   - {fileID: 1390543128783095863}

@@ -9,7 +9,9 @@ public class SeaAnemone : EnemyBase
 
     [Header("Tentacle Scratch")]
     [SerializeField]
-    private Collider2D tenacleAttack;
+    private float tentacleReach = 3f;
+    [SerializeField]
+    private AttackBase tenacleAttack;
     [SerializeField]
     private ParticleSystem scratchEffect;
 
@@ -27,14 +29,11 @@ public class SeaAnemone : EnemyBase
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
+
+        tenacleAttack.canAttack = false;
+        scratchEffect.Clear();
         rigid2D.velocity = Vector2.down * scrollSpeed;
     }
-
-    protected override void Dead(AttackBase attack)
-    {
-        
-    }
-
     protected override void HalfHP()
     {
         
@@ -45,33 +44,45 @@ public class SeaAnemone : EnemyBase
         
     }
 
+    /* 말미잘 공격 패턴
+     * 1. 촉수 할퀴기 (근접)
+     * 2. 산탄 발사 (제한 없음)
+     */
     protected override void Pattern(int caseNumber, bool isListPattern = false) // 말미잘은 리스트를 안 쓰니 패스
     {
         switch (caseNumber)
         {
             case 0: // 촉수 할퀴기
-                if (PatternCheck.shortDistance(transform.position, 3f)) // 근접 공격이 가능할 경우
+                if (PatternCheck.shortDistance(transform.position, tentacleReach)) // 근접 공격이 가능할 경우
                 {
-                    tenacleAttack.enabled = true;
-                    scratchEffect.Play();
+                    anim.SetInteger(EntityAnimHash.Pattern, 1);
                 }
-                else // 근접 공격이 물가능할 경우
+                else // 근접 공격이 불가능할 경우
                 {
-                    goto ProjPattern;
+                    anim.SetInteger(EntityAnimHash.Pattern, 2);
                     //Pattern(1); // 산탄 발사 실행
                 }
                 break;
 
             case 1: // 산탄 발사
-            ProjPattern:
-                float angleDiff = 360f / projectileNumber;
-                for (int i = 0; i < projectileNumber; i++)
-                {
-                    PoolObject proj = parentPool.GetPoolObject(anemoneProjectile);
-                    proj.Init(transform.position, 90f + (angleDiff * i));
-                }
+                anim.SetInteger(EntityAnimHash.Pattern, 2);
                 break;
         }
     }
 
+     // 실실적인 공격은 연결된 Animator에서 실행한다. (타이밍 맞추기 위해)
+    public void TentacleAttack() // 촉수 할퀴기
+    {
+        scratchEffect.Play();
+    }
+    public void SpreadProjectile() // 산탄 발사
+    {
+        float angleDiff = 360f / projectileNumber;
+        float initialAngle = Random.Range(0f, 360f);
+        for (int i = 0; i < projectileNumber; i++)
+        {
+            PoolObject proj = parentPool.GetPoolObject(anemoneProjectile);
+            proj.Init(transform.position, initialAngle + (angleDiff * i));
+        }
+    }
 }

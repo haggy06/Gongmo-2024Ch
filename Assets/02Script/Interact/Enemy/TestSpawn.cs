@@ -10,7 +10,10 @@ public class TestSpawn : MonoBehaviour
     private ObjectPool pool;
 
     [SerializeField]
-    private Vector2 spawnPoint;
+    private Vector2 spawnRange1;
+    [SerializeField]
+    private Vector2 spawnRange2;
+
     [SerializeField]
     private PoolObject spawnTarget;
     private void Awake()
@@ -20,7 +23,7 @@ public class TestSpawn : MonoBehaviour
 
     public void Spawn()
     {
-        pool.GetPoolObject(spawnTarget).Init(spawnPoint, 0f);
+        pool.GetPoolObject(spawnTarget).Init(new Vector2(Random.Range(spawnRange1.x, spawnRange2.x), Random.Range(spawnRange1.y, spawnRange2.y)), 0f);
     }
 }
 

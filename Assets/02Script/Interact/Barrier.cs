@@ -13,7 +13,7 @@ public class Barrier : HitBase
     {
         
     }
-    protected override void DeadBy(AttackBase attack)
+    protected override void DeadBy(EntityType killer)
     {
         if (TryGetComponent<PoolObject>(out PoolObject poolObject)) // PoolObjectÀÏ °æ¿ì
         {

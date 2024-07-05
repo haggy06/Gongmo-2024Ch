@@ -21,9 +21,9 @@ public abstract class HitBase : MonoBehaviour
     protected int curHP = 0;
 
     [Space(5)]
-    [SerializeField, Range(0f, 1f)]
-    protected float damageResistance = 0f;
-    private void Awake()
+    [Range(0f, 1f)]
+    public float damageResistance = 0f;
+    protected virtual void Awake()
     {
         HalfHPEvent += HalfHP;
         MoribundHPEvent += MoribundHP;
@@ -35,10 +35,12 @@ public abstract class HitBase : MonoBehaviour
         Init();
     }
 
+    protected bool halfHPInvoked, moribundHPInvoked;
     public virtual void Init()
     {
         invincible = false;
 
+        halfHPInvoked = moribundHPInvoked = false;
         curHP = maxHP;
     }
 
@@ -52,16 +54,23 @@ public abstract class HitBase : MonoBehaviour
 
         if (curHP <= 0) // HP가 0이 되었을 때
         {
-            DeadEvent.Invoke(attack); // 사망 처리
+            DeadEvent.Invoke(attack.Owner); // 사망 처리
         }
-        else if (curHP <= maxHP / 4f) // HP가 1/4이하가 되었을 때
+        else if (curHP <= maxHP / 4f && !moribundHPInvoked) // HP가 1/4이하가 되었을 때
         {
+            moribundHPInvoked = true;
             MoribundHPEvent.Invoke();
         }
-        else if (curHP <= maxHP / 2f) // HP가 절반 이하가 되었을 때
+        else if (curHP <= maxHP / 2f && !halfHPInvoked) // HP가 절반 이하가 되었을 때
         {
+            halfHPInvoked = true;
             HalfHPEvent.Invoke();
         }
+    }
+    public virtual void InstantKill(EntityType entity)
+    {
+        curHP = 0;
+        DeadEvent.Invoke(entity); // 사망 처리
     }
 
     /// <summary> 반피 이하가 되었을 떄 실행 </summary>
@@ -73,6 +82,6 @@ public abstract class HitBase : MonoBehaviour
     protected abstract void MoribundHP();
 
     /// <summary> 사망했을 시 실행 </summary>
-    public event Action<AttackBase> DeadEvent;
-    protected abstract void DeadBy(AttackBase attack);
+    public event Action<EntityType> DeadEvent;
+    protected abstract void DeadBy(EntityType killer);
 }

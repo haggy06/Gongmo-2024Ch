@@ -39,6 +39,25 @@ public class ObjectPool : MonoBehaviour
         value.ExitFromPool();
         return value;
     }
+    public PoolObject GetPoolObject(int poolObjectID)
+    {
+        PoolObject value;
+
+        if (!poolDictionary.TryGetValue(poolObjectID, out Stack<PoolObject> pool)) // poolDictionary에서 poolObject에 해당하는 풀을 불러옴
+        {
+            Debug.LogError("poolObjectID만으로는 새 오브젝트 풀을 만들 수 없습니다.");
+            return null;
+        }
+        if (!pool.TryPop(out value)) // 불러온 풀에서 오브젝트 하나 꺼내옴
+        {
+            Debug.LogError("poolObjectID만으로는 부족한 PoolObject를 보충할 수 없습니다.");
+            return null;
+        }
+
+        value.transform.parent = null;
+        value.ExitFromPool();
+        return value;
+    }
 
     public void SetPoolObject(PoolObject poolObject)
     {

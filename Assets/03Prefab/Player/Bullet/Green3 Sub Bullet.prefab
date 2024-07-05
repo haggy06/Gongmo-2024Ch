@@ -156,8 +156,8 @@ MonoBehaviour:
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   attackableCount: 1
-  lifeTime: 1.5
-  speed: 10
+  lifeTime: 2
+  speed: 15
   spreadTiming: 1
   subProjectile: {fileID: 0}
   projPair: 1
@@ -165,7 +165,7 @@ MonoBehaviour:
   useTracking: 1
   target: {fileID: 0}
   targetEntity: 2
-  driftTime: 1
+  driftTime: 0.5
   searchRadius: 5
 --- !u!50 &7760559044799283423
 Rigidbody2D:

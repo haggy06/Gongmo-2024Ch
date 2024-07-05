@@ -65,6 +65,14 @@ public class PopupManager : MonoBehaviour
 
     [Space(5)]
     [SerializeField]
+    private PopupBase levelTablePopup;
+    [SerializeField]
+    private TextMeshProUGUI tableText;
+    [SerializeField]
+    private TextMeshProUGUI expText;
+
+    [Space(5)]
+    [SerializeField]
     private Image levelFill;
     [SerializeField]
     private ImageBlink levelIcon;
@@ -153,6 +161,11 @@ public class PopupManager : MonoBehaviour
 
         SceneManager.activeSceneChanged += SceneChanged;
 
+        tableText.text = "";
+        for (int i = 0; i < GameManager.levelUpTable.Length; i++)
+        {
+            tableText.text += "레벨 " + (i + 1) + " : " + GameManager.levelUpTable[i] + "\n";
+        }
         #region _Set Button Event_
         PlayButton.onClick.AddListener(() => SceneMove(SCENE.Play));
         infoButton.onClick.AddListener(() => infoPopup.PopupOpen());
@@ -193,6 +206,8 @@ public class PopupManager : MonoBehaviour
 
         infoPopup.PopupHide();
         titlePopup.PopupHide();
+
+        levelTablePopup.PopupHide();
 
         playerPopup.PopupHide();
 
@@ -271,10 +286,12 @@ public class PopupManager : MonoBehaviour
     {
         if (GameManager.Level >= GameManager.levelUpTable.Length) // 최대 레벨을 찍거나 넘었을 경우
         {
+            expText.text = "MAX";
             levelFill.fillAmount = 1f;
         }
         else
         {
+            expText.text = GameManager.EXP.ToString();
             levelFill.fillAmount = (float)GameManager.EXP / GameManager.levelUpTable[GameManager.Level];
         }
     }
@@ -321,6 +338,18 @@ public class PopupManager : MonoBehaviour
         highScoreText.text = "최고 스코어 : " + GameManager.HighScore.ToString();
 
         cheatCheck.SetActive(GameManager.UseCheat);
+    }
+
+    public void Open_CloseTable()
+    {
+        if (levelTablePopup.Popup.blocksRaycasts) // blocksRaycasts가 true면 팝업이 열려 있다는 뜻이다.
+        {
+            levelTablePopup.PopupClose();
+        }
+        else
+        {
+            levelTablePopup.PopupOpen();
+        }
     }
     #endregion
 }

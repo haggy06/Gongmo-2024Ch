@@ -25,6 +25,8 @@ public class Projectile : PoolObject
     protected Projectile subProjectile;
 
     [Space(5)]
+    [SerializeField, Tooltip("자신의 위치에도 소환할지 결정.")]
+    protected bool spawnMyPos = false;
     [SerializeField, Tooltip("보조 발사체의 쌍 개수. 1 입력 시 투사체 좌우에 보조 발사체가 하나씩 소환됨.")]
     protected int projPair = 1;
     [SerializeField]
@@ -95,7 +97,7 @@ public class Projectile : PoolObject
 
         if (useTracking) // 트래킹을 할 경우(= 이동 방향이 중간에 바뀔 경우)
         {
-            if (target) // 타겟이 지정되어 있을 경우
+            if (target && target.gameObject.activeInHierarchy) // 타겟이 지정되어 있고 활성화되어 있을 경우
             {
                 transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg((target.position - transform.position).normalized);
             }
@@ -130,6 +132,11 @@ public class Projectile : PoolObject
         nowAttackCount = 0;
         StartCoroutine("AutoReturn");
     }
+    public override void ReturnToPool()
+    {
+        StopCoroutine("AutoReturn");
+        base.ReturnToPool();
+    }
 
     protected virtual IEnumerator AutoReturn()
     {
@@ -146,9 +153,16 @@ public class Projectile : PoolObject
 
     private void SpawnSubProj()
     {
+        PoolObject projectile;
+
+        if (spawnMyPos) // 자기 위치에도 생성할 경우
+        {
+            projectile = parentPool.GetPoolObject(subProjectile);
+            projectile.Init(transform.position, transform.eulerAngles.z);
+        }
+
         for (int i = 1; i < projPair + 1; i++) // 1 ~ projPair까지의 수
         {
-            PoolObject projectile;
             projectile = parentPool.GetPoolObject(subProjectile);
             projectile.Init(transform.position, transform.eulerAngles.z - angleDiff * i);
 

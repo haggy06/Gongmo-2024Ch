@@ -212,18 +212,20 @@ public class GameManager : MonoBehaviour
                 int levelUP = 0;
                 while (Inst.exp - levelUpTable[Inst.level + levelUP] >= 0) // 레벨업이 가능한 동안 반복
                 {
-                    levelUP++; // 오른 레벨 + 1
                     Inst.exp -= levelUpTable[Inst.level + levelUP]; // 레벨업에 쓰인 경험치 빼줌
+                    levelUP++; // 오른 레벨 + 1
 
                     if (Inst.level + levelUP >= levelUpTable.Length) // 최대 레벨을 찍거나 넘었을 경우
                     {
-                        Level += levelUP; // 레벨업을 하고
                         Inst.exp = 0; // EXP를 0으로 맞춘 뒤
                         break; // While 문 탈출 (냅두면 인덱스 오류 남)
                     }
                 }
 
-                Level += levelUP; // 한번에 레벨을 대입시켜줌
+                if (levelUP != 0) // 레벨 변화가 있었을 경우
+                {
+                    Level += levelUP; // 한번에 레벨을 대입시켜줌
+                }
                 PopupManager.Inst.ChangeEXP();
             }
         }

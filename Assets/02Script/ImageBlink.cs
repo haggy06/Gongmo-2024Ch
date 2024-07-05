@@ -53,7 +53,6 @@ public class ImageBlink : MonoBehaviour
         color = color1; // 시작 컬러는 color1로 고정
         while (true) // 깜빡이는 중이거나 종료 컬러에 도달하지 않은 동안 반복
         {
-            print("...");
             Img.color = color;
 
             time += Time.deltaTime * Mathf.PI * blinkSpeed;

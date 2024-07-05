@@ -167,10 +167,11 @@ MonoBehaviour:
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackableCount: 1000
-  lifeTime: 5
-  speed: 1.5
+  lifeTime: 9
+  speed: 2
   spreadTiming: 1
   subProjectile: {fileID: 0}
+  spawnMyPos: 0
   projPair: 1
   angleDiff: 0
   useTracking: 0
@@ -192,9 +193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 12
   invincible: 0
-  maxHP: 500
+  maxHP: 1000
   curHP: 0
-  damageResistance: 0.8
+  damageResistance: 0
 --- !u!50 &9007039129889426335
 Rigidbody2D:
   serializedVersion: 4

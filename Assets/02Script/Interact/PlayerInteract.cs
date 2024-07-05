@@ -39,7 +39,7 @@ public class PlayerInteract : HitBase
 
         if (GameManager.CurHP <= 0) // 죽었을 경우
         {
-            DeadBy(attack);
+            DeadBy(attack.Owner);
         }
         else // 살았을 경우
         {
@@ -83,7 +83,7 @@ public class PlayerInteract : HitBase
         InvincibleCount--;
     }
 
-    protected override void DeadBy(AttackBase attack)
+    protected override void DeadBy(EntityType killer)
     {
         GameManager.GameStatus = GameStatus.GameOver;
 

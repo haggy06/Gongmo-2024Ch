@@ -12,12 +12,17 @@ public class EnemyInteract : HitBase
     [Space(5)]
     [SerializeField]
     private float skillPerDead = 5f;
+    public float SkillPerDead => skillPerDead;
+
     [SerializeField]
     private int expPerDead = 20;
+    public float ExpPerDead => expPerDead;
 
     private SpriteRenderer sprite;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -45,9 +50,9 @@ public class EnemyInteract : HitBase
         sprite.color = Color.white;
     }
 
-    protected override void DeadBy(AttackBase attack)
+    protected override void DeadBy(EntityType killer)
     {
-        if (attack.Owner == EntityType.Player) // 플레이어에게 죽었을 경우
+        if (killer == EntityType.Player) // 플레이어에게 죽었을 경우
         {
             GameManager.Skill += skillPerDead;
             GameManager.EXP += expPerDead;

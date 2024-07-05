@@ -209,6 +209,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("플레이어 레벨 및 경험치 게이지 ON/OFF");
 
             GameManager.UseCheat = true;
+            PopupManager.Inst.Open_CloseTable();
             // todo : 플레이어 레벨 및 경험치 게이지 ON/OFF
         }
 
