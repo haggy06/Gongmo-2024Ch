@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: 0
-  scrollSpeed: 5
+  scrollSpeed: 4
   scrolling: 1
   time: 0
 --- !u!1 &469434772
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: 0
-  scrollSpeed: 5
+  scrollSpeed: 4
   scrolling: 1
   time: 0
 --- !u!1001 &726228657
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: 0
-  scrollSpeed: 5
+  scrollSpeed: 4
   scrolling: 1
   time: 0
 --- !u!1 &1935700014

@@ -17,6 +17,8 @@ public class SeaAnemone : EnemyBase
 
     [Header("Spread Projectile")]
     [SerializeField]
+    private Transform spreadPosition;
+    [SerializeField]
     private PoolObject anemoneProjectile;
     [SerializeField]
     private int projectileNumber = 8;
@@ -50,7 +52,7 @@ public class SeaAnemone : EnemyBase
      */
     protected override void Pattern(int caseNumber, bool isListPattern = false) // 말미잘은 리스트를 안 쓰니 패스
     {
-        if (PatternCheck.shortDistance(transform.position, tentacleReach)) // 근접 공격이 가능할 경우
+        if (PatternCheck.shortDistance(spreadPosition.position, tentacleReach)) // 근접 공격이 가능할 경우
         {
             anim.SetInteger(EntityAnimHash.Pattern, 1); // 촉수 할퀴기
         }
@@ -92,7 +94,7 @@ public class SeaAnemone : EnemyBase
         for (int i = 0; i < projectileNumber; i++)
         {
             PoolObject proj = parentPool.GetPoolObject(anemoneProjectile);
-            proj.Init(transform.position, initialAngle + (angleDiff * i));
+            proj.Init(spreadPosition.position, initialAngle + (angleDiff * i));
         }
     }
 }

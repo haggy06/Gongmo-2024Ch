@@ -51,6 +51,7 @@ public abstract class EnemyBase : PoolObject
 
         StabilizePattern();
         StartCoroutine("PatternRepeat");
+        enemyInteract.GetComponent<SpriteRenderer>().color = Color.white;
     }
     private IEnumerator PatternRepeat()
     {

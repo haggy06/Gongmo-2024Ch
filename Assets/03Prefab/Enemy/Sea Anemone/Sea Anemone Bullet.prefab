@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.79, y: 0.27, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.50090647, a: 1}
+  m_Sprite: {fileID: 21300000, guid: aaca06b5646409f4594c8892c5144e40, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2375
 --- !u!114 &3456550291338440850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDotDamage: 0
   owner: 2
   target: 4
   damage: 30
   canAttack: 1
-  attackTerm: 0.25
 --- !u!114 &401784265413754032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,8 @@ MonoBehaviour:
   lifeTime: 1
   speed: 10
   spreadTiming: 1
-  subProjectile: {fileID: 0}
+  subObject: {fileID: 0}
+  spawnMyPos: 0
   projPair: 1
   angleDiff: 0
   useTracking: 0

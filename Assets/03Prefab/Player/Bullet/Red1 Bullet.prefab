@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDotDamage: 0
   owner: 4
   target: 2
   damage: 7
   canAttack: 1
-  attackTerm: 0.25
 --- !u!114 &-4007307331584531999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   poolObjectID: 4
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
-  attackableCount: 5
+  attackableCount: 1
   lifeTime: 0.3
   speed: 15
   spreadTiming: 3
