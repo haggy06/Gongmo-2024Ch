@@ -13,7 +13,7 @@ public class Scroll : MonoBehaviour
     [SerializeField]
     private float scrollSpeed = 6f;
 
-    public bool scrolling = false;
+    public bool scrolling = true;
 
     [SerializeField]
     private float time = 0f;

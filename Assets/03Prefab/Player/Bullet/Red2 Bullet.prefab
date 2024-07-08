@@ -138,7 +138,7 @@ MonoBehaviour:
   isDotDamage: 0
   owner: 4
   target: 2
-  damage: 8
+  damage: 7
   canAttack: 1
 --- !u!114 &-224579845666449201
 MonoBehaviour:
@@ -162,7 +162,7 @@ MonoBehaviour:
   subObject: {fileID: 9148238175212477638, guid: 76a4c0869a49f9a4982fd804c66db0c7, type: 3}
   spawnMyPos: 0
   projPair: 2
-  angleDiff: 10
+  angleDiff: 15
   useTracking: 0
   target: {fileID: 0}
   targetEntity: 0

@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TrackingPlayer))]
 public class Puffer : EnemyBase
 {
     [SerializeField]
-    private float followSpeed = 1f;
-    [SerializeField]
-    private float cFollowSpeed;
+    private float followSpeed;
 
     [Header("Spit Needle")]
     [SerializeField]
@@ -26,31 +25,25 @@ public class Puffer : EnemyBase
     [SerializeField]
     private int needleNumberWhenExplosion = 8;
 
+    private TrackingPlayer tracking;
     protected override void Awake()
     {
         base.Awake();
 
-        cFollowSpeed = followSpeed;
+        tracking = GetComponent<TrackingPlayer>();
     }
+
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
 
         enemyInteract.damageResistance = 0f;
-        cFollowSpeed = followSpeed;
-    }
-
-    private void FixedUpdate()
-    {
-        transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Player.transform.position - transform.position);
-        transform.Translate(Vector2.right * cFollowSpeed * Time.fixedDeltaTime);
+        tracking.speed = followSpeed;
     }
     protected override void HalfHP()
     {
-        print("복어 광폭화");
 
-        enemyInteract.damageResistance = 0.25f;
-        cFollowSpeed *= 1.5f;
+        tracking.speed *= 1.25f;
     }
 
     protected override void MoribundHP()
@@ -66,7 +59,7 @@ public class Puffer : EnemyBase
     {
         if (PatternCheck.shortDistance(transform.position, explosionReach)) // 근접 공격이 가능할 경우
         {
-            cFollowSpeed *= 0.8f;
+            tracking.speed *= 0.75f;
             anim.SetInteger(EntityAnimHash.Pattern, 1); // 자폭
         }
         else // 근접 공격이 불가능할 경우

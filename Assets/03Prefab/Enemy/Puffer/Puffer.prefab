@@ -135,13 +135,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 50
+  maxHP: 120
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
-  skillPerDead: 5
-  expPerDead: 20
-  scorePerDead: 20
+  skillPerDead: 7
+  expPerDead: 100
+  scorePerDead: 130
 --- !u!1 &6031720628604757048
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +268,9 @@ GameObject:
   m_Component:
   - component: {fileID: 938815053019212350}
   - component: {fileID: 5943564240609244740}
+  - component: {fileID: 5216914262005053012}
   - component: {fileID: 598423214395068687}
+  - component: {fileID: -6850969260887086886}
   m_Layer: 0
   m_Name: Puffer
   m_TagString: Untagged
@@ -309,18 +311,45 @@ MonoBehaviour:
   poolObjectID: 11002
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  usePattern: 1
   patternNumber: 1
   patternTerm: 2
   itemDropProbability: 0.25
   usePatternList: 0
   patternTermInList: 0.75
-  followSpeed: 3
-  cFollowSpeed: 0
+  followSpeed: 4
   spitTransform: {fileID: 8801019980386344225}
   needle: {fileID: 8888517260246451585, guid: e4f2ce8497c80a947860dec2b613d515, type: 3}
   explosion: {fileID: 2401881782769809721, guid: 37a87e7d534a72943aa46c9c102c459a, type: 3}
   explosionReach: 5
   needleNumberWhenExplosion: 16
+--- !u!50 &5216914262005053012
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855799427461255420}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!95 &598423214395068687
 Animator:
   serializedVersion: 5
@@ -342,3 +371,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6850969260887086886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855799427461255420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useRotation: 1
+  speed: 0
+  driftTime: 0.02

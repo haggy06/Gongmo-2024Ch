@@ -2,18 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ScrollWithBackground))]
 public class SeaAnemone : EnemyBase
 {
-    [SerializeField]
-    private float scrollSpeed = 4f;
-
     [Header("Tentacle Scratch")]
     [SerializeField]
     private float tentacleReach = 3f;
     [SerializeField]
-    private AttackBase tenacleAttack;
-    [SerializeField]
-    private ParticleSystem scratchEffect;
+    private ExplosionObject tentacleAttack;
 
     [Header("Spread Projectile")]
     [SerializeField]
@@ -26,15 +22,10 @@ public class SeaAnemone : EnemyBase
     protected override void Awake()
     {
         base.Awake();
-        GameManager.BossEvent += (isOn) => rigid2D.velocity = isOn ? Vector2.zero : Vector2.down * scrollSpeed; // 보스 등장 시엔 스크롤이 멈추므로 말미잘도 멈추게 함
     }
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
-
-        tenacleAttack.canAttack = false;
-        scratchEffect.Clear();
-        rigid2D.velocity = Vector2.down * scrollSpeed;
     }
     protected override void HalfHP()
     {
@@ -85,7 +76,7 @@ public class SeaAnemone : EnemyBase
      // 실실적인 공격은 연결된 Animator에서 실행한다. (타이밍 맞추기 위해)
     public void TentacleAttack() // 촉수 할퀴기
     {
-        scratchEffect.Play();
+        parentPool.GetPoolObject(tentacleAttack).Init(transform.position, 0f);
     }
     public void SpreadProjectile() // 산탄 발사
     {

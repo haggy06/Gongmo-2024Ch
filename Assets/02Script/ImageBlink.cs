@@ -55,9 +55,9 @@ public class ImageBlink : MonoBehaviour
         {
             Img.color = color;
 
-            time += Time.deltaTime * Mathf.PI * blinkSpeed;
+            time += Time.deltaTime;
 
-            color = MyCalculator.SinWave(time, color1, color2); // 깜박임을 위한 특제 공식.
+            color = MyCalculator.SinWave(time * blinkSpeed, color1, color2); // 깜박임을 위한 특제 공식.
 
             yield return null;
         }

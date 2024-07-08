@@ -135,13 +135,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 100
+  maxHP: 150
   curHP: 0
   damageResistance: 0
   skillEff: 0
-  skillPerDead: 0
+  skillPerDead: 5
   expPerDead: 20
-  scorePerDead: 20
+  scorePerDead: 100
 --- !u!1 &2130817920858562548
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 3325360658415264815}
   - component: {fileID: 3109036844393639898}
   - component: {fileID: 3338841110657281483}
+  - component: {fileID: 6536675831343639170}
   m_Layer: 0
   m_Name: Coral
   m_TagString: Untagged
@@ -330,12 +331,12 @@ MonoBehaviour:
   poolObjectID: 11001
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  usePattern: 0
   patternNumber: 1
   patternTerm: 128
-  itemDropProbability: 1
+  itemDropProbability: 0.5
   usePatternList: 0
   patternTermInList: 1
-  scrollSpeed: 3
   coralColorArray:
   - {r: 1, g: 0.4292453, b: 0.4292453, a: 1}
   - {r: 0.812631, g: 0.4481132, b: 1, a: 1}
@@ -363,3 +364,17 @@ MonoBehaviour:
   target: 4
   damage: 70
   canAttack: 1
+--- !u!114 &6536675831343639170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130817920858562548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd2077754fd7b940839e94cb9b7916c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 3
+  scrolling: 1

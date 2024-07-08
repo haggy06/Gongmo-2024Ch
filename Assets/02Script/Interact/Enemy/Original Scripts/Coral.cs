@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ScrollWithBackground))]
 public class Coral : EnemyBase
 {
-    [Space(10)]
-    [SerializeField]
-    private float scrollSpeed = 4f;
-
     [Space(5)]
     [SerializeField]
     private Color[] coralColorArray;
@@ -29,7 +26,6 @@ public class Coral : EnemyBase
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         sprite.color = coralColorArray[Random.Range(0, coralColorArray.Length)];
-        rigid2D.velocity = Vector2.down * scrollSpeed;
     }
 
     protected override void HalfHP()

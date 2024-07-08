@@ -6,6 +6,8 @@ using UnityEngine;
 public abstract class EnemyBase : PoolObject
 {
     [SerializeField]
+    private bool usePattern = true;
+    [SerializeField]
     protected int patternNumber = 1;
     [SerializeField]
     protected float patternTerm = 2f;
@@ -48,9 +50,12 @@ public abstract class EnemyBase : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
-
-        StabilizePattern();
-        StartCoroutine("PatternRepeat");
+        
+        if (usePattern)
+        {
+            StabilizePattern();
+            StartCoroutine("PatternRepeat");
+        }
         enemyInteract.GetComponent<SpriteRenderer>().color = Color.white;
     }
     private IEnumerator PatternRepeat()
