@@ -42,16 +42,16 @@ public class Isopod : EnemyBase
 
     protected override void HalfHP()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void MoribundHP()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void Pattern(int caseNumber, bool isListPattern = false)
     {
-        throw new System.NotImplementedException();
+
     }
 }

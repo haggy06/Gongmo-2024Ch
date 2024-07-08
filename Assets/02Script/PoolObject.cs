@@ -4,7 +4,6 @@ using UnityEngine;
 
 using System;
 
-[RequireComponent(typeof(Collider2D))]
 public class PoolObject : MonoBehaviour
 {
     [SerializeField, Tooltip("이 오브젝트의 ID.")]
