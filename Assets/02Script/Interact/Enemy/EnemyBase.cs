@@ -58,7 +58,7 @@ public abstract class EnemyBase : PoolObject
         }
         enemyInteract.GetComponent<SpriteRenderer>().color = Color.white;
     }
-    private IEnumerator PatternRepeat()
+    protected IEnumerator PatternRepeat()
     {
         while (gameObject.activeSelf)
         {
@@ -112,7 +112,7 @@ public abstract class EnemyBase : PoolObject
 
 public static class PatternCheck
 {
-    public static bool shortDistance(Vector2 detectionCenter, float detectionRadius)
+    public static bool ShortDistance(Vector2 detectionCenter, float detectionRadius)
     {
         return MyCalculator.Distance(detectionCenter, PlayerController.Player.transform.position) <= detectionRadius;
     }

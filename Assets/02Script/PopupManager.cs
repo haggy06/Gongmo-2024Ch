@@ -306,18 +306,22 @@ public class PopupManager : MonoBehaviour
 
     public void BossAppear(string bossName = "º¸½º")
     {
+        print("boss");
+        ChangeBossHP(1, 1);
         bossText.text = bossName;
         StartCoroutine("BossCor");
     }
     public void BossDisappear()
     {
+        print("ssoq");
         bossPopup.PopupClose();
     }
+    public const float BossWarningTime = 3f;
     private IEnumerator BossCor()
     {
         bossWarningPopup.PopupOpen();
 
-        yield return YieldReturn.WaitForSeconds(3f);
+        yield return YieldReturn.WaitForSeconds(BossWarningTime);
 
         bossWarningPopup.PopupClose();
         bossPopup.PopupOpen();

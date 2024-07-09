@@ -43,7 +43,7 @@ public class SeaAnemone : EnemyBase
      */
     protected override void Pattern(int caseNumber, bool isListPattern = false) // 말미잘은 리스트를 안 쓰니 패스
     {
-        if (PatternCheck.shortDistance(spreadPosition.position, tentacleReach)) // 근접 공격이 가능할 경우
+        if (PatternCheck.ShortDistance(spreadPosition.position, tentacleReach)) // 근접 공격이 가능할 경우
         {
             anim.SetInteger(EntityAnimHash.Pattern, 1); // 촉수 할퀴기
         }
@@ -76,7 +76,7 @@ public class SeaAnemone : EnemyBase
      // 실실적인 공격은 연결된 Animator에서 실행한다. (타이밍 맞추기 위해)
     public void TentacleAttack() // 촉수 할퀴기
     {
-        parentPool.GetPoolObject(tentacleAttack).Init(transform.position, 0f);
+        parentPool.GetPoolObject(tentacleAttack).Init(spreadPosition.position, 0f);
     }
     public void SpreadProjectile() // 산탄 발사
     {

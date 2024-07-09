@@ -5,10 +5,8 @@ using UnityEngine;
 public class StraightMoveEnemy : EnemyBase
 {
     [Space(5)]
-    [SerializeField]
-    protected bool lookPlayer = true;
-    [SerializeField]
-    protected float speed;
+    public bool lookPlayer = true;
+    public float speed;
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);

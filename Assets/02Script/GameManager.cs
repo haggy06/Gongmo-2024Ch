@@ -89,6 +89,17 @@ public class GameManager : MonoBehaviour
     /// <summary> 보스 등장의 경우 true, 퇴장일 경우 false </summary>
     public static event Action<bool> BossEvent = (_) => { };
 
+    public void BossAppear()
+    {
+        BossEvent.Invoke(true);
+    }
+    public void BossDisappear()
+    {
+        PopupManager.Inst.BossDisappear();
+        BossEvent.Invoke(false);
+    }
+
+
     [SerializeField]
     private int highScore = 0;
     public static int HighScore
@@ -191,7 +202,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static readonly int[] levelUpTable = { 0, 100, 250, 600, 1000 };
+    public static readonly int[] levelUpTable = { 0, 200, 350, 600, 900 };
 
     [SerializeField]
     private int exp = 0;

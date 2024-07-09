@@ -184,7 +184,7 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   attackableCount: 1
   lifeTime: 3
-  speed: 7
+  speed: 15
   spreadTiming: 1
   subObject: {fileID: 0}
   spawnMyPos: 0

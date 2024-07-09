@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd1dabe287129d4ca9eb6709e6c2cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 10
+  poolObjectID: 3000
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   speed: 5

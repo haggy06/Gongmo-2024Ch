@@ -57,7 +57,7 @@ public class Puffer : EnemyBase
      */
     protected override void Pattern(int caseNumber, bool isListPattern = false)
     {
-        if (PatternCheck.shortDistance(transform.position, explosionReach)) // 근접 공격이 가능할 경우
+        if (PatternCheck.ShortDistance(transform.position, explosionReach)) // 근접 공격이 가능할 경우
         {
             tracking.speed *= 0.75f;
             anim.SetInteger(EntityAnimHash.Pattern, 1); // 자폭

@@ -63,7 +63,6 @@ public class Projectile : PoolObject
     {
         base.Init(position, angle);
 
-        attack.canAttack = true;
         nowAttackCount = 0;
         target = null;
         if (MyCalculator.CompareFlag((int)spreadTiming, (int)SpreadTiming.Fire)) // 발사 시 보조 발사가 실행될 경우

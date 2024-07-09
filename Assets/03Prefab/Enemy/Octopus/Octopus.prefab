@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6215615485079343360}
   - component: {fileID: 1328158255107699849}
   - component: {fileID: 3269275129381552786}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Octopus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,6 +34,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6117159345850528057}
   - {fileID: 6954507565153848828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -90,7 +91,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.054131173, y: 0.21652402}
   serializedVersion: 2
   m_Radius: 0.9
 --- !u!114 &6215615485079343360
@@ -115,7 +116,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588653718400855226}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -146,16 +147,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b838fc613fbc4147b00e03973941181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 0
+  poolObjectID: 11010
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  usePattern: 1
+  usePattern: 0
   patternNumber: 1
-  patternTerm: 2
-  itemDropProbability: 0.1
+  patternTerm: 1
+  itemDropProbability: 0.3
   usePatternList: 0
   patternTermInList: 1
+  inkAttack: {fileID: 2401881782769809721, guid: a4f3ef0173822294e823b4c5aeea87a8, type: 3}
+  supriseRadius: 1
   hiding: 0
+  tentacleReach: 2
+  tentacleAttack: {fileID: 7279296186336423495, guid: cbaadb756c120d844871f44642cba798, type: 3}
+  spreadPosition: {fileID: 6117159345850528057}
+  OctopusProjectile: {fileID: 401784265413754032, guid: 3aa86e8d4676f294c868f12287acb219, type: 3}
+  projectileNumber: 8
+--- !u!1 &921027776860303629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6117159345850528057}
+  m_Layer: 7
+  m_Name: Attack Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6117159345850528057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921027776860303629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3036025391070297709}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2766563691390829383
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,8 +205,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6954507565153848828}
   - component: {fileID: 3521788587050010472}
+  - component: {fileID: 4178374000031761052}
   - component: {fileID: 4895767371877311537}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hit Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,6 +281,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &4178374000031761052
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766563691390829383}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.025138322, y: 0.11199522}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!114 &4895767371877311537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,10 +330,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 10
+  maxHP: 70
   curHP: 0
   damageResistance: 0
-  skillEff: 0.1
-  skillPerDead: 5
-  expPerDead: 20
-  scorePerDead: 20
+  skillEff: 0.15
+  skillPerDead: 7
+  expPerDead: 60
+  scorePerDead: 80

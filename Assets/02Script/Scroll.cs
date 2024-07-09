@@ -19,7 +19,7 @@ public class Scroll : MonoBehaviour
     private float time = 0f;
 
     private ScrollManager scrollManager;
-    private void Awake()
+    private void Start()
     {
         resetTime = (topPosition.y + 12f) / scrollSpeed;
         time = ((topPosition.y + 12f) - (transform.localPosition.y + 12f)) / scrollSpeed; //  -12부터 60까지 움직인다.
