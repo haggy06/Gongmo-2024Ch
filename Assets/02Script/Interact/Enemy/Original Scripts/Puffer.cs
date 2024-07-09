@@ -42,7 +42,6 @@ public class Puffer : EnemyBase
     }
     protected override void HalfHP()
     {
-
         tracking.speed *= 1.25f;
     }
 

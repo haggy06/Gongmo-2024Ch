@@ -135,12 +135,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 150
+  maxHP: 120
   curHP: 0
   damageResistance: 0
   skillEff: 0
   skillPerDead: 5
-  expPerDead: 20
+  expPerDead: 35
   scorePerDead: 100
 --- !u!1 &698309148429332999
 GameObject:
@@ -419,7 +419,7 @@ MonoBehaviour:
   usePattern: 0
   patternNumber: 1
   patternTerm: 128
-  itemDropProbability: 0.5
+  itemDropProbability: 0.75
   usePatternList: 0
   patternTermInList: 1
   coralColorArray:

@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 120
+  maxHP: 70
   curHP: 0
   damageResistance: 0
   skillEff: 0.01

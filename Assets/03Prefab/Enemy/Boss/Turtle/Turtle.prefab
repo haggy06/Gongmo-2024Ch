@@ -379,6 +379,6 @@ MonoBehaviour:
   damageResistance: 0
   skillEff: 0.1
   skillPerDead: 70
-  expPerDead: 100
-  scorePerDead: 200
+  expPerDead: 150
+  scorePerDead: 500
   bossName: 

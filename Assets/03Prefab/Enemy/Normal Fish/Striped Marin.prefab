@@ -105,8 +105,8 @@ MonoBehaviour:
   damageResistance: 0
   skillEff: 0.1
   skillPerDead: 100
-  expPerDead: 120
-  scorePerDead: 500
+  expPerDead: 100
+  scorePerDead: 250
 --- !u!60 &6683598419352276370
 PolygonCollider2D:
   m_ObjectHideFlags: 0

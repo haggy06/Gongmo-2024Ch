@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         CameraResolutionLock.SetResolution(4f, 3f);
 
+        GameEndEvent = (_) => { };
         BossEvent = (_) => { }; // BossEvent 초기화
         #region _Reset PlayData_
         MaxHP = 250;
@@ -391,6 +392,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static event Action<GameStatus> GameEndEvent = (_) => { };
     private static void GameEnd()
     {
         if (Inst.highScore < Inst.score) // 기록 경신했을 경우
@@ -398,6 +400,7 @@ public class GameManager : MonoBehaviour
             HighScore = Inst.score;
         }
 
+        GameEndEvent.Invoke(GameStatus);
         PopupManager.Inst.OpenGameEndPopup();
     }
 }

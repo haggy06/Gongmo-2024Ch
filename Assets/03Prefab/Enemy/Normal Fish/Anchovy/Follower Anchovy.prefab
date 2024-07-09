@@ -140,7 +140,7 @@ MonoBehaviour:
   damageResistance: 0
   skillEff: 0.1
   skillPerDead: 1
-  expPerDead: 5
+  expPerDead: 8
   scorePerDead: 20
 --- !u!1 &4574220494040004339
 GameObject:

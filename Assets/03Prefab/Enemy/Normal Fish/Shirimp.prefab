@@ -171,7 +171,7 @@ MonoBehaviour:
   usePattern: 0
   patternNumber: 1
   patternTerm: 2
-  itemDropProbability: 0.1
+  itemDropProbability: 0.25
   usePatternList: 0
   patternTermInList: 1
   spinSpeed: 360
@@ -310,10 +310,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 40
+  maxHP: 30
   curHP: 0
   damageResistance: 0
   skillEff: 0.2
   skillPerDead: 5
-  expPerDead: 30
-  scorePerDead: 60
+  expPerDead: 40
+  scorePerDead: 80

@@ -156,8 +156,8 @@ MonoBehaviour:
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackableCount: 1
-  lifeTime: 0.75
-  speed: 15
+  lifeTime: 0.5
+  speed: 10
   spreadTiming: 9
   subObject: {fileID: 9148238175212477638, guid: 21bf3a5b04d00ce4a9f16e23445e07bb, type: 3}
   spawnMyPos: 1

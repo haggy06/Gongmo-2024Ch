@@ -4973,7 +4973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d052db12a2cb04f8e2f7e97d9efe81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 12002
+  poolObjectID: 12010
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackTime: 1

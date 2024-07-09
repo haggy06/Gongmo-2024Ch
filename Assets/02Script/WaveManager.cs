@@ -14,8 +14,14 @@ public class WaveManager : MonoBehaviour
         pool = GetComponent<ObjectPool>();
 
         GameManager.BossEvent += BossEvent;
+        GameManager.GameEndEvent += GameEnd;
         StartCoroutine("SpawnEnemyCor");
         StartCoroutine("SpawnBossCor");
+    }
+    private void GameEnd(GameStatus gameStatus)
+    {
+        StopCoroutine("SpawnEnemyCor");
+        StopCoroutine("SpawnBossCor");
     }
     private void BossEvent(bool isAppear)
     {

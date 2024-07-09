@@ -233,7 +233,7 @@ MonoBehaviour:
   damageResistance: 0
   skillEff: 0.1
   skillPerDead: 1
-  expPerDead: 5
+  expPerDead: 8
   scorePerDead: 20
 --- !u!1 &5605671539954771670
 GameObject:
@@ -377,6 +377,7 @@ MonoBehaviour:
   itemDropProbability: 0.02
   usePatternList: 0
   patternTermInList: 1
+  lookPlayer: 1
   speed: 10
   followerAnchovy: {fileID: 16110807270840601, guid: 0a3780812921a3f448d485ebdf81c543, type: 3}
   followerPositions: {fileID: 5750389760585163205}
