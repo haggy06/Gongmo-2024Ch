@@ -19,6 +19,34 @@ public class PlayerInteract : HitBase
     }
 
     private SpriteRenderer sprite;
+
+    private void Start() 
+    {
+        GameManager.GameEndEvent += GameEnd;
+    }
+    private void GameEnd(GameStatus gameStatus)
+    {
+        switch (gameStatus)
+        {
+            case GameStatus.Play:
+                break;
+
+            case GameStatus.GameOver:
+                GetComponentInParent<PlayerController>().enabled = false;
+                GetComponentInParent<Rigidbody2D>().simulated = false;
+                break;
+
+            case GameStatus.GameClear:
+                GetComponentInParent<PlayerController>().enabled = false;
+                GetComponentInParent<Rigidbody2D>().simulated = false;
+                break;
+        }
+
+        if (gameStatus == GameStatus.GameClear)
+        {
+
+        }
+    }
     public override void Init()
     {
         InvincibleCount = 0;
@@ -86,9 +114,6 @@ public class PlayerInteract : HitBase
     protected override void DeadBy(EntityType killer)
     {
         GameManager.GameStatus = GameStatus.GameOver;
-
-        GetComponentInParent<PlayerController>().enabled = false;
-        GetComponentInParent<Rigidbody2D>().simulated = false;
     }
 
     [SerializeField]

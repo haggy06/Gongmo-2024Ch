@@ -58,7 +58,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    public const float bossInterval = 60f;
+    public const float bossInterval = 50f;
     private IEnumerator SpawnBossCor()
     {
         yield return YieldReturn.WaitForSeconds(bossInterval);

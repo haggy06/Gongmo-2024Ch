@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useRotation: 0
-  speed: 20
-  driftTime: 1
+  speed: 15
+  driftTime: 1.5
 --- !u!95 &2673970186629134387
 Animator:
   serializedVersion: 5
@@ -173,6 +173,7 @@ MonoBehaviour:
   patternTerm: 2
   itemDropProbability: 0.25
   usePatternList: 0
+  pattern: 
   patternTermInList: 1
   spinSpeed: 360
 --- !u!1 &7672206464450877565

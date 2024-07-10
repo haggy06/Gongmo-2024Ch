@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     }
     private void SceneChanged(Scene replacedScene, Scene newScene)
     {
+        bossCount = 0;
         GameStatus = GameStatus.Play;
 
         CameraResolutionLock.SetResolution(4f, 3f);
@@ -90,14 +91,25 @@ public class GameManager : MonoBehaviour
     /// <summary> 보스 등장의 경우 true, 퇴장일 경우 false </summary>
     public static event Action<bool> BossEvent = (_) => { };
 
+    private static int bossCount = 0;
+    private const int bossRequireKill = 3;
     public void BossAppear()
     {
+        bossCount++;
         BossEvent.Invoke(true);
     }
     public void BossDisappear()
     {
         PopupManager.Inst.BossDisappear();
-        BossEvent.Invoke(false);
+
+        if (bossCount >= bossRequireKill)
+        {
+            GameStatus = GameStatus.GameClear;
+        }
+        else
+        {
+            BossEvent.Invoke(false);
+        }
     }
 
 
@@ -203,7 +215,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static readonly int[] levelUpTable = { 0, 200, 350, 600, 900 };
+    public static readonly int[] levelUpTable = { 0, 350, 700, 1200, 1500 };
 
     [SerializeField]
     private int exp = 0;

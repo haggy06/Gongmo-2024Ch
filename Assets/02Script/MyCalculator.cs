@@ -21,11 +21,15 @@ public static class MyCalculator
         return Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
     }
 
-    public static float SinWave(float time, float peek1, float peek2)
+    public static float CosWave(float time, float peek1, float peek2)
     {
         return Mathf.Cos(time * Mathf.PI) * (peek1 - peek2) / 2f + (peek1 + peek2) / 2f;
     }
-    public static Color SinWave(float time, Color peek1, Color peek2)
+    public static float SinWave(float time, float peek1, float peek2)
+    {
+        return Mathf.Sin(time * Mathf.PI) * (peek1 - peek2) / 2f + (peek1 + peek2) / 2f;    
+    }
+    public static Color CosWave(float time, Color peek1, Color peek2)
     {
         Color value;
 

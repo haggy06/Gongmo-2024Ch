@@ -47,6 +47,6 @@ public class WarningLine : PoolObject
     {
         time += Time.fixedDeltaTime;
 
-        sprite.color = MyCalculator.SinWave(time * blinkSpeed, color1, color2);
+        sprite.color = MyCalculator.CosWave(time * blinkSpeed, color1, color2);
     }
 }

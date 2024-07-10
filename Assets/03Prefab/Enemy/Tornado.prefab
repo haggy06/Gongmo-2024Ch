@@ -209,4 +209,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPush: 0
-  sinkPower: 3
+  sinkPower: 6.5

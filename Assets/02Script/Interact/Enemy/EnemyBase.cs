@@ -17,11 +17,12 @@ public abstract class EnemyBase : PoolObject
     [Space(5)]
     [SerializeField, Tooltip("패턴 리스트 사용 여부. 미사용 시 하나의 패턴이 랜덤하게 나옴")]
     protected bool usePatternList = false;
-    [SerializeField]
-    protected List<int[]> patternList = new List<int[]>();
+    [SerializeField, Tooltip("리스트의 끝 자리는 '공백'으로 구분한다. (ex: 12 232 11)")]
+    protected string pattern;
     [SerializeField]
     protected float patternTermInList = 1f;
 
+    protected List<List<int>> patternList = new List<List<int>>();
 
     protected Animator anim;
     protected Rigidbody2D rigid2D;
@@ -35,6 +36,49 @@ public abstract class EnemyBase : PoolObject
         enemyInteract.HalfHPEvent += HalfHP;
         enemyInteract.MoribundHPEvent += MoribundHP;
         enemyInteract.DeadEvent += Dead;
+
+        int raw = 0;
+        patternList.Add(new List<int>());
+        foreach (char c in pattern)
+        {
+            if ('1' <= c && c <= '9') // 숫자가 들어왔을 경우
+            {
+                print(c - '0' + "추가");
+                patternList[raw].Add(c - '0');
+            }
+            else if (c == ' ') // 공백이 들어왔을 경우
+            {
+                print("행 변경");
+                raw++;
+                patternList.Add(new List<int>());
+            }
+            else // 이외의 문자가 들어왔을 경우
+            {
+                Debug.LogWarning(c + "는 패턴 리스트에 있어선 안 됨");
+            }
+        }
+
+        /*
+        #region _Print PatternList_
+        List<string> strArr = new();
+        foreach (List<int> c1 in patternList)
+        {
+            string str = "";
+            foreach (char c2 in c1)
+            {
+                str = str + c2;
+            }
+            strArr.Add(str);
+        }
+
+        string arr = "";
+        foreach (string s in strArr)
+        {
+            arr = arr + s + ", ";
+        }
+        print(arr);
+        #endregion
+        */
     }
     protected override void ObjectReturned()
     {
@@ -50,7 +94,8 @@ public abstract class EnemyBase : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
-        
+        enemyInteract.Init();
+
         if (usePattern)
         {
             StabilizePattern();
@@ -66,7 +111,7 @@ public abstract class EnemyBase : PoolObject
 
             if (usePatternList) // 패턴 리스트를 사용할 경우
             {
-                int[] patternArray = patternList[Random.Range(0, patternList.Count)];
+                List<int> patternArray = patternList[Random.Range(0, patternList.Count)];
 
                 foreach (int caseNumber in patternArray)
                 {
@@ -78,7 +123,7 @@ public abstract class EnemyBase : PoolObject
             }
             else // 패턴 리스트를 사용하지 않을 경우
             {
-                caseNumber = Random.Range(0, patternNumber);
+                caseNumber = Random.Range(1, patternNumber);
                 Pattern(caseNumber); // 랜덤한 패턴 실행
             }
         }
