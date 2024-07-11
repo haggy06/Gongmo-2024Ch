@@ -142,15 +142,15 @@ MonoBehaviour:
   lifeTime: 2
   speed: 20
   spreadTiming: 1
-  subProjectile: {fileID: 0}
+  subObject: {fileID: 0}
   spawnMyPos: 0
   projPair: 1
   angleDiff: 0
-  useTracking: 0
+  useTracking: 1
   target: {fileID: 0}
-  targetEntity: 0
+  targetEntity: 2
   driftTime: 1
-  searchRadius: 5
+  searchRadius: 7
 --- !u!114 &6606192803830483056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,11 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDotDamage: 0
   owner: 4
   target: 3
-  damage: 70
+  damage: 100
   canAttack: 1
-  attackTerm: 0.1
 --- !u!50 &1931173786039972960
 Rigidbody2D:
   serializedVersion: 4

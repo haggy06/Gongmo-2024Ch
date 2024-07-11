@@ -17,12 +17,11 @@ public abstract class EnemyBase : PoolObject
     [Space(5)]
     [SerializeField, Tooltip("패턴 리스트 사용 여부. 미사용 시 하나의 패턴이 랜덤하게 나옴")]
     protected bool usePatternList = false;
-    [SerializeField, Tooltip("리스트의 끝 자리는 '공백'으로 구분한다. (ex: 12 232 11)")]
-    protected string pattern;
+
+    [SerializeField]
+    protected List<string> patternList = new List<string>();
     [SerializeField]
     protected float patternTermInList = 1f;
-
-    protected List<List<int>> patternList = new List<List<int>>();
 
     protected Animator anim;
     protected Rigidbody2D rigid2D;
@@ -37,6 +36,7 @@ public abstract class EnemyBase : PoolObject
         enemyInteract.MoribundHPEvent += MoribundHP;
         enemyInteract.DeadEvent += Dead;
 
+        /*
         int raw = 0;
         patternList.Add(new List<int>());
         foreach (char c in pattern)
@@ -57,6 +57,7 @@ public abstract class EnemyBase : PoolObject
                 Debug.LogWarning(c + "는 패턴 리스트에 있어선 안 됨");
             }
         }
+        */
 
         /*
         #region _Print PatternList_
@@ -111,25 +112,22 @@ public abstract class EnemyBase : PoolObject
 
             if (usePatternList) // 패턴 리스트를 사용할 경우
             {
-                List<int> patternArray = patternList[Random.Range(0, patternList.Count)];
+                string patternArray = patternList[Random.Range(0, patternList.Count)];
 
-                foreach (int caseNumber in patternArray)
+                foreach (char c in patternArray)
                 {
-                    this.caseNumber = caseNumber;
-                    Pattern(this.caseNumber, true);
+                    Pattern(c - 48, true);
 
                     yield return YieldReturn.WaitForSeconds(patternTermInList);
                 }
             }
             else // 패턴 리스트를 사용하지 않을 경우
             {
-                caseNumber = Random.Range(1, patternNumber);
-                Pattern(caseNumber); // 랜덤한 패턴 실행
+                Pattern(Random.Range(1, patternNumber)); // 랜덤한 패턴 실행
             }
         }
     }
 
-    protected int caseNumber;
     protected abstract void HalfHP();
     protected abstract void MoribundHP();
     protected virtual void Dead(EntityType killer)

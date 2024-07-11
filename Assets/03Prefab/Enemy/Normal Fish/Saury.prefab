@@ -297,9 +297,10 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   usePattern: 1
   patternNumber: 1
-  patternTerm: 1
+  patternTerm: 1.5
   itemDropProbability: 0.2
   usePatternList: 0
+  patternList: []
   patternTermInList: 1
   lookPlayer: 1
   speed: 3

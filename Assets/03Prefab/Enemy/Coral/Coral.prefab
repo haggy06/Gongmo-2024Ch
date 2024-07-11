@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 120
+  maxHP: 90
   curHP: 0
   damageResistance: 0
   skillEff: 0
@@ -421,6 +421,7 @@ MonoBehaviour:
   patternTerm: 128
   itemDropProbability: 0.75
   usePatternList: 0
+  patternList: []
   patternTermInList: 1
   coralColorArray:
   - {r: 1, g: 0.4292453, b: 0.4292453, a: 1}

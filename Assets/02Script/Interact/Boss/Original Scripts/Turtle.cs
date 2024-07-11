@@ -127,7 +127,6 @@ public class Turtle : BossBase
             {
                 rigid2D.velocity = Vector2.zero;
                 StartCoroutine("MoveToInitialPosition");
-                StopCoroutine("TurtleSpinCor");
             }
         }
     }
@@ -162,6 +161,7 @@ public class Turtle : BossBase
             physicalBox.enabled = false;
             transform.eulerAngles = Vector3.zero;
 
+            StopCoroutine("TurtleSpinCor");
             StabilizePattern();
         }
         repeatMove.moving = true;

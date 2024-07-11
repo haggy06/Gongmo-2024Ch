@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDotDamage: 0
   owner: 4
   target: 0
   damage: 0
   canAttack: 1
-  attackTerm: 0.25
 --- !u!114 &7810671497281664122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,10 +167,10 @@ MonoBehaviour:
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   attackableCount: 1
-  lifeTime: 6
+  lifeTime: 60
   speed: 3
   spreadTiming: 1
-  subProjectile: {fileID: 0}
+  subObject: {fileID: 0}
   spawnMyPos: 0
   projPair: 1
   angleDiff: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 12
   invincible: 0
-  maxHP: 200
+  maxHP: 100
   curHP: 0
   damageResistance: 0
 --- !u!50 &9007039129889426335

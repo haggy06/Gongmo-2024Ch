@@ -35,18 +35,22 @@ public abstract class HitBase : MonoBehaviour
         Init();
     }
 
-    protected bool halfHPInvoked, moribundHPInvoked;
+    protected bool halfHPInvoked, moribundHPInvoked, alive;
     public virtual void Init()
     {
         invincible = false;
 
         halfHPInvoked = moribundHPInvoked = false;
         curHP = maxHP;
+        alive = true;
     }
 
     protected float damageScope;
     public virtual void Hit(EntityType victim, float damage)
     {
+        if (!alive) // 이미 사망했을 경우 패스
+            return;
+
         damageScope = 1f - damageResistance;
         damageScope *= victim == EntityType.Player ? GameManager.DamageScope : 1f; // 플레이어의 공격일 경우 대미지 배율 적용
 
@@ -54,6 +58,7 @@ public abstract class HitBase : MonoBehaviour
 
         if (curHP <= 0) // HP가 0이 되었을 때
         {
+            alive = false;
             DeadEvent.Invoke(victim); // 사망 처리
         }
         else if (curHP <= maxHP / 4f && !moribundHPInvoked) // HP가 1/4이하가 되었을 때

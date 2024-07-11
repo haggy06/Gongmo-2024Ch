@@ -439,7 +439,11 @@ MonoBehaviour:
   patternTerm: 2
   itemDropProbability: 0.1
   usePatternList: 1
-  pattern: 11 23 23 3
+  patternList:
+  - 11
+  - 21
+  - 23
+  - 3
   patternTermInList: 1.25
   initialPosition: {x: 0, y: 7, z: 0}
   finCollider: {fileID: 8472847760569104561}

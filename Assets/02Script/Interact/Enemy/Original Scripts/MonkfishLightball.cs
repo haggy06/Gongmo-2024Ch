@@ -2,29 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D), typeof(Animator))]
-public class MonkfishLightball : PoolObject
+[RequireComponent(typeof(CircleCollider2D), typeof(Animator))]
+public class MonkfishLightball : MonoBehaviour
 {
-    [SerializeField]
-    private float lifeTime = 3f;
-
-    [SerializeField]
-    private float speed;
-    public override void Init(Vector2 position, float angle)
-    {
-        base.Init(position, angle);
-        GetComponent<Rigidbody2D>().velocity = MyCalculator.Deg2Vec(angle) * speed;
-
-        Invoke("BlinkStart", lifeTime);
-    }
-   private void BlinkStart()
-    {
-        if (gameObject.activeInHierarchy)
-        {
-            GetComponent<Animator>().SetTrigger(EntityAnimHash.Pattern);
-        }
-    }
-
     public static event System.Action PlayerDetected = () => { Debug.Log("¾Æ±Í¿¡°Ô ¹ß°¢µÊ!"); };
     private void OnDestroy()
     {

@@ -27,7 +27,8 @@ public class WaveManager : MonoBehaviour
     {
         if (isAppear)
         {
-            StopCoroutine("SpawnEnemyCor");
+            //StopCoroutine("SpawnEnemyCor");
+            StopAllCoroutines();
         }
         else
         {
