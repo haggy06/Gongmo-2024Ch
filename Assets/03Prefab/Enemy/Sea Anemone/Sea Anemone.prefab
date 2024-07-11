@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 60
+  maxHP: 45
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
@@ -294,6 +294,7 @@ MonoBehaviour:
   patternTerm: 1.5
   itemDropProbability: 0.1
   usePatternList: 0
+  patternList: []
   patternTermInList: 0.5
   tentacleReach: 3
   tentacleAttack: {fileID: 7279296186336423495, guid: 89147354151ca744eb10fc3a3bba0f62, type: 3}
