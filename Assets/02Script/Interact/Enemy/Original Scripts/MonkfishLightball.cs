@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D), typeof(Animator))]
 public class MonkfishLightball : PoolObject
 {
-    [SerializeField, Tooltip("true일 시 일정 시간 후 사라진다. 아귀 대가리에 달려 있는 불은 false로 둔다.")]
-    private bool isProjectile;
     [SerializeField]
     private float lifeTime = 3f;
 
@@ -16,13 +14,8 @@ public class MonkfishLightball : PoolObject
     {
         base.Init(position, angle);
         GetComponent<Rigidbody2D>().velocity = MyCalculator.Deg2Vec(angle) * speed;
-    }
-    private void OnEnable() // 아귀 대가리에 있는 불은 Init()이 되지 않으므로 OnEnable()을 통해 두 상황 다 실행되도록 한다.
-    {
-        if (isProjectile)
-        {
-            Invoke("BlinkStart", lifeTime);
-        }
+
+        Invoke("BlinkStart", lifeTime);
     }
    private void BlinkStart()
     {

@@ -249,7 +249,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200166043}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f63f511d8bfcb8c458d73c45245623d2, type: 3}
   m_Name: 
@@ -264,7 +264,7 @@ MonoBehaviour:
     - {fileID: 9177150808147657421, guid: c713e21ca6607494387af6f777ecaace, type: 3}
     - {fileID: 4018329799558895195, guid: e1045ccfa0fae0748aea5cf474c40b0a, type: 3}
   - stageBoss: {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
-    spawnInterval: 1.5
+    spawnInterval: 1.25
     stageEnemies:
     - {fileID: 2116119957245713102, guid: 60e9a7d462a71ff478c0dc818f966128, type: 3}
     - {fileID: 202356956874478986, guid: 95c015d082447ef4fad2b5f2907f4365, type: 3}
@@ -272,7 +272,7 @@ MonoBehaviour:
     - {fileID: 3269275129381552786, guid: b8abdf8b1d73afd499683072ecf7098b, type: 3}
     - {fileID: 8152987065261768772, guid: 5f0c541f0f079ee4c8c6cfa8ee2923bc, type: 3}
   - stageBoss: {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
-    spawnInterval: 1
+    spawnInterval: 0.75
     stageEnemies:
     - {fileID: 1667916084580165449, guid: 11f780d848a3036458f7b631f92c2d5c, type: 3}
     - {fileID: 7717175295170909320, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
@@ -1990,11 +1990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
       propertyPath: weaponList.Array.data[5].coolDown
-      value: 0.3
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
       propertyPath: weaponList.Array.data[6].coolDown
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
       propertyPath: weaponList.Array.data[6].skillGauge

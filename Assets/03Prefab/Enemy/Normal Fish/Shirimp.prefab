@@ -129,9 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracking: 1
   useRotation: 0
-  speed: 15
-  driftTime: 1.5
+  speed: 17.5
+  driftTime: 1.25
 --- !u!95 &2673970186629134387
 Animator:
   serializedVersion: 5

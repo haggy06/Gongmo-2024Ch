@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 10009
+  poolObjectID: 10073
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackableCount: 1

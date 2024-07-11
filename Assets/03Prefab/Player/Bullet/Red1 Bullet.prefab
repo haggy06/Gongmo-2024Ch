@@ -162,7 +162,7 @@ MonoBehaviour:
   subObject: {fileID: -514428170770670685, guid: fe3c470a6e0e3a24c9b515d4539a16bb, type: 3}
   spawnMyPos: 0
   projPair: 1
-  angleDiff: 30
+  angleDiff: 20
   useTracking: 0
   target: {fileID: 0}
   targetEntity: 0
