@@ -106,7 +106,7 @@ public abstract class EnemyBase : PoolObject
     }
     protected IEnumerator PatternRepeat()
     {
-        while (gameObject.activeSelf)
+        while (gameObject.activeInHierarchy)
         {
             yield return YieldReturn.WaitForSeconds(patternTerm);
 

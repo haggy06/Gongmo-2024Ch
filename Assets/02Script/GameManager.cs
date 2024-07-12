@@ -312,7 +312,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static readonly int[] stageUpTable = { 0, 2000, 5000 };
+    public static readonly int[] stageUpTable = { 0, 2500, 6000 };
 
     [SerializeField]
     private int score = 0;

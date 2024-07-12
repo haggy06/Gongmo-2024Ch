@@ -26,7 +26,9 @@ public class Scroll : MonoBehaviour
 
         scrollManager = transform.root.GetComponent<ScrollManager>();
         GameManager.BossEvent += (isOn) => scrolling = !isOn;
+        GameManager.GameEndEvent += (gameStatus) => scrolling = (gameStatus < GameStatus.GameOver);
     }
+
     private void FixedUpdate()
     {
         if (scrolling)

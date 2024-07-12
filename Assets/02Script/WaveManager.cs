@@ -6,6 +6,9 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [SerializeField]
+    private float bossInterval = 50f;
+
+    [SerializeField]
     private StageInfo[] stageInfoArray = new StageInfo[3];
 
     private ObjectPool pool;
@@ -18,10 +21,15 @@ public class WaveManager : MonoBehaviour
         StartCoroutine("SpawnEnemyCor");
         StartCoroutine("SpawnBossCor");
     }
+    private void OnDisable()
+    {
+        GameManager.BossEvent -= BossEvent;
+        GameManager.GameEndEvent -= GameEnd;
+    }
+
     private void GameEnd(GameStatus gameStatus)
     {
-        StopCoroutine("SpawnEnemyCor");
-        StopCoroutine("SpawnBossCor");
+        StopAllCoroutines();
     }
     private void BossEvent(bool isAppear)
     {
@@ -59,12 +67,11 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    public const float bossInterval = 50f;
     private IEnumerator SpawnBossCor()
     {
         yield return YieldReturn.WaitForSeconds(bossInterval);
 
-        PopupManager.Inst.BossAppear();
+        PopupManager.Inst.BossAppear(stageInfoArray[GameManager.Stage - 1].bossName);
         Invoke("LaunchBoss", PopupManager.BossWarningTime);
     }
     private void LaunchBoss()
@@ -83,6 +90,7 @@ public class WaveManager : MonoBehaviour
 public struct StageInfo
 {
     public PoolObject stageBoss;
+    public string bossName;
 
     public float spawnInterval;
     public PoolObject[] stageEnemies;

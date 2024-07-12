@@ -9,9 +9,14 @@ public class Coral : EnemyBase
     [SerializeField]
     private Color[] coralColorArray;
 
+    [SerializeField]
+    private Sprite neatSprite;
+    [SerializeField]
+    private Sprite crackedSprite;
+
     [Header("Coral Splint")]
     [SerializeField]
-    private Projectile splinter;
+    protected PoolObject splinter;
     [SerializeField]
     private Vector2 positionOffset;
     [SerializeField]
@@ -20,16 +25,24 @@ public class Coral : EnemyBase
     private int splintNumber;
 
     private SpriteRenderer sprite;
+    protected override void Awake()
+    {
+        base.Awake();
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
+    }
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
 
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite.sprite = neatSprite;
         sprite.color = coralColorArray[Random.Range(0, coralColorArray.Length)];
+        enemyInteract.SaveOriginalColor();
     }
 
     protected override void HalfHP()
     {
+        sprite.sprite = crackedSprite;
         anim.SetInteger(EntityAnimHash.Pattern, 1);
     }
 
@@ -42,7 +55,7 @@ public class Coral : EnemyBase
         base.Dead(killer);
         Splint();
     }
-    public void Splint()
+    public virtual void Splint()
     {
         for (int i = 0; i < splintNumber; i++)
         {

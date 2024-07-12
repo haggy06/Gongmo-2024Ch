@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D), typeof(HorizontalRepeatMove))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class Turtle : BossBase
 {
-    [Space(10)]
-    [SerializeField]
-    private Vector3 initialPosition;
-
-    [Header("Fin Attack")]
-    [SerializeField]
-    private Collider2D finCollider;
-
     [Header("Single Projectile")]
     [SerializeField]
     private PoolObject singleProjectile;
@@ -38,18 +30,14 @@ public class Turtle : BossBase
     [SerializeField]
     private int collisionCount;
     [SerializeField]
-    private float comebackSpeed;
-    [SerializeField]
     private bool spining = false;
 
     private CircleCollider2D physicalBox;
-    private HorizontalRepeatMove repeatMove;
     protected override void Awake()
     {
         base.Awake();
 
         physicalBox = GetComponent<CircleCollider2D>();
-        repeatMove = GetComponent<HorizontalRepeatMove>();
     }
 
     public override void Init(Vector2 position, float angle)
@@ -58,8 +46,6 @@ public class Turtle : BossBase
 
         repeatMove.moving = false;
         physicalBox.enabled = false;
-
-        StartCoroutine("MoveToInitialPosition");
     }
     protected override void HalfHP()
     {
@@ -142,16 +128,9 @@ public class Turtle : BossBase
         transform.eulerAngles = Vector3.zero;
     }
 
-    private IEnumerator MoveToInitialPosition()
+    protected override void InitialPositionArrive()
     {
-        while (MyCalculator.Distance(initialPosition, transform.position) > 0.1f) // 원래 위치와의 오차가 0.5 이하가 될 때까지 반복 
-        {
-            print("위치로 이동중");
-
-            transform.position += (initialPosition - transform.position).normalized * Time.deltaTime * comebackSpeed;
-
-            yield return null;
-        }
+        base.InitialPositionArrive();
 
         if (spining) // 돌고 있었을 경우
         {
@@ -164,6 +143,5 @@ public class Turtle : BossBase
             StopCoroutine("TurtleSpinCor");
             StabilizePattern();
         }
-        repeatMove.moving = true;
     }
 }

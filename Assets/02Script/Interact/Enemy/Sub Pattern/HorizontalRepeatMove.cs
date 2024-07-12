@@ -12,6 +12,10 @@ public class HorizontalRepeatMove : MonoBehaviour
 
     private float lastValue = 0;
     private float time = 0f;
+    private void OnEnable()
+    {
+        time = 0f;
+    }
     private void FixedUpdate()
     {
         if (moving)

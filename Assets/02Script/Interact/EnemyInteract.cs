@@ -22,11 +22,17 @@ public class EnemyInteract : HitBase
     public float ScorePerDead => scorePerDead;
 
     private SpriteRenderer sprite;
+    private Color originalColor;
     protected override void Awake()
     {
         base.Awake();
 
         sprite = GetComponent<SpriteRenderer>();
+        SaveOriginalColor();
+    }
+    public void SaveOriginalColor()
+    {
+        originalColor = sprite.color;
     }
 
     public override void Hit(EntityType victim, float damage)
@@ -50,7 +56,7 @@ public class EnemyInteract : HitBase
 
         yield return YieldReturn.WaitForSeconds(0.1f);
 
-        sprite.color = Color.white;
+        sprite.color = originalColor;
     }
 
     protected override void DeadBy(EntityType killer)

@@ -254,8 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63f511d8bfcb8c458d73c45245623d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossInterval: 50
   stageInfoArray:
   - stageBoss: {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
+    bossName: "\uC7A5\uB85C \uAC70\uBD81"
     spawnInterval: 2
     stageEnemies:
     - {fileID: 3109036844393639898, guid: 18dd0ce378152bf40a39c7b1d7fb70a8, type: 3}
@@ -263,19 +265,22 @@ MonoBehaviour:
     - {fileID: 2116119957245713102, guid: 1f09516b7624d8e43824231c8d8f8014, type: 3}
     - {fileID: 9177150808147657421, guid: c713e21ca6607494387af6f777ecaace, type: 3}
     - {fileID: 4018329799558895195, guid: e1045ccfa0fae0748aea5cf474c40b0a, type: 3}
-  - stageBoss: {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
-    spawnInterval: 1.25
+  - stageBoss: {fileID: 8804762620378601771, guid: 12d66199cad6e194f82ece6ea34ba3c4, type: 3}
+    bossName: "\uC7A5\uAD70 \uAC00\uC7AC"
+    spawnInterval: 1.5
     stageEnemies:
     - {fileID: 2116119957245713102, guid: 60e9a7d462a71ff478c0dc818f966128, type: 3}
     - {fileID: 202356956874478986, guid: 95c015d082447ef4fad2b5f2907f4365, type: 3}
     - {fileID: 5943564240609244740, guid: cade60cc598d73e47afec8032116d6b6, type: 3}
     - {fileID: 3269275129381552786, guid: b8abdf8b1d73afd499683072ecf7098b, type: 3}
     - {fileID: 8152987065261768772, guid: 5f0c541f0f079ee4c8c6cfa8ee2923bc, type: 3}
-  - stageBoss: {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
-    spawnInterval: 0.75
+  - stageBoss: {fileID: 8804762620378601771, guid: 12d66199cad6e194f82ece6ea34ba3c4, type: 3}
+    bossName: "\uB300\uC655 \uC624\uC9D5\uC5B4"
+    spawnInterval: 1
     stageEnemies:
     - {fileID: 1667916084580165449, guid: 11f780d848a3036458f7b631f92c2d5c, type: 3}
     - {fileID: 7717175295170909320, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
+    - {fileID: 1403788094991813445, guid: 46aa52275115b744ebd516da67922a12, type: 3}
   bossSpawn: {x: 0, y: 16}
   spawnRange1: {x: -7, y: 15}
   spawnRange2: {x: 7, y: 15}
@@ -340,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRange1: {x: -7, y: 15}
   spawnRange2: {x: 7, y: 15}
-  spawnTarget: {fileID: 7717175295170909320, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
+  spawnTarget: {fileID: 1403788094991813445, guid: 46aa52275115b744ebd516da67922a12, type: 3}
 --- !u!114 &256888261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,7 +1948,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 22}
+  m_Size: {x: 22, y: 24}
   m_EdgeRadius: 0
 --- !u!4 &1961265214
 Transform:

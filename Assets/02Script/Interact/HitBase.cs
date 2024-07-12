@@ -36,6 +36,7 @@ public abstract class HitBase : MonoBehaviour
     }
 
     protected bool halfHPInvoked, moribundHPInvoked, alive;
+    public bool Alive => alive;
     public virtual void Init()
     {
         invincible = false;
