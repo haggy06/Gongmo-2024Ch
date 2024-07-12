@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
         Stage = 1;
 
         CurWeaponType = WeaponType.Normal;
+
+        UseCheat = false;
         #endregion
     }
     #endregion
@@ -407,13 +409,13 @@ public class GameManager : MonoBehaviour
     public static event Action<GameStatus> GameEndEvent = (_) => { };
     private static void GameEnd()
     {
-        if (Inst.highScore < Inst.score) // 기록 경신했을 경우
+        if (!UseCheat && Inst.highScore < Inst.score) // 치트를 안 쓰고 기록을 경신했을 경우
         {
             HighScore = Inst.score;
         }
 
         GameEndEvent.Invoke(GameStatus);
-        PopupManager.Inst.OpenGameEndPopup();
+        PopupManager.Inst.GameEnd();
     }
 }
 

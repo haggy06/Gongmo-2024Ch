@@ -1466,6 +1466,7 @@ MonoBehaviour:
   gameEndPopup: {fileID: 4268748890489061505}
   gameEndText: {fileID: 1363039568697918673}
   finalScoreText: {fileID: 1555252286848494039}
+  highScoreBG: {fileID: 380821171285933021}
   highScoreText: {fileID: 9096689873548152475}
   cheatCheck: {fileID: 1154073802615802292}
   retryButton: {fileID: 3401677521699075542}

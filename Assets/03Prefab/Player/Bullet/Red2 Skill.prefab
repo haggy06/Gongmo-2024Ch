@@ -141,10 +141,10 @@ MonoBehaviour:
   attackableCount: 1
   lifeTime: 2
   speed: 20
-  spreadTiming: 1
-  subObject: {fileID: 0}
-  spawnMyPos: 0
-  projPair: 1
+  spreadTiming: 13
+  subObject: {fileID: 5998575058052409440, guid: a89c79743802e5f41b11a7e3168c22c1, type: 3}
+  spawnMyPos: 1
+  projPair: 0
   angleDiff: 0
   useTracking: 1
   target: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   isDotDamage: 0
   owner: 4
   target: 3
-  damage: 100
+  damage: 80
   canAttack: 1
 --- !u!50 &1931173786039972960
 Rigidbody2D:

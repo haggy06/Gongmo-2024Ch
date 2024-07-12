@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 595930580262618214}
   - component: {fileID: 1449778281785897443}
   - component: {fileID: 2401881782769809721}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Puffer Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,8 +225,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.3915094, b: 0.3915094, a: 0.60784316}
-      maxColor: {r: 1, g: 0.7812411, b: 0, a: 0.39215687}
+      minColor: {r: 0.40347204, g: 0.28439835, b: 0.7830189, a: 0.60784316}
+      maxColor: {r: 0.745283, g: 0.10898005, b: 0.61938334, a: 0.39215687}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

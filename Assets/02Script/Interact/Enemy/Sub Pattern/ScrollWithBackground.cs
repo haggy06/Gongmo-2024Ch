@@ -9,9 +9,10 @@ public class ScrollWithBackground : MonoBehaviour
 
     public bool scrolling = true;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.BossEvent += (isOn) => scrolling = !isOn;
+        GameManager.GameEndEvent += (gameStatus) => scrolling = (gameStatus < GameStatus.GameOver);
     }
     private void FixedUpdate()
     {

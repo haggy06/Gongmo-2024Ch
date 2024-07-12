@@ -5,6 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(HorizontalRepeatMove))]
 public abstract class BossBase : EnemyBase
 {
+    [Header("Boss Setting")]
+    [SerializeField]
+    private string bossName;
+    public string BossName => bossName;
+
     [Space(10)]
     [SerializeField]
     private Vector3 initialPosition;

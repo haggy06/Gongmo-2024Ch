@@ -102,7 +102,7 @@ public abstract class EnemyBase : PoolObject
             StabilizePattern();
             StartCoroutine("PatternRepeat");
         }
-        enemyInteract.GetComponent<SpriteRenderer>().color = Color.white;
+        enemyInteract.GetComponent<SpriteRenderer>().color = enemyInteract.originalColor;
     }
     protected IEnumerator PatternRepeat()
     {

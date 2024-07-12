@@ -89,7 +89,7 @@ public class WaveManager : MonoBehaviour
 [System.Serializable]
 public struct StageInfo
 {
-    public PoolObject stageBoss;
+    public BossBase stageBoss;
     public string bossName;
 
     public float spawnInterval;

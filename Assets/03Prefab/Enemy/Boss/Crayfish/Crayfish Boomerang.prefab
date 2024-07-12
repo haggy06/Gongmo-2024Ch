@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11081
-  destroyWhenBomb: 1
+  destroyWhenBomb: 0
   parentPool: {fileID: 0}
   usePattern: 0
   patternNumber: 1

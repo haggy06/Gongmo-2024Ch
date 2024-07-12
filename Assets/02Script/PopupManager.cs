@@ -117,6 +117,8 @@ public class PopupManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI finalScoreText;
     [SerializeField]
+    private Image highScoreBG;
+    [SerializeField]
     private TextMeshProUGUI highScoreText;
 
     [Space(5)]
@@ -129,6 +131,10 @@ public class PopupManager : MonoBehaviour
     [SerializeField]
     private Button menuButton;
     #endregion
+
+    [Header("Ect")]
+    [SerializeField]
+    private float gameEndPopupTerm = 1f;
 
     private static PopupManager instance;
     public static PopupManager Inst
@@ -332,11 +338,16 @@ public class PopupManager : MonoBehaviour
         bossHPFill.fillAmount = curHP / maxHP;
     }
 
-    public void OpenGameEndPopup()
+    public void GameEnd()
+    {
+        Invoke("OpenGameEndPopup", gameEndPopupTerm);
+    }
+    private void OpenGameEndPopup()
     {
         gameEndPopup.PopupOpen();
 
         gameEndText.text = GameManager.GameStatus == GameStatus.GameClear ? "게임 클리어!!!" : "게임 오버...";
+        highScoreBG.color = GameManager.UseCheat ? Color.grey : Color.white;
 
         finalScoreText.text = "최종 스코어 : " + GameManager.Score.ToString();
         highScoreText.text = "최고 스코어 : " + GameManager.HighScore.ToString();

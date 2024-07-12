@@ -445,8 +445,9 @@ MonoBehaviour:
   - 23
   - 3
   patternTermInList: 1.25
+  bossName: "\uC7A5\uB85C \uAC70\uBD81"
   initialPosition: {x: 0, y: 7, z: 0}
-  finCollider: {fileID: 8472847760569104561}
+  comebackSpeed: 7
   singleProjectile: {fileID: 4145137421009171231, guid: bad2d8b1751b4f147819a141e23ae346, type: 3}
   singleProjectilePosition: {fileID: 3753792142297636265}
   spreadProjectile: {fileID: 4145137421009171231, guid: 964ee5065bc22724184e232be1b1fe81, type: 3}
@@ -466,7 +467,6 @@ MonoBehaviour:
   tornado: {fileID: -80272098306791964, guid: b569a648d7052f44f8d766a468bbec1b, type: 3}
   speed: 13
   collisionCount: 5
-  comebackSpeed: 7
   spining: 0
 --- !u!1 &3493579179780746126
 GameObject:

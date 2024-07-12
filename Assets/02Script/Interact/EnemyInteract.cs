@@ -22,7 +22,7 @@ public class EnemyInteract : HitBase
     public float ScorePerDead => scorePerDead;
 
     private SpriteRenderer sprite;
-    private Color originalColor;
+    public Color originalColor { get; protected set; }
     protected override void Awake()
     {
         base.Awake();
@@ -68,6 +68,8 @@ public class EnemyInteract : HitBase
 
             GameManager.Score += scorePerDead;
         }
+        print("[<" + transform.root.transform.eulerAngles.z + ">]");
+        DeadParticle.ParticleLoad(transform.position, sprite.sprite, transform.parent.transform.eulerAngles.z);
     }
     protected override void HalfHP()
     {

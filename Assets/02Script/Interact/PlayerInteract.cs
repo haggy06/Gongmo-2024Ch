@@ -4,6 +4,7 @@ using UnityEngine;
 
 using System;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerInteract : HitBase
 {
     private int invincibleCount = 0;
@@ -18,10 +19,14 @@ public class PlayerInteract : HitBase
         }
     }
 
-    private SpriteRenderer sprite;
+    public SpriteRenderer sprite { get; private set; }
+    public Animator anim { get; private set; }
 
-    private void Start() 
+    private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+
         GameManager.GameEndEvent += GameEnd;
     }
     private void GameEnd(GameStatus gameStatus)
@@ -32,6 +37,9 @@ public class PlayerInteract : HitBase
                 break;
 
             case GameStatus.GameOver:
+                anim.SetTrigger(EntityAnimHash.Dead);
+                sprite.color = Color.grey;
+
                 GetComponentInParent<PlayerController>().enabled = false;
                 GetComponentInParent<Rigidbody2D>().simulated = false;
                 break;
@@ -41,17 +49,16 @@ public class PlayerInteract : HitBase
                 GetComponentInParent<Rigidbody2D>().simulated = false;
                 break;
         }
-
-        if (gameStatus == GameStatus.GameClear)
-        {
-
-        }
     }
+
+    public void Skill()
+    {
+        PlayerController.Player.SkillLaunch();
+    }
+
     public override void Init()
     {
         InvincibleCount = 0;
-
-        sprite = GetComponent<SpriteRenderer>();
 
         GameManager.LevelUPEvent += LevelUP;
     }

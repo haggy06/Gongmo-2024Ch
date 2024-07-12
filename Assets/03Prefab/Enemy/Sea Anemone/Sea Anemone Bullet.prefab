@@ -138,7 +138,7 @@ MonoBehaviour:
   isDotDamage: 0
   owner: 2
   target: 4
-  damage: 30
+  damage: 35
   canAttack: 1
 --- !u!114 &401784265413754032
 MonoBehaviour:

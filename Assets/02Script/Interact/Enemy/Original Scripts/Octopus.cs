@@ -33,12 +33,7 @@ public class Octopus : EnemyBase
 
         hiding = true;
     }
-    protected override void ObjectReturned()
-    {
-        anim.SetTrigger(EntityAnimHash.Dead);
 
-        base.ObjectReturned();
-    }
     protected override void HalfHP()
     {
         if (hiding) // 아직도 잠복 중이었을 경우

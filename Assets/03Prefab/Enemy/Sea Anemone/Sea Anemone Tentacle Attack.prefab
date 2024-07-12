@@ -86,7 +86,7 @@ MonoBehaviour:
   isDotDamage: 0
   owner: 2
   target: 4
-  damage: 40
+  damage: 45
   canAttack: 1
 --- !u!199 &69072864227914413
 ParticleSystemRenderer:
