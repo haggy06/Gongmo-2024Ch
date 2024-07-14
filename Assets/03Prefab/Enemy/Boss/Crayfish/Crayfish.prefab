@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4
@@ -458,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4
@@ -602,7 +605,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
-  skillPerDead: 5
-  expPerDead: 20
-  scorePerDead: 20
-  bossName: 
+  skillPerDead: 100
+  expPerDead: 200
+  scorePerDead: 800
+  bossName: "\uC7A5\uAD70 \uAC00\uC7AC"
