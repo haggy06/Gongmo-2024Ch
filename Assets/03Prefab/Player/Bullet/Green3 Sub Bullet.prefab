@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f082e69f825d0aa44b687e592731c0a8, type: 3}
-  m_Color: {r: 0.547202, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2281e83d8054f17489b3fd4d6e203dd2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!114 &9076433480174791032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   isDotDamage: 0
   owner: 4
   target: 2
-  damage: 1
+  damage: 2
   canAttack: 1
 --- !u!114 &7415817190923517243
 MonoBehaviour:
@@ -156,8 +156,8 @@ MonoBehaviour:
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   attackableCount: 1
-  lifeTime: 10
-  speed: 10
+  lifeTime: 5
+  speed: 15
   spreadTiming: 1
   subObject: {fileID: 0}
   spawnMyPos: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   useTracking: 1
   target: {fileID: 0}
   targetEntity: 2
-  driftTime: 0.5
+  driftTime: 0.3
   searchRadius: 5
 --- !u!50 &7760559044799283423
 Rigidbody2D:

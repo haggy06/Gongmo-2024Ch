@@ -49,48 +49,48 @@ MonoBehaviour:
   - {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   - {fileID: 21300052, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   weaponList:
-  - name: "\uD3C9\uBC94\uD55C \uCD1D"
-    icon: {fileID: 21300078, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - name: "\uB531\uCD1D"
+    icon: {fileID: 21300000, guid: aa2e93bc02937cc45916c3dcd1a9e3d6, type: 3}
     bullet: {fileID: 8936238774246648348, guid: 68b3aa25a512ba449b5b7df04743b7d6, type: 3}
     skill: {fileID: 120517602491569143, guid: e56b5aa22c452b842bc2cfb47036570d, type: 3}
-    coolDown: 0.25
+    coolDown: 0.35
     skillGauge: 100
   - name: "\uAE30\uAD00\uCD1D"
-    icon: {fileID: 21300080, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    icon: {fileID: 21300000, guid: d1f0da9b617bbc54d92679f746825ad5, type: 3}
     bullet: {fileID: 8305008781918485234, guid: 7a553b268c34b7a4ba47e994128101e7, type: 3}
     skill: {fileID: 7810671497281664122, guid: 21522f59df10bd2439fb624a6287e53f, type: 3}
-    coolDown: 0.15
+    coolDown: 0.25
     skillGauge: 150
   - name: "\uAE30\uAD00\uCD1D+"
-    icon: {fileID: 21300082, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    icon: {fileID: 21300000, guid: d614885cd553f634ebebaa4a5ac6a7d3, type: 3}
     bullet: {fileID: 7635749662571287014, guid: 7653138b7b1af4d468eff5610a3a0d07, type: 3}
     skill: {fileID: 7810671497281664122, guid: f0344ee16edb62c4988a63868a5751a9, type: 3}
-    coolDown: 0.1
+    coolDown: 0.2
     skillGauge: 200
-  - name: "\uAE30\uAD00\uCD1D++"
-    icon: {fileID: 21300084, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - name: "\uBCC4\uB625\uBCC4 \uCD1D"
+    icon: {fileID: 21300000, guid: 8a6588584f847a94da01e1187ab1fd08, type: 3}
     bullet: {fileID: 812189721167494245, guid: a1cae15d5f62d664c9a870074d2f2a8f, type: 3}
     skill: {fileID: 7810671497281664122, guid: 1fbf0b19f3f96544b99559ae1ef9372d, type: 3}
-    coolDown: 0.1
+    coolDown: 0.2
     skillGauge: 300
   - name: "\uD655\uC0B0 \uCD1D"
-    icon: {fileID: 21300086, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    icon: {fileID: 21300000, guid: b5ccc70a1a230d146a22a47b68c21745, type: 3}
     bullet: {fileID: -4007307331584531999, guid: b31d69b4fa1874b4486a2cf09d6750ad, type: 3}
     skill: {fileID: 120517602491569143, guid: da4dbd57e12a9654fb1a48f2a7c6883f, type: 3}
-    coolDown: 0.15
+    coolDown: 0.2
     skillGauge: 150
   - name: "\uD655\uC0B0 \uCD1D+"
-    icon: {fileID: 21300088, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    icon: {fileID: 21300000, guid: 11c153268232b5b41b0c33ab90ceefa7, type: 3}
     bullet: {fileID: -224579845666449201, guid: 340560f624ef8da4b91f885d966a6ca1, type: 3}
     skill: {fileID: 120517602491569143, guid: 1368581a1311d2b4296bee6e32ced5bd, type: 3}
-    coolDown: 0.15
+    coolDown: 0.25
     skillGauge: 250
-  - name: "\uD655\uC0B0 \uCD1D++"
-    icon: {fileID: 21300098, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - name: "\uD3ED\uC8FD \uCD1D"
+    icon: {fileID: 21300000, guid: 442cea44ae312f744bfeaee622a849b6, type: 3}
     bullet: {fileID: 3176197672260619495, guid: 4077ad7a8d94e5f4388f4a389a78de2d, type: 3}
     skill: {fileID: 120517602491569143, guid: e936589b522b63c468709d97ee3de593, type: 3}
     coolDown: 0.5
-    skillGauge: 500
+    skillGauge: 400
   highScore: 0
   useCheat: 0
   curHP: 200

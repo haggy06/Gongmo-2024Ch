@@ -225,8 +225,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.7830189, g: 0.26044938, b: 0.09972411, a: 0.60784316}
-      maxColor: {r: 0.5943396, g: 0.030838378, b: 0.053844865, a: 0.39215687}
+      minColor: {r: 1, g: 0, b: 0.098039225, a: 0.60784316}
+      maxColor: {r: 1, g: 0.27058825, b: 0.23529413, a: 0.39215687}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4856,7 +4856,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05a2f0cc1bbb8dc46b45846a918db59c, type: 2}
+  - {fileID: 2100000, guid: c6d9536c84030de468ba43f024715a28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4956,10 +4956,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 4
   target: 2
-  damage: 70
+  damage: 50
   canAttack: 1
 --- !u!114 &5998575058052409440
 MonoBehaviour:

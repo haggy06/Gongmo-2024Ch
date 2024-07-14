@@ -51,11 +51,6 @@ public class PlayerInteract : HitBase
         }
     }
 
-    public void Skill()
-    {
-        PlayerController.Player.SkillLaunch();
-    }
-
     public override void Init()
     {
         InvincibleCount = 0;
@@ -68,7 +63,7 @@ public class PlayerInteract : HitBase
         BombEvent = () => Debug.Log("폭8 이벤트"); // Bomb 이벤트 초기화(NullReferenceException 방지)
     }
 
-    public override void Hit(EntityType victim, float damage)
+    public override void Hit(EntityType victim, float damage, bool isSkill = false)
     {
         GameManager.CurHP -= (int)Mathf.Round(damage * (1f - damageResistance));
 

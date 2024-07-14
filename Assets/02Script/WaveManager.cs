@@ -71,7 +71,7 @@ public class WaveManager : MonoBehaviour
     {
         yield return YieldReturn.WaitForSeconds(bossInterval);
 
-        PopupManager.Inst.BossAppear(stageInfoArray[GameManager.Stage - 1].bossName);
+        PopupManager.Inst.BossAppear(stageInfoArray[GameManager.Stage - 1].stageBoss.BossName);
         Invoke("LaunchBoss", PopupManager.BossWarningTime);
     }
     private void LaunchBoss()
@@ -90,7 +90,6 @@ public class WaveManager : MonoBehaviour
 public struct StageInfo
 {
     public BossBase stageBoss;
-    public string bossName;
 
     public float spawnInterval;
     public PoolObject[] stageEnemies;

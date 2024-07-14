@@ -137,7 +137,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && GameManager.Skill >= 100f) // 스킬
         {
-            interact.anim.SetInteger(EntityAnimHash.Pattern, 1);
+            print("스킬 사용");
+            GameManager.Skill = 0f;
+            playerPool.GetPoolObject(GameManager.CurWeapon.skill).Init(transform.position, 90f);
+
+            interact.anim.SetTrigger(EntityAnimHash.Pattern);
         }
 
         #region _Cheat Input_
@@ -199,7 +203,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("스코어 상승 (난이도가 변경될 만큼)");
 
             GameManager.UseCheat = true;
-            GameManager.Score += 1000;
+            GameManager.Score += 2500;
         }
 
         if (Input.GetKeyDown(KeyCode.F8)) // 플레이어 레벨 및 경험치 게이지 ON/OFF
@@ -219,14 +223,6 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = Time.timeScale > 0.5f ? 0f : 1f;
         }
         #endregion
-    }
-    public void SkillLaunch()
-    {
-        print("스킬 사용");
-        GameManager.Skill = 0f;
-        playerPool.GetPoolObject(GameManager.CurWeapon.skill).Init(transform.position, 90f);
-
-        interact.anim.SetInteger(EntityAnimHash.Pattern, 0);
     }
 
     private void FixedUpdate()

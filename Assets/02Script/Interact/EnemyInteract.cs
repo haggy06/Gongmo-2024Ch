@@ -35,17 +35,17 @@ public class EnemyInteract : HitBase
         originalColor = sprite.color;
     }
 
-    public override void Hit(EntityType victim, float damage)
+    public override void Hit(EntityType victim, float damage, bool isSkill = false)
     {
         base.Hit(victim, damage);
-        
+        print(curHP - damage * damageScope);
         if (curHP <= 0) // 사망 시
             return;
 
         StopCoroutine("HitBlink");
         StartCoroutine("HitBlink");
 
-        if (victim == EntityType.Player) // 플레이어에게 맞았을 경우
+        if (victim == EntityType.Player && !isSkill) // 플레이어에게 맞았고 스킬이 아니었을 경우
         {
             GameManager.Skill += (damage * damageScope / GameManager.CurWeapon.skillGauge) * 100f * skillEff; // 딜량/요구 딜량 * 100 * 대미지 효율
         }

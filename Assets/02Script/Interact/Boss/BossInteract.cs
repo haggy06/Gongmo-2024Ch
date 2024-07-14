@@ -8,7 +8,7 @@ public class BossInteract : EnemyInteract
     [SerializeField]
     private string bossName;
     public string BossName => bossName;
-    public override void Hit(EntityType victim, float damage)
+    public override void Hit(EntityType victim, float damage, bool isSkill = false)
     {
         base.Hit(victim, damage);
 

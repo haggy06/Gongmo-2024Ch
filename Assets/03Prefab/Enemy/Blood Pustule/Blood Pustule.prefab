@@ -159,8 +159,8 @@ MonoBehaviour:
   patternTermInList: 1
   coralColorArray:
   - {r: 1, g: 1, b: 1, a: 1}
-  neatSprite: {fileID: 21300000, guid: 7636c3015b6ddf8429ea791e7250b14c, type: 3}
-  crackedSprite: {fileID: 21300000, guid: 7636c3015b6ddf8429ea791e7250b14c, type: 3}
+  neatSprite: {fileID: 21300000, guid: 5a050c0deca253947aeef02a9f1e6b2b, type: 3}
+  crackedSprite: {fileID: 21300000, guid: b8060cc7d75ce7e48af0f88b88658942, type: 3}
   splinter: {fileID: 1588653457849972312, guid: a768082b99ffeca428a8e78b7315fafd, type: 3}
   positionOffset: {x: 0, y: 0}
   angleOffset: {x: 0, y: 0}
@@ -241,7 +241,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a050c0deca253947aeef02a9f1e6b2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -306,8 +306,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_Size: {x: 2.5, y: 2}
+  m_Direction: 1
 --- !u!1 &8226274448882973703
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,8 +530,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0, b: 0.17682934, a: 0.78431374}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      minColor: {r: 0.735849, g: 0.010412939, b: 0.3133012, a: 0.60784316}
+      maxColor: {r: 1, g: 0, b: 0.4137931, a: 0.78431374}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

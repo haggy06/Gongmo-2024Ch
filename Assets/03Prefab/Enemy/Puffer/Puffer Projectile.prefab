@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDotDamage: 0
   owner: 2
-  target: 4
+  target: 12
   damage: 40
   canAttack: 1
 --- !u!50 &6970996853139157976

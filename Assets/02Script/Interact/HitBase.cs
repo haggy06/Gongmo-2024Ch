@@ -47,14 +47,14 @@ public abstract class HitBase : MonoBehaviour
     }
 
     protected float damageScope;
-    public virtual void Hit(EntityType victim, float damage)
+    public virtual void Hit(EntityType victim, float damage, bool isSkill = false)
     {
         if (!alive) // 이미 사망했을 경우 패스
             return;
 
         damageScope = 1f - damageResistance;
         damageScope *= victim == EntityType.Player ? GameManager.DamageScope : 1f; // 플레이어의 공격일 경우 대미지 배율 적용
-
+        
         curHP = Mathf.Clamp(curHP - damage * damageScope, 0f, maxHP);
 
         if (curHP <= 0) // HP가 0이 되었을 때

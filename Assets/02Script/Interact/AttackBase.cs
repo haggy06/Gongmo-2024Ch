@@ -8,6 +8,9 @@ using System;
 [RequireComponent(typeof(Collider2D))]
 public class AttackBase : MonoBehaviour
 {
+    [SerializeField]
+    private bool isSkill = false;
+
     [SerializeField, Tooltip("도트 대미지를 활성화할 경우 damage는 초당 피해가 된다.")]
     protected bool isDotDamage = false;
     [SerializeField]
@@ -30,7 +33,7 @@ public class AttackBase : MonoBehaviour
         {
             if (collision.TryGetComponent<HitBase>(out HitBase hitBase) && MyCalculator.CompareFlag((int)hitBase.EntityType, (int)target) && !hitBase.Invincible) // collision에 HitBase가 있고 목표 타입이며 무적 상태가 아닐 경우
             {
-                hitBase.Hit(owner, damage);
+                hitBase.Hit(owner, damage, isSkill);
                 AttackSuccessEvent.Invoke(hitBase);
             }
         }
@@ -41,7 +44,7 @@ public class AttackBase : MonoBehaviour
         {
             if (collision.TryGetComponent<HitBase>(out HitBase hitBase) && MyCalculator.CompareFlag((int)hitBase.EntityType, (int)target) && !hitBase.Invincible) // collision에 HitBase가 있고 목표 타입이며 무적 상태가 아닐 경우
             {
-                hitBase.Hit(owner, (int)(damage * Time.fixedDeltaTime));
+                hitBase.Hit(owner, damage * Time.fixedDeltaTime, isSkill);
                 AttackSuccessEvent.Invoke(hitBase);
             }
         }

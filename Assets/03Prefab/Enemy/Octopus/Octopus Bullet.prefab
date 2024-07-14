@@ -120,7 +120,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.2, y: 0}
   serializedVersion: 2
   m_Radius: 0.2375
 --- !u!114 &3456550291338440850
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDotDamage: 0
   owner: 2
-  target: 4
+  target: 12
   damage: 50
   canAttack: 1
 --- !u!114 &401784265413754032
