@@ -270,7 +270,7 @@ MonoBehaviour:
   maxHP: 60
   curHP: 0
   damageResistance: 0
-  skillEff: 0.5
+  skillEff: 0.2
   skillPerDead: 5
   expPerDead: 30
   scorePerDead: 50
