@@ -82,6 +82,7 @@ public class Octopus : EnemyBase
     public void SupriseAttack() // 기습
     {
         parentPool.GetPoolObject(inkAttack).Init(spreadPosition.position, 0f);
+        SpreadProjectile();
     }
 
     public void TentacleAttack() // 근접 공격

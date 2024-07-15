@@ -93,7 +93,11 @@ public class PlayerInteract : HitBase
         }
 
         sprite.color = Color.white;
+        GetComponent<Collider2D>().enabled = false;
         InvincibleCount--;
+
+        yield return YieldReturn.waitForFixedUpdate;
+        GetComponent<Collider2D>().enabled = true;
     }
     private IEnumerator ItemInvincible()
     {

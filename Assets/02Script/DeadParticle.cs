@@ -5,21 +5,28 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class DeadParticle : MonoBehaviour
 {
-    private static ParticleSystem particle;
+    [SerializeField]
+    private AudioClip monsterPopSound;
+
+    private static DeadParticle deadParticle;
+    private ParticleSystem particle;
     private void Awake()
     {
-        if (!particle) // 파티클이 비어 있을 경우
+        particle = GetComponent<ParticleSystem>();
+        if (!deadParticle) // 파티클이 비어 있을 경우
         {
-            particle = GetComponent<ParticleSystem>();
+            deadParticle = GetComponent<DeadParticle>();
         }
     }
 
     public static void ParticleLoad(Vector2 position, Sprite ownerSprite, float rotation)
     {
-        particle.transform.position = position;
-        particle.transform.eulerAngles = Vector3.forward * rotation;
-        particle.shape.spriteRenderer.sprite = ownerSprite;
+        AudioManager.Inst.PlaySFX(deadParticle.monsterPopSound);
 
-        particle.Play();
+        deadParticle.particle.transform.position = position;
+        deadParticle.particle.transform.eulerAngles = Vector3.forward * rotation;
+        deadParticle.particle.shape.spriteRenderer.sprite = ownerSprite;
+
+        deadParticle.particle.Play();
     }
 }

@@ -17,10 +17,6 @@ public class Monkfish : EnemyBase
     [SerializeField]
     private int lightballNumber;
 
-    [Header("Player Tracking")]
-    [SerializeField]
-    private bool isFound = false;
-
     private TrackingPlayer tracking;
     protected override void Awake()
     {

@@ -161,11 +161,12 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   neatSprite: {fileID: 21300000, guid: 5a050c0deca253947aeef02a9f1e6b2b, type: 3}
   crackedSprite: {fileID: 21300000, guid: b8060cc7d75ce7e48af0f88b88658942, type: 3}
-  splinter: {fileID: 1588653457849972312, guid: a768082b99ffeca428a8e78b7315fafd, type: 3}
-  positionOffset: {x: 0, y: 0}
-  angleOffset: {x: 0, y: 0}
-  splintNumber: 1
+  splinter: {fileID: 341168305348706967, guid: 4ac6fba7f79f9004a94927b37adb93bd, type: 3}
+  positionOffset: {x: -0.5, y: 0.5}
+  angleOffset: {x: -30, y: 30}
+  splintNumber: 8
   crackParticle: {fileID: 3400722618725183569}
+  pustuleExplosion: {fileID: 1588653457849972312, guid: a768082b99ffeca428a8e78b7315fafd, type: 3}
 --- !u!1 &7947056867167115081
 GameObject:
   m_ObjectHideFlags: 0

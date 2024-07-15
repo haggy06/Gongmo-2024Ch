@@ -18,11 +18,11 @@ public class Coral : EnemyBase
     [SerializeField]
     protected PoolObject splinter;
     [SerializeField]
-    private Vector2 positionOffset;
+    protected Vector2 positionOffset;
     [SerializeField]
-    private Vector2 angleOffset;
+    protected Vector2 angleOffset;
     [SerializeField]
-    private int splintNumber;
+    protected int splintNumber;
 
     private SpriteRenderer sprite;
     protected override void Awake()

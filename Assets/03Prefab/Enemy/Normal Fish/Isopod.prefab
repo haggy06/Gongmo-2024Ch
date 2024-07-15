@@ -282,6 +282,7 @@ MonoBehaviour:
   patternTerm: 2
   itemDropProbability: 0.1
   usePatternList: 0
+  patternList: []
   patternTermInList: 1
   moveDepth: 0
   moveFrequency: 0
@@ -298,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4

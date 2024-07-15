@@ -8,6 +8,8 @@ public class Projectile : PoolObject
     #region _Projectile Setting_
     [Header("Projectile Setting")]
     [SerializeField]
+    protected AudioClip projSound;
+    [SerializeField]
     protected int attackableCount = 1;
     protected int nowAttackCount = 0;
     [SerializeField]
@@ -23,6 +25,8 @@ public class Projectile : PoolObject
     protected SpreadTiming spreadTiming = SpreadTiming.Nothing;
     [SerializeField]
     protected PoolObject subObject;
+    [SerializeField]
+    protected AudioClip SubProjSound;
 
     [Space(5)]
     [SerializeField, Tooltip("자신의 위치에도 소환할지 결정.")]
@@ -62,6 +66,10 @@ public class Projectile : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
+        if (projSound) // projSound가 null이 아닐 경우
+        {
+            AudioManager.Inst.PlaySFX(projSound);
+        }
 
         nowAttackCount = 0;
         target = null;
@@ -164,6 +172,11 @@ public class Projectile : PoolObject
 
             projectile = parentPool.GetPoolObject(subObject);
             projectile.Init(transform.position, transform.eulerAngles.z + angleDiff * i);
+        }
+
+        if (SubProjSound)
+        {
+            AudioManager.Inst.PlaySFX(SubProjSound);
         }
     }
 }

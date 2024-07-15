@@ -38,7 +38,6 @@ public class EnemyInteract : HitBase
     public override void Hit(EntityType victim, float damage, bool isSkill = false)
     {
         base.Hit(victim, damage);
-        print(curHP - damage * damageScope);
         if (curHP <= 0) // »ç¸Á ½Ã
             return;
 

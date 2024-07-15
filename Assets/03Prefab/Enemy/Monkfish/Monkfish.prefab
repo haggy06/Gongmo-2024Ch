@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4
@@ -354,7 +355,7 @@ MonoBehaviour:
   speed: 2.5
   lightball: {fileID: 6295764343010508238, guid: aa994639ccb25224c8304118c0309f13, type: 3}
   spreadPosition: {fileID: 4559497096457419340}
-  lightballNumber: 1
+  lightballNumber: 2
   isFound: 0
 --- !u!1 &9153379190100523153
 GameObject:

@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 4
   target: 2
@@ -155,11 +156,13 @@ MonoBehaviour:
   poolObjectID: 4
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
+  projSound: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
   attackableCount: 1
   lifeTime: 0.3
   speed: 15
   spreadTiming: 3
   subObject: {fileID: -514428170770670685, guid: fe3c470a6e0e3a24c9b515d4539a16bb, type: 3}
+  SubProjSound: {fileID: 0}
   spawnMyPos: 0
   projPair: 1
   angleDiff: 20

@@ -138,11 +138,13 @@ MonoBehaviour:
   poolObjectID: 14
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
+  projSound: {fileID: 8300000, guid: af50ef2c927cb0c44aa0d919c5760167, type: 3}
   attackableCount: 1
   lifeTime: 2
   speed: 20
   spreadTiming: 13
   subObject: {fileID: 4958999908089001362, guid: 694978f404757fc49ba9592e3c2bce0f, type: 3}
+  SubProjSound: {fileID: 8300000, guid: efea01831aa035a49bbf5fdc7549a5a0, type: 3}
   spawnMyPos: 1
   projPair: 0
   angleDiff: 0
