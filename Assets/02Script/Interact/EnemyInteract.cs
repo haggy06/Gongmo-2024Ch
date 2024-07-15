@@ -51,11 +51,14 @@ public class EnemyInteract : HitBase
     }
     private IEnumerator HitBlink()
     {
-        sprite.color = Color.red;
+        if (gameObject.activeInHierarchy) // 살아있을 경우
+        {
+            sprite.color = Color.red;
 
-        yield return YieldReturn.WaitForSeconds(0.1f);
+            yield return YieldReturn.WaitForSeconds(0.1f);
 
-        sprite.color = originalColor;
+            sprite.color = originalColor;
+        }
     }
 
     protected override void DeadBy(EntityType killer)

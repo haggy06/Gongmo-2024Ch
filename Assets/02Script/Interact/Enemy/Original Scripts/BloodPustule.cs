@@ -19,11 +19,14 @@ public class BloodPustule : Coral
         {
             parentPool.GetPoolObject(pustuleExplosion).Init(transform.position, 0f); // Ç÷À¯ Æø¹ß
 
-            for (int i = 0; i < splintNumber; i++) // µ¹¸æÀÌ Æ¢±è
+            if (splinter) // ÆÄÆíÀÌ ÀÖÀ» °æ¿ì
             {
-                PoolObject proj = parentPool.GetPoolObject(splinter);
-                proj.Init(transform.position + Vector3.one * Random.Range(positionOffset.x, positionOffset.y), 90f + Random.Range(angleOffset.x, angleOffset.y));
-                proj.GetComponent<SpriteRenderer>().color = enemyInteract.originalColor;
+                for (int i = 0; i < splintNumber; i++)
+                {
+                    PoolObject proj = parentPool.GetPoolObject(splinter);
+                    proj.Init(transform.position + Vector3.one * Random.Range(positionOffset.x, positionOffset.y), 90f + Random.Range(angleOffset.x, angleOffset.y));
+                    proj.GetComponent<SpriteRenderer>().color = enemyInteract.originalColor;
+                }
             }
         }
     }
