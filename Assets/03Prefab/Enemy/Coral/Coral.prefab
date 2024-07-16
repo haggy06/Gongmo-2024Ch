@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11001
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 0
@@ -382,8 +383,8 @@ MonoBehaviour:
   breakSound: {fileID: 8300000, guid: 09d9cbda41a23164180852f2dc64e335, type: 3}
   splinter: {fileID: 1209881886578070728, guid: 3be93f36d7cd8774aa62a3c53f22fb52, type: 3}
   positionOffset: {x: -2, y: 2}
-  angleOffset: {x: -45, y: 45}
-  splintNumber: 8
+  angleOffset: {x: -60, y: 60}
+  splintNumber: 5
 --- !u!114 &3338841110657281483
 MonoBehaviour:
   m_ObjectHideFlags: 0

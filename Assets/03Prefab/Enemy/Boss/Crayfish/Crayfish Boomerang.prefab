@@ -140,8 +140,8 @@ MonoBehaviour:
   damageResistance: 0
   skillEff: 0.25
   skillPerDead: 100
-  expPerDead: 70
-  scorePerDead: 120
+  expPerDead: 200
+  scorePerDead: 400
 --- !u!1 &5255206722717632072
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracking: 1
+  impulseOnAwake: 0
   useRotation: 0
   speed: 25
   driftTime: 1

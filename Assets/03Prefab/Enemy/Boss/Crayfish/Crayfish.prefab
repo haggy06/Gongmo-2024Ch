@@ -379,7 +379,7 @@ MonoBehaviour:
   usePattern: 1
   patternNumber: 1
   patternTerm: 1
-  itemDropProbability: 0.1
+  itemDropProbability: 0.143
   usePatternList: 1
   patternList:
   - 13
@@ -608,5 +608,5 @@ MonoBehaviour:
   damageResistance: 0
   skillEff: 0.1
   skillPerDead: 100
-  expPerDead: 200
-  scorePerDead: 800
+  expPerDead: 300
+  scorePerDead: 1200

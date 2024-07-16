@@ -10,6 +10,8 @@ using TMPro;
 public class PopupManager : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip buttonSound;
+    [SerializeField]
     private PopupBase fadePopup;
 
     #region _Title Interfaces_
@@ -17,6 +19,8 @@ public class PopupManager : MonoBehaviour
 
     [SerializeField]
     private PopupBase titlePopup;
+
+
 
     [Space(5)]
     [SerializeField]
@@ -199,6 +203,10 @@ public class PopupManager : MonoBehaviour
         #endregion
 
         // SceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene()); // 중간에 시작해 제대로 초기화가 안 되는 걸 막기 위함
+    }
+    public void ButtonClickSound()
+    {
+        AudioManager.Inst.PlaySFX(buttonSound);
     }
 
     #region _Scene Move_

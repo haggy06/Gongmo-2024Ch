@@ -48,6 +48,7 @@ public class PlayerInteract : HitBase
         anim = GetComponent<Animator>();
 
         GameManager.GameEndEvent += GameEnd;
+        BombEvent = () => Debug.Log("Æø8 ÀÌº¥Æ®");
     }
     private void GameEnd(GameStatus gameStatus)
     {

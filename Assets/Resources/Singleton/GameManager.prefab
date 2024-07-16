@@ -44,6 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06839dadd8aa7f40ad7866674dcc02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  titleBGM: {fileID: 8300000, guid: f0c8a841eb7a8b549b57c3416c5bb80e, type: 3}
+  stageBGM:
+  - {fileID: 8300000, guid: 7801d41ff0083c44495ead0c6284cfbc, type: 3}
+  - {fileID: 8300000, guid: 96cd54cdf05a50545878106a03f7eaa1, type: 3}
+  - {fileID: 8300000, guid: e4fdec166d628b84189f59df9507dc59, type: 3}
+  bossBGM: {fileID: 8300000, guid: 1713a1aaac90d604ca4efa507133279b, type: 3}
+  clearBGM: {fileID: 8300000, guid: 16cb089080001f14da2a80660183da39, type: 3}
+  overBGM: {fileID: 8300000, guid: deb429565c340764ebf31a2d96a73145, type: 3}
   itemIconList:
   - {fileID: 21300040, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   - {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}

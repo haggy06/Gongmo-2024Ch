@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 10091
-  awakeSound: {fileID: 0}
+  awakeSound: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackableCount: 1

@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63f511d8bfcb8c458d73c45245623d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossInterval: 5
+  bossInterval: 70
   stageInfoArray:
   - stageBoss: {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
     spawnInterval: 2
@@ -16910,34 +16910,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
-      propertyPath: weaponList.Array.data[0].sound
-      value: 
-      objectReference: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
-    - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
-      propertyPath: weaponList.Array.data[1].sound
-      value: 
-      objectReference: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
-    - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
-      propertyPath: weaponList.Array.data[2].sound
-      value: 
-      objectReference: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
-    - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
-      propertyPath: weaponList.Array.data[3].sound
-      value: 
-      objectReference: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
-    - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
-      propertyPath: weaponList.Array.data[4].sound
-      value: 
-      objectReference: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}
-    - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
-      propertyPath: weaponList.Array.data[5].sound
-      value: 
-      objectReference: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}
-    - target: {fileID: 415146993091678493, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
-      propertyPath: weaponList.Array.data[6].sound
-      value: 
-      objectReference: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
     - target: {fileID: 2211231014643201108, guid: ddf33629101021940a69b5ccc95b4346, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

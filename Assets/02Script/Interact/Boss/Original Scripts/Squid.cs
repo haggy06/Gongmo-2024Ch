@@ -51,17 +51,20 @@ public class Squid : BossBase
 
     protected override void HalfHP()
     {
+        StopCoroutine("PatternRepeat");
         anim.SetInteger(EntityAnimHash.Pattern, 4);
 
         StartCoroutine("TentacleAnimation");
     }
     private IEnumerator TentacleAnimation()
     {
-        yield return YieldReturn.WaitForSeconds(0.1f);
+        yield return YieldReturn.WaitForSeconds(0.3f);
         leftTentacle.sprite = rightTentacle.sprite = t2;
 
-        yield return YieldReturn.WaitForSeconds(0.4f);
+        yield return YieldReturn.WaitForSeconds(0.7f);
         leftTentacle.sprite = rightTentacle.sprite = t3;
+
+        StartCoroutine("PatternRepeat");
     }
 
     protected override void MoribundHP()

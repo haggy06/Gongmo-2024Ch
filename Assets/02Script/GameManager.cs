@@ -9,6 +9,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("BGM List")]
+    [SerializeField]
+    private AudioClip titleBGM;
+
+    [Space(5)]
+    [SerializeField]
+    private AudioClip[] stageBGM;
+    [SerializeField]
+    private AudioClip bossBGM;
+
+    [Space(5)]
+    [SerializeField]
+    private AudioClip clearBGM;
+    [SerializeField]
+    private AudioClip overBGM;
+
     private static GameManager instance;
     public static GameManager Inst
     {
@@ -61,24 +77,30 @@ public class GameManager : MonoBehaviour
 
         GameEndEvent = (_) => { };
         BossEvent = (_) => { }; // BossEvent √ ±‚»≠
-        #region _Reset PlayData_
-        MaxHP = 250;
-        CurHP = MaxHP;
 
-        DamageScope = 1f;
+        if (newScene.buildIndex == (int)SCENE.Play)
+        {
+            MaxHP = 250;
+            CurHP = MaxHP;
 
-        Skill = 0f;
+            DamageScope = 1f;
 
-        EXP = 0;
-        Level = 1;
+            Skill = 0f;
 
-        Score = 0;
-        Stage = 1;
+            EXP = 0;
+            Level = 1;
 
-        CurWeaponType = WeaponType.Normal;
+            Score = 0;
+            Stage = 1;
 
-        UseCheat = false;
-        #endregion
+            CurWeaponType = WeaponType.Normal;
+
+            UseCheat = false;
+        }
+        else if (newScene.buildIndex == (int)SCENE.Title)
+        {
+            AudioManager.Inst.ChangeBGM(Inst.titleBGM);
+        }
     }
     #endregion
     private void FixedUpdate()
@@ -94,10 +116,12 @@ public class GameManager : MonoBehaviour
     public static event Action<bool> BossEvent = (_) => { };
 
     private static int bossCount = 0;
-    private const int bossRequireKill = 3;
+    private const int bossRequireKill = 5;
     public void BossAppear()
     {
         bossCount++;
+        AudioManager.Inst.ChangeBGM(Inst.bossBGM);
+
         BossEvent.Invoke(true);
     }
     public void BossDisappear()
@@ -110,6 +134,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            AudioManager.Inst.ChangeBGM(Inst.stageBGM[Inst.stage - 1]);
             BossEvent.Invoke(false);
         }
     }
@@ -217,7 +242,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static readonly int[] levelUpTable = { 0, 350, 700, 1200, 1500 };
+    public static readonly int[] levelUpTable = { 0, 600, 1200, 2000, 3000 };
 
     [SerializeField]
     private int exp = 0;
@@ -314,7 +339,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static readonly int[] stageUpTable = { 0, 2500, 5000 };
+    public static readonly int[] stageUpTable = { 0, 6500, 13500 };
 
     [SerializeField]
     private int score = 0;
@@ -352,6 +377,8 @@ public class GameManager : MonoBehaviour
         set
         {
             Inst.stage = value;
+
+            AudioManager.Inst.ChangeBGM(Inst.stageBGM[value - 1]);
             PopupManager.Inst.ChangeStage();
 
             StageChangeEvent.Invoke();
@@ -394,10 +421,12 @@ public class GameManager : MonoBehaviour
                         break;
 
                     case GameStatus.GameOver:
+                        AudioManager.Inst.ChangeBGM(Inst.overBGM);
                         GameEnd();
                         break;
 
                     case GameStatus.GameClear:
+                        AudioManager.Inst.ChangeBGM(Inst.clearBGM);
                         GameEnd();
                         break;
                 }

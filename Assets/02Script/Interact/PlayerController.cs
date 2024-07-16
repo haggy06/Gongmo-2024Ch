@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("스코어 상승 (난이도가 변경될 만큼)");
 
             GameManager.UseCheat = true;
-            GameManager.Score += 2500;
+            GameManager.Score += 7000;
         }
 
         if (Input.GetKeyDown(KeyCode.F8)) // 플레이어 레벨 및 경험치 게이지 ON/OFF

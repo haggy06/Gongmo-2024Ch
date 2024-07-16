@@ -54,7 +54,19 @@ public class AudioManager : MonoBehaviour
         bgmSpeacker.clip = bgm;
         bgmSpeacker.Play();
 
-        //LeanTween.value(0.5f, 1f, 0.5f).setOnUpdate((float value) => bgmSpeacker.volume = value);
+        StopCoroutine("VolumeCor");
+        StartCoroutine("VolumeCor");
+    }
+    private IEnumerator VolumeCor()
+    {
+        float progress = 0.5f;
+        while (progress < 1f) 
+        {
+            progress += Time.deltaTime;
+            bgmSpeacker.volume = progress;
+
+            yield return null;
+        }
     }
 
     public void PlaySFX(AudioClip clip)

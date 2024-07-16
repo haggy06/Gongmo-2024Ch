@@ -123,14 +123,15 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   usePattern: 1
   patternNumber: 1
-  patternTerm: 2
-  itemDropProbability: 0.1
+  patternTerm: 1.5
+  itemDropProbability: 0.096
   usePatternList: 1
   patternList:
   - 11
   - 23
   - 131
   - 322
+  - 323
   patternTermInList: 1.5
   bossName: "\uB300\uC655 \uC624\uC9D5\uC5B4"
   initialPosition: {x: 0, y: 5, z: 0}
@@ -521,9 +522,9 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
-  skillPerDead: 5
-  expPerDead: 20
-  scorePerDead: 20
+  skillPerDead: 100
+  expPerDead: 500
+  scorePerDead: 1600
 --- !u!70 &4309260415734684915
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
