@@ -67,17 +67,19 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    private BossBase curBoss;
     private IEnumerator SpawnBossCor()
     {
         yield return YieldReturn.WaitForSeconds(bossInterval);
 
-        PopupManager.Inst.BossAppear(stageInfoArray[GameManager.Stage - 1].stageBoss.BossName);
+        curBoss = stageInfoArray[GameManager.Stage - 1].stageBoss; // 이름을 정할 때 보스를 확정한다.
+        PopupManager.Inst.BossAppear(curBoss.BossName);
         Invoke("LaunchBoss", PopupManager.BossWarningTime);
     }
     private void LaunchBoss()
     {
         GameManager.Inst.BossAppear();
-        pool.GetPoolObject(stageInfoArray[GameManager.Stage - 1].stageBoss).Init(bossSpawn, 0f);
+        pool.GetPoolObject(curBoss).Init(bossSpawn, 0f);
     }
 
     private void OnDestroy()

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d43d25c1a8b04e743b40c4d0375157e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2dd7bb141d6977947aacf75fa90e2afe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -168,13 +168,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8768520137615485699}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44012735688416413}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1279532117126994086
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4984,7 +4984,7 @@ GameObject:
   - component: {fileID: 8824960659647144156}
   - component: {fileID: 8756212028316647979}
   - component: {fileID: 4314487310963466937}
-  - component: {fileID: 9130117743913808913}
+  - component: {fileID: 3517747528108019877}
   - component: {fileID: 5276314188738881016}
   - component: {fileID: 3186412818534484113}
   m_Layer: 7
@@ -5002,7 +5002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9133884130860978269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5010,7 +5010,7 @@ Transform:
   - {fileID: 5675827241673897800}
   - {fileID: 8736728836405523708}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8824960659647144156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5073,8 +5073,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!70 &9130117743913808913
-CapsuleCollider2D:
+--- !u!58 &3517747528108019877
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5106,8 +5106,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 1.15
 --- !u!114 &5276314188738881016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5121,6 +5121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11092
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 0
@@ -5132,8 +5133,10 @@ MonoBehaviour:
   patternTermInList: 1
   coralColorArray:
   - {r: 1, g: 1, b: 1, a: 1}
-  neatSprite: {fileID: 21300000, guid: d43d25c1a8b04e743b40c4d0375157e0, type: 3}
-  crackedSprite: {fileID: 21300000, guid: d43d25c1a8b04e743b40c4d0375157e0, type: 3}
+  neatSprite: {fileID: 21300000, guid: 2dd7bb141d6977947aacf75fa90e2afe, type: 3}
+  crackSound: {fileID: 0}
+  crackedSprite: {fileID: 21300000, guid: 2dd7bb141d6977947aacf75fa90e2afe, type: 3}
+  breakSound: {fileID: 0}
   splinter: {fileID: 0}
   positionOffset: {x: -0.5, y: 0.5}
   angleOffset: {x: -30, y: 30}
@@ -5153,6 +5156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracking: 1
+  impulseOnAwake: 1
   useRotation: 0
-  speed: 5
-  driftTime: 5
+  speed: 25
+  driftTime: 2

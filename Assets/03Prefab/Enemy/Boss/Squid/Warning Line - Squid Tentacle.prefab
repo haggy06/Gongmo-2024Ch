@@ -98,10 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11108
-  destroyWhenBomb: 1
+  awakeSound: {fileID: 0}
+  destroyWhenBomb: 0
   parentPool: {fileID: 0}
   blinkSpeed: 1
   color1: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.21568628}
   color2: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.60784316}
-  warningTime: 1
+  warningTime: 1.5
   loadedEnemy: {fileID: 141163735132474718, guid: 5b87170aa80bca647a1aa0f6f2feeda7, type: 3}

@@ -16,35 +16,64 @@ public class Squid : BossBase
 
     [Header("Tentacle Attack")]
     [SerializeField]
-    private PoolObject tentacleWarning;
+    private SpriteRenderer leftTentacle;
     [SerializeField]
-    private int tentacleNumber = 5;
+    private SpriteRenderer rightTentacle;
+
+    [Space(5)]
+    [SerializeField]
+    private Sprite t1;
+    [SerializeField]
+    private Sprite t2;
+    [SerializeField]
+    private Sprite t3;
+
+    [Space(5)]
+    [SerializeField]
+    private TestSpawn leftSpawn;
+    [SerializeField]
+    private TestSpawn rightSpawn;
+
+    [Space(10)]
     [SerializeField]
     private float tentacleTerm = 0.75f;
+    private bool tentacleON = false;
 
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
 
+        tentacleON = false;
         enemyInteract.damageResistance = 0f;
+
+        leftTentacle.sprite = rightTentacle.sprite = t1;
     }
 
     protected override void HalfHP()
     {
-        anim.SetInteger(EntityAnimHash.Pattern, 5);
+        anim.SetInteger(EntityAnimHash.Pattern, 4);
+
+        StartCoroutine("TentacleAnimation");
+    }
+    private IEnumerator TentacleAnimation()
+    {
+        yield return YieldReturn.WaitForSeconds(0.1f);
+        leftTentacle.sprite = rightTentacle.sprite = t2;
+
+        yield return YieldReturn.WaitForSeconds(0.4f);
+        leftTentacle.sprite = rightTentacle.sprite = t3;
     }
 
     protected override void MoribundHP()
     {
-        anim.SetInteger(EntityAnimHash.Pattern, 6);
+
     }
 
     /* ¿ÀÂ¡¾î ÆÐÅÏ
      * 1. ¸Ô¹° »êÅº
      * 2. ¸Ô¹° ±â°üÃÑ
      * 3. Å« ¸Ô¹° µ¢¾î¸®
-     * 5. ÃË¼ö ¿¬¹ß Âî¸£±â(ÆäÀÌÁî 1)
-     * 6. ¸Ô¹° ¿¬¸·(ÆäÀÌÁî 2)
+     * 4. ÃË¼ö ¿¬¹ß Âî¸£±â(ÆäÀÌÁî 1)
      */
     protected override void Pattern(int caseNumber, bool isListPattern = false)
     {
@@ -61,15 +90,30 @@ public class Squid : BossBase
     }
     public void LargeInk()
     {
-        parentPool.GetPoolObject(largeInkProj).Init(projectilePosition.position, -90f);
+        parentPool.GetPoolObject(largeInkProj).Init(projectilePosition.position, 0f);
     }
 
     public void TentacleAttack()
     {
+        tentacleON = true;
         StartCoroutine("TentacleCor");
     }
     private IEnumerator TentacleCor()
     {
+        while (tentacleON)
+        {
+            print("ÁÂÃø ½ºÆù");
+            leftSpawn.Spawn();
+
+            yield return YieldReturn.WaitForSeconds(tentacleTerm);
+
+            print("¿ìÃø ½ºÆù");
+            rightSpawn.Spawn();
+
+            yield return YieldReturn.WaitForSeconds(tentacleTerm);
+        }
+
+        /*
         StopCoroutine("PatternRepeat");
         enemyInteract.damageResistance = 0.5f;
 
@@ -82,5 +126,6 @@ public class Squid : BossBase
 
         StartCoroutine("PatternRepeat");
         enemyInteract.damageResistance = 0f;
+        */
     }
 }

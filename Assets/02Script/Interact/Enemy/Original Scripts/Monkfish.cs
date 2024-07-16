@@ -32,7 +32,7 @@ public class Monkfish : EnemyBase
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
-        
+
         tracking.tracking = false;
         tracking.speed = Random.Range(5f, 7f);
         tracking.driftTime = Random.Range(0.25f, 0.75f);
@@ -58,6 +58,8 @@ public class Monkfish : EnemyBase
         enemyInteract.damageResistance = 0.25f;
         anim.SetInteger(EntityAnimHash.Pattern, 2);
         tracking.tracking = true;
+
+        MonkfishLightball.PlayerDetected -= PlayerFound; // 반환 될 때까지 더 이상 필요가 없으므로 중복 실행 방지를 위해 구독을 날려준다.
     }
 
     protected override void HalfHP()

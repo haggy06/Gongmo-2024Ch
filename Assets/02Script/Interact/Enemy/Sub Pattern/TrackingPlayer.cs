@@ -5,6 +5,8 @@ using UnityEngine;
 public class TrackingPlayer : MonoBehaviour
 {
     public bool tracking = true;
+    [SerializeField, Tooltip("시작했을 때 가속을 얻은 상태로 시작할지 지정")]
+    private bool impulseOnAwake = false;
     [SerializeField, Tooltip("플레이어 방향을 바라볼지 여부")]
     private bool useRotation = true;
 
@@ -19,8 +21,20 @@ public class TrackingPlayer : MonoBehaviour
         rigid2D = GetComponent<Rigidbody2D>();
     }
 
+    private bool firstUpdate = false;
+    private void OnDisable()
+    {
+        firstUpdate = false;
+    }
     private void FixedUpdate()
     {
+        if (impulseOnAwake && firstUpdate)
+        {
+            firstUpdate = true;
+            rigid2D.velocity = (PlayerController.Player.transform.position - transform.position).normalized * speed;
+        }
+
+
         if (tracking)
         {
             float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Player.transform.position - transform.position).normalized);
