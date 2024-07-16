@@ -6,6 +6,8 @@ public class Crayfish : BossBase
 {
     [Header("Normal Pattern")]
     [SerializeField]
+    private AudioClip attackSound;
+    [SerializeField]
     private Transform projectilePosition;
 
     [Space(5)]
@@ -62,14 +64,20 @@ public class Crayfish : BossBase
 
     public void SpreadProj()
     {
+        AudioManager.Inst.PlaySFX(attackSound);
+
         parentPool.GetPoolObject(projectile).Init(projectilePosition.position, -90f);
     }
     public void Shokewave()
     {
+        AudioManager.Inst.PlaySFX(attackSound);
+
         parentPool.GetPoolObject(shokewaveBall).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - projectilePosition.position));
     }
     public void Smash()
     {
+        AudioManager.Inst.PlaySFX(attackSound);
+
         parentPool.GetPoolObject(smashExplosion).Init(projectilePosition.position, 0f);
     }
 

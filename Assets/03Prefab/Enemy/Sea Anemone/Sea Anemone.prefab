@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11000
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 1
@@ -299,6 +300,7 @@ MonoBehaviour:
   patternTermInList: 0.5
   tentacleReach: 3
   tentacleAttack: {fileID: 7279296186336423495, guid: 89147354151ca744eb10fc3a3bba0f62, type: 3}
+  spreadSound: {fileID: 8300000, guid: 46382423a261ad44d82306efa842df51, type: 3}
   spreadPosition: {fileID: 1558525115658016961}
   anemoneProjectile: {fileID: 401784265413754032, guid: c00b11bea7990884c99dcd7d69435a08, type: 3}
   projectileNumber: 8
@@ -349,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4

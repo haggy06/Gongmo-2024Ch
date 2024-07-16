@@ -9,6 +9,8 @@ public class PoolObject : MonoBehaviour
     [SerializeField, Tooltip("이 오브젝트의 ID.")]
     private int poolObjectID;
     public int PoolObjectID => poolObjectID;
+    [SerializeField]
+    private AudioClip awakeSound;
 
     [SerializeField]
     private bool destroyWhenBomb = true;
@@ -45,6 +47,9 @@ public class PoolObject : MonoBehaviour
     {
         transform.position = position;
         transform.eulerAngles = Vector3.forward * angle;
+
+        if (awakeSound)
+            AudioManager.Inst.PlaySFX(awakeSound);
 
         if (destroyWhenBomb)
             PlayerInteract.BombEvent += DestroyByBomb;

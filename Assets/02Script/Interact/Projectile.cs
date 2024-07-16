@@ -8,8 +8,6 @@ public class Projectile : PoolObject
     #region _Projectile Setting_
     [Header("Projectile Setting")]
     [SerializeField]
-    protected AudioClip projSound;
-    [SerializeField]
     protected int attackableCount = 1;
     protected int nowAttackCount = 0;
     [SerializeField]
@@ -66,10 +64,6 @@ public class Projectile : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
-        if (projSound) // projSound가 null이 아닐 경우
-        {
-            AudioManager.Inst.PlaySFX(projSound);
-        }
 
         nowAttackCount = 0;
         target = null;

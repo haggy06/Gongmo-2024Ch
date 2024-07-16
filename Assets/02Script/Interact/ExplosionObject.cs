@@ -10,6 +10,7 @@ public class ExplosionObject : PoolObject
     [SerializeField]
     private float lifeTime;
 
+
     private AttackBase attack;
 
     protected virtual void Awake()

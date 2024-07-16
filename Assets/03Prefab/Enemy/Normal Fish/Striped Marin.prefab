@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11008
+  awakeSound: {fileID: 8300000, guid: afc0837ceb2296a4dad7c1cdcce17442, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 0
@@ -310,6 +311,7 @@ MonoBehaviour:
   patternTerm: 2
   itemDropProbability: 1
   usePatternList: 0
+  patternList: []
   patternTermInList: 1
   lookPlayer: 0
   speed: 100
@@ -325,8 +327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
-  target: 4
+  target: 12
   damage: 200
   canAttack: 1

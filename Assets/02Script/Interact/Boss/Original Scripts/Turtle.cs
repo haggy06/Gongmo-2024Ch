@@ -5,6 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class Turtle : BossBase
 {
+    [Space(5)]
+    [SerializeField]
+    private AudioClip attackSound;
+
     [Header("Single Projectile")]
     [SerializeField]
     private PoolObject singleProjectile;
@@ -25,6 +29,12 @@ public class Turtle : BossBase
     private PoolObject tornado;
 
     [Header("Spin Turtle")]
+    [SerializeField]
+    private AudioClip shellSound;
+    [SerializeField]
+    private AudioClip collisionSound;
+
+    [Space(5)]
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -49,6 +59,7 @@ public class Turtle : BossBase
     }
     protected override void HalfHP()
     {
+        StopCoroutine("PatternRepeat");
         spining = true;
         repeatMove.moving = false;
         anim.SetInteger(EntityAnimHash.Pattern, 4);
@@ -73,10 +84,14 @@ public class Turtle : BossBase
     }
     public void SingleProjectile()
     {
+        AudioManager.Inst.PlaySFX(attackSound);
+
         parentPool.GetPoolObject(singleProjectile).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - singleProjectilePosition.position));
     }
     public void SpreadProjectile()
     {
+        AudioManager.Inst.PlaySFX(attackSound);
+
         foreach (Transform projPosition in spreadProjectilePosition)
         {
             parentPool.GetPoolObject(spreadProjectile).Init(projPosition.position, MyCalculator.Vec2Deg(projPosition.position - pivotPosition.position));
@@ -84,12 +99,16 @@ public class Turtle : BossBase
     }
     public void LaunchTornado()
     {
+        AudioManager.Inst.PlaySFX(attackSound);
+
         parentPool.GetPoolObject(tornado).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - singleProjectilePosition.position));
     }
 
     private int curCollisionCount = 0;
     public void TurtleSpin()
     {
+        AudioManager.Inst.PlaySFX(shellSound);
+
         enemyInteract.damageResistance = 0.75f;
 
         curCollisionCount = 0;
@@ -100,13 +119,19 @@ public class Turtle : BossBase
     }
     public void TurtleSpinEnd()
     {
+        AudioManager.Inst.PlaySFX(shellSound);
+
         repeatMove.moving = true;
         spining = false;
+
+        StartCoroutine("PatternRepeat");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Boarder"))
         {
+            AudioManager.Inst.PlaySFX(collisionSound);
+
             curCollisionCount++;
             rigid2D.velocity = (PlayerController.Player.transform.position - transform.position).normalized * speed;
             if (curCollisionCount >= collisionCount) // 벽에 충분히 튕겼을 경우

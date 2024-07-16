@@ -1444,9 +1444,11 @@ MonoBehaviour:
   playerPopup: {fileID: 1437002865376855389}
   stageText: {fileID: 8944266817604328352}
   scoreText: {fileID: 7737764453109708290}
+  moribundHPSound: {fileID: 8300000, guid: 016342f5074c8c4409f90de96e4bc5ff, type: 3}
   hpFill: {fileID: 640343573925991850}
   hpIcon: {fileID: 7153721893569924843}
   hpText: {fileID: 2051620802717354755}
+  skillChargedSound: {fileID: 8300000, guid: 7f6374b777dd2374db04b4352ed57a3e, type: 3}
   skillFill: {fileID: 1276725373018245808}
   skillIcon: {fileID: 7695360389884990205}
   skillText: {fileID: 624907471543296443}
@@ -1458,11 +1460,14 @@ MonoBehaviour:
   levelText: {fileID: 828798949466705710}
   weaponImage: {fileID: 7199888321087548895}
   weaponText: {fileID: 2952168264681656823}
+  warningSound: {fileID: 8300000, guid: af0480a76332531499311e7beef474bf, type: 3}
   bossWarningPopup: {fileID: 8913473936843961016}
   warningLine: {fileID: 1812521200498072347}
   bossPopup: {fileID: 7712371686849353833}
   bossHPFill: {fileID: 431735400756964867}
   bossText: {fileID: 2682400402996047568}
+  gameOverSound: {fileID: 8300000, guid: c1aa86a82c1335c45875c080895a8d82, type: 3}
+  gameClearSound: {fileID: 8300000, guid: b3257f89115a46e4da5c696b0515fa9a, type: 3}
   gameEndPopup: {fileID: 4268748890489061505}
   gameEndText: {fileID: 1363039568697918673}
   finalScoreText: {fileID: 1555252286848494039}
@@ -1471,6 +1476,7 @@ MonoBehaviour:
   cheatCheck: {fileID: 1154073802615802292}
   retryButton: {fileID: 3401677521699075542}
   menuButton: {fileID: 1149282667699056998}
+  gameEndPopupTerm: 1
 --- !u!1 &1581263982504455908
 GameObject:
   m_ObjectHideFlags: 0

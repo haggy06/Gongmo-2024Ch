@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4
@@ -293,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11004
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 1
@@ -304,6 +306,7 @@ MonoBehaviour:
   patternTermInList: 1
   lookPlayer: 1
   speed: 3
+  bubbleSound: {fileID: 8300000, guid: 594fa76b582405e4b9e7954c58343dc3, type: 3}
   bubble: {fileID: 3606821907084117894, guid: 65abd3367186dd84a8e06d86c2c4b7e6, type: 3}
   attackPosition: {fileID: 6683597954624481719}
 --- !u!1 &4164895248456290084

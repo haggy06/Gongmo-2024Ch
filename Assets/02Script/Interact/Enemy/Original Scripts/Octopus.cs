@@ -21,6 +21,8 @@ public class Octopus : EnemyBase
 
     [Header("Spread Projectile")]
     [SerializeField]
+    private AudioClip spreadSound;
+    [SerializeField]
     private Transform spreadPosition;
     [SerializeField]
     private PoolObject OctopusProjectile;
@@ -91,6 +93,8 @@ public class Octopus : EnemyBase
     }
     public void SpreadProjectile() // ªÍ≈∫ πﬂªÁ
     {
+        AudioManager.Inst.PlaySFX(spreadSound);
+
         float angleDiff = 360f / projectileNumber;
         float initialAngle = Random.Range(0f, 360f);
         for (int i = 0; i < projectileNumber; i++)

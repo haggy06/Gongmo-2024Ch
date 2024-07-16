@@ -1988,7 +1988,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6d9536c84030de468ba43f024715a28, type: 2}
+  - {fileID: 2100000, guid: 05a2f0cc1bbb8dc46b45846a918db59c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2230,8 +2230,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-      maxColor: {r: 0.60784316, g: 0.60784316, b: 0.60784316, a: 0.60784316}
+      minColor: {r: 0.58805025, g: 0.90931666, b: 1, a: 0.39215687}
+      maxColor: {r: 0.4028123, g: 0.579473, b: 0.5849056, a: 0.60784316}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6849,7 +6849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483805be815db52449d3f80d1b710b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPopSound: {fileID: 8300000, guid: 594fa76b582405e4b9e7954c58343dc3, type: 3}
+  monsterPopSound: {fileID: 8300000, guid: 83ea95a0fdba8e24d9ef7d8d089c79c3, type: 3}
 --- !u!212 &2076731302
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26854,6 +26854,13 @@ MonoBehaviour:
   maxHP: 10
   curHP: 0
   damageResistance: 0
+  damageSound: {fileID: 8300000, guid: a6eb23db80febcf4ba9c1c9de9a0717f, type: 3}
+  deadSound: {fileID: 8300000, guid: 3c1096331c2ed1e49a24d101a2382c05, type: 3}
+  levelUPSound: {fileID: 8300000, guid: e57e4ee4945ea7047a974f2b81025463, type: 3}
+  healSound: {fileID: 8300000, guid: 3a5e0c67179824a4ebb7de90ad6ec857, type: 3}
+  starSound: {fileID: 8300000, guid: 0d74c1f8b868b6746ad5f401bb09a5c5, type: 3}
+  bombSound: {fileID: 8300000, guid: 687dfec5918a806438f8508172a6caa5, type: 3}
+  weaponSound: {fileID: 8300000, guid: c27ff61b1dbec1c43ab1e67a1f716a13, type: 3}
   hitInvincibleTime: 1.5
   particleList:
   - {fileID: 1390543128325478022}
@@ -31939,14 +31946,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1371605154502497202, guid: 91fb3bb6b8ee3794b9975329828a8d11, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -9156297903436104, guid: d488ba01e430a7a42b95e2114725029f, type: 2}
-    - target: {fileID: 2406396754014082276, guid: 91fb3bb6b8ee3794b9975329828a8d11, type: 3}
-      propertyPath: sfxChannel
-      value: 
-      objectReference: {fileID: 4034080608284384217, guid: d488ba01e430a7a42b95e2114725029f, type: 2}
     - target: {fileID: 3866095493765072941, guid: 91fb3bb6b8ee3794b9975329828a8d11, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.7587789

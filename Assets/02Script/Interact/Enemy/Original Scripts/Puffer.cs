@@ -10,12 +10,15 @@ public class Puffer : EnemyBase
 
     [Header("Spit Needle")]
     [SerializeField]
+    private AudioClip spitSound;
+    [SerializeField]
     private Transform spitTransform;
     [SerializeField]
     private Projectile needle;
 
     [Header("Self Explosion")]
-
+    [SerializeField]
+    private AudioClip inflictSound;
     [SerializeField]
     private ExplosionObject explosion;
 
@@ -59,6 +62,8 @@ public class Puffer : EnemyBase
         if (PatternCheck.ShortDistance(transform.position, explosionReach)) // 근접 공격이 가능할 경우
         {
             tracking.speed *= 0.75f;
+            AudioManager.Inst.PlaySFX(inflictSound);
+
             anim.SetInteger(EntityAnimHash.Pattern, 1); // 자폭
         }
         else // 근접 공격이 불가능할 경우
@@ -69,6 +74,8 @@ public class Puffer : EnemyBase
 
     public void SpitNeedle() // 가시 발사
     {
+        AudioManager.Inst.PlaySFX(spitSound);
+
         PoolObject proj = parentPool.GetPoolObject(needle);
         proj.Init(spitTransform.position, transform.eulerAngles.z);
     }

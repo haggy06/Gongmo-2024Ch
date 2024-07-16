@@ -6,6 +6,8 @@ public class BubbleFish : StraightMoveEnemy
 {
     [Header("Bubble Projectile")]
     [SerializeField]
+    private AudioClip bubbleSound;
+    [SerializeField]
     private Projectile bubble;
     [SerializeField]
     private Transform attackPosition;
@@ -16,6 +18,8 @@ public class BubbleFish : StraightMoveEnemy
 
     public void SpitBubble()
     {
+        AudioManager.Inst.PlaySFX(bubbleSound);
+
         parentPool.GetPoolObject(bubble).Init(attackPosition.position, transform.eulerAngles.z);
     }
 }

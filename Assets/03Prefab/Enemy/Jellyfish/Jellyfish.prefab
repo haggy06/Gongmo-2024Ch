@@ -185,11 +185,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11013
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 1
   patternNumber: 1
-  patternTerm: 2
+  patternTerm: 3.5
   itemDropProbability: 0.1
   usePatternList: 0
   patternList: []
@@ -204,6 +205,7 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 1, a: 0.39215687}
   - {r: 0, g: 1, b: 0, a: 0.39215687}
   electricityReady: {fileID: 7174174754888930892}
+  electricityReadySound: {fileID: 8300000, guid: 46502710ea2aeab48a2ac5c628cc9fe9, type: 3}
   electricityTerm: 1.25
   electricity: {fileID: 2240014162936646337, guid: 34cfc6af8b58e594ea5dace6dc30e83d, type: 3}
   tentaclePosition: {fileID: 1122823063720572632}

@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 13
+  awakeSound: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
-  projSound: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
   attackableCount: 1000
   lifeTime: 60
   speed: 2
@@ -197,9 +197,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 8
   invincible: 0
-  maxHP: 1000
+  maxHP: 750
   curHP: 0
   damageResistance: 0
+  hitSound: {fileID: 0}
+  destorySound: {fileID: 0}
+  destroyExplosion: {fileID: 7964318541527475957, guid: 0537da3007227d44fb894db69e4d2532, type: 3}
 --- !u!50 &9007039129889426335
 Rigidbody2D:
   serializedVersion: 4

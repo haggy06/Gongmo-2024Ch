@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11070
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   usePattern: 1
@@ -449,6 +450,7 @@ MonoBehaviour:
   bossName: "\uC7A5\uB85C \uAC70\uBD81"
   initialPosition: {x: 0, y: 7, z: 0}
   comebackSpeed: 7
+  attackSound: {fileID: 8300000, guid: a2896332aa68b0c4b9ad657fbf1ecbbf, type: 3}
   singleProjectile: {fileID: 4145137421009171231, guid: bad2d8b1751b4f147819a141e23ae346, type: 3}
   singleProjectilePosition: {fileID: 3753792142297636265}
   spreadProjectile: {fileID: 4145137421009171231, guid: 964ee5065bc22724184e232be1b1fe81, type: 3}
@@ -466,6 +468,8 @@ MonoBehaviour:
   - {fileID: 2648334238869715777}
   - {fileID: 1177435454777746079}
   tornado: {fileID: -80272098306791964, guid: b569a648d7052f44f8d766a468bbec1b, type: 3}
+  shellSound: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
+  collisionSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   speed: 13
   collisionCount: 5
   spining: 0
@@ -798,7 +802,6 @@ MonoBehaviour:
   skillPerDead: 70
   expPerDead: 150
   scorePerDead: 500
-  bossName: "\uC7A5\uB85C \uAC70\uBD81"
 --- !u!114 &5942896847006181346
 MonoBehaviour:
   m_ObjectHideFlags: 0

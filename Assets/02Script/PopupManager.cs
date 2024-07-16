@@ -49,11 +49,19 @@ public class PopupManager : MonoBehaviour
 
     [Space(5)]
     [SerializeField]
+    private AudioClip moribundHPSound;
+
+    [Space(5)]
+    [SerializeField]
     private Image hpFill;
     [SerializeField]
     private ImageBlink hpIcon;
     [SerializeField]
     private TextMeshProUGUI hpText; // "현재 체력 / 최대 체력"
+
+    [Space(5)]
+    [SerializeField]
+    private AudioClip skillChargedSound;
 
     [Space(5)]
     [SerializeField]
@@ -88,6 +96,8 @@ public class PopupManager : MonoBehaviour
 
     #region _Boss Interfaces_
     [Header("Boss Interfaces")]
+    [SerializeField]
+    private AudioClip warningSound;
 
     [SerializeField]
     private PopupBase bossWarningPopup;
@@ -105,7 +115,12 @@ public class PopupManager : MonoBehaviour
 
     #region _Game End Popup_
     [Header("Game End Popup")]
+    [SerializeField]
+    private AudioClip gameOverSound;
+    [SerializeField]
+    private AudioClip gameClearSound;
 
+    [Space(5)]
     [SerializeField]
     private PopupBase gameEndPopup;
 
@@ -244,29 +259,48 @@ public class PopupManager : MonoBehaviour
         stageText.text = "스테이지 " + GameManager.Stage;
     }
 
+    private bool moribundHP = false;
     public void ChangeHP()
     {
         hpFill.fillAmount = (float)GameManager.CurHP / GameManager.MaxHP;
-        if (hpFill.fillAmount <= 0.25f) // 피가 1/4 이하일 경우
+        if (hpFill.fillAmount <= 0.25f) // 피가 1/4 이하가 되었을 경우
         {
-            hpIcon.BlinkStart();
+            if (!moribundHP)
+            {
+                moribundHP = true;
+                AudioManager.Inst.PlaySFX(moribundHPSound);
+
+                hpIcon.BlinkStart();
+            }
         }
         else
         {
+            moribundHP = false;
+
             hpIcon.BlinkStop();
         }
 
         hpText.text = GameManager.CurHP + " / " + GameManager.MaxHP;
     }
+
+    private bool skillBlink = false;
     public void ChangeSkill()
     {
         skillFill.fillAmount = GameManager.Skill / 100f;
-        if (Mathf.Approximately(skillFill.fillAmount, 1f)) // 충전율이 100프로일 경우
+        if (Mathf.Approximately(skillFill.fillAmount, 1f)) // 충전율이 100프로가 되었을 경우
         {
-            skillIcon.BlinkStart();
+            if (!skillBlink)
+            {
+                skillBlink = true;
+                AudioManager.Inst.PlaySFX(skillChargedSound);
+
+                skillIcon.BlinkStart();
+            }
         }
         else
         {
+            skillBlink = false;
+
             skillIcon.BlinkStop();
         }
 
@@ -325,6 +359,8 @@ public class PopupManager : MonoBehaviour
     public const float BossWarningTime = 3f;
     private IEnumerator BossCor()
     {
+        AudioManager.Inst.PlaySFX(warningSound);
+
         bossWarningPopup.PopupOpen();
 
         yield return YieldReturn.WaitForSeconds(BossWarningTime);
@@ -346,7 +382,19 @@ public class PopupManager : MonoBehaviour
     {
         gameEndPopup.PopupOpen();
 
-        gameEndText.text = GameManager.GameStatus == GameStatus.GameClear ? "게임 클리어!!!" : "게임 오버...";
+        if (GameManager.GameStatus == GameStatus.GameClear)
+        {
+            AudioManager.Inst.PlaySFX(gameClearSound);
+
+            gameEndText.text = "게임 클리어!!!";
+        }
+        else
+        {
+            AudioManager.Inst.PlaySFX(gameOverSound);
+
+            gameEndText.text = "게임 오버...";
+        }
+
         highScoreBG.color = GameManager.UseCheat ? Color.grey : Color.white;
 
         finalScoreText.text = "최종 스코어 : " + GameManager.Score.ToString();

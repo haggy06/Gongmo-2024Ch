@@ -4956,6 +4956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4
@@ -4974,6 +4975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 12010
+  awakeSound: {fileID: 8300000, guid: 63d18e3c905fdab43a025e9f5a718f98, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   attackTime: 1

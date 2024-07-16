@@ -12,7 +12,12 @@ public class Coral : EnemyBase
     [SerializeField]
     private Sprite neatSprite;
     [SerializeField]
+    private AudioClip crackSound;
+    [Space(5)]
+    [SerializeField]
     private Sprite crackedSprite;
+    [SerializeField]
+    private AudioClip breakSound;
 
     [Header("Coral Splint")]
     [SerializeField]
@@ -42,6 +47,7 @@ public class Coral : EnemyBase
 
     protected override void HalfHP()
     {
+        AudioManager.Inst.PlaySFX(crackSound);
         sprite.sprite = crackedSprite;
         anim.SetInteger(EntityAnimHash.Pattern, 1);
     }
@@ -53,6 +59,7 @@ public class Coral : EnemyBase
     protected override void Dead(EntityType killer)
     {
         base.Dead(killer);
+        AudioManager.Inst.PlaySFX(breakSound);
         Splint();
     }
     public virtual void Splint()

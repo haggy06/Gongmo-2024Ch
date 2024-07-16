@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11080
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   usePattern: 1
@@ -390,6 +391,7 @@ MonoBehaviour:
   bossName: "\uC7A5\uAD70 \uAC00\uC7AC"
   initialPosition: {x: 0, y: 4, z: 0}
   comebackSpeed: 10
+  attackSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   projectilePosition: {fileID: 6731473371922947234}
   projectile: {fileID: 4145137421009171231, guid: d285975a28242d94283fa644ed7606c9, type: 3}
   shokewaveBall: {fileID: 2378036558325707802, guid: 28218208690eb754fabaa9f9af4687e7, type: 3}
@@ -608,4 +610,3 @@ MonoBehaviour:
   skillPerDead: 100
   expPerDead: 200
   scorePerDead: 800
-  bossName: "\uC7A5\uAD70 \uAC00\uC7AC"

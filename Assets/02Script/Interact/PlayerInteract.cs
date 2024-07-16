@@ -7,6 +7,26 @@ using System;
 [RequireComponent(typeof(Animator))]
 public class PlayerInteract : HitBase
 {
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioClip damageSound;
+    [SerializeField]
+    private AudioClip deadSound;
+
+    [Space(5)]
+    [SerializeField]
+    private AudioClip levelUPSound;
+
+    [Space(5)]
+    [SerializeField]
+    private AudioClip healSound;
+    [SerializeField]
+    private AudioClip starSound;
+    [SerializeField]
+    private AudioClip bombSound;
+    [SerializeField]
+    private AudioClip weaponSound;
+
     private int invincibleCount = 0;
     public int InvincibleCount
     {
@@ -69,10 +89,14 @@ public class PlayerInteract : HitBase
 
         if (GameManager.CurHP <= 0) // 죽었을 경우
         {
+            AudioManager.Inst.PlaySFX(deadSound);
+
             DeadBy(victim);
         }
         else // 살았을 경우
         {
+            AudioManager.Inst.PlaySFX(damageSound);
+
             StartCoroutine("DamageInvincible");
         }
     }
@@ -127,24 +151,32 @@ public class PlayerInteract : HitBase
 
     public static event Action BombEvent = () => Debug.Log("폭8 이벤트");
     public ParticleSystem[] ParticleList => particleList;
+
     public void GetItem(Item item)
     {
         particleList[(int)item.ItemType].Play();
         switch (item.ItemType)
         {
             case ItemType.Heal:
+                AudioManager.Inst.PlaySFX(healSound);
+
                 GameManager.CurHP = GameManager.MaxHP;
                 break;
 
             case ItemType.Invincible:
+                AudioManager.Inst.PlaySFX(starSound);
+
                 StartCoroutine("ItemInvincible");
                 break;
 
             case ItemType.Bomb:
+                AudioManager.Inst.PlaySFX(bombSound);
+
                 BombEvent.Invoke();
                 break;
 
             case ItemType.Weapon:
+                AudioManager.Inst.PlaySFX(weaponSound);
                 Debug.Log("무기 변경 => " + item.WeaponType);
                 GameManager.CurWeaponType = item.WeaponType;
                 break;
@@ -156,14 +188,20 @@ public class PlayerInteract : HitBase
         switch (itemType)
         {
             case ItemType.Heal:
+                AudioManager.Inst.PlaySFX(healSound);
+
                 GameManager.CurHP = GameManager.MaxHP;
                 break;
 
             case ItemType.Invincible:
+                AudioManager.Inst.PlaySFX(starSound);
+
                 StartCoroutine("ItemInvincible");
                 break;
 
             case ItemType.Bomb:
+                AudioManager.Inst.PlaySFX(bombSound);
+
                 BombEvent.Invoke();
                 break;
 
@@ -175,6 +213,8 @@ public class PlayerInteract : HitBase
 
     public void LevelUP()
     {
+        AudioManager.Inst.PlaySFX(levelUPSound);
+
         particleList[4].Play(); // 4번 인덱스 파티클 = 레벨업 파티클
     }
 

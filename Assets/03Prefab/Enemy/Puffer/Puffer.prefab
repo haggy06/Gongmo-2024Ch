@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11002
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 1
@@ -232,10 +233,13 @@ MonoBehaviour:
   patternTerm: 2
   itemDropProbability: 0.25
   usePatternList: 0
+  patternList: []
   patternTermInList: 0.75
   followSpeed: 4
+  spitSound: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
   spitTransform: {fileID: 8801019980386344225}
   needle: {fileID: 8888517260246451585, guid: e4f2ce8497c80a947860dec2b613d515, type: 3}
+  inflictSound: {fileID: 8300000, guid: 9efbfd5e33712c749b392c4ef08c4f05, type: 3}
   explosion: {fileID: 2401881782769809721, guid: 37a87e7d534a72943aa46c9c102c459a, type: 3}
   explosionReach: 5
   needleNumberWhenExplosion: 16
@@ -299,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracking: 1
   useRotation: 1
   speed: 0
   driftTime: 0.02
@@ -349,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4

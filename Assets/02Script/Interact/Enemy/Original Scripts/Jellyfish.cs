@@ -11,6 +11,8 @@ public class Jellyfish : StraightMoveEnemy
     [SerializeField]
     private ParticleSystem electricityReady;
     [SerializeField]
+    private AudioClip electricityReadySound;
+    [SerializeField]
     private float electricityTerm;
     [SerializeField]
     private ExplosionObject electricity;
@@ -39,6 +41,8 @@ public class Jellyfish : StraightMoveEnemy
 
     protected override void Pattern(int caseNumber, bool isListPattern = false)
     {
+
+        AudioManager.Inst.PlaySFX(electricityReadySound);
         electricityReady.Play();
         Invoke("ElectroAttack", electricityTerm);
     }

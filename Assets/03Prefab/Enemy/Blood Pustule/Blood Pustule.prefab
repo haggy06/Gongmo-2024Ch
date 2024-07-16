@@ -160,7 +160,9 @@ MonoBehaviour:
   coralColorArray:
   - {r: 1, g: 1, b: 1, a: 1}
   neatSprite: {fileID: 21300000, guid: 5a050c0deca253947aeef02a9f1e6b2b, type: 3}
+  crackSound: {fileID: 8300000, guid: 99def6da3edccc54c9d078353bbe8f22, type: 3}
   crackedSprite: {fileID: 21300000, guid: b8060cc7d75ce7e48af0f88b88658942, type: 3}
+  breakSound: {fileID: 8300000, guid: cc6777da8182fff4aa4dd8823243b26c, type: 3}
   splinter: {fileID: 341168305348706967, guid: 4ac6fba7f79f9004a94927b37adb93bd, type: 3}
   positionOffset: {x: -0.5, y: 0.5}
   angleOffset: {x: -30, y: 30}

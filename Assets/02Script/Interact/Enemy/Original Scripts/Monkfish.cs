@@ -11,12 +11,17 @@ public class Monkfish : EnemyBase
 
     [Header("Spread Lightball")]
     [SerializeField]
+    private AudioClip lightballSound;
+    [SerializeField]
     private PoolObject lightball;
     [SerializeField]
     private Transform spreadPosition;
     [SerializeField]
     private int lightballNumber;
 
+    [Header("Detection")]
+    [SerializeField]
+    private AudioClip detectionSound;
     private TrackingPlayer tracking;
     protected override void Awake()
     {
@@ -47,6 +52,7 @@ public class Monkfish : EnemyBase
     }
     private void PlayerFound()
     {
+        AudioManager.Inst.PlaySFX(detectionSound);
         StopCoroutine("PatternRepeat");
 
         enemyInteract.damageResistance = 0.25f;
@@ -71,6 +77,7 @@ public class Monkfish : EnemyBase
 
     public void SpreadLight()
     {
+        AudioManager.Inst.PlaySFX(lightballSound);
         for (int i = 0; i < lightballNumber; i++)
         {
             parentPool.GetPoolObject(lightball).Init(spreadPosition.position, Random.Range(-210f, 30f));
