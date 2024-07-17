@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Item : PoolObject
