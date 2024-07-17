@@ -31,55 +31,12 @@ public abstract class EnemyBase : PoolObject
         anim = GetComponent<Animator>();
         rigid2D = GetComponent<Rigidbody2D>();
         enemyInteract = GetComponentInChildren<EnemyInteract>();
-
+    }
+    protected virtual void Start()
+    {
         enemyInteract.HalfHPEvent += HalfHP;
         enemyInteract.MoribundHPEvent += MoribundHP;
         enemyInteract.DeadEvent += Dead;
-
-        /*
-        int raw = 0;
-        patternList.Add(new List<int>());
-        foreach (char c in pattern)
-        {
-            if ('1' <= c && c <= '9') // 숫자가 들어왔을 경우
-            {
-                print(c - '0' + "추가");
-                patternList[raw].Add(c - '0');
-            }
-            else if (c == ' ') // 공백이 들어왔을 경우
-            {
-                print("행 변경");
-                raw++;
-                patternList.Add(new List<int>());
-            }
-            else // 이외의 문자가 들어왔을 경우
-            {
-                Debug.LogWarning(c + "는 패턴 리스트에 있어선 안 됨");
-            }
-        }
-        */
-
-        /*
-        #region _Print PatternList_
-        List<string> strArr = new();
-        foreach (List<int> c1 in patternList)
-        {
-            string str = "";
-            foreach (char c2 in c1)
-            {
-                str = str + c2;
-            }
-            strArr.Add(str);
-        }
-
-        string arr = "";
-        foreach (string s in strArr)
-        {
-            arr = arr + s + ", ";
-        }
-        print(arr);
-        #endregion
-        */
     }
     protected override void ObjectReturned()
     {
