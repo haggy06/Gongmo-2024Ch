@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TrackingPlayer))]
-public class Shirimp : EnemyBase
+public class Boomerang : EnemyBase
 {
     [SerializeField]
     private float spinSpeed;

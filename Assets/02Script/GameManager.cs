@@ -439,7 +439,8 @@ public class GameManager : MonoBehaviour
     {
         if (!UseCheat) // 치트를 안 썼을 경우
         {
-            PlayerPrefs.SetInt("Clear", Mathf.Clamp(Inst.stage, PlayerPrefs.GetInt("Clear", 0), 3));
+            if (Inst.gameStatus == GameStatus.GameClear) // 클리어했을 경우
+                PlayerPrefs.SetInt("Clear", Mathf.Clamp(Inst.stage, PlayerPrefs.GetInt("Clear", 0), 3));
 
             if (Inst.highScore < Inst.score) // 기록을 경신했을 경우
             {
