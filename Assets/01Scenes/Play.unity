@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRange1: {x: -7, y: 15}
   spawnRange2: {x: 7, y: 15}
-  spawnTarget: {fileID: 6550122601477163224, guid: b4407444229b6694da34e81a1869b15f, type: 3}
+  spawnTarget: {fileID: 7717175295170909320, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
 --- !u!114 &256888261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16758,7 +16758,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300002, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -26857,6 +26857,12 @@ MonoBehaviour:
   maxHP: 10
   curHP: 0
   damageResistance: 0
+  levelSprite:
+  - {fileID: 21300002, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - {fileID: 21300074, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - {fileID: 21300100, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - {fileID: 21300082, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  - {fileID: 21300114, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   damageSound: {fileID: 8300000, guid: a6eb23db80febcf4ba9c1c9de9a0717f, type: 3}
   deadSound: {fileID: 8300000, guid: 3c1096331c2ed1e49a24d101a2382c05, type: 3}
   levelUPSound: {fileID: 8300000, guid: e57e4ee4945ea7047a974f2b81025463, type: 3}
@@ -32013,6 +32019,10 @@ PrefabInstance:
     - target: {fileID: 1581079653446103499, guid: 5d69e68ff8a1bef46abdddf96dc87d15, type: 3}
       propertyPath: m_Name
       value: PopupManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581079653446103499, guid: 5d69e68ff8a1bef46abdddf96dc87d15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3512869461319394142, guid: 5d69e68ff8a1bef46abdddf96dc87d15, type: 3}
       propertyPath: m_Pivot.x

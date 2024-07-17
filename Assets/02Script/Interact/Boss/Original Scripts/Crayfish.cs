@@ -81,13 +81,12 @@ public class Crayfish : BossBase
         parentPool.GetPoolObject(smashExplosion).Init(projectilePosition.position, 0f);
     }
 
-    PoolObject bmr;
     public void ThrowBoomerang()
     {
         enemyInteract.damageResistance = 0f;
         StartCoroutine("PatternRepeat");
 
-        bmr = parentPool.GetPoolObject(boomerang);
+        PoolObject bmr = parentPool.GetPoolObject(boomerang);
         bmr.Init(boomerangPosition.position, -90f); // 부메랑 발사
         bmr.GetComponent<Rigidbody2D>().velocity = Vector2.down * 10f; // 부메랑 초기속도 설정
 
@@ -98,8 +97,5 @@ public class Crayfish : BossBase
     protected override void Dead(EntityType killer)
     {
         base.Dead(killer);
-
-        if (bmr.gameObject.activeInHierarchy) // 아직 집게 부메랑이 남아 있었을 경우
-            bmr.ReturnToPool();
     }
 }

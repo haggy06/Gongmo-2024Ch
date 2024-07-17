@@ -145,9 +145,12 @@ MonoBehaviour:
   t1: {fileID: 21300000, guid: 76f542aa5259b754e8db79393d10e7a0, type: 3}
   t2: {fileID: 21300000, guid: eb89982d70a47cf41a6c52ee67697ae2, type: 3}
   t3: {fileID: 21300000, guid: 2bebe41b4d696844a9441b06aef18adc, type: 3}
-  leftSpawn: {fileID: 4580299219176531675}
-  rightSpawn: {fileID: 8554932625323861357}
-  tentacleTerm: 1
+  tentacleWarning: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
+  leftSpawnRange1: {x: -10.5, y: -10}
+  leftSpawnRange2: {x: -10.5, y: 10}
+  rightSpawnRange1: {x: 10.5, y: -10}
+  rightSpawnRange2: {x: 10.5, y: 10}
+  tentacleTerm: 1.2
 --- !u!60 &6152929415261644418
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -291,7 +294,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 76f542aa5259b754e8db79393d10e7a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -406,7 +409,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 76f542aa5259b754e8db79393d10e7a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -492,7 +495,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 2f23ede178a2e73418dcd63a878d859d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

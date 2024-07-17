@@ -7,6 +7,10 @@ using System;
 [RequireComponent(typeof(Animator))]
 public class PlayerInteract : HitBase
 {
+    [Space(10)]
+    [SerializeField]
+    private Sprite[] levelSprite = new Sprite[5];
+
     [Header("Sounds")]
     [SerializeField]
     private AudioClip damageSound;
@@ -42,11 +46,15 @@ public class PlayerInteract : HitBase
     public SpriteRenderer sprite { get; private set; }
     public Animator anim { get; private set; }
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-
+    }
+    private void Start()
+    {
         GameManager.GameEndEvent += GameEnd;
         BombEvent = () => Debug.Log("폭8 이벤트");
     }
@@ -118,11 +126,8 @@ public class PlayerInteract : HitBase
         }
 
         sprite.color = Color.white;
-        GetComponent<Collider2D>().enabled = false;
         InvincibleCount--;
-
-        yield return YieldReturn.waitForFixedUpdate;
-        GetComponent<Collider2D>().enabled = true;
+        StartCoroutine("ColliderBlink");
     }
     private IEnumerator ItemInvincible()
     {
@@ -140,6 +145,15 @@ public class PlayerInteract : HitBase
 
         sprite.color = Color.white;
         InvincibleCount--;
+        StartCoroutine("ColliderBlink");
+    }
+    private IEnumerator ColliderBlink()
+    {
+        GetComponent<Collider2D>().enabled = false;
+
+        yield return YieldReturn.waitForFixedUpdate;
+        
+        GetComponent<Collider2D>().enabled = true;
     }
 
     protected override void DeadBy(EntityType killer)
@@ -178,8 +192,23 @@ public class PlayerInteract : HitBase
 
             case ItemType.Weapon:
                 AudioManager.Inst.PlaySFX(weaponSound);
-                Debug.Log("무기 변경 => " + item.WeaponType);
-                GameManager.CurWeaponType = item.WeaponType;
+
+                int thisGrade = (int)item.WeaponType % 3 == 0 ? 3 : (int)item.WeaponType % 3;
+                int currentGrade = (int)GameManager.CurWeaponType % 3 == 0 ? 3 : (int)GameManager.CurWeaponType % 3;
+
+                if (GameManager.CurWeaponType > WeaponType.Normal && 
+                    ((item.WeaponType <= WeaponType.Green3 && GameManager.CurWeaponType <= WeaponType.Green3) || 
+                    (item.WeaponType >= WeaponType.Red1 && GameManager.CurWeaponType >= WeaponType.Red1)) &&
+                    thisGrade <= currentGrade)
+                { // 같은 타입의 총이며 등급이 나와 같거나 더 낮을 경우
+
+                    GameManager.Score += 150 * thisGrade;
+                }
+                else
+                {
+                    Debug.Log("무기 변경 => " + item.WeaponType);
+                    GameManager.CurWeaponType = item.WeaponType;
+                }
                 break;
         }
     }
@@ -212,11 +241,15 @@ public class PlayerInteract : HitBase
         }
     }
 
-    public void LevelUP()
+    public void LevelUP(bool isUP)
     {
-        AudioManager.Inst.PlaySFX(levelUPSound);
+        sprite.sprite = levelSprite[GameManager.Level - 1];
 
-        particleList[4].Play(); // 4번 인덱스 파티클 = 레벨업 파티클
+        if (isUP) //레벨 업 이벤트의 경우
+        {
+            AudioManager.Inst.PlaySFX(levelUPSound);
+            particleList[4].Play(); // 4번 인덱스 파티클 = 레벨업 파티클}
+        }
     }
 
     protected override void HalfHP()

@@ -28,11 +28,20 @@ public class Squid : BossBase
     [SerializeField]
     private Sprite t3;
 
+    [Space(10)]
+    [SerializeField]
+    private PoolObject tentacleWarning;
+
     [Space(5)]
     [SerializeField]
-    private TestSpawn leftSpawn;
+    private Vector2 leftSpawnRange1;
     [SerializeField]
-    private TestSpawn rightSpawn;
+    private Vector2 leftSpawnRange2;
+    [Space(3)]
+    [SerializeField]
+    private Vector2 rightSpawnRange1;
+    [SerializeField]
+    private Vector2 rightSpawnRange2;
 
     [Space(10)]
     [SerializeField]
@@ -105,13 +114,11 @@ public class Squid : BossBase
     {
         while (tentacleON)
         {
-            print("좌측 스폰");
-            leftSpawn.Spawn();
+            print("좌측 스폰"); parentPool.GetPoolObject(tentacleWarning).Init(new Vector2(Random.Range(leftSpawnRange1.x, leftSpawnRange2.x), Random.Range(leftSpawnRange1.y, leftSpawnRange2.y)), 0f);
 
             yield return YieldReturn.WaitForSeconds(tentacleTerm);
 
-            print("우측 스폰");
-            rightSpawn.Spawn();
+            print("우측 스폰"); parentPool.GetPoolObject(tentacleWarning).Init(new Vector2(Random.Range(rightSpawnRange1.x, rightSpawnRange2.x), Random.Range(rightSpawnRange1.y, rightSpawnRange2.y)), 0f);
 
             yield return YieldReturn.WaitForSeconds(tentacleTerm);
         }

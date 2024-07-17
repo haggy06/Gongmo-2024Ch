@@ -38,7 +38,7 @@ public class EnemyInteract : HitBase
     public override void Hit(EntityType victim, float damage, bool isSkill = false)
     {
         base.Hit(victim, damage);
-        if (curHP <= 0) // »ç¸Á ½Ã
+        if (!gameObject.activeInHierarchy || curHP <= 0) // »ç¸Á ½Ã
             return;
 
         StopCoroutine("HitBlink");

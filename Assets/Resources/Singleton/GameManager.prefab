@@ -74,13 +74,13 @@ MonoBehaviour:
     bullet: {fileID: 7635749662571287014, guid: 7653138b7b1af4d468eff5610a3a0d07, type: 3}
     skill: {fileID: 7810671497281664122, guid: f0344ee16edb62c4988a63868a5751a9, type: 3}
     coolDown: 0.2
-    skillGauge: 200
+    skillGauge: 250
   - name: "\uBCC4\uB625\uBCC4 \uCD1D"
     icon: {fileID: 21300000, guid: 8a6588584f847a94da01e1187ab1fd08, type: 3}
     bullet: {fileID: 812189721167494245, guid: a1cae15d5f62d664c9a870074d2f2a8f, type: 3}
     skill: {fileID: 7810671497281664122, guid: 1fbf0b19f3f96544b99559ae1ef9372d, type: 3}
     coolDown: 0.2
-    skillGauge: 300
+    skillGauge: 400
   - name: "\uD655\uC0B0 \uCD1D"
     icon: {fileID: 21300000, guid: b5ccc70a1a230d146a22a47b68c21745, type: 3}
     bullet: {fileID: -4007307331584531999, guid: b31d69b4fa1874b4486a2cf09d6750ad, type: 3}

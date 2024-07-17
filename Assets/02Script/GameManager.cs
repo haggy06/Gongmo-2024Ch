@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static readonly int[] levelUpTable = { 0, 600, 1200, 2000, 3000 };
+    public static readonly int[] levelUpTable = { 0, 1000, 1600, 2500, 4000 };
 
     [SerializeField]
     private int exp = 0;
@@ -282,7 +282,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static event Action LevelUPEvent = () => { };
+    /// <summary> 레벨 업일 경우 true, 다운일 경우 false </summary>
+    public static event Action<bool> LevelUPEvent = (_) => { };
     [SerializeField]
     private int level = 1;
     public static int Level
@@ -305,16 +306,13 @@ public class GameManager : MonoBehaviour
                     Debug.Log("최고 레벨입니다.");
                     return;
                 }
+                Inst.level = value;
 
                 MaxHP += 25;
                 DamageScope += 0.1f;
-                /*
-                float rate = 1.1f * levelDiff;
-                MaxHP = (int)Mathf.Round(Inst.maxHP * rate); // 체력 10프로 UP
-                DamageScope = Inst.damageScope * rate; // 공격력 10프로 UP
-                */
+
                 CurHP = MaxHP;
-                LevelUPEvent.Invoke();
+                LevelUPEvent.Invoke(true);
             }
             else if (levelDiff < 0) // 레벨 다운
             {
@@ -323,6 +321,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("최저 레벨입니다.");
                     return;
                 }
+                Inst.level = value;
 
                 /*
                 float rate = (10f / 11f) * Mathf.Abs(levelDiff);
@@ -331,9 +330,9 @@ public class GameManager : MonoBehaviour
                 */
                 MaxHP -= 25;
                 DamageScope -= 0.1f;
-            }
 
-            Inst.level = value;
+                LevelUPEvent.Invoke(false);
+            }
 
             PopupManager.Inst.ChangeLevel();
         }
@@ -438,10 +437,16 @@ public class GameManager : MonoBehaviour
     public static event Action<GameStatus> GameEndEvent = (_) => { };
     private static void GameEnd()
     {
-        if (!UseCheat && Inst.highScore < Inst.score) // 치트를 안 쓰고 기록을 경신했을 경우
+        if (!UseCheat) // 치트를 안 썼을 경우
         {
-            HighScore = Inst.score;
+            PlayerPrefs.SetInt("Clear", Mathf.Clamp(Inst.stage, PlayerPrefs.GetInt("Clear", 0), 3));
+
+            if (Inst.highScore < Inst.score) // 기록을 경신했을 경우
+            {
+                HighScore = Inst.score;
+            }
         }
+        
 
         GameEndEvent.Invoke(GameStatus);
         PopupManager.Inst.GameEnd();

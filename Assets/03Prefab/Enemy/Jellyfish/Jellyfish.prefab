@@ -5114,9 +5114,9 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0
-  skillPerDead: 25
-  expPerDead: 40
-  scorePerDead: 75
+  skillPerDead: 10
+  expPerDead: 60
+  scorePerDead: 80
 --- !u!58 &6610014718339874170
 CircleCollider2D:
   m_ObjectHideFlags: 0

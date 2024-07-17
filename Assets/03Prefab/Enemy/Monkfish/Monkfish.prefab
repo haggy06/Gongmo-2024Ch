@@ -135,13 +135,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   invincible: 0
-  maxHP: 60
+  maxHP: 75
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
   skillPerDead: 15
-  expPerDead: 60
-  scorePerDead: 75
+  expPerDead: 80
+  scorePerDead: 110
 --- !u!1 &4288218046590001692
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracking: 0
+  impulseOnAwake: 0
   useRotation: 1
   speed: 6
   driftTime: 0.5
@@ -343,12 +344,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11011
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 1
   patternNumber: 1
   patternTerm: 2.5
-  itemDropProbability: 0.1
+  itemDropProbability: 0.2
   usePatternList: 0
   patternList: []
   patternTermInList: 1

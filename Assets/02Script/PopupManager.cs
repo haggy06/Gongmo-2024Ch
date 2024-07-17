@@ -20,7 +20,11 @@ public class PopupManager : MonoBehaviour
     [SerializeField]
     private PopupBase titlePopup;
 
-
+    [Space(5)]
+    [SerializeField]
+    private Image clearMedal;
+    [SerializeField]
+    private Sprite[] medalSprites = new Sprite[3];
 
     [Space(5)]
     [SerializeField]
@@ -247,6 +251,18 @@ public class PopupManager : MonoBehaviour
         if (newScene.buildIndex == (int)SCENE.Title) // 타이틀 씬의 경우
         {
             titlePopup.PopupOpen();
+
+            int clearStatus = PlayerPrefs.GetInt("Clear", 0);
+            if (clearStatus != 0)
+            {
+                clearMedal.enabled = true;
+
+                clearMedal.sprite = medalSprites[clearStatus - 1];
+            }
+            else
+            {
+                clearMedal.enabled = false;
+            }
         }
         else if (newScene.buildIndex == (int)SCENE.Play) // 플레이 씬의 경우
         {

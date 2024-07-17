@@ -140,8 +140,8 @@ MonoBehaviour:
   damageResistance: 0
   skillEff: 0.01
   skillPerDead: 3
-  expPerDead: 40
-  scorePerDead: 80
+  expPerDead: 55
+  scorePerDead: 90
 --- !u!1 &8136462182213093516
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,12 +275,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11007
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   usePattern: 0
   patternNumber: 1
   patternTerm: 2
-  itemDropProbability: 0.1
+  itemDropProbability: 0.25
   usePatternList: 0
   patternList: []
   patternTermInList: 1

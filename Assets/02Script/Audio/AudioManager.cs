@@ -69,7 +69,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip, float volume = 1f)
     {
         AudioSource emptySource = null;
         foreach (AudioSource source in fbxSpeakers)
@@ -88,6 +88,7 @@ public class AudioManager : MonoBehaviour
         }
 
         emptySource.clip = clip;
+        emptySource.volume = volume;
         emptySource.Play();
     }
 

@@ -138,7 +138,7 @@ MonoBehaviour:
   isSkill: 0
   isDotDamage: 0
   owner: 2
-  target: 4
+  target: 12
   damage: 50
   canAttack: 1
 --- !u!50 &7315575579871006182
@@ -181,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 10012
+  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  projSound: {fileID: 0}
   attackableCount: 1
   lifeTime: 5
   speed: 15
