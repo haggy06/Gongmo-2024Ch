@@ -90,6 +90,8 @@ public class Octopus : EnemyBase
     public void TentacleAttack() // 근접 공격
     {
         parentPool.GetPoolObject(tentacleAttack).Init(spreadPosition.position, 0f);
+
+        StabilizePattern();
     }
     public void SpreadProjectile() // 산탄 발사
     {
@@ -102,5 +104,7 @@ public class Octopus : EnemyBase
             PoolObject proj = parentPool.GetPoolObject(OctopusProjectile);
             proj.Init(spreadPosition.position, initialAngle + (angleDiff * i));
         }
+
+        StabilizePattern();
     }
 }

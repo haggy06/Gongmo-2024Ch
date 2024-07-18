@@ -79,6 +79,8 @@ public class SeaAnemone : EnemyBase
     public void TentacleAttack() // ÃË¼ö ÇÒÄû±â
     {
         parentPool.GetPoolObject(tentacleAttack).Init(spreadPosition.position, 0f);
+
+        StabilizePattern();
     }
     public void SpreadProjectile() // »êÅº ¹ß»ç
     {
@@ -91,5 +93,7 @@ public class SeaAnemone : EnemyBase
             PoolObject proj = parentPool.GetPoolObject(anemoneProjectile);
             proj.Init(spreadPosition.position, initialAngle + (angleDiff * i));
         }
+
+        StabilizePattern();
     }
 }

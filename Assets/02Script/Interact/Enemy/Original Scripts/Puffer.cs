@@ -78,6 +78,8 @@ public class Puffer : EnemyBase
 
         PoolObject proj = parentPool.GetPoolObject(needle);
         proj.Init(spitTransform.position, transform.eulerAngles.z);
+
+        StabilizePattern();
     }
     public void Explosion() // ÀÚÆø
     {
@@ -89,6 +91,8 @@ public class Puffer : EnemyBase
             PoolObject proj = parentPool.GetPoolObject(needle);
             proj.Init(transform.position, initialAngle + (360f / needleNumberWhenExplosion * i));
         }
+
+        StabilizePattern();
 
         //enemyInteract.InstantKill(EntityType.Nothing); // ¿ÀºêÁ§Æ® »ç¸Á Ã³¸®
         ReturnToPool();

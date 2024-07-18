@@ -21,5 +21,7 @@ public class BubbleFish : StraightMoveEnemy
         AudioManager.Inst.PlaySFX(bubbleSound);
 
         parentPool.GetPoolObject(bubble).Init(attackPosition.position, transform.eulerAngles.z);
+
+        StabilizePattern();
     }
 }

@@ -54,14 +54,22 @@ public class Turtle : BossBase
     {
         base.Init(position, angle);
 
+        patternTerm = 2f;
+        enemyInteract.damageResistance = 0f;
+
         repeatMove.moving = false;
+        spining = false;
+
         physicalBox.enabled = false;
     }
     protected override void HalfHP()
     {
         StopCoroutine("PatternRepeat");
+        patternTerm = 1.5f;
+
         spining = true;
         repeatMove.moving = false;
+
         anim.SetInteger(EntityAnimHash.Pattern, 4);
     }
 
@@ -87,6 +95,8 @@ public class Turtle : BossBase
         AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(singleProjectile).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - singleProjectilePosition.position));
+
+        StabilizePattern();
     }
     public void SpreadProjectile()
     {
@@ -96,17 +106,22 @@ public class Turtle : BossBase
         {
             parentPool.GetPoolObject(spreadProjectile).Init(projPosition.position, MyCalculator.Vec2Deg(projPosition.position - pivotPosition.position));
         }
+
+        StabilizePattern();
     }
     public void LaunchTornado()
     {
         AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(tornado).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - singleProjectilePosition.position));
+
+        StabilizePattern();
     }
 
     private int curCollisionCount = 0;
     public void TurtleSpin()
     {
+        anim.SetInteger(EntityAnimHash.Pattern, 4); // 가끔가다 바로 벌떡 일어날 때가 있길래 확인사살용을 Pattern을 4로 한 번 더 고정
         AudioManager.Inst.PlaySFX(shellSound);
 
         enemyInteract.damageResistance = 0.75f;
@@ -119,6 +134,8 @@ public class Turtle : BossBase
     }
     public void TurtleSpinEnd()
     {
+        enemyInteract.damageResistance = 0f;
+
         AudioManager.Inst.PlaySFX(shellSound);
 
         repeatMove.moving = true;
@@ -159,8 +176,6 @@ public class Turtle : BossBase
 
         if (spining) // 돌고 있었을 경우
         {
-            enemyInteract.damageResistance = 0f;
-
             curCollisionCount = 0;
             physicalBox.enabled = false;
             transform.eulerAngles = Vector3.zero;

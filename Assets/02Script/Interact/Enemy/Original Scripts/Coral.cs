@@ -70,6 +70,8 @@ public class Coral : EnemyBase
             proj.Init(transform.position + Vector3.one * Random.Range(positionOffset.x, positionOffset.y), 90f + Random.Range(angleOffset.x, angleOffset.y));
             proj.GetComponent<SpriteRenderer>().color = enemyInteract.originalColor;
         }
+
+        StabilizePattern();
     }
 
     protected override void Pattern(int caseNumber, bool isListPattern = false)

@@ -39,6 +39,7 @@ public class Crayfish : BossBase
         base.Init(position, angle);
 
         patternTerm = 1.5f;
+        enemyInteract.damageResistance = 0f;
 
         boomerangHand.color = Color.white;
         leftTongsCollider.enabled = true;
@@ -67,18 +68,24 @@ public class Crayfish : BossBase
         AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(projectile).Init(projectilePosition.position, -90f);
+
+        StabilizePattern();
     }
     public void Shokewave()
     {
         AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(shokewaveBall).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - projectilePosition.position));
+
+        StabilizePattern();
     }
     public void Smash()
     {
         AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(smashExplosion).Init(projectilePosition.position, 0f);
+
+        StabilizePattern();
     }
 
     public void ThrowBoomerang()
@@ -93,6 +100,8 @@ public class Crayfish : BossBase
 
         boomerangHand.color = new Color(1f, 1f, 1f, 0f);
         leftTongsCollider.enabled = false;
+
+        StabilizePattern();
     }
     protected override void Dead(EntityType killer)
     {

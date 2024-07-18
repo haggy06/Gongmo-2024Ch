@@ -84,5 +84,7 @@ public class Monkfish : EnemyBase
         {
             parentPool.GetPoolObject(lightball).Init(spreadPosition.position, Random.Range(-210f, 30f));
         }
+
+        StabilizePattern();
     }
 }

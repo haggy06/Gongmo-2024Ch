@@ -169,7 +169,7 @@ MonoBehaviour:
   isDotDamage: 0
   owner: 4
   target: 3
-  damage: 150
+  damage: 110
   canAttack: 1
 --- !u!50 &1931173786039972960
 Rigidbody2D:

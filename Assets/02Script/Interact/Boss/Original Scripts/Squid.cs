@@ -95,20 +95,28 @@ public class Squid : BossBase
     public void SpreadInk()
     {
         parentPool.GetPoolObject(spreadInkProj).Init(projectilePosition.position, -90f);
+
+        StabilizePattern();
     }
     public void SpitInk()
     {
         parentPool.GetPoolObject(fastInkProj).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - projectilePosition.position));
+
+        StabilizePattern();
     }
     public void LargeInk()
     {
         parentPool.GetPoolObject(largeInkProj).Init(projectilePosition.position, 0f);
+
+        StabilizePattern();
     }
 
     public void TentacleAttack()
     {
         tentacleON = true;
         StartCoroutine("TentacleCor");
+
+        StabilizePattern();
     }
     private IEnumerator TentacleCor()
     {
@@ -122,20 +130,5 @@ public class Squid : BossBase
 
             yield return YieldReturn.WaitForSeconds(tentacleTerm);
         }
-
-        /*
-        StopCoroutine("PatternRepeat");
-        enemyInteract.damageResistance = 0.5f;
-
-        for (int i = 0; i < tentacleNumber; i++)
-        {
-            parentPool.GetPoolObject(fastInkProj).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - projectilePosition.position));
-
-            yield return YieldReturn.WaitForSeconds(1f);
-        }
-
-        StartCoroutine("PatternRepeat");
-        enemyInteract.damageResistance = 0f;
-        */
     }
 }
