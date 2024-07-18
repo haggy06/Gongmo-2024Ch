@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+
+            return;
         }
 
         highScore = PlayerPrefs.GetInt("HighScore");

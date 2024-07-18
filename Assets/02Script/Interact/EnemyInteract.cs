@@ -70,7 +70,6 @@ public class EnemyInteract : HitBase
 
             GameManager.Score += scorePerDead;
         }
-        print("[<" + transform.root.transform.eulerAngles.z + ">]");
         DeadParticle.ParticleLoad(transform.position, sprite.sprite, transform.parent.transform.eulerAngles.z);
     }
     protected override void HalfHP()

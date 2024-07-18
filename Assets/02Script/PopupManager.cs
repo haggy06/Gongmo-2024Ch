@@ -178,14 +178,14 @@ public class PopupManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-
             DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
             Debug.Log("Áßº¹µÈ ½Ì±ÛÅæ ÆÄ±«");
-
             Destroy(gameObject);
+
+            return;
         }
 
         SceneManager.activeSceneChanged += SceneChanged;
