@@ -37,13 +37,9 @@ public class ScrollManager : MonoBehaviour
     [SerializeField]
     private Sprite[] stageForeground_Fade = new Sprite[2];
 
-    private void Awake()
+    private void Start()
     {
         GameManager.StageChangeEvent += StageFade;
-    }
-    public void OnDestroy()
-    {
-        GameManager.StageChangeEvent -= StageFade;
     }
 
     private void StageFade()

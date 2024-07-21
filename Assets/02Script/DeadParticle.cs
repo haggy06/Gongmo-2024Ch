@@ -15,7 +15,7 @@ public class DeadParticle : MonoBehaviour
         particle = GetComponent<ParticleSystem>();
         if (!deadParticle) // 파티클이 비어 있을 경우
         {
-            deadParticle = GetComponent<DeadParticle>();
+            deadParticle = this;
         }
     }
 

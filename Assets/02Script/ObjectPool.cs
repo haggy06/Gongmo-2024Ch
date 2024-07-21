@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
     private int initialNumber = 10;
     [SerializeField]
     private PoolObject[] initialObject;
-    private void Awake()
+    private void Start()
     {
         foreach (PoolObject obj in initialObject)
         {

@@ -40,6 +40,8 @@ public class PopupBase : MonoBehaviour
         if (lastButton)
         {
             lastButton.Select();
+
+            lastButton = null;
         }
 
         Popup.alpha = 0f;
@@ -66,6 +68,8 @@ public class PopupBase : MonoBehaviour
         if (lastButton)
         {
             lastButton.Select();
+
+            lastButton = null;
         }
 
         if (showFirst)

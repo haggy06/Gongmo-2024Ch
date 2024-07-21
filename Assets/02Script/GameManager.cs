@@ -25,6 +25,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AudioClip overBGM;
 
+
+    [SerializeField]
+    private Sprite[] itemIconList = new Sprite[3];
+    public Sprite[] ItemIconList => itemIconList;
+
+    [SerializeField]
+    private Weapon[] weaponList = new Weapon[7];
+    public Weapon[] WeaponList => weaponList;
+
     private static GameManager instance;
     public static GameManager Inst
     {
@@ -37,14 +46,6 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
-    [SerializeField]
-    private Sprite[] itemIconList = new Sprite[3];
-    public Sprite[] ItemIconList => itemIconList;
-
-    [SerializeField]
-    private Weapon[] weaponList = new Weapon[7];
-    public Weapon[] WeaponList  => weaponList;
 
     private void Awake()
     {
@@ -77,6 +78,8 @@ public class GameManager : MonoBehaviour
 
         CameraResolutionLock.SetResolution(4f, 3f);
 
+        StageChangeEvent = () => { };
+        LevelUPEvent = (_) => { };
         GameEndEvent = (_) => { };
         BossEvent = (_) => { }; // BossEvent ÃÊ±âÈ­
 
@@ -119,8 +122,11 @@ public class GameManager : MonoBehaviour
 
     private static int bossCount = 0;
     private const int bossRequireKill = 5;
+
+    private bool isBossExist = false;
     public void BossAppear()
     {
+        isBossExist = true;
         bossCount++;
         AudioManager.Inst.ChangeBGM(Inst.bossBGM);
 
@@ -128,6 +134,7 @@ public class GameManager : MonoBehaviour
     }
     public void BossDisappear()
     {
+        isBossExist = false;
         PopupManager.Inst.BossDisappear();
 
         if (bossCount >= bossRequireKill)
@@ -379,7 +386,8 @@ public class GameManager : MonoBehaviour
         {
             Inst.stage = value;
 
-            AudioManager.Inst.ChangeBGM(Inst.stageBGM[value - 1]);
+            if (!Inst.isBossExist)
+                AudioManager.Inst.ChangeBGM(Inst.stageBGM[value - 1]);
             PopupManager.Inst.ChangeStage();
 
             StageChangeEvent.Invoke();

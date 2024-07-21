@@ -19,6 +19,7 @@ public class PlayerInteract : HitBase
 
     [Space(5)]
     [SerializeField]
+
     private AudioClip levelUPSound;
 
     [Space(5)]
@@ -55,6 +56,7 @@ public class PlayerInteract : HitBase
     }
     private void Start()
     {
+        GameManager.LevelUPEvent += LevelUP;
         GameManager.GameEndEvent += GameEnd;
         BombEvent = () => Debug.Log("Æø8 ÀÌº¥Æ®");
     }
@@ -83,8 +85,6 @@ public class PlayerInteract : HitBase
     public override void Init()
     {
         InvincibleCount = 0;
-
-        GameManager.LevelUPEvent += LevelUP;
     }
     private void OnDestroy()
     {

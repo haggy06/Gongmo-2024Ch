@@ -53,26 +53,6 @@ public class SeaAnemone : EnemyBase
         {
             anim.SetInteger(EntityAnimHash.Pattern, 2); // 산탄 발사
         }
-        /*
-        switch (caseNumber)
-        {
-            case 0: // 촉수 할퀴기
-                if (PatternCheck.shortDistance(transform.position, tentacleReach)) // 근접 공격이 가능할 경우
-                {
-                    anim.SetInteger(EntityAnimHash.Pattern, 1);
-                }
-                else // 근접 공격이 불가능할 경우
-                {
-                    anim.SetInteger(EntityAnimHash.Pattern, 2);
-                    //Pattern(1); // 산탄 발사 실행
-                }
-                break;
-
-            case 1: // 산탄 발사
-                anim.SetInteger(EntityAnimHash.Pattern, 2);
-                break;
-        }
-        */
     }
 
      // 실실적인 공격은 연결된 Animator에서 실행한다. (타이밍 맞추기 위해)

@@ -24845,7 +24845,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300002, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -24930,6 +24930,19 @@ MonoBehaviour:
   maxHP: 10
   curHP: 0
   damageResistance: 0
+  levelSprite:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  damageSound: {fileID: 0}
+  deadSound: {fileID: 0}
+  levelUPSound: {fileID: 0}
+  healSound: {fileID: 0}
+  starSound: {fileID: 0}
+  bombSound: {fileID: 0}
+  weaponSound: {fileID: 0}
   hitInvincibleTime: 1.5
   particleList:
   - {fileID: 1390543128783095863}
