@@ -4,39 +4,13 @@ using UnityEngine;
 
 using System.IO;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    private static AudioManager instance;
-    public static AudioManager Inst
+    protected override void SceneChanged(Scene replacedScene, Scene newScene)
     {
-        get
-        {
-            if (instance == null)
-            {
-                instance = Instantiate(Resources.Load<GameObject>(Path.Combine("Singleton", "AudioManager"))).GetComponent<AudioManager>();
-            }
-            return instance;
-        }
-    }
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
 
-            for (int i = 0; i < 10; i++) // 10개 정도 스피커 만들고 시작
-            {
-                CreateSpeacker();
-            }
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-
-            return;
-        }
     }
 
     [SerializeField]

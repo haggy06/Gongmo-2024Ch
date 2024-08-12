@@ -10,6 +10,11 @@ public class EnemyInteract : HitBase
     private float skillEff = 0.1f;
 
     [Space(5)]
+
+    [SerializeField, Range(0f, 1f)]
+    protected float itemDropProbability = 0.1f;
+
+    [Space(5)]
     [SerializeField]
     private float skillPerDead = 5f;
     public float SkillPerDead => skillPerDead;
@@ -67,17 +72,23 @@ public class EnemyInteract : HitBase
         {
             GameManager.Skill += skillPerDead;
             GameManager.EXP += expPerDead;
-
             GameManager.Score += scorePerDead;
+
+            if (Random.Range(0f, 1f) < itemDropProbability) // ¾ÆÀÌÅÛ µå¶ø È®·ü¿¡ ´çÃ·µÇ¾úÀ» °æ¿ì
+            {
+                if (Random.Range(0, 3) <= 1) // 2/3 È®·ü·Î ¾ÆÀÌÅÛÀÌ ³ª¿È 
+                {
+                    PlayerController.Inst.SpawnItem(transform.position);
+                }
+                else // 1/3 È®·ü·Î ¹«±â°¡ ³ª¿È
+                {
+                    PlayerController.Inst.SpawnWeapon(transform.position);
+                }
+            }
         }
         DeadParticle.ParticleLoad(transform.position, sprite.sprite, transform.parent.transform.eulerAngles.z);
     }
     protected override void HalfHP()
-    {
-        
-    }
-
-    protected override void MoribundHP()
     {
         
     }

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
-    private static PlayerController player;
-    public static PlayerController Player => player;
+    protected override void SceneChanged(Scene replacedScene, Scene newScene)
+    {
+
+    }
 
     #region _About Move_
     [Header("About Move")]
@@ -113,9 +116,9 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInteract interact;
 
-    private void Awake()
+    protected override void Awake()
     {
-        player = this; // 어차피 플레이어는 Play 씬에 하나밖에 없을 테고 DonDestroyOnLoad도 아니니 싱글톤을 복잡하게 만들지 않아도 될 듯 함.
+        base.Awake();
 
         rigid2D = GetComponent<Rigidbody2D>();
         playerPool = GetComponentInChildren<ObjectPool>();

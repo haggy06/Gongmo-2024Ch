@@ -60,7 +60,7 @@ public class Squid : BossBase
 
     protected override void HalfHP()
     {
-        StopCoroutine("PatternRepeat");
+        StopCoroutine("PatternCor");
         anim.SetInteger(EntityAnimHash.Pattern, 4);
 
         StartCoroutine("TentacleAnimation");
@@ -73,12 +73,7 @@ public class Squid : BossBase
         yield return YieldReturn.WaitForSeconds(0.7f);
         leftTentacle.sprite = rightTentacle.sprite = t3;
 
-        StartCoroutine("PatternRepeat");
-    }
-
-    protected override void MoribundHP()
-    {
-
+        StartCoroutine("PatternCor");
     }
 
     /* ¿ÀÂ¡¾î ÆÐÅÏ
@@ -87,7 +82,7 @@ public class Squid : BossBase
      * 3. Å« ¸Ô¹° µ¢¾î¸®
      * 4. ÃË¼ö ¿¬¹ß Âî¸£±â(ÆäÀÌÁî 1)
      */
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
         anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
     }
@@ -100,7 +95,7 @@ public class Squid : BossBase
     }
     public void SpitInk()
     {
-        parentPool.GetPoolObject(fastInkProj).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - projectilePosition.position));
+        parentPool.GetPoolObject(fastInkProj).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - projectilePosition.position));
 
         StabilizePattern();
     }

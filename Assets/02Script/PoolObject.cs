@@ -9,8 +9,12 @@ public class PoolObject : MonoBehaviour
     [SerializeField, Tooltip("이 오브젝트의 ID.")]
     private int poolObjectID;
     public int PoolObjectID => poolObjectID;
+
+    [SerializeField]
+    private InitDirection initDirection;
     [SerializeField]
     private AudioClip awakeSound;
+    public AudioClip AwakeSound => awakeSound;
 
     [SerializeField]
     private bool destroyWhenBomb = true;
@@ -46,7 +50,25 @@ public class PoolObject : MonoBehaviour
     public virtual void Init(Vector2 position, float angle)
     {
         transform.position = position;
-        transform.eulerAngles = Vector3.forward * angle;
+
+        switch (initDirection) 
+        {
+            case InitDirection.None:
+                transform.eulerAngles = Vector3.forward * angle;
+                break;
+
+            case InitDirection.Down:
+                transform.eulerAngles = Vector3.forward * -90f;
+                break;
+
+            case InitDirection.Up:
+                transform.eulerAngles = Vector3.forward * 90f;
+                break;
+
+            case InitDirection.Player:
+                transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - transform.position);
+                break;
+        }
 
         if (awakeSound)
             AudioManager.Inst.PlaySFX(awakeSound);

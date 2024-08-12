@@ -22,7 +22,7 @@ public class Isopod : EnemyBase
         speed = moveFrequency * moveDepth * Mathf.Deg2Rad;
 
         time = 0f;
-        transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Player.transform.position - transform.position); // 처음엔 플레이어를 바라봄
+        transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - transform.position); // 처음엔 플레이어를 바라봄
         firstAngle = transform.eulerAngles.z; // 첫 각도 저장
     }
 
@@ -45,12 +45,7 @@ public class Isopod : EnemyBase
 
     }
 
-    protected override void MoribundHP()
-    {
-
-    }
-
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
 
     }

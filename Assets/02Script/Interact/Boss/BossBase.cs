@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(HorizontalRepeatMove))]
-public abstract class BossBase : EnemyBase
+public class BossBase : EnemyBase
 {
     [Header("Boss Setting")]
     [SerializeField]

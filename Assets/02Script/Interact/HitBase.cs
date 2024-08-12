@@ -26,7 +26,6 @@ public abstract class HitBase : MonoBehaviour
     protected virtual void Awake()
     {
         HalfHPEvent += HalfHP;
-        MoribundHPEvent += MoribundHP;
         DeadEvent += DeadBy;
     }
 
@@ -65,7 +64,6 @@ public abstract class HitBase : MonoBehaviour
         else if (curHP <= maxHP / 4f && !moribundHPInvoked) // HP가 1/4이하가 되었을 때
         {
             moribundHPInvoked = true;
-            MoribundHPEvent.Invoke();
         }
         else if (curHP <= maxHP / 2f && !halfHPInvoked) // HP가 절반 이하가 되었을 때
         {
@@ -82,10 +80,6 @@ public abstract class HitBase : MonoBehaviour
     /// <summary> 반피 이하가 되었을 떄 실행 </summary>
     public event Action HalfHPEvent;
     protected abstract void HalfHP();
-
-    /// <summary> 1/4피 이하가 되었을 떄 실행 </summary>
-    public event Action MoribundHPEvent;
-    protected abstract void MoribundHP();
 
     /// <summary> 사망했을 시 실행 </summary>
     public event Action<EntityType> DeadEvent;

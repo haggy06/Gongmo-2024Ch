@@ -1523,6 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f332d8cd475cf5489430698515365bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  donDestroy: 1
   buttonSound: {fileID: 8300000, guid: 8737bafda3698ed4cb7904804d7584a7, type: 3}
   fadePopup: {fileID: 5131483295535602133}
   titlePopup: {fileID: 5933802101813765535}

@@ -28,7 +28,7 @@ public class WarningLine : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
-        transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Player.transform.position - transform.position);
+        transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - transform.position);
 
         time = 0f;
         Invoke("WarningEnd", warningTime);

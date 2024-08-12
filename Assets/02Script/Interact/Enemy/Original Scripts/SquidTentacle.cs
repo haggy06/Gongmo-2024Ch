@@ -13,7 +13,7 @@ public class SquidTentacle : StraightMoveEnemy
         base.Init(position, angle);
 
         if (lookPlayer)
-            transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Player.transform.position - transform.position);
+            transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - transform.position);
 
         rigid2D.velocity = MyCalculator.Deg2Vec(transform.eulerAngles.z) * speed;
 

@@ -43,11 +43,6 @@ public class Octopus : EnemyBase
             Appear();
         }
     }
-    protected override void MoribundHP()
-    {
-
-    }
-
     private void FixedUpdate()
     {
         if (hiding) // 잠복 중일 경우
@@ -63,10 +58,10 @@ public class Octopus : EnemyBase
         hiding = false;
         anim.SetTrigger("Suprise");
 
-        StartCoroutine("PatternRepeat");
+        StartCoroutine("PatternCor");
     }
 
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {        
         if (!hiding) // 잠복 중이 아닐 경우
         {

@@ -18,12 +18,7 @@ public class Boomerang : EnemyBase
 
     }
 
-    protected override void MoribundHP()
-    {
-
-    }
-
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
 
     }

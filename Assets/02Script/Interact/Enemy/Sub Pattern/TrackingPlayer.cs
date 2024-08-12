@@ -31,13 +31,13 @@ public class TrackingPlayer : MonoBehaviour
         if (impulseOnAwake && firstUpdate)
         {
             firstUpdate = true;
-            rigid2D.velocity = (PlayerController.Player.transform.position - transform.position).normalized * speed;
+            rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * speed;
         }
 
 
         if (tracking)
         {
-            float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Player.transform.position - transform.position).normalized);
+            float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Inst.transform.position - transform.position).normalized);
 
             if (useRotation)
                 transform.eulerAngles = Vector3.forward * lookPlayerAngle;

@@ -27,8 +27,11 @@ public class Projectile : PoolObject
     protected AudioClip SubProjSound;
 
     [Space(5)]
-    [SerializeField, Tooltip("자신의 위치에도 소환할지 결정.")]
-    protected bool spawnMyPos = false;
+    [SerializeField, Tooltip("기존 방향으로도 소환할지 결정.")]
+    protected bool spawnForward = false;
+    [SerializeField, Tooltip("기존 방향 뒤로도 소환할지 결정.")]
+    protected bool spawnBackward = false;
+
     [SerializeField, Tooltip("보조 발사체의 쌍 개수. 1 입력 시 투사체 좌우에 보조 발사체가 하나씩 소환됨.")]
     protected int projPair = 1;
     [SerializeField]
@@ -153,10 +156,15 @@ public class Projectile : PoolObject
     {
         PoolObject projectile;
 
-        if (spawnMyPos) // 자기 위치에도 생성할 경우
+        if (spawnForward) // 기존 방향에도 생성할 경우
         {
             projectile = parentPool.GetPoolObject(subObject);
             projectile.Init(transform.position, transform.eulerAngles.z);
+        }
+        if (spawnBackward) // 기존 방향 뒤에도 생성할 경우
+        {
+            projectile = parentPool.GetPoolObject(subObject);
+            projectile.Init(transform.position, transform.eulerAngles.z + 180f);
         }
 
         for (int i = 1; i < projPair + 1; i++) // 1 ~ projPair까지의 수

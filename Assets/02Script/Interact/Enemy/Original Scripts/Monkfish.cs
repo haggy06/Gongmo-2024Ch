@@ -53,7 +53,7 @@ public class Monkfish : EnemyBase
     private void PlayerFound()
     {
         AudioManager.Inst.PlaySFX(detectionSound);
-        StopCoroutine("PatternRepeat");
+        StopCoroutine("PatternCor");
 
         enemyInteract.damageResistance = 0.25f;
         anim.SetInteger(EntityAnimHash.Pattern, 2);
@@ -67,12 +67,7 @@ public class Monkfish : EnemyBase
 
     }
 
-    protected override void MoribundHP()
-    {
-
-    }
-
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
         anim.SetInteger(EntityAnimHash.Pattern, 1); // 빛 구슬만 날리기
     }

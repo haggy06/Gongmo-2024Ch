@@ -50,15 +50,10 @@ public class Crayfish : BossBase
         patternTerm = 1f; // 패턴 시전 속도가 빨라짐
         anim.SetInteger(EntityAnimHash.Pattern, 4); // 부메랑 던지기 실행
         enemyInteract.damageResistance = 0.5f;
-        StopCoroutine("PatternRepeat");
+        StopCoroutine("PatternCor");
     }
 
-    protected override void MoribundHP()
-    {
-
-    }
-
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
         anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
     }
@@ -75,7 +70,7 @@ public class Crayfish : BossBase
     {
         AudioManager.Inst.PlaySFX(attackSound);
 
-        parentPool.GetPoolObject(shokewaveBall).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - projectilePosition.position));
+        parentPool.GetPoolObject(shokewaveBall).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - projectilePosition.position));
 
         StabilizePattern();
     }
@@ -91,7 +86,7 @@ public class Crayfish : BossBase
     public void ThrowBoomerang()
     {
         enemyInteract.damageResistance = 0f;
-        StartCoroutine("PatternRepeat");
+        StartCoroutine("PatternCor");
 
         PoolObject bmr = parentPool.GetPoolObject(boomerang);
         bmr.Init(boomerangPosition.position, -90f); // 부메랑 발사

@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class PopupManager : MonoBehaviour
+public class PopupManager : Singleton<PopupManager>
 {
+
     [SerializeField]
     private AudioClip buttonSound;
     [SerializeField]
@@ -42,7 +43,7 @@ public class PopupManager : MonoBehaviour
     #endregion
 
     #region _Player Interfaces_
-    [Header("Player Interfaces")]
+    [Header("Inst Interfaces")]
 
     [SerializeField]
     private PopupBase playerPopup;
@@ -159,36 +160,9 @@ public class PopupManager : MonoBehaviour
     [SerializeField]
     private float gameEndPopupTerm = 1f;
 
-    private static PopupManager instance;
-    public static PopupManager Inst
+    protected override void Awake()
     {
-        get
-        {
-            if (instance == null)
-            {
-                instance = Instantiate(Resources.Load<GameObject>(Path.Combine("Singleton", "PopupManager"))).GetComponent<PopupManager>(); // 싱글톤 리소스 폴더에서 팝업매니저를 꺼내 생성 후 저장
-            }
-            return instance;
-        }
-    }
-
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this)
-        {
-            Debug.Log("중복된 싱글톤 파괴");
-            Destroy(gameObject);
-
-            return;
-        }
-
-        SceneManager.activeSceneChanged += SceneChanged;
+        base.Awake();
 
         tableText.text = "";
         for (int i = 0; i < GameManager.levelUpTable.Length; i++)
@@ -228,12 +202,7 @@ public class PopupManager : MonoBehaviour
     }
     #endregion
 
-    #region _Scene Change Event_
-    private void OnDestroy()
-    {
-        SceneManager.activeSceneChanged -= SceneChanged; // 오브젝트 파괴될 때 이벤트 구독 해지
-    }
-    private void SceneChanged(Scene replacedScene, Scene newScene)
+    protected override void SceneChanged(Scene replacedScene, Scene newScene)
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
 
@@ -271,7 +240,6 @@ public class PopupManager : MonoBehaviour
 
         fadePopup.PopupClose(true); // 페이드 인
     }
-    #endregion
 
     #region _Play UI Change_
     public void ChangeScore()

@@ -433,20 +433,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11070
+  initDirection: 0
   awakeSound: {fileID: 0}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   usePattern: 1
   patternNumber: 3
   patternTerm: 2
-  itemDropProbability: 0.441
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 1
-  patternList:
-  - 11
-  - 21
-  - 23
-  - 3
+  patternList: 0b000000150000001700000003000000
   patternTermInList: 1.25
+  useHalfHPPattern: 0
+  useDeadPattern: 0
+  attackPivot: {fileID: 0}
+  randomNumber: 0
+  randomRange1: 0
+  randomRange2: 0
+  spreadPivot: {fileID: 0}
+  spreadPositions: {fileID: 0}
   bossName: "\uC7A5\uB85C \uAC70\uBD81"
   initialPosition: {x: 0, y: 7, z: 0}
   comebackSpeed: 7
@@ -799,6 +805,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 50
   expPerDead: 250
   scorePerDead: 750

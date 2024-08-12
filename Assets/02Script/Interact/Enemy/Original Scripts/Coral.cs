@@ -52,10 +52,6 @@ public class Coral : EnemyBase
         anim.SetInteger(EntityAnimHash.Pattern, 1);
     }
 
-    protected override void MoribundHP()
-    {
-        
-    }
     protected override void Dead(EntityType killer)
     {
         base.Dead(killer);
@@ -74,7 +70,7 @@ public class Coral : EnemyBase
         StabilizePattern();
     }
 
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
 
     }

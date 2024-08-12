@@ -39,7 +39,7 @@ public class Jellyfish : StraightMoveEnemy
         enemyInteract.SaveOriginalColor();
     }
 
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
 
         AudioManager.Inst.PlaySFX(electricityReadySound);

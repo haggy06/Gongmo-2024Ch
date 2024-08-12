@@ -7,8 +7,9 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
+
     [Header("BGM List")]
     [SerializeField]
     private AudioClip titleBGM;
@@ -34,44 +35,15 @@ public class GameManager : MonoBehaviour
     private Weapon[] weaponList = new Weapon[7];
     public Weapon[] WeaponList => weaponList;
 
-    private static GameManager instance;
-    public static GameManager Inst
+    protected override void Awake()
     {
-        get
-        {
-            if (instance == null)
-            {
-                instance = Instantiate(Resources.Load<GameObject>(Path.Combine("Singleton", "GameManager"))).GetComponent<GameManager>(); // 싱글톤 리소스 폴더에서 게임매니저를 꺼내 생성 후 저장
-            }
-            return instance;
-        }
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-
-            return;
-        }
+        base.Awake();
 
         highScore = PlayerPrefs.GetInt("HighScore");
-        SceneManager.activeSceneChanged += SceneChanged;
     }
 
     #region _Scene Change Event_
-    private void OnDestroy()
-    {
-        SceneManager.activeSceneChanged -= SceneChanged; // 오브젝트 파괴될 때 이벤트 구독 해지
-    }
-    private void SceneChanged(Scene replacedScene, Scene newScene)
+    protected override void SceneChanged(Scene replacedScene, Scene newScene)
     {
         bossCount = 0;
         GameStatus = GameStatus.Play;

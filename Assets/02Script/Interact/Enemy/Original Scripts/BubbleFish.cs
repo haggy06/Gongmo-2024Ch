@@ -11,7 +11,7 @@ public class BubbleFish : StraightMoveEnemy
     private Projectile bubble;
     [SerializeField]
     private Transform attackPosition;
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
         anim.SetInteger(EntityAnimHash.Pattern, 1);
     }

@@ -16,11 +16,6 @@ public class Barrier : HitBase
     {
         
     }
-
-    protected override void MoribundHP()
-    {
-        
-    }
     protected override void DeadBy(EntityType killer)
     {
         AudioManager.Inst.PlaySFX(destorySound);

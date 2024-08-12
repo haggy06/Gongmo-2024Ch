@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c913cddc38f51b44840823c7dbed571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  donDestroy: 1
   bgmSpeacker: {fileID: 1371605154502497202}
   speackerBox: {fileID: 8750434866459946106}
   sfxChannel: {fileID: 4034080608284384217, guid: d488ba01e430a7a42b95e2114725029f, type: 2}

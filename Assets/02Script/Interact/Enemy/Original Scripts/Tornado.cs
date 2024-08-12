@@ -18,14 +18,14 @@ public class Tornado : MonoBehaviour
     {
         if (collision.TryGetComponent<PlayerInteract>(out _))
         {
-            PlayerController.Player.DefaultVelo = (PlayerController.Player.transform.position - transform.position).normalized * sinkPower * (isPush ? 1f : -1f);
+            PlayerController.Inst.DefaultVelo = (PlayerController.Inst.transform.position - transform.position).normalized * sinkPower * (isPush ? 1f : -1f);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerInteract>(out _))
         {
-            PlayerController.Player.DefaultVelo = Vector2.zero;
+            PlayerController.Inst.DefaultVelo = Vector2.zero;
         }
     }
 }

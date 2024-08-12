@@ -64,7 +64,7 @@ public class Turtle : BossBase
     }
     protected override void HalfHP()
     {
-        StopCoroutine("PatternRepeat");
+        StopCoroutine("PatternCor");
         patternTerm = 1.5f;
 
         spining = true;
@@ -73,17 +73,12 @@ public class Turtle : BossBase
         anim.SetInteger(EntityAnimHash.Pattern, 4);
     }
 
-    protected override void MoribundHP()
-    {
-
-    }
-
     /* 거북 패턴
      * 1. 탄막 흩뿌리기
      * 2. 회오리 날리기
      * 3. 돌기
      */
-    protected override void Pattern(int caseNumber, bool isListPattern = false)
+    protected override void Pattern(int caseNumber)
     {
         if (!spining) // 회전 중이 아닐 경우
         {
@@ -94,7 +89,7 @@ public class Turtle : BossBase
     {
         AudioManager.Inst.PlaySFX(attackSound);
 
-        parentPool.GetPoolObject(singleProjectile).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - singleProjectilePosition.position));
+        parentPool.GetPoolObject(singleProjectile).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - singleProjectilePosition.position));
 
         StabilizePattern();
     }
@@ -113,7 +108,7 @@ public class Turtle : BossBase
     {
         AudioManager.Inst.PlaySFX(attackSound);
 
-        parentPool.GetPoolObject(tornado).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Player.transform.position - singleProjectilePosition.position));
+        parentPool.GetPoolObject(tornado).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - singleProjectilePosition.position));
 
         StabilizePattern();
     }
@@ -129,7 +124,7 @@ public class Turtle : BossBase
         curCollisionCount = 0;
 
         physicalBox.enabled = true;
-        rigid2D.velocity = (PlayerController.Player.transform.position - transform.position).normalized * speed;
+        rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * speed;
         StartCoroutine("TurtleSpinCor");
     }
     public void TurtleSpinEnd()
@@ -141,7 +136,7 @@ public class Turtle : BossBase
         repeatMove.moving = true;
         spining = false;
 
-        StartCoroutine("PatternRepeat");
+        StartCoroutine("PatternCor");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -150,7 +145,7 @@ public class Turtle : BossBase
             AudioManager.Inst.PlaySFX(collisionSound);
 
             curCollisionCount++;
-            rigid2D.velocity = (PlayerController.Player.transform.position - transform.position).normalized * speed;
+            rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * speed;
             if (curCollisionCount >= collisionCount) // 벽에 충분히 튕겼을 경우
             {
                 rigid2D.velocity = Vector2.zero;

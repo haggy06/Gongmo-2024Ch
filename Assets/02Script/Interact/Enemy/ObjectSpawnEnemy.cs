@@ -34,13 +34,13 @@ public class ObjectSpawnEnemy : PoolObject
             parentPool.GetPoolObject(spawnObject).Init(transform.position, transform.eulerAngles.z);
 
         GetComponent<Rigidbody2D>().velocity = MyCalculator.Deg2Vec(angle) * speed;
-        StartCoroutine("PatternRepeat");
+        StartCoroutine("PatternCor");
     }
 
     protected override void ObjectReturned()
     {
         base.ObjectReturned();
 
-        StopCoroutine("PatternRepeat");
+        StopCoroutine("PatternCor");
     }
 }

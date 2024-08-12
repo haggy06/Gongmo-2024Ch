@@ -256,9 +256,4 @@ public class PlayerInteract : HitBase
     {
 
     }
-
-    protected override void MoribundHP()
-    {
-
-    }
 }
