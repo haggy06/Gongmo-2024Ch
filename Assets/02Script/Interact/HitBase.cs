@@ -28,11 +28,12 @@ public abstract class HitBase : MonoBehaviour
         HalfHPEvent += HalfHP;
         DeadEvent += DeadBy;
     }
-
+    /*
     private void OnEnable()
     {
         Init();
     }
+    */
 
     protected bool halfHPInvoked, moribundHPInvoked, alive;
     public bool Alive => alive;

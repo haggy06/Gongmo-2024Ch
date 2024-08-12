@@ -5,10 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class Turtle : BossBase
 {
-    [Space(5)]
-    [SerializeField]
-    private AudioClip attackSound;
-
     [Header("Single Projectile")]
     [SerializeField]
     private PoolObject singleProjectile;

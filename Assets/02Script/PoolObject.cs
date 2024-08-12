@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System;
-
 public class PoolObject : MonoBehaviour
 {
     [SerializeField, Tooltip("이 오브젝트의 ID.")]
@@ -11,15 +9,17 @@ public class PoolObject : MonoBehaviour
     public int PoolObjectID => poolObjectID;
 
     [SerializeField]
+    private bool destroyWhenBomb = true;
+    [HideInInspector]
+    public ObjectPool parentPool;
+
+    [Space(5)]
+    [SerializeField]
     private InitDirection initDirection;
     [SerializeField]
     private AudioClip awakeSound;
     public AudioClip AwakeSound => awakeSound;
 
-    [SerializeField]
-    private bool destroyWhenBomb = true;
-    [HideInInspector]
-    public ObjectPool parentPool;
 
     protected virtual void ObjectReturned()
     {
@@ -41,7 +41,7 @@ public class PoolObject : MonoBehaviour
         {
             parentPool.SetPoolObject(this);
         }
-        catch (NullReferenceException) 
+        catch (System.NullReferenceException) 
         {
             Debug.Log(name + "에 연결된 풀 없음");
             Destroy(gameObject);
@@ -72,6 +72,8 @@ public class PoolObject : MonoBehaviour
 
         if (awakeSound)
             AudioManager.Inst.PlaySFX(awakeSound);
+
+        
 
         if (destroyWhenBomb)
             PlayerInteract.BombEvent += DestroyByBomb;

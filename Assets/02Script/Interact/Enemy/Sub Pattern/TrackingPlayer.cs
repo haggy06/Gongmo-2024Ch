@@ -9,6 +9,8 @@ public class TrackingPlayer : MonoBehaviour
     private bool impulseOnAwake = false;
     [SerializeField, Tooltip("플레이어 방향을 바라볼지 여부")]
     private bool useRotation = true;
+    [SerializeField]
+    private float spinSpeed = 0f;
 
     [Space(5)]
     public float speed;
@@ -41,14 +43,11 @@ public class TrackingPlayer : MonoBehaviour
 
             if (useRotation)
                 transform.eulerAngles = Vector3.forward * lookPlayerAngle;
+            else
+                transform.Rotate(Vector3.forward * (spinSpeed * Time.fixedDeltaTime));
 
             Vector2 goalVelo = MyCalculator.Deg2Vec(lookPlayerAngle) * speed;
             Vector2 newVelo = rigid2D.velocity + (goalVelo - rigid2D.velocity) * (Time.fixedDeltaTime / driftTime);
-
-            /*
-            newVelo.x = Mathf.Clamp(Mathf.Abs(newVelo.x), -Mathf.Abs(goalVelo.x), Mathf.Abs(goalVelo.x)) * Mathf.Sign(newVelo.x);
-            newVelo.y = Mathf.Clamp(Mathf.Abs(newVelo.y), -Mathf.Abs(goalVelo.x), Mathf.Abs(goalVelo.y)) * Mathf.Sign(newVelo.y);
-            */
 
             rigid2D.velocity = newVelo;
         }        

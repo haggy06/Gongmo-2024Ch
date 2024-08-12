@@ -6,8 +6,6 @@ public class Crayfish : BossBase
 {
     [Header("Normal Pattern")]
     [SerializeField]
-    private AudioClip attackSound;
-    [SerializeField]
     private Transform projectilePosition;
 
     [Space(5)]

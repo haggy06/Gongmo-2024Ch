@@ -7,6 +7,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBase : PoolObject
 {
+    [SerializeField]
+    private Color[] awakeColor = { Color.white };
+    public Color[] AwakeColor => awakeColor;
     #region _Default Pattern Setting_
     [Header("Default Pattern Setting")]
     [SerializeField]
@@ -41,36 +44,48 @@ public class EnemyBase : PoolObject
     [SerializeField]
     private bool useHalfHPPattern = false;
     [SerializeField]
-    private UnityAction HalfHPPattern;
+    private UnityEvent HalfHPPattern;
 
     [Space(10)]
 
     [SerializeField]
     private bool useDeadPattern = false;
     [SerializeField]
-    private UnityAction DeadPattern;
+    private UnityEvent DeadPattern;
     #endregion
 
     #region _Attack Setting_
-    [Space(10), Header("Attack Setting")]
+    [Header("Attack Setting")]
     [SerializeField]
-    private Transform attackPivot;
+    protected Transform attackPivot;
     [SerializeField]
-    private AudioClip attackSound;
+    protected AudioClip attackSound;
+
+    [Space(5)]
+    [SerializeField, Tooltip("패턴의 caseNumber 순서에 맞게 이벤트 삽입")]
+    private UnityEvent[] patternAttacks;
 
     [Space(5)]
     [SerializeField]
     private int randomNumber;
     [SerializeField]
-    private float randomRange1;
+    private Vector2 rotationRange;
     [SerializeField]
-    private float randomRange2;
+    private Vector2 positionRange;
+
+    public int RandomNumber { set => randomNumber = value; }
+    public Vector2 RotationRange { set => rotationRange = value; }
+    public Vector2 PositionRange { set => positionRange = value; }
+
 
     [Space(5)]
     [SerializeField]
-    private Transform spreadPivot;
-    [SerializeField]
     private Transform spreadPositions;
+    [SerializeField]
+    private Transform spreadPivot;
+
+    public Transform SpreadPositions { set => spreadPositions = value; }
+    public Transform SpreadPivot { set => spreadPivot = value; }
     #endregion
 
     protected Animator anim;
@@ -106,6 +121,8 @@ public class EnemyBase : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
+
+        GetComponentInChildren<SpriteRenderer>().color = awakeColor[Random.Range(0, awakeColor.Length)];
         enemyInteract.Init();
 
         if (usePattern)
@@ -209,7 +226,7 @@ public class EnemyBase : PoolObject
         {
             pObject = parentPool.GetPoolObject(poolObject.PoolObjectID);
 
-            pObject.Init(attackPivot.position, Random.Range(randomRange1, randomRange2));
+            pObject.Init(attackPivot.position + Vector3.one * Random.Range(positionRange.x, positionRange.y), Random.Range(rotationRange.x, rotationRange.y));
             if (attackSound && !pObject.AwakeSound) // enemy엔 attackSound가 있지만 pObject엔 awakeSound가 없을 경우
             {
                 AudioManager.Inst.PlaySFX(attackSound);
@@ -225,7 +242,7 @@ public class EnemyBase : PoolObject
             attackPos = spreadPositions.GetChild(i);
             pObject = parentPool.GetPoolObject(poolObject.PoolObjectID);
 
-            pObject.Init(spreadPositions.GetChild(i).position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - attackPos.position));
+            pObject.Init(spreadPositions.GetChild(i).position, MyCalculator.Vec2Deg(spreadPivot.position - attackPos.position));
             if (attackSound && !pObject.AwakeSound) // enemy엔 attackSound가 있지만 pObject엔 awakeSound가 없을 경우
             {
                 AudioManager.Inst.PlaySFX(attackSound);
@@ -233,6 +250,39 @@ public class EnemyBase : PoolObject
         }
     }
     #endregion
+    #region _Ect Methods_
+    public void ChangeSprite(Color color, Sprite sprite = null, AudioClip sfx = null)
+    {
+        SpriteRenderer sRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        sRenderer.color = color;
+
+        if (sprite)
+        {
+            sRenderer.sprite = sprite;
+        }
+        if (sfx)
+        {
+            AudioManager.Inst.PlaySFX(sfx);
+        }
+    }
+
+    public void PlayParticle(ParticleSystem particle)
+    {
+        particle.Play();
+    }
+    #endregion
+    public void PatternInvoke()
+    {
+        try
+        {
+            patternAttacks[anim.GetInteger(EntityAnimHash.Pattern) - 1].Invoke();
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("현재 패턴에 해당하는 UnityEvent가 없거나 Pattern 상태가 0임.");
+        }
+    }
 
     public void StabilizePattern()
     {
