@@ -37,7 +37,7 @@ public class Monkfish : EnemyBase
         base.Init(position, angle);
 
         tracking.tracking = false;
-        tracking.ChangeSpeed(Random.Range(5f, 7f));
+        tracking.MoveSpeed = Random.Range(5f, 7f);
         tracking.driftTime = Random.Range(0.25f, 0.75f);
 
         enemyInteract.damageResistance = 0f;

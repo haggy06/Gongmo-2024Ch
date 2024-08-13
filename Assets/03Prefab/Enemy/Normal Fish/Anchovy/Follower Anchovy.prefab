@@ -139,6 +139,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 1
   expPerDead: 8
   scorePerDead: 20
@@ -154,8 +155,9 @@ GameObject:
   - component: {fileID: 6711836524298795515}
   - component: {fileID: 6482372871236905023}
   - component: {fileID: 8591663715386427933}
-  - component: {fileID: 16110807270840601}
   - component: {fileID: 1354544868336922381}
+  - component: {fileID: -4031563328840706527}
+  - component: {fileID: -7324515346953516344}
   m_Layer: 7
   m_Name: Follower Anchovy
   m_TagString: Untagged
@@ -262,29 +264,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &16110807270840601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4574220494040004339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc9ccb5e5b354f4094970ffc7b68da7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolObjectID: 11103
-  destroyWhenBomb: 1
-  parentPool: {fileID: 0}
-  usePattern: 0
-  patternNumber: 1
-  patternTerm: 2
-  itemDropProbability: 0.02
-  usePatternList: 0
-  patternTermInList: 1
-  lookPlayer: 0
-  speed: 10
 --- !u!114 &1354544868336922381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +276,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 4
   damage: 30
   canAttack: 1
+--- !u!114 &-4031563328840706527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574220494040004339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 7
+  zigZag: 0
+  sinHeightRange: {x: 0, y: 0}
+  sinFrequencyRange: {x: 0, y: 0}
+--- !u!114 &-7324515346953516344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574220494040004339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObjectID: 11103
+  destroyWhenBomb: 1
+  parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  usePattern: 0
+  patternNumber: 1
+  patternTerm: 2
+  isDistancePattern: 0
+  detectionRadius: 0
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks: []
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 5750389760585163205, guid: e1045ccfa0fae0748aea5cf474c40b0a, type: 3}
+  edgeCasePatterns: []

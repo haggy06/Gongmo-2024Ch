@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b90fb1689051374ab7bb94369fa5aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
   moving: 0
   howMuchMove: 3
   speed: 1
@@ -203,7 +204,7 @@ MonoBehaviour:
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  scatterPivot: {fileID: 0}
+  edgeCasePatterns: []
   bossName: "\uB300\uC655 \uC624\uC9D5\uC5B4"
   initialPosition: {x: 0, y: 5, z: 0}
   comebackSpeed: 3

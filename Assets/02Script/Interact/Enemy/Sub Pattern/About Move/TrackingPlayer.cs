@@ -19,7 +19,6 @@ public class TrackingPlayer : MoveBase
     private float spinSpeed = 0f;
 
     [Space(5)]
-    public float speed;
     [Range(0.1f, 10f), Tooltip("방향을 꺾는 데 소요되는 시간")]
     public float driftTime = 1f;
 

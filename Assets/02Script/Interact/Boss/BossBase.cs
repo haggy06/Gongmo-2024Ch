@@ -45,7 +45,7 @@ public class BossBase : EnemyBase
             yield return null;
         }
 
-        repeatMove.moving = true;
+        repeatMove.enabled = true;
         InitialPositionArrive();
     }
     protected virtual void InitialPositionArrive()

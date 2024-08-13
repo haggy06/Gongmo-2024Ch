@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HorizontalRepeatMove : MoveBase
 {
-    public bool moving;
     [SerializeField, Tooltip("얼마나 왔다갔다 할 건지 지정")]
     private float howMuchMove;
     [SerializeField]
@@ -18,18 +17,11 @@ public class HorizontalRepeatMove : MoveBase
     }
     private void FixedUpdate()
     {
-        if (moving)
-        {
             time += Time.fixedDeltaTime;
 
             float newValue = MyCalculator.SinWave(time * (actualSpeed / howMuchMove / 2f), -howMuchMove, howMuchMove);
 
             transform.position += Vector3.right * (newValue - lastValue);
             lastValue = newValue;
-        }
-        else
-        {
-            lastValue = time = 0f;
-        }
     }
 }

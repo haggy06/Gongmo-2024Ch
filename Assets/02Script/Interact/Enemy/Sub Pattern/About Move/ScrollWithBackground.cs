@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ScrollWithBackground : MoveBase
 {
-    [SerializeField]
-    private float scrollSpeed = 6f;
-
     public bool scrolling = true;
 
     private void Start()

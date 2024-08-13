@@ -41,7 +41,6 @@ public class Puffer : EnemyBase
         base.Init(position, angle);
 
         enemyInteract.damageResistance = 0f;
-        tracking.speed = followSpeed;
     }
 
     /* 복어 공격 패턴
@@ -52,7 +51,7 @@ public class Puffer : EnemyBase
     {
         if (PatternCheck.ShortDistance(transform.position, explosionReach)) // 근접 공격이 가능할 경우
         {
-            tracking.speed *= 0.75f;
+            tracking.MoveSpeed *= 0.75f;
             AudioManager.Inst.PlaySFX(inflictSound);
 
             anim.SetInteger(EntityAnimHash.Pattern, 1); // 자폭

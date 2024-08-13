@@ -7,11 +7,10 @@ public class Octopus : EnemyBase
 {
     [Header("Suprise Attack")]
     [SerializeField]
-    private ExplosionObject inkAttack;
-    [SerializeField]
-    private float supriseRadius;
-    [SerializeField]
     private bool hiding;
+    /*
+    [SerializeField]
+    private ExplosionObject inkAttack;
 
     [Header("Tentacle Scratch")]
     [SerializeField]
@@ -28,7 +27,7 @@ public class Octopus : EnemyBase
     private PoolObject OctopusProjectile;
     [SerializeField]
     private int projectileNumber = 8;
-
+    */
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
@@ -50,7 +49,7 @@ public class Octopus : EnemyBase
     {
         if (hiding) // 잠복 중일 경우
         {
-            if (PatternCheck.ShortDistance(transform.position, supriseRadius)) // 플레이어 감지
+            if (PatternCheck.ShortDistance(transform.position, detectionRadius)) // 플레이어 감지
             {
                 Appear();
             }

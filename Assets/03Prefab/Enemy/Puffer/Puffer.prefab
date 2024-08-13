@@ -273,13 +273,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 10
   tracking: 1
   impulseOnAwake: 0
   lookPlayer: 1
   spin: 0
   spinSpeed: 0
-  speed: 0
   driftTime: 0.02
 --- !u!58 &4766063133347104537
 CircleCollider2D:
@@ -442,4 +441,18 @@ MonoBehaviour:
   rotationRange: {x: -180, y: 180}
   positionRange: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  edgeCasePatterns: []
+  edgeCasePatterns:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6850969260887086886}
+        m_TargetAssemblyTypeName: MoveBase, Assembly-CSharp
+        m_MethodName: set_MoveSpeed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 7.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

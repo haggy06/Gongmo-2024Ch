@@ -464,11 +464,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  attackPivot: {fileID: 0}
+  attackPivot: {fileID: 4359675418779224003}
   patternAttacks: []
-  randomNumber: 0
-  rotationRange: {x: -2, y: 2}
-  positionRange: {x: -60, y: 60}
+  randomNumber: 7
+  rotationRange: {x: 30, y: 150}
+  positionRange: {x: -2, y: 2}
   scatterPositions: {fileID: 0}
   edgeCasePatterns: []
 --- !u!114 &3338841110657281483
@@ -501,6 +501,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd2077754fd7b940839e94cb9b7916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  scrollSpeed: 3
+  moveSpeed: 3
   scrolling: 1

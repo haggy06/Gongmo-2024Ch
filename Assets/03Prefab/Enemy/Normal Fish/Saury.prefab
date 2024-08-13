@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 5792847796122044592}
   - component: {fileID: 1351751055510292846}
   - component: {fileID: 2469890506015279972}
+  - component: {fileID: 9186941038008996551}
   - component: {fileID: 4933219150329039223}
   - component: {fileID: 1933447783576516886}
   - component: {fileID: -635916997029248797}
@@ -234,6 +235,22 @@ MonoBehaviour:
   target: 4
   damage: 50
   canAttack: 1
+--- !u!114 &9186941038008996551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170631578311969296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  zigZag: 0
+  sinHeightRange: {x: 0, y: 0}
+  sinFrequencyRange: {x: 0, y: 0}
 --- !u!50 &4933219150329039223
 Rigidbody2D:
   serializedVersion: 4
@@ -320,7 +337,7 @@ MonoBehaviour:
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 6683597954624481719, guid: 60e9a7d462a71ff478c0dc818f966128, type: 3}
+  attackPivot: {fileID: 6683597954624481719}
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:

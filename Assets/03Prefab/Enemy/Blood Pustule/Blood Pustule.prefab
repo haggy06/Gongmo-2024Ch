@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd2077754fd7b940839e94cb9b7916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 3
+  moveSpeed: 3
   scrolling: 1
 --- !u!50 &5997293282332408207
 Rigidbody2D:
@@ -252,7 +252,7 @@ MonoBehaviour:
   rotationRange: {x: -0.5, y: 0.5}
   positionRange: {x: -30, y: 30}
   scatterPositions: {fileID: 0}
-  scatterPivot: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!1 &7947056867167115081
 GameObject:
   m_ObjectHideFlags: 0

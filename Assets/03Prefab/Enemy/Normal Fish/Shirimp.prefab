@@ -131,14 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
+  moveSpeed: 20
   tracking: 1
   impulseOnAwake: 0
   lookPlayer: 0
   spin: 1
   spinSpeed: 360
-  speed: 17.5
-  driftTime: 1.25
+  driftTime: 2.5
 --- !u!95 &2673970186629134387
 Animator:
   serializedVersion: 5

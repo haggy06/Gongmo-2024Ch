@@ -34,7 +34,7 @@ public class Turtle : BossBase
         patternTerm = 2f;
         enemyInteract.damageResistance = 0f;
 
-        repeatMove.moving = false;
+        repeatMove.enabled = false;
         spining = false;
 
         physicalBox.enabled = false;
@@ -45,7 +45,7 @@ public class Turtle : BossBase
         patternTerm = 1.5f;
 
         spining = true;
-        repeatMove.moving = false;
+        repeatMove.enabled = false;
 
         anim.SetInteger(EntityAnimHash.Pattern, 4);
     }
@@ -114,7 +114,7 @@ public class Turtle : BossBase
 
         AudioManager.Inst.PlaySFX(shellSound);
 
-        repeatMove.moving = true;
+        repeatMove.enabled = true;
         spining = false;
 
         StartCoroutine("PatternCor");
