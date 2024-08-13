@@ -1,5 +1,112 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1380742413534643311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4296708191927785409}
+  - component: {fileID: 263881995866629688}
+  - component: {fileID: 1961523112255773129}
+  m_Layer: 7
+  m_Name: HitBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4296708191927785409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380742413534643311}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4581857869586995591}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &263881995866629688
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380742413534643311}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1961523112255773129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380742413534643311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5479d8db9d40bf049a2c142292cd69d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 2
+  invincible: 0
+  maxHP: 10
+  curHP: 0
+  damageResistance: 0
+  skillEff: 0.1
+  itemDropProbability: 0.1
+  skillPerDead: 5
+  expPerDead: 20
+  scorePerDead: 20
 --- !u!1 &4958807276570663979
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +118,8 @@ GameObject:
   - component: {fileID: 4581857869586995591}
   - component: {fileID: 2725841913611804370}
   - component: {fileID: 3535840105606854611}
-  - component: {fileID: 2378036558325707802}
+  - component: {fileID: 3079850364913577776}
+  - component: {fileID: 2401125208822535450}
   - component: {fileID: 6044580221581794451}
   m_Layer: 7
   m_Name: Shockwave Ball
@@ -32,7 +140,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4296708191927785409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2725841913611804370
@@ -83,7 +192,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2378036558325707802
+--- !u!114 &3079850364913577776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,16 +201,84 @@ MonoBehaviour:
   m_GameObject: {fileID: 4958807276570663979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0a1d51162baf84188069d53d296e43, type: 3}
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  zigZag: 0
+  sinHeight: 0
+  sinFrequency: 0
+--- !u!114 &2401125208822535450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958807276570663979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 10083
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  speed: 5
-  spawnWhenInit: 1
-  spawnTerm: 0.5
-  spawnObject: {fileID: 2743063609530202681, guid: 02437a84b65254c4bae51bab5d67c1d0, type: 3}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2401125208822535450}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2743063609530202681, guid: 02437a84b65254c4bae51bab5d67c1d0, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  usePattern: 1
+  patternNumber: 1
+  patternTerm: 0.5
+  isDistancePattern: 0
+  detectionRadius: 0
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2401125208822535450}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2743063609530202681, guid: 02437a84b65254c4bae51bab5d67c1d0, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  scatterPivot: {fileID: 0}
 --- !u!58 &6044580221581794451
 CircleCollider2D:
   m_ObjectHideFlags: 0

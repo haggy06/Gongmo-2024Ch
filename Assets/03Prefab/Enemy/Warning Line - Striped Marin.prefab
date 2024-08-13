@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11108
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 3
+  awakeSound: {fileID: 0}
   blinkSpeed: 1
   color1: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.21568628}
   color2: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.60784316}

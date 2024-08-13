@@ -104,6 +104,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 5
   expPerDead: 30
   scorePerDead: 80
@@ -184,7 +185,7 @@ GameObject:
   - component: {fileID: 9060544614908413289}
   - component: {fileID: 2343049447893108735}
   - component: {fileID: 7595367978622045896}
-  - component: {fileID: 134694175244353660}
+  - component: {fileID: 7498341319475493607}
   - component: {fileID: 7494257489323529916}
   - component: {fileID: 70192946853420748}
   - component: {fileID: 7046608980145051260}
@@ -275,7 +276,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 1}
   serializedVersion: 2
   m_Radius: 1
---- !u!114 &134694175244353660
+--- !u!114 &7498341319475493607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,26 +285,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 2698164037256560800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c17a0e0682e8135468ffa8ce512eb22b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11000
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 1
-  patternNumber: 2
+  patternNumber: 1
   patternTerm: 1.5
-  itemDropProbability: 0.1
+  isDistancePattern: 1
+  detectionRadius: 3
   usePatternList: 0
-  patternList: []
-  patternTermInList: 0.5
-  tentacleReach: 3
-  tentacleAttack: {fileID: 7279296186336423495, guid: 89147354151ca744eb10fc3a3bba0f62, type: 3}
-  spreadSound: {fileID: 8300000, guid: 46382423a261ad44d82306efa842df51, type: 3}
-  spreadPosition: {fileID: 1558525115658016961}
-  anemoneProjectile: {fileID: 401784265413754032, guid: c00b11bea7990884c99dcd7d69435a08, type: 3}
-  projectileNumber: 8
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7498341319475493607}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7279296186336423495, guid: 89147354151ca744eb10fc3a3bba0f62, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7498341319475493607}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7279296186336423495, guid: 89147354151ca744eb10fc3a3bba0f62, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  randomNumber: 1
+  rotationRange: {x: -180, y: 180}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!95 &7494257489323529916
 Animator:
   serializedVersion: 5
@@ -337,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd2077754fd7b940839e94cb9b7916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   scrollSpeed: 3
   scrolling: 1
 --- !u!114 &7046608980145051260

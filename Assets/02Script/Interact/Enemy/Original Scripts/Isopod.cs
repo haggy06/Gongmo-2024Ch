@@ -30,23 +30,12 @@ public class Isopod : EnemyBase
     private float firstAngle;
     private void FixedUpdate()
     {
-        /*
-        float randomAngle = Random.Range(-angleOffset, angleOffset) * Time.fixedDeltaTime;
-        transform.Rotate(Vector3.forward * randomAngle);
-        */
+        //float randomAngle = Random.Range(-angleOffset, angleOffset) * Time.fixedDeltaTime;
+        //transform.Rotate(Vector3.forward * randomAngle);
+
         time += Time.fixedDeltaTime;
         transform.eulerAngles = Vector3.forward * (firstAngle + Mathf.Sin(time * Mathf.PI * moveFrequency) * moveDepth); // 사인 함수 모양으로 구불거리며 이동
 
         transform.Translate(Vector2.right * speed * 3f * Time.fixedDeltaTime);
-    }
-
-    protected override void HalfHP()
-    {
-
-    }
-
-    protected override void Pattern(int caseNumber)
-    {
-
     }
 }

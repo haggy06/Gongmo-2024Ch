@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class Squid : BossBase
 {
-    [Header("Ink Spread")]
-    [SerializeField]
-    private Transform projectilePosition;
-    [SerializeField]
-    private PoolObject spreadInkProj;
-    [SerializeField]
-    private PoolObject fastInkProj;
-    [SerializeField]
-    private PoolObject largeInkProj;
-
     [Header("Tentacle Attack")]
     [SerializeField]
     private SpriteRenderer leftTentacle;
@@ -57,7 +47,7 @@ public class Squid : BossBase
 
         leftTentacle.sprite = rightTentacle.sprite = t1;
     }
-
+    /*
     protected override void HalfHP()
     {
         StopCoroutine("PatternCor");
@@ -65,7 +55,8 @@ public class Squid : BossBase
 
         StartCoroutine("TentacleAnimation");
     }
-    private IEnumerator TentacleAnimation()
+    */
+    public IEnumerator TentacleAnimation()
     {
         yield return YieldReturn.WaitForSeconds(0.3f);
         leftTentacle.sprite = rightTentacle.sprite = t2;
@@ -73,7 +64,10 @@ public class Squid : BossBase
         yield return YieldReturn.WaitForSeconds(0.7f);
         leftTentacle.sprite = rightTentacle.sprite = t3;
 
-        StartCoroutine("PatternCor");
+        tentacleON = true;
+        StartCoroutine("TentacleCor");
+
+        StabilizePattern();
     }
 
     /* ¿ÀÂ¡¾î ÆÐÅÏ
@@ -82,6 +76,7 @@ public class Squid : BossBase
      * 3. Å« ¸Ô¹° µ¢¾î¸®
      * 4. ÃË¼ö ¿¬¹ß Âî¸£±â(ÆäÀÌÁî 1)
      */
+    /*
     protected override void Pattern(int caseNumber)
     {
         anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
@@ -105,14 +100,7 @@ public class Squid : BossBase
 
         StabilizePattern();
     }
-
-    public void TentacleAttack()
-    {
-        tentacleON = true;
-        StartCoroutine("TentacleCor");
-
-        StabilizePattern();
-    }
+    */
     private IEnumerator TentacleCor()
     {
         while (tentacleON)

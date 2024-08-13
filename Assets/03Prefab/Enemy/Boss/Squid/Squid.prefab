@@ -118,28 +118,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11090
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 1
   patternNumber: 1
   patternTerm: 1.5
-  itemDropProbability: 0.096
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 1
-  patternList:
-  - 11
-  - 23
-  - 131
-  - 322
-  - 323
+  patternList: 0b00000017000000830000004201000043010000
   patternTermInList: 1.5
+  useHalfHPPattern: 1
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlayCoroutine
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TentacleAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 1281762193078755830}
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Down
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 368679716353774781, guid: 98da2136d2746dd4f9a82cbef8e4dd03, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Player
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9210746215674083073, guid: 704724f5452faab48a975f5411e8b361, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5276314188738881016, guid: 49e68358ec369dd4aa14543678089280, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  scatterPivot: {fileID: 0}
   bossName: "\uB300\uC655 \uC624\uC9D5\uC5B4"
   initialPosition: {x: 0, y: 5, z: 0}
   comebackSpeed: 3
-  projectilePosition: {fileID: 1281762193078755830}
-  spreadInkProj: {fileID: 368679716353774781, guid: 98da2136d2746dd4f9a82cbef8e4dd03, type: 3}
-  fastInkProj: {fileID: 9210746215674083073, guid: 704724f5452faab48a975f5411e8b361, type: 3}
-  largeInkProj: {fileID: 5276314188738881016, guid: 49e68358ec369dd4aa14543678089280, type: 3}
   leftTentacle: {fileID: 8195493014648876657}
   rightTentacle: {fileID: 4894733402798204491}
   t1: {fileID: 21300000, guid: 76f542aa5259b754e8db79393d10e7a0, type: 3}
@@ -525,6 +592,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 100
   expPerDead: 500
   scorePerDead: 1600

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5188456202274949701}
   - component: {fileID: 2222925059487526409}
   - component: {fileID: 2673970186629134387}
-  - component: {fileID: 9177150808147657421}
+  - component: {fileID: 3592432429682168205}
   - component: {fileID: 603255684657449898}
   m_Layer: 7
   m_Name: Shirimp
@@ -131,8 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 7.5
   tracking: 1
-  useRotation: 0
+  impulseOnAwake: 0
+  lookPlayer: 0
+  spin: 1
+  spinSpeed: 360
   speed: 17.5
   driftTime: 1.25
 --- !u!95 &2673970186629134387
@@ -156,7 +160,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9177150808147657421
+--- !u!114 &3592432429682168205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,20 +169,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 2287975681067459505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60effb6911cc57c4c9d221c046bac065, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11006
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 0
   patternNumber: 1
   patternTerm: 2
-  itemDropProbability: 0.25
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 0
-  patternList: []
+  patternList: 
   patternTermInList: 1
-  spinSpeed: 360
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks: []
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!82 &603255684657449898
 AudioSource:
   m_ObjectHideFlags: 0
@@ -414,6 +440,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.2
+  itemDropProbability: 0.1
   skillPerDead: 5
   expPerDead: 40
   scorePerDead: 80

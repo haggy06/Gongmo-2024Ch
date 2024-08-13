@@ -139,6 +139,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.01
+  itemDropProbability: 0.1
   skillPerDead: 3
   expPerDead: 55
   scorePerDead: 90
@@ -152,10 +153,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6354892993511714577}
   - component: {fileID: 2559691273987741490}
+  - component: {fileID: 3994328959383901945}
   - component: {fileID: 3510867806372978762}
   - component: {fileID: 3022695470372330184}
-  - component: {fileID: 1667916084580165449}
-  - component: {fileID: 3994328959383901945}
+  - component: {fileID: -7239050878876245385}
+  - component: {fileID: -1362423431985401539}
+  - component: {fileID: 1376351695601066097}
   m_Layer: 7
   m_Name: Isopod
   m_TagString: Untagged
@@ -214,6 +217,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.75, y: 1}
   m_Direction: 1
+--- !u!114 &3994328959383901945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136462182213093516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSkill: 0
+  isDotDamage: 0
+  owner: 2
+  target: 4
+  damage: 40
+  canAttack: 1
 --- !u!50 &3510867806372978762
 Rigidbody2D:
   serializedVersion: 4
@@ -262,7 +283,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1667916084580165449
+--- !u!114 &-7239050878876245385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,38 +292,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 8136462182213093516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea62d6d2961c2f2448f78ffb84a8216f, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd2077754fd7b940839e94cb9b7916c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  scrollSpeed: 6
+  scrolling: 1
+--- !u!114 &-1362423431985401539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136462182213093516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  zigZag: 1
+  sinHeightRange: {x: 60, y: 135}
+  sinFrequencyRange: {x: 0.1, y: 1}
+--- !u!114 &1376351695601066097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136462182213093516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11007
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 1
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 0
   patternNumber: 1
   patternTerm: 2
-  itemDropProbability: 0.25
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 0
-  patternList: []
+  patternList: 
   patternTermInList: 1
-  moveDepth: 0
-  moveFrequency: 0
-  speed: 1
---- !u!114 &3994328959383901945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8136462182213093516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSkill: 0
-  isDotDamage: 0
-  owner: 2
-  target: 4
-  damage: 40
-  canAttack: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks: []
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []

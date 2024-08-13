@@ -35,6 +35,13 @@ public class EnemyInteract : HitBase
         sprite = GetComponent<SpriteRenderer>();
         SaveOriginalColor();
     }
+    public override void Init()
+    {
+        base.Init();
+
+        sprite.color = originalColor;
+    }
+
     public void SaveOriginalColor()
     {
         originalColor = sprite.color;

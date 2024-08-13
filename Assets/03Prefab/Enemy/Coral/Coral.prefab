@@ -139,6 +139,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0
+  itemDropProbability: 0.1
   skillPerDead: 5
   expPerDead: 35
   scorePerDead: 100
@@ -238,7 +239,7 @@ GameObject:
   - component: {fileID: 3182200973813977141}
   - component: {fileID: 3547716962098329655}
   - component: {fileID: 3325360658415264815}
-  - component: {fileID: 3109036844393639898}
+  - component: {fileID: 6888772711794772343}
   - component: {fileID: 3338841110657281483}
   - component: {fileID: 6536675831343639170}
   m_Layer: 0
@@ -348,7 +349,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3109036844393639898
+--- !u!114 &6888772711794772343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,34 +358,119 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130817920858562548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1f5c9306db09245bf536edc7a762ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11001
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  useAwakeColor: 1
+  awakeColor:
+  - {r: 1, g: 0.427451, b: 0.427451, a: 1}
+  - {r: 0.8117648, g: 0.44705886, b: 1, a: 1}
+  - {r: 0.027450982, g: 0.7843138, b: 0.45882356, a: 1}
+  - {r: 1, g: 0.8588236, b: 0, a: 1}
+  - {r: 0.3647059, g: 0.5764706, b: 1, a: 1}
+  initEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6888772711794772343}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: dac390bc1bd3222488c5074a1738bcf1, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   usePattern: 0
   patternNumber: 1
-  patternTerm: 128
-  itemDropProbability: 0.75
+  patternTerm: 2
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 0
-  patternList: []
+  patternList: 
   patternTermInList: 1
-  coralColorArray:
-  - {r: 1, g: 0.4292453, b: 0.4292453, a: 1}
-  - {r: 0.812631, g: 0.4481132, b: 1, a: 1}
-  - {r: 0.025854412, g: 0.7830189, b: 0.45983887, a: 1}
-  - {r: 1, g: 0.85978806, b: 0, a: 1}
-  - {r: 0.36320752, g: 0.57812506, b: 1, a: 1}
-  neatSprite: {fileID: 21300000, guid: dac390bc1bd3222488c5074a1738bcf1, type: 3}
-  crackSound: {fileID: 8300000, guid: 735ea28bd463c5d40a1e197528766059, type: 3}
-  crackedSprite: {fileID: 21300000, guid: 952201b39816bfe46bb6cd7f74645450, type: 3}
-  breakSound: {fileID: 8300000, guid: 09d9cbda41a23164180852f2dc64e335, type: 3}
-  splinter: {fileID: 1209881886578070728, guid: 3be93f36d7cd8774aa62a3c53f22fb52, type: 3}
-  positionOffset: {x: -2, y: 2}
-  angleOffset: {x: -60, y: 60}
-  splintNumber: 5
+  useHalfHPPattern: 1
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6888772711794772343}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 952201b39816bfe46bb6cd7f74645450, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6888772711794772343}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1209881886578070728, guid: 3be93f36d7cd8774aa62a3c53f22fb52, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6888772711794772343}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 735ea28bd463c5d40a1e197528766059, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  useDeadPattern: 1
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6888772711794772343}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1209881886578070728, guid: 3be93f36d7cd8774aa62a3c53f22fb52, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6888772711794772343}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 09d9cbda41a23164180852f2dc64e335, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  attackPivot: {fileID: 0}
+  patternAttacks: []
+  randomNumber: 0
+  rotationRange: {x: -2, y: 2}
+  positionRange: {x: -60, y: 60}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!114 &3338841110657281483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,5 +501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd2077754fd7b940839e94cb9b7916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   scrollSpeed: 3
   scrolling: 1

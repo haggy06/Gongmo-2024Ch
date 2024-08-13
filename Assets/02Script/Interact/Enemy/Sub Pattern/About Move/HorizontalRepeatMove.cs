@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalRepeatMove : MonoBehaviour
+public class HorizontalRepeatMove : MoveBase
 {
     public bool moving;
     [SerializeField, Tooltip("얼마나 왔다갔다 할 건지 지정")]
@@ -12,7 +12,7 @@ public class HorizontalRepeatMove : MonoBehaviour
 
     private float lastValue = 0;
     private float time = 0f;
-    private void OnEnable()
+    protected override void OnEnable()
     {
         time = 0f;
     }
@@ -22,7 +22,7 @@ public class HorizontalRepeatMove : MonoBehaviour
         {
             time += Time.fixedDeltaTime;
 
-            float newValue = MyCalculator.SinWave(time * (speed / howMuchMove / 2f), -howMuchMove, howMuchMove);
+            float newValue = MyCalculator.SinWave(time * (actualSpeed / howMuchMove / 2f), -howMuchMove, howMuchMove);
 
             transform.position += Vector3.right * (newValue - lastValue);
             lastValue = newValue;

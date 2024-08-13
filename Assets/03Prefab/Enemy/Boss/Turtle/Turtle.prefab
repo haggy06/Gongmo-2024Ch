@@ -417,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b90fb1689051374ab7bb94369fa5aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   moving: 0
   howMuchMove: 5
   speed: 3
@@ -433,10 +434,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11070
-  initDirection: 0
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 1
   patternNumber: 3
   patternTerm: 2
@@ -445,35 +451,113 @@ MonoBehaviour:
   usePatternList: 1
   patternList: 0b000000150000001700000003000000
   patternTermInList: 1.25
-  useHalfHPPattern: 0
+  useHalfHPPattern: 1
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6689379812473798131}
+        m_TargetAssemblyTypeName: Turtle, Assembly-CSharp
+        m_MethodName: TurtleSpin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
   attackPivot: {fileID: 0}
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6689379812473798131}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Scatter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4145137421009171231, guid: 964ee5065bc22724184e232be1b1fe81, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6689379812473798131}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a2896332aa68b0c4b9ad657fbf1ecbbf, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6689379812473798131}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Player
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: -80272098306791964, guid: b569a648d7052f44f8d766a468bbec1b, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6689379812473798131}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a2896332aa68b0c4b9ad657fbf1ecbbf, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6689379812473798131}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Player
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4145137421009171231, guid: bad2d8b1751b4f147819a141e23ae346, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6689379812473798131}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a2896332aa68b0c4b9ad657fbf1ecbbf, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   randomNumber: 0
-  randomRange1: 0
-  randomRange2: 0
-  spreadPivot: {fileID: 0}
-  spreadPositions: {fileID: 0}
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 6218669534582386309}
   bossName: "\uC7A5\uB85C \uAC70\uBD81"
   initialPosition: {x: 0, y: 7, z: 0}
   comebackSpeed: 7
-  attackSound: {fileID: 8300000, guid: a2896332aa68b0c4b9ad657fbf1ecbbf, type: 3}
-  singleProjectile: {fileID: 4145137421009171231, guid: bad2d8b1751b4f147819a141e23ae346, type: 3}
-  singleProjectilePosition: {fileID: 3753792142297636265}
-  spreadProjectile: {fileID: 4145137421009171231, guid: 964ee5065bc22724184e232be1b1fe81, type: 3}
-  pivotPosition: {fileID: 6218669534582386309}
-  spreadProjectilePosition:
-  - {fileID: 6569848753636583826}
-  - {fileID: 9071426823909184725}
-  - {fileID: 3753792142297636265}
-  - {fileID: 3312728821596025554}
-  - {fileID: 2451899485800679227}
-  - {fileID: 3230118638590106129}
-  - {fileID: 4049967045776229791}
-  - {fileID: 8808799293720826427}
-  - {fileID: 4842240269431437132}
-  - {fileID: 2648334238869715777}
-  - {fileID: 1177435454777746079}
-  tornado: {fileID: -80272098306791964, guid: b569a648d7052f44f8d766a468bbec1b, type: 3}
   shellSound: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
   collisionSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   speed: 13

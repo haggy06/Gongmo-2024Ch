@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1620393679695155267}
   - component: {fileID: 8628519639495924123}
   - component: {fileID: 1735600924770116406}
-  - component: {fileID: 141163735132474718}
+  - component: {fileID: 7276039435104849918}
+  - component: {fileID: 8211168510727461971}
   - component: {fileID: 5568276305126824958}
   m_Layer: 7
   m_Name: Squid Tentacle
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c90de387ae7c79448ce425ff4896c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &141163735132474718
+--- !u!114 &7276039435104849918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,24 +143,72 @@ MonoBehaviour:
   m_GameObject: {fileID: 5992900910256225165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e43b397b23bb1438396b1813c022e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 75
+  zigZag: 0
+  sinHeight: 0
+  sinFrequency: 0
+--- !u!114 &8211168510727461971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992900910256225165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11093
-  awakeSound: {fileID: 8300000, guid: afc0837ceb2296a4dad7c1cdcce17442, type: 3}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 8300000, guid: afc0837ceb2296a4dad7c1cdcce17442, type: 3}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 1
   patternNumber: 1
-  patternTerm: 2
-  itemDropProbability: 0.1
+  patternTerm: 0
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 0
-  patternList: []
+  patternList: 
   patternTermInList: 1
-  lookPlayer: 0
-  speed: 75
-  tentacleBreakTerm: 0.3
-  tentacleDisappearTerm: 0.1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7276039435104849918}
+        m_TargetAssemblyTypeName: MoveBase, Assembly-CSharp
+        m_MethodName: ChangeSpeed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -75
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!114 &5568276305126824958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +330,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 5
   expPerDead: 20
   scorePerDead: 20

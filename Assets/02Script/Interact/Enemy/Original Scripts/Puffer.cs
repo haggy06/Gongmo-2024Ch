@@ -43,10 +43,6 @@ public class Puffer : EnemyBase
         enemyInteract.damageResistance = 0f;
         tracking.speed = followSpeed;
     }
-    protected override void HalfHP()
-    {
-        tracking.speed *= 1.25f;
-    }
 
     /* 복어 공격 패턴
      * 1. 자폭 (근접)

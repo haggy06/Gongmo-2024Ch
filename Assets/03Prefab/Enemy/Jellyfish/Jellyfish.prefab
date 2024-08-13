@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 4116744509450554226}
   - component: {fileID: 669692599058900894}
   - component: {fileID: 6261100421158533276}
-  - component: {fileID: 6550122601477163224}
+  - component: {fileID: 7152283925551354718}
+  - component: {fileID: 1678442953460981853}
   - component: {fileID: 1858475734803697000}
   - component: {fileID: 7174174754888930892}
   m_Layer: 7
@@ -172,7 +173,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6550122601477163224
+--- !u!114 &7152283925551354718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,38 +182,89 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096537130451563489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d44d8f0b126ce1b47b3e0176d8de8ae3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2.5
+  zigZag: 0
+  sinHeightRange: {x: 0, y: 0}
+  sinFrequencyRange: {x: 0, y: 0}
+--- !u!114 &1678442953460981853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096537130451563489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11013
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 3
+  awakeSound: {fileID: 0}
+  useAwakeColor: 1
+  awakeColor:
+  - {r: 1, g: 0.427451, b: 0.427451, a: 0.60784316}
+  - {r: 0.8117648, g: 0.44705886, b: 1, a: 0.60784316}
+  - {r: 0.027450982, g: 0.7843138, b: 0.45882356, a: 0.60784316}
+  - {r: 1, g: 0.8588236, b: 0, a: 0.60784316}
+  - {r: 0.3647059, g: 0.5764706, b: 1, a: 0.60784316}
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 1
   patternNumber: 1
   patternTerm: 3.5
-  itemDropProbability: 0.1
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 0
-  patternList: []
+  patternList: 
   patternTermInList: 1
-  lookPlayer: 1
-  speed: 2.5
-  coralColorArray:
-  - {r: 1, g: 0, b: 0, a: 0.39215687}
-  - {r: 1, g: 1, b: 0, a: 0.39215687}
-  - {r: 1, g: 0, b: 1, a: 0.39215687}
-  - {r: 0, g: 0, b: 1, a: 0.39215687}
-  - {r: 0, g: 1, b: 1, a: 0.39215687}
-  - {r: 0, g: 1, b: 0, a: 0.39215687}
-  electricityReady: {fileID: 7174174754888930892}
-  electricityReadySound: {fileID: 8300000, guid: 46502710ea2aeab48a2ac5c628cc9fe9, type: 3}
-  electricityTerm: 1.25
-  electricity: {fileID: 2240014162936646337, guid: 34cfc6af8b58e594ea5dace6dc30e83d, type: 3}
-  tentaclePosition: {fileID: 1122823063720572632}
-  positionOffset: {x: 1, y: 3}
-  angleOffset: 75
-  tentacle: {fileID: 2038334104305034166, guid: 4f2e2c686816a9d43bf482c75eed46af, type: 3}
-  tentacleNumber: 3
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 1
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1678442953460981853}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2038334104305034166, guid: 4f2e2c686816a9d43bf482c75eed46af, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  attackPivot: {fileID: 1122823063720572632}
+  patternAttacks: []
+  randomNumber: 3
+  rotationRange: {x: -75, y: 75}
+  positionRange: {x: -2, y: 2}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1678442953460981853}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlayParticle
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7174174754888930892}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!199 &1858475734803697000
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5114,6 +5166,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0
+  itemDropProbability: 0.1
   skillPerDead: 10
   expPerDead: 60
   scorePerDead: 80

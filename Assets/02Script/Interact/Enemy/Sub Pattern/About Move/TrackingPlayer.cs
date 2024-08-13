@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrackingPlayer : MonoBehaviour
+public class TrackingPlayer : MoveBase
 {
     public bool tracking = true;
     [SerializeField, Tooltip("시작했을 때 가속을 얻은 상태로 시작할지 지정")]
     private bool impulseOnAwake = false;
-    [SerializeField, Tooltip("플레이어 방향을 바라볼지 여부")]
-    private bool useRotation = true;
+
+    [Space(5)]
+    [SerializeField, Tooltip("플레이어 방향을 바라볼지 여부.")]
+    private bool lookPlayer = true;
+
+    [Space(5)]
+    [SerializeField, Tooltip("빙빙 돌지 여부.")]
+    private bool spin = false;
     [SerializeField]
     private float spinSpeed = 0f;
 
@@ -33,7 +39,7 @@ public class TrackingPlayer : MonoBehaviour
         if (impulseOnAwake && firstUpdate)
         {
             firstUpdate = true;
-            rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * speed;
+            rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * actualSpeed;
         }
 
 
@@ -41,12 +47,12 @@ public class TrackingPlayer : MonoBehaviour
         {
             float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Inst.transform.position - transform.position).normalized);
 
-            if (useRotation)
+            if (lookPlayer)
                 transform.eulerAngles = Vector3.forward * lookPlayerAngle;
-            else
+            else if (spin)
                 transform.Rotate(Vector3.forward * (spinSpeed * Time.fixedDeltaTime));
 
-            Vector2 goalVelo = MyCalculator.Deg2Vec(lookPlayerAngle) * speed;
+            Vector2 goalVelo = MyCalculator.Deg2Vec(lookPlayerAngle) * actualSpeed;
             Vector2 newVelo = rigid2D.velocity + (goalVelo - rigid2D.velocity) * (Time.fixedDeltaTime / driftTime);
 
             rigid2D.velocity = newVelo;

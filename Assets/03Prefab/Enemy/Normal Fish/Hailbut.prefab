@@ -139,6 +139,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 9
   expPerDead: 60
   scorePerDead: 100
@@ -155,7 +156,8 @@ GameObject:
   - component: {fileID: 2469890506015279972}
   - component: {fileID: 4933219150329039223}
   - component: {fileID: 1933447783576516886}
-  - component: {fileID: 2116119957245713102}
+  - component: {fileID: 2163861120761377557}
+  - component: {fileID: 8770362708389342740}
   m_Layer: 7
   m_Name: Hailbut
   m_TagString: Untagged
@@ -281,7 +283,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2116119957245713102
+--- !u!114 &2163861120761377557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,25 +292,84 @@ MonoBehaviour:
   m_GameObject: {fileID: 1170631578311969296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8c43887cee09a4cb17e3c862b2d2ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  zigZag: 0
+  sinHeightRange: {x: 0, y: 0}
+  sinFrequencyRange: {x: 0, y: 0}
+--- !u!114 &8770362708389342740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170631578311969296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11005
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 3
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
   usePattern: 1
   patternNumber: 1
   patternTerm: 1.25
-  itemDropProbability: 0.2
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 0
-  patternList: []
+  patternList: 
   patternTermInList: 1
-  lookPlayer: 1
-  speed: 2
-  bubbleSound: {fileID: 8300000, guid: 594fa76b582405e4b9e7954c58343dc3, type: 3}
-  bubble: {fileID: 9164828610425745986, guid: ff12dd860d4299f4dbdcba437f77aa98, type: 3}
-  attackPosition: {fileID: 6683597954624481719}
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 6683597954624481719}
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8770362708389342740}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Forward
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9164828610425745986, guid: ff12dd860d4299f4dbdcba437f77aa98, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8770362708389342740}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 594fa76b582405e4b9e7954c58343dc3, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!1 &4164895248456290084
 GameObject:
   m_ObjectHideFlags: 0

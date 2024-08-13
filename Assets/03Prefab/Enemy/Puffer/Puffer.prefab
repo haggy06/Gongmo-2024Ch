@@ -139,6 +139,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 7
   expPerDead: 100
   scorePerDead: 130
@@ -182,12 +183,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 938815053019212350}
-  - component: {fileID: 5943564240609244740}
   - component: {fileID: 5216914262005053012}
   - component: {fileID: 598423214395068687}
   - component: {fileID: -6850969260887086886}
   - component: {fileID: 4766063133347104537}
   - component: {fileID: 5491802978731629807}
+  - component: {fileID: 1900529660193959990}
   m_Layer: 0
   m_Name: Puffer
   m_TagString: Untagged
@@ -212,37 +213,6 @@ Transform:
   - {fileID: 8801019980386344225}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5943564240609244740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8855799427461255420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a80d093b1fbf646888ac2e3912ca2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolObjectID: 11002
-  awakeSound: {fileID: 0}
-  destroyWhenBomb: 1
-  parentPool: {fileID: 0}
-  usePattern: 1
-  patternNumber: 1
-  patternTerm: 2
-  itemDropProbability: 0.25
-  usePatternList: 0
-  patternList: []
-  patternTermInList: 0.75
-  followSpeed: 4
-  spitSound: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
-  spitTransform: {fileID: 8801019980386344225}
-  needle: {fileID: 8888517260246451585, guid: e4f2ce8497c80a947860dec2b613d515, type: 3}
-  inflictSound: {fileID: 8300000, guid: 9efbfd5e33712c749b392c4ef08c4f05, type: 3}
-  explosion: {fileID: 2401881782769809721, guid: 37a87e7d534a72943aa46c9c102c459a, type: 3}
-  explosionReach: 5
-  needleNumberWhenExplosion: 16
 --- !u!50 &5216914262005053012
 Rigidbody2D:
   serializedVersion: 4
@@ -303,8 +273,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   tracking: 1
-  useRotation: 1
+  impulseOnAwake: 0
+  lookPlayer: 1
+  spin: 0
+  spinSpeed: 0
   speed: 0
   driftTime: 0.02
 --- !u!58 &4766063133347104537
@@ -360,3 +334,112 @@ MonoBehaviour:
   target: 4
   damage: 75
   canAttack: 1
+--- !u!114 &1900529660193959990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855799427461255420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObjectID: 11002
+  destroyWhenBomb: 1
+  parentPool: {fileID: 0}
+  initDirection: 3
+  awakeSound: {fileID: 0}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  usePattern: 1
+  patternNumber: 1
+  patternTerm: 1.75
+  isDistancePattern: 1
+  detectionRadius: 5
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1900529660193959990}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2401881782769809721, guid: 37a87e7d534a72943aa46c9c102c459a, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1900529660193959990}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8888517260246451585, guid: e4f2ce8497c80a947860dec2b613d515, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1900529660193959990}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 9efbfd5e33712c749b392c4ef08c4f05, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1900529660193959990}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Forward
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8888517260246451585, guid: 081dc292ffaad8d4aa5caa41514affe9, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1900529660193959990}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  randomNumber: 1
+  rotationRange: {x: -180, y: 180}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []

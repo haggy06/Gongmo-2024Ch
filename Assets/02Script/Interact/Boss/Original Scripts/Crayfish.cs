@@ -58,7 +58,7 @@ public class Crayfish : BossBase
 
     public void SpreadProj()
     {
-        AudioManager.Inst.PlaySFX(attackSound);
+        //AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(projectile).Init(projectilePosition.position, -90f);
 
@@ -66,7 +66,7 @@ public class Crayfish : BossBase
     }
     public void Shokewave()
     {
-        AudioManager.Inst.PlaySFX(attackSound);
+        //AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(shokewaveBall).Init(projectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - projectilePosition.position));
 
@@ -74,7 +74,7 @@ public class Crayfish : BossBase
     }
     public void Smash()
     {
-        AudioManager.Inst.PlaySFX(attackSound);
+        //AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(smashExplosion).Init(projectilePosition.position, 0f);
 

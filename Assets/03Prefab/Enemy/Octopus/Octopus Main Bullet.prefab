@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 401784265413754032}
   - component: {fileID: 5644237241648080421}
   m_Layer: 7
-  m_Name: Octopus Bullet
+  m_Name: Octopus Main Bullet
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSkill: 0
   isDotDamage: 0
   owner: 2
   target: 12
@@ -155,14 +156,18 @@ MonoBehaviour:
   poolObjectID: 10010
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
   attackableCount: 1
   lifeTime: 3
   speed: 10
-  spreadTiming: 1
-  subObject: {fileID: 0}
-  spawnMyPos: 0
-  projPair: 1
-  angleDiff: 0
+  spreadTiming: 3
+  subObject: {fileID: 401784265413754032, guid: d531a91e84495cf4a802ecbd7d0f7b42, type: 3}
+  SubProjSound: {fileID: 0}
+  spawnForward: 0
+  spawnBackward: 1
+  projPair: 3
+  angleDiff: 45
   useTracking: 0
   target: {fileID: 0}
   targetEntity: 0

@@ -104,6 +104,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.1
+  itemDropProbability: 0.1
   skillPerDead: 100
   expPerDead: 100
   scorePerDead: 250
@@ -168,7 +169,8 @@ GameObject:
   - component: {fileID: 4629955537467556761}
   - component: {fileID: 7986451818736232352}
   - component: {fileID: 3516319025677300621}
-  - component: {fileID: 5222557247206742061}
+  - component: {fileID: 2471738746098948432}
+  - component: {fileID: 3688436554551405054}
   - component: {fileID: -3564429288748609356}
   m_Layer: 7
   m_Name: Striped Marin
@@ -290,7 +292,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5222557247206742061
+--- !u!114 &2471738746098948432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,22 +301,58 @@ MonoBehaviour:
   m_GameObject: {fileID: 4205184515497896014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc9ccb5e5b354f4094970ffc7b68da7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 100
+  zigZag: 0
+  sinHeightRange: {x: 0, y: 0}
+  sinFrequencyRange: {x: 0, y: 0}
+--- !u!114 &3688436554551405054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205184515497896014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11008
-  awakeSound: {fileID: 8300000, guid: afc0837ceb2296a4dad7c1cdcce17442, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  usePattern: 0
+  initDirection: 0
+  awakeSound: {fileID: 8300000, guid: afc0837ceb2296a4dad7c1cdcce17442, type: 3}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  usePattern: 1
   patternNumber: 1
   patternTerm: 2
-  itemDropProbability: 1
+  isDistancePattern: 0
+  detectionRadius: 0
   usePatternList: 0
-  patternList: []
+  patternList: 
   patternTermInList: 1
-  lookPlayer: 0
-  speed: 100
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  patternAttacks: []
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!114 &-3564429288748609356
 MonoBehaviour:
   m_ObjectHideFlags: 0

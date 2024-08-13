@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3756341054671888274
+--- !u!1 &3569457986484271886
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2240285917121489832}
-  - component: {fileID: 3488272344714665767}
-  - component: {fileID: 7311867923114464590}
-  - component: {fileID: 3456550291338440850}
-  - component: {fileID: 401784265413754032}
-  - component: {fileID: 5644237241648080421}
+  - component: {fileID: 4727586287807430673}
+  - component: {fileID: 3075634508675091482}
+  - component: {fileID: 7993189479081417300}
+  - component: {fileID: 8509154553472595967}
+  - component: {fileID: 6970996853139157976}
+  - component: {fileID: 8888517260246451585}
   m_Layer: 7
-  m_Name: Sea Anemone Bullet
-  m_TagString: Player
+  m_Name: Puffer Main Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2240285917121489832
+--- !u!4 &4727586287807430673
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3756341054671888274}
+  m_GameObject: {fileID: 3569457986484271886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.79, y: 0.27, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3488272344714665767
+--- !u!212 &3075634508675091482
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3756341054671888274}
+  m_GameObject: {fileID: 3569457986484271886}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aaca06b5646409f4594c8892c5144e40, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ce35f54a0939024293f15d739f8c1b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,13 +88,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7311867923114464590
-CircleCollider2D:
+--- !u!60 &7993189479081417300
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3756341054671888274}
+  m_GameObject: {fileID: 3569457986484271886}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -121,15 +121,28 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2375
---- !u!114 &3456550291338440850
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.76666665, y: 0.7}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.4, y: -0.4}
+      - {x: 0.45, y: -0.05}
+      - {x: -0.4, y: 0.4}
+  m_UseDelaunayMesh: 0
+--- !u!114 &8509154553472595967
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3756341054671888274}
+  m_GameObject: {fileID: 3569457986484271886}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
@@ -139,54 +152,24 @@ MonoBehaviour:
   isDotDamage: 0
   owner: 2
   target: 12
-  damage: 35
+  damage: 40
   canAttack: 1
---- !u!114 &401784265413754032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3756341054671888274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolObjectID: 10000
-  awakeSound: {fileID: 0}
-  destroyWhenBomb: 1
-  parentPool: {fileID: 0}
-  attackableCount: 1
-  lifeTime: 1
-  speed: 10
-  spreadTiming: 1
-  subObject: {fileID: 0}
-  SubProjSound: {fileID: 0}
-  spawnMyPos: 0
-  projPair: 1
-  angleDiff: 0
-  useTracking: 0
-  target: {fileID: 0}
-  targetEntity: 0
-  driftTime: 1
-  searchRadius: 5
---- !u!50 &5644237241648080421
+--- !u!50 &6970996853139157976
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3756341054671888274}
-  m_BodyType: 0
+  m_GameObject: {fileID: 3569457986484271886}
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -197,4 +180,36 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
+--- !u!114 &8888517260246451585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569457986484271886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObjectID: 10002
+  destroyWhenBomb: 1
+  parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  attackableCount: 1
+  lifeTime: 5
+  speed: 10
+  spreadTiming: 3
+  subObject: {fileID: 8888517260246451585, guid: 081dc292ffaad8d4aa5caa41514affe9, type: 3}
+  SubProjSound: {fileID: 0}
+  spawnForward: 0
+  spawnBackward: 1
+  projPair: 7
+  angleDiff: 22.5
+  useTracking: 0
+  target: {fileID: 0}
+  targetEntity: 0
+  driftTime: 1
+  searchRadius: 5

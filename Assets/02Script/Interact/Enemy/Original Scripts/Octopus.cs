@@ -34,10 +34,13 @@ public class Octopus : EnemyBase
         base.Init(position, angle);
 
         hiding = true;
+        usePattern = false;
     }
 
     protected override void HalfHP()
     {
+        base.HalfHP();
+
         if (hiding) // 아직도 잠복 중이었을 경우
         {
             Appear();
@@ -55,12 +58,15 @@ public class Octopus : EnemyBase
     }
     private void Appear()
     {
-        hiding = false;
-        anim.SetTrigger("Suprise");
+        if (hiding) // 잠복 중일 경우
+        {
+            hiding = false;
+            usePattern = true;
 
-        StartCoroutine("PatternCor");
+            anim.SetInteger(EntityAnimHash.Pattern, 3); // 습격
+        }        
     }
-
+    /*
     protected override void Pattern(int caseNumber)
     {        
         if (!hiding) // 잠복 중이 아닐 경우
@@ -102,4 +108,5 @@ public class Octopus : EnemyBase
 
         StabilizePattern();
     }
+    */
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollWithBackground : MonoBehaviour
+public class ScrollWithBackground : MoveBase
 {
     [SerializeField]
     private float scrollSpeed = 6f;
@@ -18,7 +18,7 @@ public class ScrollWithBackground : MonoBehaviour
     {
         if (scrolling)
         {
-            transform.Translate(Vector2.down * scrollSpeed * Time.fixedDeltaTime);
+            transform.Translate(Vector2.down * actualSpeed * Time.fixedDeltaTime);
         }
     }
 }

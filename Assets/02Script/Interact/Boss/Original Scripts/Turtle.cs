@@ -5,25 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class Turtle : BossBase
 {
-    [Header("Single Projectile")]
-    [SerializeField]
-    private PoolObject singleProjectile;
-    [SerializeField]
-    private Transform singleProjectilePosition;
-
-    [Header("Spread Projectile")]
-    [SerializeField]
-    private PoolObject spreadProjectile;
-
-    [SerializeField]
-    private Transform pivotPosition;
-    [SerializeField]
-    private Transform[] spreadProjectilePosition;
-
-    [Header("Launch Tornado")]
-    [SerializeField]
-    private PoolObject tornado;
-
     [Header("Spin Turtle")]
     [SerializeField]
     private AudioClip shellSound;
@@ -72,7 +53,7 @@ public class Turtle : BossBase
     /* 거북 패턴
      * 1. 탄막 흩뿌리기
      * 2. 회오리 날리기
-     * 3. 돌기
+     * 3. 돌 던지기
      */
     protected override void Pattern(int caseNumber)
     {
@@ -81,9 +62,10 @@ public class Turtle : BossBase
             anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
         }
     }
+    /*
     public void SingleProjectile()
     {
-        AudioManager.Inst.PlaySFX(attackSound);
+        //AudioManager.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(singleProjectile).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - singleProjectilePosition.position));
 
@@ -91,7 +73,7 @@ public class Turtle : BossBase
     }
     public void SpreadProjectile()
     {
-        AudioManager.Inst.PlaySFX(attackSound);
+        //AudioManager.Inst.PlaySFX(attackSound);
 
         foreach (Transform projPosition in spreadProjectilePosition)
         {
@@ -102,18 +84,21 @@ public class Turtle : BossBase
     }
     public void LaunchTornado()
     {
-        AudioManager.Inst.PlaySFX(attackSound);
+        //.Inst.PlaySFX(attackSound);
 
         parentPool.GetPoolObject(tornado).Init(singleProjectilePosition.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - singleProjectilePosition.position));
 
         StabilizePattern();
     }
+    */
 
     private int curCollisionCount = 0;
     public void TurtleSpin()
     {
+        /*
         anim.SetInteger(EntityAnimHash.Pattern, 4); // 가끔가다 바로 벌떡 일어날 때가 있길래 확인사살용을 Pattern을 4로 한 번 더 고정
         AudioManager.Inst.PlaySFX(shellSound);
+        */
 
         enemyInteract.damageResistance = 0.75f;
 

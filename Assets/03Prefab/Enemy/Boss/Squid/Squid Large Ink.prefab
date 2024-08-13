@@ -104,6 +104,7 @@ MonoBehaviour:
   curHP: 0
   damageResistance: 0
   skillEff: 0.5
+  itemDropProbability: 0.1
   skillPerDead: 5
   expPerDead: 30
   scorePerDead: 50
@@ -4985,8 +4986,8 @@ GameObject:
   - component: {fileID: 8756212028316647979}
   - component: {fileID: 4314487310963466937}
   - component: {fileID: 3517747528108019877}
-  - component: {fileID: 5276314188738881016}
   - component: {fileID: 3186412818534484113}
+  - component: {fileID: -2697292291328197485}
   m_Layer: 7
   m_Name: Squid Large Ink
   m_TagString: Untagged
@@ -5023,6 +5024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd2077754fd7b940839e94cb9b7916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   scrollSpeed: 0
   scrolling: 1
 --- !u!50 &8756212028316647979
@@ -5108,41 +5110,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.15
---- !u!114 &5276314188738881016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9133884130860978269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd54521f44b5b54f8432bd15f2cdbab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolObjectID: 11092
-  awakeSound: {fileID: 8300000, guid: 63d18e3c905fdab43a025e9f5a718f98, type: 3}
-  destroyWhenBomb: 1
-  parentPool: {fileID: 0}
-  usePattern: 0
-  patternNumber: 1
-  patternTerm: 2
-  itemDropProbability: 0
-  usePatternList: 0
-  patternList: []
-  patternTermInList: 1
-  coralColorArray:
-  - {r: 1, g: 1, b: 1, a: 1}
-  neatSprite: {fileID: 21300000, guid: 2dd7bb141d6977947aacf75fa90e2afe, type: 3}
-  crackSound: {fileID: 0}
-  crackedSprite: {fileID: 21300000, guid: 2dd7bb141d6977947aacf75fa90e2afe, type: 3}
-  breakSound: {fileID: 0}
-  splinter: {fileID: 0}
-  positionOffset: {x: -0.5, y: 0.5}
-  angleOffset: {x: -30, y: 30}
-  splintNumber: 8
-  crackParticle: {fileID: 1279532117126994086}
-  pustuleExplosion: {fileID: 1285101055613379028, guid: 51b24132af5f9dd4b957a958ed14bc84, type: 3}
 --- !u!114 &3186412818534484113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5155,8 +5122,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 6
   tracking: 1
   impulseOnAwake: 1
-  useRotation: 0
+  lookPlayer: 0
+  spin: 0
+  spinSpeed: 0
   speed: 25
   driftTime: 2
+--- !u!114 &-2697292291328197485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133884130860978269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObjectID: 11092
+  destroyWhenBomb: 1
+  parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 8300000, guid: 63d18e3c905fdab43a025e9f5a718f98, type: 3}
+  useAwakeColor: 0
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  usePattern: 0
+  patternNumber: 1
+  patternTerm: 2
+  isDistancePattern: 0
+  detectionRadius: 0
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 1
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -2697292291328197485}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlayParticle
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1279532117126994086}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -2697292291328197485}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 99def6da3edccc54c9d078353bbe8f22, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  useDeadPattern: 1
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -2697292291328197485}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1285101055613379028, guid: 51b24132af5f9dd4b957a958ed14bc84, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  attackPivot: {fileID: 0}
+  patternAttacks: []
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  edgeCasePatterns: []
