@@ -25,7 +25,7 @@ public class BossAnchovy : StraightMoveEnemy
 
     }
 
-    protected override void Pattern(int caseNumber)
+    public override void Pattern(int caseNumber)
     {
 
     }

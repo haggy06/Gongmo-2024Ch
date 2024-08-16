@@ -36,29 +36,31 @@ public class Monkfish : EnemyBase
     {
         base.Init(position, angle);
 
-        tracking.tracking = false;
+        //tracking.tracking = false;
         tracking.MoveSpeed = Random.Range(5f, 7f);
         tracking.driftTime = Random.Range(0.25f, 0.75f);
 
-        enemyInteract.damageResistance = 0f;
+        //enemyInteract.DamageResistance = 0f;
 
-        MonkfishLightball.PlayerDetected += PlayerFound;
+        MonkfishProjectile.PlayerDetected += PlayerFound;
     }
     protected override void ObjectReturned()
     {
         base.ObjectReturned();
 
-        MonkfishLightball.PlayerDetected -= PlayerFound;
+        MonkfishProjectile.PlayerDetected -= PlayerFound;
     }
     private void PlayerFound()
     {
+        StopCoroutine("PatternCor");
         Pattern(2);
-        PatternInvoke();
 
-        enemyInteract.damageResistance = 0.25f;
+        /*
+        enemyInteract.DamageResistance = 0.25f;
         tracking.tracking = true;
+        */
 
-        MonkfishLightball.PlayerDetected -= PlayerFound; // 반환 될 때까지 더 이상 필요가 없으므로 중복 실행 방지를 위해 구독을 날려준다.
+        MonkfishProjectile.PlayerDetected -= PlayerFound; // 반환 될 때까지 더 이상 필요가 없으므로 중복 실행 방지를 위해 구독을 날려준다.
     }
     /*
     public void SpreadLight()

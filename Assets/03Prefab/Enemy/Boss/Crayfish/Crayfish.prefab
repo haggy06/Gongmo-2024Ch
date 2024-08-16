@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1997538830987161160}
   - component: {fileID: 1934750245695838875}
   - component: {fileID: 6763671544516816178}
-  - component: {fileID: 8804762620378601771}
+  - component: {fileID: 2531458524249832630}
   - component: {fileID: 4996772050373437398}
   - component: {fileID: 4899636124785498123}
   m_Layer: 7
@@ -309,10 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b90fb1689051374ab7bb94369fa5aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moving: 0
+  moveSpeed: 1
   howMuchMove: 5
-  speed: 1
 --- !u!50 &1934750245695838875
 Rigidbody2D:
   serializedVersion: 4
@@ -361,7 +359,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8804762620378601771
+--- !u!114 &2531458524249832630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,7 +368,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8804185642637300167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96318cb5f8ad9564aa46b025d0c26b4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11080
@@ -378,46 +376,166 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PatternTerm
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ONScript
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7990425111854436603}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ONScript
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5090204641623350067}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   usePattern: 1
   patternNumber: 1
-  patternTerm: 1
+  patternTerm: 1.5
   isDistancePattern: 0
   detectionRadius: 0
   usePatternList: 1
   patternList: 0d000000150000000c0000001600000017000000
   patternTermInList: 1
-  useHalfHPPattern: 0
+  useHalfHPPattern: 1
   HalfHPPattern:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_AttackPivot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5788267179349750933}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5949548049984984952, guid: 9b9dc7e0644a5ca499391d1179725ce0, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_AttackPivot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6731473371922947234}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PatternTerm
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useDeadPattern: 0
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 0}
-  patternAttacks: []
+  attackPivot: {fileID: 6731473371922947234}
+  leaveColor: 0
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4145137421009171231, guid: d285975a28242d94283fa644ed7606c9, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2401125208822535450, guid: 28218208690eb754fabaa9f9af4687e7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2531458524249832630}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2743063609530202681, guid: 1bb186a1d756fd14f95fc1da5b9b2267, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
   bossName: "\uC7A5\uAD70 \uAC00\uC7AC"
   initialPosition: {x: 0, y: 4, z: 0}
   comebackSpeed: 10
-  projectilePosition: {fileID: 6731473371922947234}
-  projectile: {fileID: 4145137421009171231, guid: d285975a28242d94283fa644ed7606c9, type: 3}
-  shokewaveBall: {fileID: 2378036558325707802, guid: 28218208690eb754fabaa9f9af4687e7, type: 3}
-  smashExplosion: {fileID: 2743063609530202681, guid: 1bb186a1d756fd14f95fc1da5b9b2267, type: 3}
-  explosionRadius: 5
-  leftTongsCollider: {fileID: 5090204641623350067}
-  boomerangHand: {fileID: 7990425111854436603}
-  boomerangPosition: {fileID: 5788267179349750933}
-  boomerang: {fileID: 7323474722768719102, guid: 9b9dc7e0644a5ca499391d1179725ce0, type: 3}
 --- !u!60 &4996772050373437398
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -622,7 +740,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 1000
   curHP: 0
-  damageResistance: 0
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 100

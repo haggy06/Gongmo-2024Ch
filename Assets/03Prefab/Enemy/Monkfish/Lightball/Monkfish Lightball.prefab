@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5944309539340667311}
   - component: {fileID: 3206894103126171461}
   - component: {fileID: 616564646394972744}
-  - component: {fileID: 6675056934549862220}
   - component: {fileID: 6295764343010508238}
   m_Layer: 7
   m_Name: Monkfish Lightball
@@ -172,18 +171,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6675056934549862220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244836744400552684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3454bcf949923c8409dc14b9005e592d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6295764343010508238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 10011
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
   lifeTime: 2
   speed: 5

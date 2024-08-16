@@ -22,7 +22,9 @@ public abstract class HitBase : MonoBehaviour
 
     [Space(5)]
     [Range(0f, 1f)]
-    public float damageResistance = 0f;
+    protected float damageResistance = 0f;
+    public float DamageResistance { get => damageResistance; set => damageResistance = value; }
+
     protected virtual void Awake()
     {
         HalfHPEvent += HalfHP;

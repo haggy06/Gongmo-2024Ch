@@ -32,7 +32,7 @@ public class Turtle : BossBase
         base.Init(position, angle);
 
         patternTerm = 2f;
-        enemyInteract.damageResistance = 0f;
+        enemyInteract.DamageResistance = 0f;
 
         repeatMove.enabled = false;
         spining = false;
@@ -41,13 +41,12 @@ public class Turtle : BossBase
     }
     protected override void HalfHP()
     {
-        StopCoroutine("PatternCor");
+        base.HalfHP();
+
         patternTerm = 1.5f;
 
         spining = true;
         repeatMove.enabled = false;
-
-        anim.SetInteger(EntityAnimHash.Pattern, 4);
     }
 
     /* 거북 패턴
@@ -55,7 +54,7 @@ public class Turtle : BossBase
      * 2. 회오리 날리기
      * 3. 돌 던지기
      */
-    protected override void Pattern(int caseNumber)
+    public override void Pattern(int caseNumber)
     {
         if (!spining) // 회전 중이 아닐 경우
         {
@@ -100,7 +99,7 @@ public class Turtle : BossBase
         AudioManager.Inst.PlaySFX(shellSound);
         */
 
-        enemyInteract.damageResistance = 0.75f;
+        enemyInteract.DamageResistance = 0.75f;
 
         curCollisionCount = 0;
 
@@ -110,7 +109,7 @@ public class Turtle : BossBase
     }
     public void TurtleSpinEnd()
     {
-        enemyInteract.damageResistance = 0f;
+        enemyInteract.DamageResistance = 0f;
 
         AudioManager.Inst.PlaySFX(shellSound);
 
@@ -146,10 +145,8 @@ public class Turtle : BossBase
         transform.eulerAngles = Vector3.zero;
     }
 
-    protected override void InitialPositionArrive()
+    protected void InitialPositionArrive()
     {
-        base.InitialPositionArrive();
-
         if (spining) // 돌고 있었을 경우
         {
             curCollisionCount = 0;

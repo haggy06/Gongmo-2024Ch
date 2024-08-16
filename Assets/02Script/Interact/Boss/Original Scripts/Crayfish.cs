@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Crayfish : BossBase
 {
+    /*
     [Header("Normal Pattern")]
     [SerializeField]
     private Transform projectilePosition;
@@ -19,7 +20,7 @@ public class Crayfish : BossBase
     private PoolObject smashExplosion;
     [SerializeField]
     private float explosionRadius;
-
+    */
     [Header("Throw Boomerang")]
     [SerializeField]
     private Collider2D leftTongsCollider;
@@ -37,7 +38,7 @@ public class Crayfish : BossBase
         base.Init(position, angle);
 
         patternTerm = 1.5f;
-        enemyInteract.damageResistance = 0f;
+        enemyInteract.DamageResistance = 0f;
 
         boomerangHand.color = Color.white;
         leftTongsCollider.enabled = true;
@@ -45,12 +46,12 @@ public class Crayfish : BossBase
 
     protected override void HalfHP()
     {
-        patternTerm = 1f; // 패턴 시전 속도가 빨라짐
-        anim.SetInteger(EntityAnimHash.Pattern, 4); // 부메랑 던지기 실행
-        enemyInteract.damageResistance = 0.5f;
-        StopCoroutine("PatternCor");
-    }
+        base.HalfHP();
 
+        patternTerm = 1f; // 패턴 시전 속도가 빨라짐
+        enemyInteract.DamageResistance = 0.5f;
+    }
+    /*
     protected override void Pattern(int caseNumber)
     {
         anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
@@ -80,24 +81,19 @@ public class Crayfish : BossBase
 
         StabilizePattern();
     }
+    */
 
     public void ThrowBoomerang()
     {
-        enemyInteract.damageResistance = 0f;
-        StartCoroutine("PatternCor");
+        enemyInteract.DamageResistance = 0f;
 
         PoolObject bmr = parentPool.GetPoolObject(boomerang);
         bmr.Init(boomerangPosition.position, -90f); // 부메랑 발사
-        bmr.GetComponent<Rigidbody2D>().velocity = Vector2.down * 10f; // 부메랑 초기속도 설정
-
+        //bmr.GetComponent<Rigidbody2D>().velocity = Vector2.down * 10f; // 부메랑 초기속도 설정
 
         boomerangHand.color = new Color(1f, 1f, 1f, 0f);
         leftTongsCollider.enabled = false;
 
         StabilizePattern();
-    }
-    protected override void Dead(EntityType killer)
-    {
-        base.Dead(killer);
     }
 }

@@ -40,14 +40,14 @@ public class Puffer : EnemyBase
     {
         base.Init(position, angle);
 
-        enemyInteract.damageResistance = 0f;
+        enemyInteract.DamageResistance = 0f;
     }
 
     /* 복어 공격 패턴
      * 1. 자폭 (근접)
      * 2. 가시 발사 (원거리)
      */
-    protected override void Pattern(int caseNumber)
+    public override void Pattern(int caseNumber)
     {
         if (PatternCheck.ShortDistance(transform.position, explosionReach)) // 근접 공격이 가능할 경우
         {

@@ -16,12 +16,12 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    private Dictionary<int, Stack<PoolObject>> poolDictionary = new Dictionary<int, Stack<PoolObject>>();
+    private Dictionary<string, Stack<PoolObject>> poolDictionary = new Dictionary<string, Stack<PoolObject>>();
     public PoolObject GetPoolObject(PoolObject poolObject)
     {
         PoolObject value;
 
-        if (!poolDictionary.TryGetValue(poolObject.PoolObjectID, out Stack<PoolObject> pool)) // poolDictionary에서 poolObject에 해당하는 풀을 불러옴
+        if (!poolDictionary.TryGetValue(poolObject.name, out Stack<PoolObject> pool)) // poolDictionary에서 poolObject에 해당하는 풀을 불러옴
         {
             //  poolDictionary에 poolObject에 해당하는 풀이 없을 경우
             print("풀 새로 제작");
@@ -32,26 +32,8 @@ public class ObjectPool : MonoBehaviour
         {
             // 오브젝트를 꺼낼 수 없을 경우
             value = Instantiate(poolObject.gameObject).GetComponent<PoolObject>(); // 오브젝트를 하나 새로 만들고
+            value.name = poolObject.name;
             value.parentPool = this; // 이 풀을 기억시켜둠
-        }
-
-        value.transform.parent = null;
-        value.ExitFromPool();
-        return value;
-    }
-    public PoolObject GetPoolObject(int poolObjectID)
-    {
-        PoolObject value;
-
-        if (!poolDictionary.TryGetValue(poolObjectID, out Stack<PoolObject> pool)) // poolDictionary에서 poolObject에 해당하는 풀을 불러옴
-        {
-            Debug.LogError("poolObjectID만으로는 새 오브젝트 풀을 만들 수 없습니다.");
-            return null;
-        }
-        if (!pool.TryPop(out value)) // 불러온 풀에서 오브젝트 하나 꺼내옴
-        {
-            Debug.LogError("poolObjectID만으로는 부족한 PoolObject를 보충할 수 없습니다.");
-            return null;
         }
 
         value.transform.parent = null;
@@ -61,22 +43,22 @@ public class ObjectPool : MonoBehaviour
 
     public void SetPoolObject(PoolObject poolObject)
     {
-        if (poolDictionary.TryGetValue(poolObject.PoolObjectID, out Stack<PoolObject> pool)) // poolDictionary에서 poolObject에 해당하는 풀을 불러옴
+        if (poolDictionary.TryGetValue(poolObject.name, out Stack<PoolObject> pool)) // poolDictionary에서 poolObject에 해당하는 풀을 불러옴
         {
             pool.Push(poolObject); // 풀에 반환된 오브젝트 넣어 둠
-            if (poolObjectContainers.TryGetValue(poolObject.PoolObjectID, out Transform container)) // 해당하는 컨테이너를 가져와
+            if (poolObjectContainers.TryGetValue(poolObject.name, out Transform container)) // 해당하는 컨테이너를 가져와
             {
                 poolObject.transform.parent = container; // 부모로 삼게 함
             }
             else // 알맞은 컨테이너가 없을 경우
             {
-                Debug.LogWarning(poolObject.gameObject.name + "에 해당하는 컨테이너 없음");
+                Debug.LogWarning(poolObject.name + "에 해당하는 컨테이너 없음");
 
                 //container = Instantiate(new GameObject(), transform).transform; // 컨테이너를 새로 만들고
                 container = new GameObject().transform;
                 container.parent = transform;
-                container.name = poolObject.gameObject.name + " Pool";
-                poolObjectContainers.Add(poolObject.PoolObjectID, container);
+                container.name = poolObject.name + " Pool";
+                poolObjectContainers.Add(poolObject.name, container);
 
                 poolObject.transform.parent = container; // 부모로 삼게 함
             }
@@ -87,29 +69,37 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    private Dictionary<int,Transform> poolObjectContainers = new Dictionary<int, Transform>(); // 오브젝트가 반환되었을 때 넣어둘 컨테이너들
+    private Dictionary<string, Transform> poolObjectContainers = new Dictionary<string, Transform>(); // 오브젝트가 반환되었을 때 넣어둘 컨테이너들
     private Stack<PoolObject> CreatePool(PoolObject poolObject)
     {
         Stack<PoolObject> pool;
 
-        if (poolDictionary.TryGetValue(poolObject.PoolObjectID, out pool)) // 이미 풀이 있을 경우 불러옴
+        if (poolDictionary.TryGetValue(poolObject.name, out pool)) // 이미 풀이 있을 경우 불러옴
         {
-            Debug.LogWarning("이미 targetObject에 대한 오브젝트 풀이 있음.");
+            if (poolObjectContainers.TryGetValue(poolObject.name, out Transform container))
+            {
+                Debug.LogWarning("이미 " + poolObject.name + "에 대한 오브젝트 풀이 있음 (" + container.name + ")");
+            }
+            else
+            {
+                Debug.LogWarning("이미 " + poolObject.name + "에 대한 오브젝트 풀이 있음.");
+            }
         }
         else // 풀이 없을 경우
         {
             pool = new Stack<PoolObject>();
-            poolDictionary.Add(poolObject.PoolObjectID, pool);
+            poolDictionary.Add(poolObject.name, pool);
 
             //Transform container = Instantiate(new GameObject(), transform).transform;
             Transform container = new GameObject().transform;
             container.parent = transform;
             container.name = poolObject.gameObject.name + " Pool";
-            poolObjectContainers.Add(poolObject.PoolObjectID, container);
+            poolObjectContainers.Add(poolObject.name, container);
 
             for (int i = 0; i < initialNumber; i++) // 초기 생성 수만큼 반복
             {
                 PoolObject obj = Instantiate(poolObject.gameObject, container).GetComponent<PoolObject>(); // 오브젝트를 컨테이너 자식으로 새로 만들고
+                obj.name = poolObject.name;
 
                 obj.parentPool = this; // 이 풀을 기억시킨 후
                 //obj.ReturnToPool(); // 풀에 넣어둠

@@ -17,9 +17,8 @@ public class StraightMove : MoveBase
 
     private float time = 0f;
     private float beforeValue = 0f;
-    protected override void OnEnable()
+    private void OnEnable()
     {
-        base.OnEnable();
         if (zigZag)
         {
             actualSinHeight = Random.Range(sinHeightRange.x, sinHeightRange.y);

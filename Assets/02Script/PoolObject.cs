@@ -68,12 +68,14 @@ public class PoolObject : MonoBehaviour
             case InitDirection.Player:
                 transform.eulerAngles = Vector3.forward * MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - transform.position);
                 break;
+
+            case InitDirection.Random:
+                transform.eulerAngles = Vector3.forward * Random.Range(0, 360);
+                break;
         }
 
         if (awakeSound)
             AudioManager.Inst.PlaySFX(awakeSound);
-
-        
 
         if (destroyWhenBomb)
             PlayerInteract.BombEvent += DestroyByBomb;
@@ -82,4 +84,24 @@ public class PoolObject : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
+}
+
+public struct PoolObjectData 
+{
+
+    [SerializeField, Tooltip("이 오브젝트의 ID.")]
+    private int poolObjectID;
+    public int PoolObjectID => poolObjectID;
+
+    [SerializeField]
+    private bool destroyWhenBomb;
+    [HideInInspector]
+    public ObjectPool parentPool;
+
+    [Space(5)]
+    [SerializeField]
+    private InitDirection initDirection;
+    [SerializeField]
+    private AudioClip awakeSound;
+    public AudioClip AwakeSound => awakeSound;
 }

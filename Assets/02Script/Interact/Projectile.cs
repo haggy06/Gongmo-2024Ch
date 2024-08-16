@@ -75,7 +75,7 @@ public class Projectile : PoolObject
             SpawnSubProj();
         }
 
-        rigid2D.velocity = MyCalculator.Deg2Vec(angle) * speed;
+        rigid2D.velocity = MyCalculator.Deg2Vec(transform.eulerAngles.z) * speed;
 
 
         StartCoroutine("AutoReturn");

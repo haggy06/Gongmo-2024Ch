@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 4
   tracking: 1
   impulseOnAwake: 0
   lookPlayer: 1
@@ -350,7 +350,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 3
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -372,12 +371,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1900529660193959990}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Random
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2401881782769809721, guid: 37a87e7d534a72943aa46c9c102c459a, type: 3}
@@ -389,7 +389,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1900529660193959990}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Random
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8888517260246451585, guid: e4f2ce8497c80a947860dec2b613d515, type: 3}
@@ -400,12 +400,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1900529660193959990}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
+        m_TargetAssemblyTypeName: PoolObject, Assembly-CSharp
+        m_MethodName: ReturnToPool
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 9efbfd5e33712c749b392c4ef08c4f05, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -415,7 +415,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1900529660193959990}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Forward
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8888517260246451585, guid: 081dc292ffaad8d4aa5caa41514affe9, type: 3}
@@ -452,7 +452,19 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 7.5
+          m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1900529660193959990}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 9efbfd5e33712c749b392c4ef08c4f05, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2

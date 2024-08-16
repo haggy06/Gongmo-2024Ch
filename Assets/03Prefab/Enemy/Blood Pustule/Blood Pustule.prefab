@@ -196,6 +196,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: -7680781342307492984}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlayParticle
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3400722618725183569}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -7680781342307492984}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 2
         m_Arguments:
@@ -247,10 +259,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   attackPivot: {fileID: 6973027983325616502}
+  followColor: 0
   patternAttacks: []
   randomNumber: 8
-  rotationRange: {x: -0.5, y: 0.5}
-  positionRange: {x: -30, y: 30}
+  rotationRange: {x: 30, y: 150}
+  positionRange: {x: -0.5, y: 0.5}
   scatterPositions: {fileID: 0}
   edgeCasePatterns: []
 --- !u!1 &7947056867167115081
@@ -446,7 +459,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

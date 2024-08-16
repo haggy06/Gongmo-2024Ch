@@ -106,4 +106,4 @@ MonoBehaviour:
   color1: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.21568628}
   color2: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.60784316}
   warningTime: 2
-  loadedEnemy: {fileID: 5222557247206742061, guid: d30e744aa82044349ba676c20d93684f, type: 3}
+  loadedEnemy: {fileID: 3688436554551405054, guid: d30e744aa82044349ba676c20d93684f, type: 3}

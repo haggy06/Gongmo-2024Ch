@@ -43,7 +43,7 @@ public class Squid : BossBase
         base.Init(position, angle);
 
         tentacleON = false;
-        enemyInteract.damageResistance = 0f;
+        enemyInteract.DamageResistance = 0f;
 
         leftTentacle.sprite = rightTentacle.sprite = t1;
     }

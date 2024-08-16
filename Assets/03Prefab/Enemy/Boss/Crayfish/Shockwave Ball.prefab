@@ -206,8 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   zigZag: 0
-  sinHeight: 0
-  sinFrequency: 0
+  sinHeightRange: {x: 0, y: 0}
+  sinFrequencyRange: {x: 0, y: 0}
 --- !u!114 &2401125208822535450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,9 +223,8 @@ MonoBehaviour:
   poolObjectID: 10083
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  initDirection: 0
+  initDirection: 3
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -259,6 +258,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
@@ -278,7 +278,7 @@ MonoBehaviour:
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  scatterPivot: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!58 &6044580221581794451
 CircleCollider2D:
   m_ObjectHideFlags: 0

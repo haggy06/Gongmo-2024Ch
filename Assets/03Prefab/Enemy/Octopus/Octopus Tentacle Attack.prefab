@@ -4898,9 +4898,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d052db12a2cb04f8e2f7e97d9efe81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 12010
-  awakeSound: {fileID: 8300000, guid: b54dd438aab2fa84f838b17f3253fc66, type: 3}
+  poolObjectID: 12011
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 8300000, guid: b54dd438aab2fa84f838b17f3253fc66, type: 3}
   attackTime: 0.5
   lifeTime: 0.75

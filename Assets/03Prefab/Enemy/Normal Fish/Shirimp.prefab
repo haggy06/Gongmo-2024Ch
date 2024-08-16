@@ -131,13 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 17.5
   tracking: 1
   impulseOnAwake: 0
   lookPlayer: 0
   spin: 1
   spinSpeed: 360
-  driftTime: 2.5
+  driftTime: 1.25
 --- !u!95 &2673970186629134387
 Animator:
   serializedVersion: 5
@@ -176,7 +176,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -198,11 +197,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks: []
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
 --- !u!82 &603255684657449898
 AudioSource:
@@ -437,7 +440,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 30
   curHP: 0
-  damageResistance: 0
   skillEff: 0.2
   itemDropProbability: 0.1
   skillPerDead: 5

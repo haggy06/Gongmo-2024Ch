@@ -1731,7 +1731,7 @@ GameObject:
   - component: {fileID: 1935700017}
   - component: {fileID: 1935700016}
   - component: {fileID: 1935700015}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Screen Boarder
   m_TagString: Boarder
   m_Icon: {fileID: 0}

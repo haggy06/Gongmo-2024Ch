@@ -55,6 +55,18 @@ public class Octopus : EnemyBase
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (hiding && collision.TryGetComponent<PlayerController>(out _))
+        {
+            if (PatternCheck.ShortDistance(transform.position, detectionRadius)) // 플레이어 감지
+            {
+                Appear();
+            }
+        }
+    }
+
     private void Appear()
     {
         if (hiding) // 잠복 중일 경우

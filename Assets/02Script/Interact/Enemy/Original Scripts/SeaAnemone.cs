@@ -38,7 +38,7 @@ public class SeaAnemone : EnemyBase
      * 1. 촉수 할퀴기 (근접)
      * 2. 산탄 발사 (원거리)
      */
-    protected override void Pattern(int caseNumber) // 말미잘은 리스트를 안 쓰니 패스
+    public override void Pattern(int caseNumber) // 말미잘은 리스트를 안 쓰니 패스
     {
         if (PatternCheck.ShortDistance(spreadPosition.position, tentacleReach)) // 근접 공격이 가능할 경우
         {

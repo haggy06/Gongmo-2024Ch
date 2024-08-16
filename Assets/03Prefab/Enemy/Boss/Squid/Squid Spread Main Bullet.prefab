@@ -154,16 +154,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 10090
-  awakeSound: {fileID: 8300000, guid: 46382423a261ad44d82306efa842df51, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 1
+  awakeSound: {fileID: 8300000, guid: 46382423a261ad44d82306efa842df51, type: 3}
   attackableCount: 1
   lifeTime: 3
   speed: 15
   spreadTiming: 3
   subObject: {fileID: 7469500978298084603, guid: bc726525bc4f74b4cae4a4b8d1f1f077, type: 3}
   SubProjSound: {fileID: 0}
-  spawnMyPos: 0
+  spawnForward: 0
+  spawnBackward: 0
   projPair: 5
   angleDiff: 15
   useTracking: 0

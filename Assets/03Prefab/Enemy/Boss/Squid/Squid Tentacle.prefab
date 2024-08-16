@@ -148,8 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 75
   zigZag: 0
-  sinHeight: 0
-  sinFrequency: 0
+  sinHeightRange: {x: 0, y: 0}
+  sinFrequencyRange: {x: 0, y: 0}
 --- !u!114 &8211168510727461971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +167,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 8300000, guid: afc0837ceb2296a4dad7c1cdcce17442, type: 3}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -189,12 +188,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7276039435104849918}
         m_TargetAssemblyTypeName: MoveBase, Assembly-CSharp
-        m_MethodName: ChangeSpeed
+        m_MethodName: set_MoveSpeed
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

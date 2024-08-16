@@ -137,7 +137,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 70
   curHP: 0
-  damageResistance: 0
   skillEff: 0.01
   itemDropProbability: 0.1
   skillPerDead: 3
@@ -296,7 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  scrollSpeed: 6
   scrolling: 1
 --- !u!114 &-1362423431985401539
 MonoBehaviour:
@@ -310,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1
   zigZag: 1
   sinHeightRange: {x: 60, y: 135}
   sinFrequencyRange: {x: 0.1, y: 1}
@@ -331,7 +329,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 1
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -353,9 +350,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks: []
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []

@@ -297,6 +297,8 @@ GameObject:
   - component: {fileID: 1072810076768095993}
   - component: {fileID: 208443366010085740}
   - component: {fileID: 6689379812473798131}
+  - component: {fileID: 585384958150907587}
+  - component: {fileID: 504329774774803770}
   m_Layer: 6
   m_Name: Turtle
   m_TagString: Untagged
@@ -417,10 +419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b90fb1689051374ab7bb94369fa5aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  moving: 0
+  moveSpeed: 3
   howMuchMove: 5
-  speed: 3
 --- !u!114 &6689379812473798131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +438,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -454,24 +453,13 @@ MonoBehaviour:
   useHalfHPPattern: 1
   HalfHPPattern:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6689379812473798131}
-        m_TargetAssemblyTypeName: Turtle, Assembly-CSharp
-        m_MethodName: TurtleSpin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   useDeadPattern: 0
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
@@ -503,7 +491,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6689379812473798131}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Player
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: -80272098306791964, guid: b569a648d7052f44f8d766a468bbec1b, type: 3}
@@ -529,7 +517,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6689379812473798131}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Player
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4145137421009171231, guid: bad2d8b1751b4f147819a141e23ae346, type: 3}
@@ -554,7 +542,10 @@ MonoBehaviour:
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 6218669534582386309}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
   bossName: "\uC7A5\uB85C \uAC70\uBD81"
   initialPosition: {x: 0, y: 7, z: 0}
@@ -564,6 +555,88 @@ MonoBehaviour:
   speed: 13
   collisionCount: 5
   spining: 0
+--- !u!114 &585384958150907587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433050783441460575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fd1e0b2e5e6374386f6d34d07b19a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subPatterns:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 504329774774803770}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlayCoroutine
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+  triggerWithScreen: 1
+  triggerEntity: 0
+  triggerCountForInvoke: 05000000
+--- !u!114 &504329774774803770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433050783441460575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObjectID: 0
+  destroyWhenBomb: 0
+  parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  usePattern: 1
+  patternNumber: 1
+  patternTerm: 2
+  isDistancePattern: 0
+  detectionRadius: 0
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  leaveColor: 0
+  patternAttacks: []
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
+  edgeCasePatterns: []
+  bossName: 
+  initialPosition: {x: 0, y: 0, z: 0}
+  comebackSpeed: 0
 --- !u!1 &3493579179780746126
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +961,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 800
   curHP: 0
-  damageResistance: 0
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 50

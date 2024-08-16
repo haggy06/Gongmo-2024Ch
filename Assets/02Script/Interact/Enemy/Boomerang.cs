@@ -18,7 +18,7 @@ public class Boomerang : EnemyBase
 
     }
 
-    protected override void Pattern(int caseNumber)
+    public override void Pattern(int caseNumber)
     {
 
     }

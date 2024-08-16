@@ -28,20 +28,15 @@ public class TrackingPlayer : MoveBase
         rigid2D = GetComponent<Rigidbody2D>();
     }
 
-    private bool firstUpdate = false;
-    private void OnDisable()
+    private void OnEnable()
     {
-        firstUpdate = false;
+        if (impulseOnAwake)
+        {
+            rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed;
+        }
     }
     private void FixedUpdate()
     {
-        if (impulseOnAwake && firstUpdate)
-        {
-            firstUpdate = true;
-            rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * actualSpeed;
-        }
-
-
         if (tracking)
         {
             float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Inst.transform.position - transform.position).normalized);
@@ -51,7 +46,7 @@ public class TrackingPlayer : MoveBase
             else if (spin)
                 transform.Rotate(Vector3.forward * (spinSpeed * Time.fixedDeltaTime));
 
-            Vector2 goalVelo = MyCalculator.Deg2Vec(lookPlayerAngle) * actualSpeed;
+            Vector2 goalVelo = MyCalculator.Deg2Vec(lookPlayerAngle) * moveSpeed;
             Vector2 newVelo = rigid2D.velocity + (goalVelo - rigid2D.velocity) * (Time.fixedDeltaTime / driftTime);
 
             rigid2D.velocity = newVelo;

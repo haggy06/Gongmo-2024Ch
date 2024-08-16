@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using UnityEditor;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBase : PoolObject
 {
     #region _Init Setting_
     [Header("Init Setting")]
-    [SerializeField]
-    protected bool useAwakeColor = false;
     [SerializeField]
     protected Color[] awakeColor;
     [Space(5)]
@@ -22,11 +21,13 @@ public class EnemyBase : PoolObject
     [Header("Default Pattern Setting")]
     [SerializeField]
     protected bool usePattern = true;
+    public bool UsePattern { set => usePattern = value; }
 
     [SerializeField]
     protected int patternNumber = 1;
     [SerializeField]
     protected float patternTerm = 2f;
+    public float PatternTerm { set => patternTerm = value; }
     #endregion
 
     #region _Distance Pattern Setting_
@@ -66,6 +67,10 @@ public class EnemyBase : PoolObject
     [Header("Attack Setting")]
     [SerializeField]
     protected Transform attackPivot;
+    public Transform AttackPivot { set => attackPivot = value; }
+
+    [SerializeField]
+    protected bool leaveColor = false;
 
     [Space(5)]
     [SerializeField, Tooltip("패턴의 caseNumber 순서에 맞게 이벤트 삽입")]
@@ -78,10 +83,18 @@ public class EnemyBase : PoolObject
     protected Vector2 rotationRange;
     [SerializeField]
     protected Vector2 positionRange;
+    [SerializeField]
+    protected Vector2 positionRange1;
+    [SerializeField]
+    protected Vector2 positionRange2;
 
     public int RandomNumber { set => randomNumber = value; }
     public float RotationRange { set => rotationRange = new Vector2(-value, value); }
-    public float PositionRange { set => positionRange = new Vector2(-value, value); }
+
+    public float PositionRange1_X { set => positionRange1.x = -value; }
+    public float PositionRange1_Y { set => positionRange1.y = -value; }
+    public float PositionRange2_X { set => positionRange2.x = -value; }
+    public float PositionRange2_Y { set => positionRange2.y = -value; }
 
 
     [Space(5)]
@@ -93,6 +106,10 @@ public class EnemyBase : PoolObject
 
     #region _Edge Case Setting_
     [Header("Edge Case Setting")]
+    [SerializeField]
+    protected SpriteRenderer sRenderer;
+    public SpriteRenderer SRenderer { set => sRenderer = value; }
+
     [SerializeField]
     protected UnityEvent[] edgeCasePatterns;
     #endregion
@@ -109,9 +126,9 @@ public class EnemyBase : PoolObject
         enemyInteract = GetComponentInChildren<EnemyInteract>();
 
         if (attackPivot == null)
-        {
             attackPivot = transform;
-        }
+        if (sRenderer == null)
+            sRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     protected virtual void Start()
     {
@@ -134,10 +151,20 @@ public class EnemyBase : PoolObject
         base.Init(position, angle);
 
         if (initEvent != null)
+        {
             initEvent.Invoke();
+            Debug.Log(name + "초기화 UnityEvent 실행");
+        }
 
-        if (useAwakeColor)
-            GetComponentInChildren<SpriteRenderer>().color = awakeColor[Random.Range(0, awakeColor.Length)];
+        if (awakeColor.Length > 0)
+        {
+            int i = Random.Range(0, awakeColor.Length);
+
+            GetComponentInChildren<SpriteRenderer>().color = awakeColor[i];
+            enemyInteract.SaveOriginalColor();
+
+            Debug.Log(name + " 컬러 랜덤 세팅 : " + i);
+        }
 
         enemyInteract.Init();
 
@@ -145,26 +172,28 @@ public class EnemyBase : PoolObject
         {
             StabilizePattern();
         }
-        enemyInteract.GetComponent<SpriteRenderer>().color = enemyInteract.originalColor;
     }
 
-    protected bool patternRunning = false;
+    protected int cPatternArray;
     protected IEnumerator PatternCor()
     {
+        sRenderer = GetComponentInChildren<SpriteRenderer>();
         yield return YieldReturn.WaitForSeconds(patternTerm);
 
-        patternRunning = true;
         if (usePatternList) // 패턴 리스트를 사용할 경우
         {
-            int patternArray = patternList[Random.Range(0, patternList.Count)];
+            cPatternArray = patternList[Random.Range(0, patternList.Count)];
+            string patternArr = cPatternArray.ToString();
 
-            while (patternArray > 0)
+            foreach (char c in patternArr)
             {
-                Pattern(patternArray % 10);
-                patternArray /= 10;
+                cPatternArray /= 10;
+                Pattern(c - '0');
 
                 yield return YieldReturn.WaitForSeconds(patternTermInList);
             }
+
+            cPatternArray = 0;
         }
         else if (isDistancePattern) // 거리별 패턴을 사용할 경우
         {
@@ -176,9 +205,8 @@ public class EnemyBase : PoolObject
         {
             Pattern(Random.Range(1, patternNumber + 1)); // 랜덤한 패턴 실행
         }
-        patternRunning = false;
     }
-    protected virtual void Pattern(int caseNumber)
+    public virtual void Pattern(int caseNumber)
     {
         anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
     }
@@ -187,6 +215,9 @@ public class EnemyBase : PoolObject
     {
         if (useHalfHPPattern)
         {
+            if (usePatternList)
+                cPatternArray = 0;
+
             anim.SetInteger(EntityAnimHash.Pattern, 100);
             StopCoroutine("PatternCor");
         }
@@ -207,38 +238,12 @@ public class EnemyBase : PoolObject
     {
         PoolObject pObject = parentPool.GetPoolObject(poolObject);
 
-        pObject.Init(attackPivot.position, 0f);
-    }
-    public void SpawnObject_Down(PoolObject poolObject)
-    {
-        PoolObject pObject = parentPool.GetPoolObject(poolObject);
-
-        pObject.Init(attackPivot.position, 90f);
-    }
-
-    public void SpawnObject_Forward(PoolObject poolObject)
-    {
-        PoolObject pObject = parentPool.GetPoolObject(poolObject);
-
         pObject.Init(attackPivot.position, transform.eulerAngles.z);
-    }
-
-    public void SpawnObject_Player(PoolObject poolObject)
-    {
-        PoolObject pObject = parentPool.GetPoolObject(poolObject);
-
-        pObject.Init(attackPivot.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - attackPivot.position));
-    }
-
-    public void SpawnObject_Random(PoolObject poolObject)
-    {
-        PoolObject pObject;
-        for (int i = 0; i < randomNumber; i++)
+        if (leaveColor)
         {
-            pObject = parentPool.GetPoolObject(poolObject);
-
-            pObject.Init(attackPivot.position + new Vector3(Random.Range(positionRange.x, positionRange.y), Random.Range(positionRange.x, positionRange.y), 0f), Random.Range(rotationRange.x, rotationRange.y));
-            pObject.GetComponentInChildren<SpriteRenderer>().color = enemyInteract.originalColor;
+            SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
+            if (sRenderer)
+                sRenderer.color = enemyInteract.OriginalColor;
         }
     }
     public void SpawnObject_Scatter(PoolObject poolObject)
@@ -251,14 +256,69 @@ public class EnemyBase : PoolObject
             pObject = parentPool.GetPoolObject(poolObject);
 
             pObject.Init(scatterPositions.GetChild(i).position, MyCalculator.Vec2Deg(attackPos.position - scatterPositions.position));
+            if (leaveColor)
+            {
+                SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
+                if (sRenderer)
+                    sRenderer.color = enemyInteract.OriginalColor;
+            }
         }
     }
+    public void SpawnObject_Random(PoolObject poolObject)
+    {
+        PoolObject pObject;
+        for (int i = 0; i < randomNumber; i++)
+        {
+            pObject = parentPool.GetPoolObject(poolObject);
+
+            pObject.Init(attackPivot.position + new Vector3(Random.Range(positionRange1.x, positionRange2.x), Random.Range(positionRange1.y, positionRange2.y), 0f), Random.Range(rotationRange.x, rotationRange.y));
+            if (leaveColor)
+            {
+                SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
+                if (sRenderer)
+                    sRenderer.color = enemyInteract.OriginalColor;
+            }
+        }
+    }
+
+    /*
+    public void SpawnObject_Down(PoolObject poolObject)
+    {
+        PoolObject pObject = parentPool.GetPoolObject(poolObject);
+
+        pObject.Init(attackPivot.position, -90f);
+        if (leaveColor)
+        {
+            SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
+            if (sRenderer)
+                sRenderer.color = enemyInteract.OriginalColor;
+        }
+    }
+    public void SpawnObject_Player(PoolObject poolObject)
+    {
+        PoolObject pObject = parentPool.GetPoolObject(poolObject);
+
+        pObject.Init(attackPivot.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - attackPivot.position));
+        if (leaveColor)
+        {
+            SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
+            if (sRenderer)
+                sRenderer.color = enemyInteract.OriginalColor;
+        }
+    }
+    */
     #endregion
     #region _Ect Methods_
+    public void ChangeVelo_Player(float moveSpeed)
+    {
+        rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed;
+    }
+    public void SetRotation(float euler)
+    {
+        transform.eulerAngles = Vector3.forward * euler;
+    }
     public void ChangeSprite(Sprite sprite)
     {
-        SpriteRenderer sRenderer = GetComponentInChildren<SpriteRenderer>();
-
         sRenderer.sprite = sprite;
     }
 
@@ -275,25 +335,22 @@ public class EnemyBase : PoolObject
         StartCoroutine(coroutineName);
     }
 
-    public void OFFScript(MonoBehaviour script)
+    public void OFFScript(Behaviour script)
     {
         script.enabled = false;
     }
-    public void ONScript(MonoBehaviour script)
+    public void OFFScript(Renderer script)
+    {
+        script.enabled = false;
+    }
+
+    public void ONScript(Behaviour script)
     {
         script.enabled = true;
     }
-
-    public void PatternInvoke_EdgeCase(int index)
+    public void ONScript(Renderer script)
     {
-        try
-        {
-            edgeCasePatterns[index].Invoke();
-        }
-        catch (System.Exception)
-        {
-            Debug.LogError("엣지 케이스 index에 해당하는 UnityEvent가 없음.");
-        }
+        script.enabled = true;
     }
     #endregion
 
@@ -310,7 +367,7 @@ public class EnemyBase : PoolObject
                 patternAttacks[patternIndex - 1].Invoke();
                 StabilizePattern();
         }
-        catch (System.Exception)
+        catch (System.IndexOutOfRangeException)
         {
             Debug.LogError(gameObject.name + "의 " + patternIndex + "번 패턴에 해당하는 UnityEvent가 없음.");
         }
@@ -328,11 +385,23 @@ public class EnemyBase : PoolObject
         }
     }
 
+    public void PatternInvoke_EdgeCase(int index)
+    {
+        try
+        {
+            edgeCasePatterns[index].Invoke();
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("엣지 케이스 index에 해당하는 UnityEvent가 없음.");
+        }
+    }
+
     public void StabilizePattern()
     {
         anim.SetInteger(EntityAnimHash.Pattern, 0); // 패턴 안정화
 
-        if (usePattern && !patternRunning)
+        if (gameObject.activeInHierarchy && usePattern && cPatternArray == 0)
         {
             StopCoroutine("PatternCor");
             StartCoroutine("PatternCor");
@@ -347,7 +416,9 @@ public enum InitDirection
     Down,
     Up,
 
-    Player
+    Player,
+    Random,
+
 }
 
 public static class PatternCheck
@@ -361,3 +432,28 @@ public static class PatternCheck
         return MyCalculator.Distance(detectionCenter, PlayerController.Inst.transform.position) > detectionRadius;
     }
 }
+
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(EnemyBase))]
+public class Editor_EnemyBase : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        if (GUILayout.Button("Duplicate Component Data"))
+        {
+            EnemyBase script = (EnemyBase)target;
+            foreach (EnemyBase enemyBase in script.GetComponents<EnemyBase>())
+            {
+                if (enemyBase != script)
+                {
+                    //script
+                }
+            }
+        }
+    }
+}
+
+#endif

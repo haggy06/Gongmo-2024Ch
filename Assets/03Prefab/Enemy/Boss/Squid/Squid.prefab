@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2280416398168079493}
   - component: {fileID: 6573177945700025389}
   - component: {fileID: 4657716466278348919}
+  - component: {fileID: 2001889818167237818}
+  - component: {fileID: 3519163492132846309}
   - component: {fileID: 6152929415261644418}
   - component: {fileID: 3223876613937690788}
   m_Layer: 7
@@ -54,10 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b90fb1689051374ab7bb94369fa5aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moving: 0
+  moveSpeed: 1
   howMuchMove: 3
-  speed: 1
 --- !u!50 &2280416398168079493
 Rigidbody2D:
   serializedVersion: 4
@@ -123,11 +123,58 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_SRenderer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8195493014648876657}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 76f542aa5259b754e8db79393d10e7a0, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_SRenderer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4894733402798204491}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 76f542aa5259b754e8db79393d10e7a0, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   usePattern: 1
   patternNumber: 1
   patternTerm: 1.5
@@ -157,12 +204,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 1281762193078755830}
+  leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4657716466278348919}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Down
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 368679716353774781, guid: 98da2136d2746dd4f9a82cbef8e4dd03, type: 3}
@@ -176,7 +224,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4657716466278348919}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Player
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 9210746215674083073, guid: 704724f5452faab48a975f5411e8b361, type: 3}
@@ -193,7 +241,7 @@ MonoBehaviour:
         m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5276314188738881016, guid: 49e68358ec369dd4aa14543678089280, type: 3}
+          m_ObjectArgument: {fileID: -2697292291328197485, guid: 49e68358ec369dd4aa14543678089280, type: 3}
           m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -203,7 +251,10 @@ MonoBehaviour:
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
   bossName: "\uB300\uC655 \uC624\uC9D5\uC5B4"
   initialPosition: {x: 0, y: 5, z: 0}
@@ -219,6 +270,211 @@ MonoBehaviour:
   rightSpawnRange1: {x: 10.5, y: -10}
   rightSpawnRange2: {x: 10.5, y: 10}
   tentacleTerm: 1.2
+--- !u!114 &2001889818167237818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39584213722721893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798472d44da5ff2478c3ebe37360903e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subPatterns:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_SRenderer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8195493014648876657}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: eb89982d70a47cf41a6c52ee67697ae2, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_SRenderer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4894733402798204491}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: eb89982d70a47cf41a6c52ee67697ae2, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_SRenderer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8195493014648876657}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 2bebe41b4d696844a9441b06aef18adc, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_SRenderer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4894733402798204491}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 2bebe41b4d696844a9441b06aef18adc, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3519163492132846309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39584213722721893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49d47be6dba83e468ed95dc6daee699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subPatterns:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PositionRange1_X
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PositionRange2_X
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: -5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PositionRange1_X
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PositionRange2_X
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4657716466278348919}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject_Random
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: -5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  cycleTerm: 1.25
+  isInfinityCycle: 1
+  cycleNumber: 1
 --- !u!60 &6152929415261644418
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -591,7 +847,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 1500
   curHP: 0
-  damageResistance: 0
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 100

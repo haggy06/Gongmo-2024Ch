@@ -39,7 +39,7 @@ public class Jellyfish : StraightMoveEnemy
         enemyInteract.SaveOriginalColor();
     }
 
-    protected override void Pattern(int caseNumber)
+    public override void Pattern(int caseNumber)
     {
 
         AudioManager.Inst.PlaySFX(electricityReadySound);
@@ -62,7 +62,7 @@ public class Jellyfish : StraightMoveEnemy
         {
             PoolObject proj = parentPool.GetPoolObject(tentacle);
             proj.Init(tentaclePosition.position + new Vector3(Random.Range(positionOffset.x, positionOffset.x), Random.Range(positionOffset.y, positionOffset.y), 0f), 90f + Random.Range(-angleOffset, angleOffset));
-            proj.GetComponent<SpriteRenderer>().color = enemyInteract.originalColor;
+            proj.GetComponent<SpriteRenderer>().color = enemyInteract.OriginalColor;
         }
     }
 }

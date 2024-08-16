@@ -15,7 +15,7 @@ public class ScrollWithBackground : MoveBase
     {
         if (scrolling)
         {
-            transform.Translate(Vector2.down * actualSpeed * Time.fixedDeltaTime);
+            transform.Translate(Vector2.down * moveSpeed * Time.fixedDeltaTime);
         }
     }
 }

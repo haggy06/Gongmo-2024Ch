@@ -196,7 +196,7 @@ MonoBehaviour:
   poolObjectID: 10002
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  initDirection: 0
+  initDirection: 4
   awakeSound: {fileID: 0}
   attackableCount: 1
   lifeTime: 5

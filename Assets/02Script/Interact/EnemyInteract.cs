@@ -27,7 +27,9 @@ public class EnemyInteract : HitBase
     public float ScorePerDead => scorePerDead;
 
     private SpriteRenderer sprite;
-    public Color originalColor { get; protected set; }
+
+    protected Color originalColor = Color.white;
+    public Color OriginalColor => originalColor;
     protected override void Awake()
     {
         base.Awake();
@@ -39,7 +41,7 @@ public class EnemyInteract : HitBase
     {
         base.Init();
 
-        sprite.color = originalColor;
+        sprite.color = OriginalColor;
     }
 
     public void SaveOriginalColor()
@@ -69,7 +71,7 @@ public class EnemyInteract : HitBase
 
             yield return YieldReturn.WaitForSeconds(0.1f);
 
-            sprite.color = originalColor;
+            sprite.color = OriginalColor;
         }
     }
 
