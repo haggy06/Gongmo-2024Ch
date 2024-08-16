@@ -288,7 +288,10 @@ MonoBehaviour:
   randomNumber: 3
   rotationRange: {x: 15, y: 165}
   positionRange: {x: -2, y: 2}
+  positionRange1: {x: -0.5, y: -1}
+  positionRange2: {x: 0.5, y: 1}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns:
   - m_PersistentCalls:
       m_Calls:

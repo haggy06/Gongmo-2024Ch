@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1756791189094228456}
   - component: {fileID: 2280416398168079493}
   - component: {fileID: 6573177945700025389}
-  - component: {fileID: 4657716466278348919}
+  - component: {fileID: 8128487631600556861}
   - component: {fileID: 2001889818167237818}
   - component: {fileID: 3519163492132846309}
   - component: {fileID: 6152929415261644418}
@@ -106,7 +106,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4657716466278348919
+--- !u!114 &8128487631600556861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,11 +115,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 39584213722721893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d14cdd36ce7114c9e935fd35708bdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11090
-  destroyWhenBomb: 0
+  destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   initEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -139,7 +139,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -151,19 +151,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4894733402798204491}
+          m_ObjectArgument: {fileID: 8195493014648876657}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -180,35 +180,35 @@ MonoBehaviour:
   patternTerm: 1.5
   isDistancePattern: 0
   detectionRadius: 0
-  usePatternList: 1
-  patternList: 0b00000017000000830000004201000043010000
-  patternTermInList: 1.5
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
   useHalfHPPattern: 1
   HalfHPPattern:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PlayCoroutine
-        m_Mode: 5
+      - m_Target: {fileID: 3519163492132846309}
+        m_TargetAssemblyTypeName: SubPattern_Cycle, Assembly-CSharp
+        m_MethodName: PatternInvoke_Sub
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TentacleAnimation
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   useDeadPattern: 0
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 1281762193078755830}
+  attackPivot: {fileID: 0}
   leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
@@ -222,7 +222,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
@@ -236,7 +236,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
@@ -251,25 +251,17 @@ MonoBehaviour:
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
-  positionRange1: {x: 0, y: 0}
-  positionRange2: {x: 0, y: 0}
+  positionRange1: {x: -10.5, y: -5}
+  positionRange2: {x: 10.5, y: -5}
   scatterPositions: {fileID: 0}
   sRenderer: {fileID: 0}
   edgeCasePatterns: []
   bossName: "\uB300\uC655 \uC624\uC9D5\uC5B4"
   initialPosition: {x: 0, y: 5, z: 0}
   comebackSpeed: 3
-  leftTentacle: {fileID: 8195493014648876657}
-  rightTentacle: {fileID: 4894733402798204491}
-  t1: {fileID: 21300000, guid: 76f542aa5259b754e8db79393d10e7a0, type: 3}
-  t2: {fileID: 21300000, guid: eb89982d70a47cf41a6c52ee67697ae2, type: 3}
-  t3: {fileID: 21300000, guid: 2bebe41b4d696844a9441b06aef18adc, type: 3}
-  tentacleWarning: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
-  leftSpawnRange1: {x: -10.5, y: -10}
-  leftSpawnRange2: {x: -10.5, y: 10}
-  rightSpawnRange1: {x: 10.5, y: -10}
-  rightSpawnRange2: {x: 10.5, y: 10}
-  tentacleTerm: 1.2
+  arrivePattern:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2001889818167237818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +277,7 @@ MonoBehaviour:
   subPatterns:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -297,7 +289,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -309,7 +301,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -321,7 +313,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -335,7 +327,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -347,7 +339,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -359,7 +351,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -371,7 +363,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -398,7 +390,7 @@ MonoBehaviour:
   subPatterns:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_PositionRange1_X
         m_Mode: 4
@@ -410,7 +402,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_PositionRange2_X
         m_Mode: 4
@@ -422,9 +414,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Random
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
@@ -436,7 +428,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_PositionRange1_X
         m_Mode: 4
@@ -448,7 +440,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_PositionRange2_X
         m_Mode: 4
@@ -460,9 +452,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4657716466278348919}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Random
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}

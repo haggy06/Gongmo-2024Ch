@@ -152,7 +152,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor:
   - {r: 1, g: 1, b: 1, a: 1}
   initEvent:
@@ -259,12 +258,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   attackPivot: {fileID: 6973027983325616502}
-  followColor: 0
+  leaveColor: 0
   patternAttacks: []
   randomNumber: 8
   rotationRange: {x: 30, y: 150}
   positionRange: {x: -0.5, y: 0.5}
+  positionRange1: {x: -0.5, y: -0.5}
+  positionRange2: {x: 0.5, y: 0.5}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
 --- !u!1 &7947056867167115081
 GameObject:
@@ -368,7 +370,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 60
   curHP: 0
-  damageResistance: 0
   skillEff: 0.05
   itemDropProbability: 0.1
   skillPerDead: 5

@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossInterval: 70
   stageInfoArray:
-  - stageBoss: {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
+  - stageBoss: {fileID: 8839447063963443242, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
     spawnInterval: 2
     stageEnemies:
     - {fileID: 6888772711794772343, guid: 18dd0ce378152bf40a39c7b1d7fb70a8, type: 3}
@@ -264,7 +264,7 @@ MonoBehaviour:
     - {fileID: 3592432429682168205, guid: c713e21ca6607494387af6f777ecaace, type: 3}
     - {fileID: 900160486133903276, guid: e1045ccfa0fae0748aea5cf474c40b0a, type: 3}
     - {fileID: 7498341319475493607, guid: ec4787b4ee78aa34fa0589b46cfd95c4, type: 3}
-  - stageBoss: {fileID: 8804762620378601771, guid: 12d66199cad6e194f82ece6ea34ba3c4, type: 3}
+  - stageBoss: {fileID: 2531458524249832630, guid: 12d66199cad6e194f82ece6ea34ba3c4, type: 3}
     spawnInterval: 1.5
     stageEnemies:
     - {fileID: 8770362708389342740, guid: 60e9a7d462a71ff478c0dc818f966128, type: 3}
@@ -272,7 +272,7 @@ MonoBehaviour:
     - {fileID: 1900529660193959990, guid: cade60cc598d73e47afec8032116d6b6, type: 3}
     - {fileID: 3269275129381552786, guid: b8abdf8b1d73afd499683072ecf7098b, type: 3}
     - {fileID: -80272098306791964, guid: 7f55afc49a87e8846aab9d5d053dc619, type: 3}
-  - stageBoss: {fileID: 4657716466278348919, guid: f0debbb147fc4f444a304502325e5d12, type: 3}
+  - stageBoss: {fileID: 8128487631600556861, guid: f0debbb147fc4f444a304502325e5d12, type: 3}
     spawnInterval: 1.5
     stageEnemies:
     - {fileID: -7680781342307492984, guid: 46aa52275115b744ebd516da67922a12, type: 3}
@@ -329,14 +329,14 @@ MonoBehaviour:
   - {fileID: -7680781342307492984, guid: 46aa52275115b744ebd516da67922a12, type: 3}
   - {fileID: 1588653457849972312, guid: a768082b99ffeca428a8e78b7315fafd, type: 3}
   - {fileID: 341168305348706967, guid: 4ac6fba7f79f9004a94927b37adb93bd, type: 3}
-  - {fileID: 8804762620378601771, guid: 12d66199cad6e194f82ece6ea34ba3c4, type: 3}
+  - {fileID: 2531458524249832630, guid: 12d66199cad6e194f82ece6ea34ba3c4, type: 3}
   - {fileID: 5949548049984984952, guid: 9b9dc7e0644a5ca499391d1179725ce0, type: 3}
   - {fileID: 4145137421009171231, guid: d285975a28242d94283fa644ed7606c9, type: 3}
   - {fileID: 2743063609530202681, guid: 02437a84b65254c4bae51bab5d67c1d0, type: 3}
   - {fileID: 2743063609530202681, guid: 1bb186a1d756fd14f95fc1da5b9b2267, type: 3}
   - {fileID: 4145137421009171231, guid: ec8030ce05b65ad4590b880112644900, type: 3}
   - {fileID: 2401125208822535450, guid: 28218208690eb754fabaa9f9af4687e7, type: 3}
-  - {fileID: 4657716466278348919, guid: f0debbb147fc4f444a304502325e5d12, type: 3}
+  - {fileID: 8128487631600556861, guid: f0debbb147fc4f444a304502325e5d12, type: 3}
   - {fileID: 9210746215674083073, guid: 704724f5452faab48a975f5411e8b361, type: 3}
   - {fileID: 1285101055613379028, guid: 51b24132af5f9dd4b957a958ed14bc84, type: 3}
   - {fileID: -2697292291328197485, guid: 49e68358ec369dd4aa14543678089280, type: 3}
@@ -344,7 +344,7 @@ MonoBehaviour:
   - {fileID: 7469500978298084603, guid: bc726525bc4f74b4cae4a4b8d1f1f077, type: 3}
   - {fileID: 8211168510727461971, guid: 5b87170aa80bca647a1aa0f6f2feeda7, type: 3}
   - {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
-  - {fileID: 6689379812473798131, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
+  - {fileID: 8839447063963443242, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
   - {fileID: 4145137421009171231, guid: 964ee5065bc22724184e232be1b1fe81, type: 3}
   - {fileID: 4145137421009171231, guid: bad2d8b1751b4f147819a141e23ae346, type: 3}
   - {fileID: -80272098306791964, guid: b569a648d7052f44f8d766a468bbec1b, type: 3}

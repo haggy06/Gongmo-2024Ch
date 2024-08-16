@@ -137,7 +137,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 750
   curHP: 0
-  damageResistance: 0
   skillEff: 0.25
   itemDropProbability: 0.1
   skillPerDead: 100
@@ -280,11 +279,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   tracking: 1
-  impulseOnAwake: 1
+  impulseOnAwake: 0
   lookPlayer: 0
   spin: 1
   spinSpeed: 360
-  speed: 25
   driftTime: 1.5
 --- !u!114 &5786361032557298410
 MonoBehaviour:
@@ -315,7 +313,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -337,12 +334,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks: []
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  scatterPivot: {fileID: 0}
+  sRenderer: {fileID: 0}
+  edgeCasePatterns: []
 --- !u!114 &-5728027931354235556
 MonoBehaviour:
   m_ObjectHideFlags: 0

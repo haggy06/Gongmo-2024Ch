@@ -101,7 +101,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 10
   curHP: 0
-  damageResistance: 0
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 5
@@ -117,7 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4581857869586995591}
   - component: {fileID: 2725841913611804370}
-  - component: {fileID: 3535840105606854611}
   - component: {fileID: 3079850364913577776}
   - component: {fileID: 2401125208822535450}
   - component: {fileID: 6044580221581794451}
@@ -171,27 +169,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &3535840105606854611
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4958807276570663979}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3079850364913577776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +234,7 @@ MonoBehaviour:
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 0}
+  attackPivot: {fileID: 4581857869586995591}
   leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
@@ -277,7 +254,10 @@ MonoBehaviour:
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
   positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
 --- !u!58 &6044580221581794451
 CircleCollider2D:

@@ -37,19 +37,19 @@ public class TrackingPlayer : MoveBase
     }
     private void FixedUpdate()
     {
+        float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Inst.transform.position - transform.position).normalized);
+
         if (tracking)
         {
-            float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Inst.transform.position - transform.position).normalized);
-
-            if (lookPlayer)
-                transform.eulerAngles = Vector3.forward * lookPlayerAngle;
-            else if (spin)
-                transform.Rotate(Vector3.forward * (spinSpeed * Time.fixedDeltaTime));
-
             Vector2 goalVelo = MyCalculator.Deg2Vec(lookPlayerAngle) * moveSpeed;
             Vector2 newVelo = rigid2D.velocity + (goalVelo - rigid2D.velocity) * (Time.fixedDeltaTime / driftTime);
 
             rigid2D.velocity = newVelo;
-        }        
+        }
+
+        if (lookPlayer)
+            transform.eulerAngles = Vector3.forward * lookPlayerAngle;
+        else if (spin)
+            transform.Rotate(Vector3.forward * (spinSpeed * Time.fixedDeltaTime));
     }
 }

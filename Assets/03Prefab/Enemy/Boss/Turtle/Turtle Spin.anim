@@ -359,8 +359,22 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: PatternInvoke_Sub
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.375
+    functionName: PlaySound
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
+    floatParameter: 0
+    intParameter: 4
+    messageOptions: 0
   - time: 0.75
-    functionName: TurtleSpin
+    functionName: PatternInvoke_Sub
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

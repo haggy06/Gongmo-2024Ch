@@ -137,7 +137,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 90
   curHP: 0
-  damageResistance: 0
   skillEff: 0
   itemDropProbability: 0.1
   skillPerDead: 5
@@ -469,7 +468,10 @@ MonoBehaviour:
   randomNumber: 7
   rotationRange: {x: 30, y: 150}
   positionRange: {x: -2, y: 2}
+  positionRange1: {x: -2, y: -2}
+  positionRange2: {x: 2, y: 2}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
 --- !u!114 &3338841110657281483
 MonoBehaviour:

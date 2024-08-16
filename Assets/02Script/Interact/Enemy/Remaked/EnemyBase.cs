@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyBase : PoolObject
 {
     #region _Init Setting_
@@ -117,7 +117,7 @@ public class EnemyBase : PoolObject
     protected Animator anim;
     protected Rigidbody2D rigid2D;
     protected EnemyInteract enemyInteract;
-    
+
 
     protected virtual void Awake()
     {
@@ -149,6 +149,7 @@ public class EnemyBase : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
+        cPatternArray = 0;
 
         if (initEvent != null)
         {
@@ -177,7 +178,6 @@ public class EnemyBase : PoolObject
     protected int cPatternArray;
     protected IEnumerator PatternCor()
     {
-        sRenderer = GetComponentInChildren<SpriteRenderer>();
         yield return YieldReturn.WaitForSeconds(patternTerm);
 
         if (usePatternList) // 패턴 리스트를 사용할 경우
@@ -198,7 +198,7 @@ public class EnemyBase : PoolObject
         else if (isDistancePattern) // 거리별 패턴을 사용할 경우
         {
             int caseNumber = MyCalculator.Distance(attackPivot.position, PlayerController.Inst.transform.position) <= detectionRadius ? 1 : 2;
-            
+
             Pattern(caseNumber); // 근접 시 1번, 원거리일 시 2번 패턴 실행
         }
         else
@@ -208,7 +208,10 @@ public class EnemyBase : PoolObject
     }
     public virtual void Pattern(int caseNumber)
     {
-        anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
+        if (anim)
+            anim.SetInteger(EntityAnimHash.Pattern, caseNumber);
+        else
+            PatternInvoke_Immediate(caseNumber);
     }
 
     protected virtual void HalfHP()
@@ -218,7 +221,8 @@ public class EnemyBase : PoolObject
             if (usePatternList)
                 cPatternArray = 0;
 
-            anim.SetInteger(EntityAnimHash.Pattern, 100);
+            if (anim)
+                anim.SetInteger(EntityAnimHash.Pattern, 100);
             StopCoroutine("PatternCor");
         }
     }
@@ -353,10 +357,31 @@ public class EnemyBase : PoolObject
         script.enabled = true;
     }
     #endregion
-
+    public void PatternInvoke_Immediate(int index)
+    {
+        if (index < 1)
+        {
+            Debug.LogWarning("Pattern 상태가 1 이하임. (" + index + ")");
+            return;
+        }
+        try
+        {
+            patternAttacks[index - 1].Invoke();
+            StabilizePattern();
+        }
+        catch (System.IndexOutOfRangeException)
+        {
+            Debug.LogError(gameObject.name + "의 " + index + "번 패턴에 해당하는 UnityEvent가 없음.");
+        }
+    }
     public void PatternInvoke()
     {
-        int patternIndex = anim.GetInteger(EntityAnimHash.Pattern);
+        if (!anim)
+        {
+            Debug.LogError("Animator 럾이 PatternInvoke 불가능");
+            return;
+        }
+            int patternIndex = anim.GetInteger(EntityAnimHash.Pattern);
         if (patternIndex < 1)
         {
             Debug.LogWarning("Pattern 상태가 1 이하임.");
@@ -364,8 +389,8 @@ public class EnemyBase : PoolObject
         }
         try
         {
-                patternAttacks[patternIndex - 1].Invoke();
-                StabilizePattern();
+            patternAttacks[patternIndex - 1].Invoke();
+            StabilizePattern();
         }
         catch (System.IndexOutOfRangeException)
         {
@@ -385,21 +410,10 @@ public class EnemyBase : PoolObject
         }
     }
 
-    public void PatternInvoke_EdgeCase(int index)
-    {
-        try
-        {
-            edgeCasePatterns[index].Invoke();
-        }
-        catch (System.Exception)
-        {
-            Debug.LogError("엣지 케이스 index에 해당하는 UnityEvent가 없음.");
-        }
-    }
-
     public void StabilizePattern()
-    {
-        anim.SetInteger(EntityAnimHash.Pattern, 0); // 패턴 안정화
+    {   
+        if (anim)
+            anim.SetInteger(EntityAnimHash.Pattern, 0); // 패턴 안정화
 
         if (gameObject.activeInHierarchy && usePattern && cPatternArray == 0)
         {
@@ -433,7 +447,7 @@ public static class PatternCheck
     }
 }
 
-
+/*
 #if UNITY_EDITOR
 [CustomEditor(typeof(EnemyBase))]
 public class Editor_EnemyBase : Editor
@@ -455,5 +469,5 @@ public class Editor_EnemyBase : Editor
         }
     }
 }
-
 #endif
+*/

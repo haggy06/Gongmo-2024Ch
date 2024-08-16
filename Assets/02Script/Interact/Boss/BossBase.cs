@@ -38,9 +38,14 @@ public class BossBase : EnemyBase
     {
         base.Init(position, angle);
 
-        StartCoroutine("MoveToInitialPosition");
+        MoveToInitialPosition();
     }
-    private IEnumerator MoveToInitialPosition()
+    public void MoveToInitialPosition()
+    {
+        rigid2D.velocity = Vector2.zero;
+        StartCoroutine("InitialPositionCor");
+    }
+    private IEnumerator InitialPositionCor()
     {
         repeatMove.enabled = false;
 

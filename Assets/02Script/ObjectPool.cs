@@ -102,7 +102,7 @@ public class ObjectPool : MonoBehaviour
                 obj.name = poolObject.name;
 
                 obj.parentPool = this; // 이 풀을 기억시킨 후
-                //obj.ReturnToPool(); // 풀에 넣어둠
+                SetPoolObject(obj); // 풀에 넣어둠
                 obj.gameObject.SetActive(false);
             }
         }

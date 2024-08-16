@@ -14,6 +14,7 @@ public class SubPattern : MonoBehaviour
     {
         try
         {
+            Debug.Log(index);
             subPatterns[index].Invoke();
         }
         catch (System.Exception)

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8808799293720826427}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (7)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4049967045776229791}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (6)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6218669534582386309}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Spread Position
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6569848753636583826}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9071426823909184725}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3312728821596025554}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (3)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -296,10 +296,11 @@ GameObject:
   - component: {fileID: 3087493566208826835}
   - component: {fileID: 1072810076768095993}
   - component: {fileID: 208443366010085740}
-  - component: {fileID: 6689379812473798131}
+  - component: {fileID: 8839447063963443242}
   - component: {fileID: 585384958150907587}
-  - component: {fileID: 504329774774803770}
-  m_Layer: 6
+  - component: {fileID: 752638183810065231}
+  - component: {fileID: 6723387299625496235}
+  m_Layer: 7
   m_Name: Turtle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +332,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3433050783441460575}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 42bfdb12b4febe24d88a9a108ba19b15, type: 2}
   m_IncludeLayers:
@@ -353,7 +354,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -421,7 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   howMuchMove: 5
---- !u!114 &6689379812473798131
+--- !u!114 &8839447063963443242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -430,7 +431,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3433050783441460575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a452c8bf5ce6d049a8fedccfc03b64d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectID: 11070
@@ -441,29 +442,89 @@ MonoBehaviour:
   awakeColor: []
   initEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 585384958150907587}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4547586992750174673}
+        m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
+        m_MethodName: set_DamageResistance
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6723387299625496235}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   usePattern: 1
   patternNumber: 3
   patternTerm: 2
   isDistancePattern: 0
   detectionRadius: 0
   usePatternList: 1
-  patternList: 0b000000150000001700000003000000
+  patternList: 0b0000001500000017000000030000000d000000
   patternTermInList: 1.25
   useHalfHPPattern: 1
   HalfHPPattern:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 585384958150907587}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4547586992750174673}
+        m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
+        m_MethodName: set_DamageResistance
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useDeadPattern: 0
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 0}
+  attackPivot: {fileID: 3753792142297636265}
   leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6689379812473798131}
+      - m_Target: {fileID: 8839447063963443242}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: SpawnObject_Scatter
         m_Mode: 2
@@ -475,7 +536,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6689379812473798131}
+      - m_Target: {fileID: 8839447063963443242}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 2
@@ -489,7 +550,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6689379812473798131}
+      - m_Target: {fileID: 8839447063963443242}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
@@ -501,7 +562,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6689379812473798131}
+      - m_Target: {fileID: 8839447063963443242}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 2
@@ -515,7 +576,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6689379812473798131}
+      - m_Target: {fileID: 8839447063963443242}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
@@ -527,7 +588,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6689379812473798131}
+      - m_Target: {fileID: 8839447063963443242}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 2
@@ -550,11 +611,33 @@ MonoBehaviour:
   bossName: "\uC7A5\uB85C \uAC70\uBD81"
   initialPosition: {x: 0, y: 7, z: 0}
   comebackSpeed: 7
-  shellSound: {fileID: 8300000, guid: f394831b369105a40934616b62651ae5, type: 3}
-  collisionSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
-  speed: 13
-  collisionCount: 5
-  spining: 0
+  arrivePattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: StabilizePattern
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4547586992750174673}
+        m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
+        m_MethodName: set_DamageResistance
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &585384958150907587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +645,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3433050783441460575}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06fd1e0b2e5e6374386f6d34d07b19a3, type: 3}
   m_Name: 
@@ -570,23 +653,138 @@ MonoBehaviour:
   subPatterns:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 504329774774803770}
+      - m_Target: {fileID: 8839447063963443242}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PlayCoroutine
-        m_Mode: 5
+        m_MethodName: PlaySound
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MoveToInitialPosition
           m_BoolArgument: 0
         m_CallState: 2
-  triggerSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeVelo_Player
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 15
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeVelo_Player
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 15
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeVelo_Player
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 15
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeVelo_Player
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 15
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: BossBase, Assembly-CSharp
+        m_MethodName: MoveToInitialPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 20
+          m_StringArgument: MoveToInitialPosition
+          m_BoolArgument: 0
+        m_CallState: 2
   triggerWithScreen: 1
   triggerEntity: 0
-  triggerCountForInvoke: 05000000
---- !u!114 &504329774774803770
+  triggerCount: 0
+--- !u!114 &752638183810065231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -595,48 +793,131 @@ MonoBehaviour:
   m_GameObject: {fileID: 3433050783441460575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
+  m_Script: {fileID: 11500000, guid: 798472d44da5ff2478c3ebe37360903e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 0
-  destroyWhenBomb: 0
-  parentPool: {fileID: 0}
-  initDirection: 0
-  awakeSound: {fileID: 0}
-  awakeColor: []
-  initEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  usePattern: 1
-  patternNumber: 1
-  patternTerm: 2
-  isDistancePattern: 0
-  detectionRadius: 0
-  usePatternList: 0
-  patternList: 
-  patternTermInList: 1
-  useHalfHPPattern: 0
-  HalfHPPattern:
-    m_PersistentCalls:
-      m_Calls: []
-  useDeadPattern: 0
-  DeadPattern:
-    m_PersistentCalls:
-      m_Calls: []
-  attackPivot: {fileID: 0}
-  leaveColor: 0
-  patternAttacks: []
-  randomNumber: 0
-  rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
-  positionRange1: {x: 0, y: 0}
-  positionRange2: {x: 0, y: 0}
-  scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []
-  bossName: 
-  initialPosition: {x: 0, y: 0, z: 0}
-  comebackSpeed: 0
+  subPatterns:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 585384958150907587}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4547586992750174673}
+        m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
+        m_MethodName: set_DamageResistance
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6723387299625496235}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: ChangeVelo_Player
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 15
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 208443366010085740}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723387299625496235}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 208443366010085740}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8839447063963443242}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SetRotation
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6723387299625496235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433050783441460575}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  tracking: 0
+  impulseOnAwake: 0
+  lookPlayer: 0
+  spin: 1
+  spinSpeed: 360
+  driftTime: 1
 --- !u!1 &3493579179780746126
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +927,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177435454777746079}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (10)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -677,7 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3230118638590106129}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (5)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -708,7 +989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2648334238869715777}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (9)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -739,7 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2451899485800679227}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (4)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -770,7 +1051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3753792142297636265}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (2)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -801,7 +1082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4842240269431437132}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Position (8)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
