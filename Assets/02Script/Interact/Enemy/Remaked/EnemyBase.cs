@@ -78,11 +78,11 @@ public class EnemyBase : PoolObject
 
     [Space(5)]
     [SerializeField]
+    protected bool localPosition = true;
+    [SerializeField]
     protected int randomNumber;
     [SerializeField]
     protected Vector2 rotationRange;
-    [SerializeField]
-    protected Vector2 positionRange;
     [SerializeField]
     protected Vector2 positionRange1;
     [SerializeField]
@@ -154,7 +154,6 @@ public class EnemyBase : PoolObject
         if (initEvent != null)
         {
             initEvent.Invoke();
-            Debug.Log(name + "초기화 UnityEvent 실행");
         }
 
         if (awakeColor.Length > 0)
@@ -163,8 +162,6 @@ public class EnemyBase : PoolObject
 
             GetComponentInChildren<SpriteRenderer>().color = awakeColor[i];
             enemyInteract.SaveOriginalColor();
-
-            Debug.Log(name + " 컬러 랜덤 세팅 : " + i);
         }
 
         enemyInteract.Init();
@@ -274,8 +271,11 @@ public class EnemyBase : PoolObject
         for (int i = 0; i < randomNumber; i++)
         {
             pObject = parentPool.GetPoolObject(poolObject);
+            Vector3 attackPosition = new Vector3(Random.Range(positionRange1.x, positionRange2.x), Random.Range(positionRange1.y, positionRange2.y));
+            if (localPosition)
+                attackPosition += attackPivot.position;
 
-            pObject.Init(attackPivot.position + new Vector3(Random.Range(positionRange1.x, positionRange2.x), Random.Range(positionRange1.y, positionRange2.y), 0f), Random.Range(rotationRange.x, rotationRange.y));
+            pObject.Init(attackPosition, Random.Range(rotationRange.x, rotationRange.y));
             if (leaveColor)
             {
                 SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
@@ -316,6 +316,7 @@ public class EnemyBase : PoolObject
     public void ChangeVelo_Player(float moveSpeed)
     {
         rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed;
+        print("속도 변경 : " + (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed);
     }
     public void SetRotation(float euler)
     {
@@ -374,7 +375,7 @@ public class EnemyBase : PoolObject
             Debug.LogError(gameObject.name + "의 " + index + "번 패턴에 해당하는 UnityEvent가 없음.");
         }
     }
-    public void PatternInvoke()
+    public void PatternInvoke(int noStabilize)
     {
         if (!anim)
         {
@@ -390,7 +391,8 @@ public class EnemyBase : PoolObject
         try
         {
             patternAttacks[patternIndex - 1].Invoke();
-            StabilizePattern();
+            if (noStabilize == 0)
+                StabilizePattern();
         }
         catch (System.IndexOutOfRangeException)
         {

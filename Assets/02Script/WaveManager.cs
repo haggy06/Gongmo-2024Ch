@@ -38,7 +38,7 @@ public class WaveManager : MonoBehaviour
             //StopCoroutine("SpawnEnemyCor");
             StopAllCoroutines();
         }
-        else
+        else if (GameManager.GameStatus == GameStatus.Play)
         {
             StartCoroutine("SpawnEnemyCor");
             StartCoroutine("SpawnBossCor");

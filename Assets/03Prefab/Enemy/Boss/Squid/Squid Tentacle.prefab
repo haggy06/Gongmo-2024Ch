@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 90972250775879094}
   - component: {fileID: 4050058107717490044}
   - component: {fileID: 1620393679695155267}
-  - component: {fileID: 8628519639495924123}
   - component: {fileID: 1735600924770116406}
   - component: {fileID: 7276039435104849918}
   - component: {fileID: 8211168510727461971}
@@ -101,27 +100,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &8628519639495924123
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5992900910256225165}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e4880b0cf1c3e554c88f279e9c630671, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1735600924770116406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 75
+  moveSpeed: 130
   zigZag: 0
   sinHeightRange: {x: 0, y: 0}
   sinFrequencyRange: {x: 0, y: 0}
@@ -162,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11093
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   initDirection: 0
@@ -170,15 +147,39 @@ MonoBehaviour:
   awakeColor: []
   initEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7276039435104849918}
+        m_TargetAssemblyTypeName: MoveBase, Assembly-CSharp
+        m_MethodName: set_MoveSpeed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 130
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8211168510727461971}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_UsePattern
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 100
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   usePattern: 1
   patternNumber: 1
-  patternTerm: 0
+  patternTerm: 0.2
   isDistancePattern: 0
   detectionRadius: 0
-  usePatternList: 0
-  patternList: 
-  patternTermInList: 1
+  usePatternList: 1
+  patternList: 0c000000
+  patternTermInList: 0.2
   useHalfHPPattern: 0
   HalfHPPattern:
     m_PersistentCalls:
@@ -200,14 +201,43 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: -75
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7276039435104849918}
+        m_TargetAssemblyTypeName: MoveBase, Assembly-CSharp
+        m_MethodName: set_MoveSpeed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -65
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8211168510727461971}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_UsePattern
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -30
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  localPosition: 1
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
 --- !u!114 &5568276305126824958
 MonoBehaviour:
@@ -221,11 +251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 70
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 70
   canAttack: 1
 --- !u!1 &6163689917238628511
 GameObject:
@@ -328,7 +360,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 10
   curHP: 0
-  damageResistance: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 5

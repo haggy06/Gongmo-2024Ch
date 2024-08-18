@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class SubPattern_Trigger : SubPattern
+public class SubPattern_Trigger : MonoBehaviour
 {
+    [SerializeField]
+    protected UnityEvent[] subPatterns;
+
+    [Space(5)]
     [SerializeField]
     private bool triggerWithScreen = false;
     [SerializeField]
     private EntityType triggerEntity;
 
-    [Space(10)]
-    [SerializeField]
     private int triggerCount = 0;
     private void OnEnable()
     {
@@ -44,10 +47,5 @@ public class SubPattern_Trigger : SubPattern
                 }
             }
         }
-    }
-
-    public override void PatternInvoke_Sub(int index)
-    {
-        Debug.Log("Trigger SubPattern은 PatternInvoke_Sub 메서드로 작동하지 않음.");
     }
 }

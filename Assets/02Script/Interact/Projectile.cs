@@ -8,9 +8,6 @@ public class Projectile : PoolObject
     #region _Projectile Setting_
     [Header("Projectile Setting")]
     [SerializeField]
-    protected int attackableCount = 1;
-    protected int nowAttackCount = 0;
-    [SerializeField]
     protected float lifeTime = 5f;
     public float LifeTime => lifeTime;
     [SerializeField]
@@ -67,8 +64,8 @@ public class Projectile : PoolObject
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
+        attack.Init();
 
-        nowAttackCount = 0;
         target = null;
         if (MyCalculator.CompareFlag((int)spreadTiming, (int)SpreadTiming.Fire)) // 발사 시 보조 발사가 실행될 경우
         {
@@ -99,10 +96,9 @@ public class Projectile : PoolObject
         base.ReturnToPool();
     }
 
-    protected virtual void AttackSuccess(HitBase hitBase)
+    protected virtual void AttackSuccess(HitBase hitBase, bool runOut)
     {
-        nowAttackCount++;
-        if (nowAttackCount >= attackableCount)
+        if (runOut)
         {
             if (MyCalculator.CompareFlag((int)spreadTiming, (int)SpreadTiming.Attack)) // 공격 성공 시 보조 발사가 실행될 경우
                 SpawnSubProj();

@@ -7,13 +7,9 @@ public class MonkfishProjectile : PoolObject
 {
     [SerializeField]
     private float lifeTime = 3f;
-
-    [SerializeField]
-    private float speed;
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
-        GetComponent<Rigidbody2D>().velocity = MyCalculator.Deg2Vec(angle) * speed;
 
         Invoke("BlinkStart", lifeTime);
     }

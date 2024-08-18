@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 16
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   initDirection: 0
@@ -167,11 +166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 1
   isDotDamage: 0
+  damage: 110
+  infinityAttack: 0
+  attackableNumber: 1
+  isSkill: 1
   owner: 4
   target: 3
-  damage: 110
   canAttack: 1
 --- !u!50 &1931173786039972960
 Rigidbody2D:

@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class SubPattern_Cycle : SubPattern
+public class SubPattern_Cycle : MonoBehaviour
 {
+    [SerializeField]
+    protected UnityEvent[] subPatterns;
+
+    [Space(5)]
     [SerializeField]
     private float cycleTerm = 1f;
 
@@ -13,11 +18,11 @@ public class SubPattern_Cycle : SubPattern
     private int cycleNumber = 1;
     private int cCycleNumber = 0;
 
-    public override void PatternInvoke_Sub(int index)
+    public void PatternInvoke_Start()
     {
         StartCoroutine("SubPatternCor");
     }
-    public void Stop_SubPattern(int index)
+    public void PatternInvoke_Stop()
     {
         StopCoroutine("SubPatternCor");
     }

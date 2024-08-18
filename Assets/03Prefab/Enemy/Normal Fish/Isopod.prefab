@@ -137,6 +137,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 70
   curHP: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.01
   itemDropProbability: 0.1
   skillPerDead: 3
@@ -228,11 +230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 40
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 40
   canAttack: 1
 --- !u!50 &3510867806372978762
 Rigidbody2D:
@@ -308,10 +312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 1.5
   zigZag: 1
-  sinHeightRange: {x: 60, y: 135}
-  sinFrequencyRange: {x: 0.1, y: 1}
+  sinHeightRange: {x: 40, y: 80}
+  sinFrequencyRange: {x: 0.25, y: 0.75}
 --- !u!114 &1376351695601066097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11007
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 1
@@ -352,9 +355,9 @@ MonoBehaviour:
   attackPivot: {fileID: 0}
   leaveColor: 0
   patternAttacks: []
+  localPosition: 1
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}

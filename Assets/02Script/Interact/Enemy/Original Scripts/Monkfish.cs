@@ -53,6 +53,8 @@ public class Monkfish : EnemyBase
     private void PlayerFound()
     {
         StopCoroutine("PatternCor");
+
+        PatternInvoke_Immediate(2);
         Pattern(2);
 
         /*

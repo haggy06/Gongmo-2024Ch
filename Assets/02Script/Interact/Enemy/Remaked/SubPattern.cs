@@ -14,7 +14,6 @@ public class SubPattern : MonoBehaviour
     {
         try
         {
-            Debug.Log(index);
             subPatterns[index].Invoke();
         }
         catch (System.Exception)
@@ -33,4 +32,9 @@ public class SubPattern : MonoBehaviour
         EDATA.usePattern = false; // 구조체 property의 property 값 수정은 첫 property의 반환값 수정과 같기 떄문에 의미없는 코드가 되어 에러가 난다.
     }
     */
+}
+
+public interface I_SubPattern
+{
+    public void PatternInvoke_Sub(int index);
 }

@@ -116,8 +116,8 @@ public class GameManager : Singleton<GameManager>
         else
         {
             AudioManager.Inst.ChangeBGM(Inst.stageBGM[Inst.stage - 1]);
-            BossEvent.Invoke(false);
         }
+        BossEvent.Invoke(false);
     }
 
 

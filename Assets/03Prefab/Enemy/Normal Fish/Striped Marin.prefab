@@ -102,7 +102,6 @@ MonoBehaviour:
   invincible: 0
   maxHP: 500
   curHP: 0
-  damageResistance: 0
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 100
@@ -168,7 +167,6 @@ GameObject:
   - component: {fileID: 3234803457675732489}
   - component: {fileID: 4629955537467556761}
   - component: {fileID: 7986451818736232352}
-  - component: {fileID: 3516319025677300621}
   - component: {fileID: 2471738746098948432}
   - component: {fileID: 3688436554551405054}
   - component: {fileID: -3564429288748609356}
@@ -271,27 +269,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &3516319025677300621
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4205184515497896014}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2471738746098948432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,12 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11008
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 8300000, guid: afc0837ceb2296a4dad7c1cdcce17442, type: 3}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -347,11 +322,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks: []
+  localPosition: 1
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []
 --- !u!114 &-3564429288748609356
 MonoBehaviour:
@@ -365,9 +344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 200
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 12
-  damage: 200
   canAttack: 1

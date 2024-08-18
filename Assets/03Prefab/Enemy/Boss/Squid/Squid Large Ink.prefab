@@ -102,7 +102,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 30
   curHP: 0
-  damageResistance: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.5
   itemDropProbability: 0.1
   skillPerDead: 5
@@ -5025,7 +5026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  scrollSpeed: 0
   scrolling: 1
 --- !u!50 &8756212028316647979
 Rigidbody2D:
@@ -5122,13 +5122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 15
   tracking: 1
-  impulseOnAwake: 1
+  impulseOnAwake: 0.5
   lookPlayer: 0
   spin: 0
   spinSpeed: 0
-  speed: 25
   driftTime: 2
 --- !u!114 &-2697292291328197485
 MonoBehaviour:
@@ -5142,12 +5141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11092
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 8300000, guid: 63d18e3c905fdab43a025e9f5a718f98, type: 3}
-  useAwakeColor: 0
   awakeColor: []
   initEvent:
     m_PersistentCalls:
@@ -5205,9 +5202,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   attackPivot: {fileID: 0}
+  leaveColor: 0
   patternAttacks: []
+  localPosition: 1
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
   edgeCasePatterns: []

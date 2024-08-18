@@ -118,8 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11090
-  destroyWhenBomb: 1
+  destroyWhenBomb: 0
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
@@ -156,7 +155,7 @@ MonoBehaviour:
         m_MethodName: set_SRenderer
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8195493014648876657}
+          m_ObjectArgument: {fileID: 4894733402798204491}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -175,22 +174,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8128487631600556861}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PatternTerm
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   usePattern: 1
   patternNumber: 1
-  patternTerm: 1.5
+  patternTerm: 2
   isDistancePattern: 0
   detectionRadius: 0
-  usePatternList: 0
-  patternList: 
-  patternTermInList: 1
+  usePatternList: 1
+  patternList: 0b0000000d000000200000001600000015000000
+  patternTermInList: 1.75
   useHalfHPPattern: 1
   HalfHPPattern:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3519163492132846309}
         m_TargetAssemblyTypeName: SubPattern_Cycle, Assembly-CSharp
-        m_MethodName: PatternInvoke_Sub
-        m_Mode: 3
+        m_MethodName: PatternInvoke_Start
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -199,11 +210,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8128487631600556861}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_PatternTerm
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useDeadPattern: 0
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 0}
+  attackPivot: {fileID: 1281762193078755830}
   leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
@@ -248,11 +271,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  randomNumber: 0
+  localPosition: 0
+  randomNumber: 1
   rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
-  positionRange1: {x: -10.5, y: -5}
-  positionRange2: {x: 10.5, y: -5}
+  positionRange1: {x: -10.5, y: -10}
+  positionRange2: {x: 10.5, y: 10}
   scatterPositions: {fileID: 0}
   sRenderer: {fileID: 0}
   edgeCasePatterns: []
@@ -277,7 +300,7 @@ MonoBehaviour:
   subPatterns:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -289,7 +312,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -301,7 +324,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -313,7 +336,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -327,7 +350,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -339,7 +362,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -351,7 +374,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: set_SRenderer
         m_Mode: 2
@@ -363,7 +386,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: ChangeSprite
         m_Mode: 2
@@ -398,7 +421,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: -5
+          m_FloatArgument: -10.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -410,13 +433,13 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: -5
+          m_FloatArgument: -10.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject
+        m_MethodName: SpawnObject_Random
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
@@ -436,7 +459,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 5
+          m_FloatArgument: 10.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -448,13 +471,13 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 5
+          m_FloatArgument: 10.5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8128487631600556861}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject
+        m_MethodName: SpawnObject_Random
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
@@ -532,11 +555,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 100
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 100
   canAttack: 1
 --- !u!1 &2275510497782654545
 GameObject:
@@ -839,6 +864,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 1500
   curHP: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 100

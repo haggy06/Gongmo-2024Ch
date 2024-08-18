@@ -135,11 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 2
+  infinityAttack: 0
+  attackableNumber: 1
+  isSkill: 0
   owner: 4
   target: 2
-  damage: 2
   canAttack: 1
 --- !u!114 &7415817190923517243
 MonoBehaviour:
@@ -153,17 +155,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 103
-  awakeSound: {fileID: 0}
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 0}
   attackableCount: 1
   lifeTime: 5
   speed: 15
   spreadTiming: 1
   subObject: {fileID: 0}
   SubProjSound: {fileID: 0}
-  spawnMyPos: 0
+  spawnForward: 0
+  spawnBackward: 0
   projPair: 1
   angleDiff: 0
   useTracking: 1

@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517503416034973410}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -13.93, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!198 &1203544453068660351
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4956,11 +4956,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 1
   isDotDamage: 0
+  damage: 70
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 1
   owner: 4
   target: 2
-  damage: 70
   canAttack: 1
 --- !u!114 &7964318541527475957
 MonoBehaviour:
@@ -4974,9 +4976,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d052db12a2cb04f8e2f7e97d9efe81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 12111
-  awakeSound: {fileID: 8300000, guid: b44afe660c8b6504ba50b8c220fb74bf, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 8300000, guid: b44afe660c8b6504ba50b8c220fb74bf, type: 3}
   attackTime: 0.3
   lifeTime: 1

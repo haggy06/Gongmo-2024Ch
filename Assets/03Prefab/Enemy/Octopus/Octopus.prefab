@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4986330311466126504}
   - component: {fileID: 6215615485079343360}
   - component: {fileID: 1328158255107699849}
-  - component: {fileID: 3269275129381552786}
+  - component: {fileID: 6893804080770013113}
+  - component: {fileID: 4625566005118183811}
   m_Layer: 7
   m_Name: Octopus
   m_TagString: Untagged
@@ -135,7 +136,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3269275129381552786
+--- !u!114 &6893804080770013113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,10 +145,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 588653718400855226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b838fc613fbc4147b00e03973941181, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11010
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   initEvent:
     m_PersistentCalls:
       m_Calls: []
-  usePattern: 0
+  usePattern: 1
   patternNumber: 1
   patternTerm: 1
   isDistancePattern: 1
@@ -164,20 +164,44 @@ MonoBehaviour:
   usePatternList: 0
   patternList: 
   patternTermInList: 1
-  useHalfHPPattern: 0
+  useHalfHPPattern: 1
   HalfHPPattern:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6893804080770013113}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2401881782769809721, guid: a4f3ef0173822294e823b4c5aeea87a8, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6893804080770013113}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 401784265413754032, guid: 3aa86e8d4676f294c868f12287acb219, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useDeadPattern: 0
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 6117159345850528057}
+  attackPivot: {fileID: 0}
   leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3269275129381552786}
+      - m_Target: {fileID: 6893804080770013113}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
         m_MethodName: SpawnObject
         m_Mode: 2
@@ -191,9 +215,9 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3269275129381552786}
+      - m_Target: {fileID: 6893804080770013113}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Random
+        m_MethodName: SpawnObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 401784265413754032, guid: 3aa86e8d4676f294c868f12287acb219, type: 3}
@@ -203,38 +227,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  localPosition: 1
+  randomNumber: 1
+  rotationRange: {x: 0, y: 360}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+  sRenderer: {fileID: 0}
+  edgeCasePatterns: []
+--- !u!114 &4625566005118183811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588653718400855226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fd1e0b2e5e6374386f6d34d07b19a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subPatterns:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3269275129381552786}
+      - m_Target: {fileID: 6893804080770013113}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject
-        m_Mode: 2
+        m_MethodName: Pattern
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 2401881782769809721, guid: a4f3ef0173822294e823b4c5aeea87a8, type: 3}
-          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3269275129381552786}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 401784265413754032, guid: 3aa86e8d4676f294c868f12287acb219, type: 3}
-          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  randomNumber: 1
-  rotationRange: {x: -180, y: 180}
-  positionRange: {x: 0, y: 0}
-  scatterPositions: {fileID: 0}
-  edgeCasePatterns: []
-  hiding: 0
+  triggerWithScreen: 0
+  triggerEntity: 4
+  triggerCount: 1
 --- !u!1 &921027776860303629
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +433,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 65
   curHP: 0
-  damageResistance: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.15
   itemDropProbability: 0.1
   skillPerDead: 7

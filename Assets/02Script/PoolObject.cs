@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PoolObject : MonoBehaviour
 {
-    [SerializeField, Tooltip("이 오브젝트의 ID.")]
-    private int poolObjectID;
-    public int PoolObjectID => poolObjectID;
-
     [SerializeField]
     private bool destroyWhenBomb = true;
     [HideInInspector]

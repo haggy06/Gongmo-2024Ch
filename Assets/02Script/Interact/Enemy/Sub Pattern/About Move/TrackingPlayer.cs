@@ -5,8 +5,8 @@ using UnityEngine;
 public class TrackingPlayer : MoveBase
 {
     public bool tracking = true;
-    [SerializeField, Tooltip("시작했을 때 가속을 얻은 상태로 시작할지 지정")]
-    private bool impulseOnAwake = false;
+    [SerializeField, Tooltip("시작했을 때 가속도 퍼센트"),Range(0f, 1f)]
+    private float impulseOnAwake = 0f;
 
     [Space(5)]
     [SerializeField, Tooltip("플레이어 방향을 바라볼지 여부.")]
@@ -30,11 +30,14 @@ public class TrackingPlayer : MoveBase
 
     private void OnEnable()
     {
-        if (impulseOnAwake)
-        {
-            rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed;
-        }
+        if (!Mathf.Approximately(impulseOnAwake, 0f)) 
+            Invoke("ImpulseOnAwake", Time.deltaTime);
     }
+    private void ImpulseOnAwake()
+    {
+        rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed * impulseOnAwake;
+    }
+
     private void FixedUpdate()
     {
         float lookPlayerAngle = MyCalculator.Vec2Deg((PlayerController.Inst.transform.position - transform.position).normalized);

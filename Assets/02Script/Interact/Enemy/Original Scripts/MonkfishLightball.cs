@@ -11,7 +11,7 @@ public class MonkfishLightball : MonoBehaviour
         PlayerDetected = () => { Debug.Log("아귀에게 발각됨!"); }; // 파괴될 때(풀 들어갈 떄 말고) 감지 이벤트 초기화
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerInteract>(out _)) // 플레이어를 감지했을 경우
         {

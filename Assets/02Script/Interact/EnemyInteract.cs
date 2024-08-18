@@ -6,11 +6,15 @@ using UnityEngine;
 public class EnemyInteract : HitBase
 {
     [Header("Enemy Info")]
-    [SerializeField, Range(0f, 1f), Tooltip("받은 대미지의 몇 퍼센트를 스킬로 치환해줄 지 정하는 필드")]
-    private float skillEff = 0.1f;
+    [SerializeField]
+    private Color hitColor = Color.red;
+    [SerializeField]
+    private bool useDeadParticle = true;
 
     [Space(5)]
 
+    [SerializeField, Range(0f, 1f), Tooltip("받은 대미지의 몇 퍼센트를 스킬로 치환해줄 지 정하는 필드")]
+    private float skillEff = 0.1f;
     [SerializeField, Range(0f, 1f)]
     protected float itemDropProbability = 0.1f;
 
@@ -67,7 +71,7 @@ public class EnemyInteract : HitBase
     {
         if (gameObject.activeInHierarchy) // 살아있을 경우
         {
-            sprite.color = Color.red;
+            sprite.color = hitColor;
 
             yield return YieldReturn.WaitForSeconds(0.1f);
 
@@ -95,7 +99,9 @@ public class EnemyInteract : HitBase
                 }
             }
         }
-        DeadParticle.ParticleLoad(transform.position, sprite.sprite, transform.parent.transform.eulerAngles.z);
+
+        if (useDeadParticle)
+            DeadParticle.ParticleLoad(transform.position, sprite.sprite, transform.parent.transform.eulerAngles.z);
     }
     protected override void HalfHP()
     {
