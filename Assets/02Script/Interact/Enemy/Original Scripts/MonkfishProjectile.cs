@@ -29,10 +29,8 @@ public class MonkfishProjectile : PoolObject
         //subDictionary.TryAdd(subPattern.gameObject, subPattern);
         PlayerDetected += () =>
         {
-            if (subPattern.gameObject.activeInHierarchy && subPattern.GetComponent<EnemyBase>().curPattern != 2)
+            if (subPattern.gameObject.activeInHierarchy && subPattern.GetComponent<EnemyBase>().UsePattern)
             {
-                if (subPattern.GetComponent<EnemyBase>().curPattern == 2)
-                    print("Error!!!");
                 subPattern.PatternInvoke_Sub(0);
             }
         };
