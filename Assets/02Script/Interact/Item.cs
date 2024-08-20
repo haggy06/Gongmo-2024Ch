@@ -38,13 +38,13 @@ public class Item : PoolObject
         }
 
         this.itemType = itemType;
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Inst.ItemIconList[(int)itemType];
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = ResourceLoader.SpriteLoad(FolderName.Icon, itemType.ToString());
     }
     public void InitItem(WeaponType weaponType)
     {
         itemType = ItemType.Weapon;
         this.weaponType = weaponType;
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Inst.WeaponList[(int)weaponType].icon;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = ResourceLoader.SpriteLoad(FolderName.Icon, weaponType.ToString());
     }
 }
 

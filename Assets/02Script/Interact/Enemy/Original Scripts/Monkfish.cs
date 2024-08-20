@@ -42,13 +42,13 @@ public class Monkfish : EnemyBase
 
         //enemyInteract.DamageResistance = 0f;
 
-        MonkfishProjectile.PlayerDetected += PlayerFound;
+        //MonkfishProjectile.PlayerDetected += PlayerFound;
     }
     protected override void ObjectReturned()
     {
         base.ObjectReturned();
 
-        MonkfishProjectile.PlayerDetected -= PlayerFound;
+        //MonkfishProjectile.PlayerDetected -= PlayerFound;
     }
     private void PlayerFound()
     {
@@ -62,7 +62,7 @@ public class Monkfish : EnemyBase
         tracking.tracking = true;
         */
 
-        MonkfishProjectile.PlayerDetected -= PlayerFound; // 반환 될 때까지 더 이상 필요가 없으므로 중복 실행 방지를 위해 구독을 날려준다.
+        //MonkfishProjectile.PlayerDetected -= PlayerFound; // 반환 될 때까지 더 이상 필요가 없으므로 중복 실행 방지를 위해 구독을 날려준다.
     }
     /*
     public void SpreadLight()

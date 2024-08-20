@@ -137,6 +137,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 75
   curHP: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 15
@@ -222,11 +224,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 80
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 80
   canAttack: 1
 --- !u!1 &7387957346518409046
 GameObject:
@@ -241,8 +245,8 @@ GameObject:
   - component: {fileID: 506034998842949311}
   - component: {fileID: 6845632679349995359}
   - component: {fileID: 6538032502078360325}
-  - component: {fileID: 7717175295170909320}
   - component: {fileID: 1346016631535878475}
+  - component: {fileID: 4838937425653859042}
   m_Layer: 7
   m_Name: Monkfish
   m_TagString: Untagged
@@ -351,214 +355,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7717175295170909320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7387957346518409046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14fc588e52f548c49814036936b051dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolObjectID: 11011
-  destroyWhenBomb: 1
-  parentPool: {fileID: 0}
-  initDirection: 1
-  awakeSound: {fileID: 0}
-  awakeColor: []
-  initEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: OFFScript
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 506034998842949311}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: ONScript
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3029692482853165920}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: ChangeSprite
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 1dbd33ef3825ae64188cafdf24c180f9, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: set_UsePattern
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 6900101645621578421}
-        m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
-        m_MethodName: set_DamageResistance
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  usePattern: 1
-  patternNumber: 1
-  patternTerm: 2.5
-  isDistancePattern: 0
-  detectionRadius: 0
-  usePatternList: 0
-  patternList: 
-  patternTermInList: 1
-  useHalfHPPattern: 0
-  HalfHPPattern:
-    m_PersistentCalls:
-      m_Calls: []
-  useDeadPattern: 0
-  DeadPattern:
-    m_PersistentCalls:
-      m_Calls: []
-  attackPivot: {fileID: 4559497096457419340}
-  leaveColor: 0
-  patternAttacks:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: SpawnObject_Random
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 6295764343010508238, guid: aa994639ccb25224c8304118c0309f13, type: 3}
-          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: da39e353b00f2074cac6551dd541ce6a, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: OFFScript
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3029692482853165920}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: ONScript
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 506034998842949311}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 5bfc1347a2669c64d8538967d6f37ee9, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: ChangeSprite
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: d49a1110b6e8c4846836629c21e833b8, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.25
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: set_UsePattern
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.25
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6900101645621578421}
-        m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
-        m_MethodName: set_DamageResistance
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.25
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  randomNumber: 2
-  rotationRange: {x: -180, y: 180}
-  positionRange: {x: 0, y: 0}
-  positionRange1: {x: 0, y: 0}
-  positionRange2: {x: 0, y: 0}
-  scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 3761264241901488342}
-  edgeCasePatterns: []
 --- !u!114 &1346016631535878475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,27 +370,226 @@ MonoBehaviour:
   subPatterns:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7717175295170909320}
+      - m_Target: {fileID: 4838937425653859042}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: OFFScript
-        m_Mode: 2
+        m_MethodName: Pattern
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 3029692482853165920}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4838937425653859042}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PatternInvoke_Immediate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4838937425653859042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7387957346518409046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyWhenBomb: 1
+  parentPool: {fileID: 0}
+  initDirection: 1
+  awakeSound: {fileID: 0}
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3029692482853165920}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 506034998842949311}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7717175295170909320}
+      - m_Target: {fileID: 4838937425653859042}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: ONScript
-        m_Mode: 2
+        m_MethodName: set_UsePattern
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 506034998842949311}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3761264241901488342}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 1dbd33ef3825ae64188cafdf24c180f9, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6900101645621578421}
+        m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
+        m_MethodName: set_DamageResistance
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 323065657595969612}
+        m_TargetAssemblyTypeName: MonkfishProjectile, Assembly-CSharp
+        m_MethodName: Subscribe2DetectedEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1346016631535878475}
+          m_ObjectArgumentAssemblyTypeName: SubPattern, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  usePattern: 1
+  patternNumber: 1
+  patternTerm: 2
+  isDistancePattern: 0
+  detectionRadius: 0
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 1
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 323065657595969612}
+        m_TargetAssemblyTypeName: MonkfishProjectile, Assembly-CSharp
+        m_MethodName: CancleSub2DetectedEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1346016631535878475}
+          m_ObjectArgumentAssemblyTypeName: SubPattern, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  attackPivot: {fileID: 4559497096457419340}
+  leaveColor: 0
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4838937425653859042}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6295764343010508238, guid: aa994639ccb25224c8304118c0309f13, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4838937425653859042}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: da39e353b00f2074cac6551dd541ce6a, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3029692482853165920}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 506034998842949311}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4838937425653859042}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 5bfc1347a2669c64d8538967d6f37ee9, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4838937425653859042}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: set_UsePattern
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -610,6 +605,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3761264241901488342}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: d49a1110b6e8c4846836629c21e833b8, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 323065657595969612}
+        m_TargetAssemblyTypeName: MonkfishProjectile, Assembly-CSharp
+        m_MethodName: CancleSub2DetectedEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1346016631535878475}
+          m_ObjectArgumentAssemblyTypeName: SubPattern, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  localPosition: 1
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
 --- !u!1 &9153379190100523153
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,10 +818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c908ab1b3c66d47bbc62ae1afe12d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 0
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 0}
   lifeTime: 0
-  speed: 0

@@ -8,6 +8,21 @@ using UnityEditor;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyBase : PoolObject
 {
+    public int pattern
+    {
+        get
+        {
+            if (anim)
+            {
+                return anim.GetInteger(EntityAnimHash.Pattern);
+            }
+            else
+            {
+                Debug.LogError(name + "에 Animator가 없어 Pattern 확인 불가");
+                return 0;
+            }
+        }
+    }
     #region _Init Setting_
     [Header("Init Setting")]
     [SerializeField]
@@ -21,7 +36,7 @@ public class EnemyBase : PoolObject
     [Header("Default Pattern Setting")]
     [SerializeField]
     protected bool usePattern = true;
-    public bool UsePattern { set => usePattern = value; }
+    public bool UsePattern { get => usePattern; set => usePattern = value; }
 
     [SerializeField]
     protected int patternNumber = 1;
@@ -104,16 +119,7 @@ public class EnemyBase : PoolObject
     public Transform ScatterPositions { set => scatterPositions = value; }
     #endregion
 
-    #region _Edge Case Setting_
-    [Header("Edge Case Setting")]
-    [SerializeField]
-    protected SpriteRenderer sRenderer;
-    public SpriteRenderer SRenderer { set => sRenderer = value; }
-
-    [SerializeField]
-    protected UnityEvent[] edgeCasePatterns;
-    #endregion
-
+    protected SpriteRenderer sprite;
     protected Animator anim;
     protected Rigidbody2D rigid2D;
     protected EnemyInteract enemyInteract;
@@ -124,11 +130,10 @@ public class EnemyBase : PoolObject
         anim = GetComponent<Animator>();
         rigid2D = GetComponent<Rigidbody2D>();
         enemyInteract = GetComponentInChildren<EnemyInteract>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
 
         if (attackPivot == null)
             attackPivot = transform;
-        if (sRenderer == null)
-            sRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     protected virtual void Start()
     {
@@ -160,7 +165,7 @@ public class EnemyBase : PoolObject
         {
             int i = Random.Range(0, awakeColor.Length);
 
-            GetComponentInChildren<SpriteRenderer>().color = awakeColor[i];
+            sprite.color = awakeColor[i];
             enemyInteract.SaveOriginalColor();
         }
 
@@ -322,40 +327,9 @@ public class EnemyBase : PoolObject
     {
         transform.eulerAngles = Vector3.forward * euler;
     }
-    public void ChangeSprite(Sprite sprite)
-    {
-        sRenderer.sprite = sprite;
-    }
-
     public void PlaySound(AudioClip sfx)
     {
         AudioManager.Inst.PlaySFX(sfx);
-    }
-    public void PlayParticle(ParticleSystem particle)
-    {
-        particle.Play();
-    }
-    public void PlayCoroutine(string coroutineName)
-    {
-        StartCoroutine(coroutineName);
-    }
-
-    public void OFFScript(Behaviour script)
-    {
-        script.enabled = false;
-    }
-    public void OFFScript(Renderer script)
-    {
-        script.enabled = false;
-    }
-
-    public void ONScript(Behaviour script)
-    {
-        script.enabled = true;
-    }
-    public void ONScript(Renderer script)
-    {
-        script.enabled = true;
     }
     #endregion
     public void PatternInvoke_Immediate(int index)

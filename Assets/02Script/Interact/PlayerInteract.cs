@@ -7,31 +7,6 @@ using System;
 [RequireComponent(typeof(Animator))]
 public class PlayerInteract : HitBase
 {
-    [Space(10)]
-    [SerializeField]
-    private Sprite[] levelSprite = new Sprite[5];
-
-    [Header("Sounds")]
-    [SerializeField]
-    private AudioClip damageSound;
-    [SerializeField]
-    private AudioClip deadSound;
-
-    [Space(5)]
-    [SerializeField]
-
-    private AudioClip levelUPSound;
-
-    [Space(5)]
-    [SerializeField]
-    private AudioClip healSound;
-    [SerializeField]
-    private AudioClip starSound;
-    [SerializeField]
-    private AudioClip bombSound;
-    [SerializeField]
-    private AudioClip weaponSound;
-
     private int invincibleCount = 0;
     public int InvincibleCount
     {
@@ -96,19 +71,20 @@ public class PlayerInteract : HitBase
     {
         GameManager.CurHP -= (int)Mathf.Round(damage * (1f - damageResistance));
 
-        if (GameManager.CurHP <= 0) // 죽었을 경우
+        if (GameManager.CurHP <= 0 && GameManager.GameStatus == GameStatus.Play) // 살아 있는 상태에서 죽었을 경우
         {
-            AudioManager.Inst.PlaySFX(deadSound);
+            AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Player, "Dead"));
 
             DeadBy(victim);
         }
         else // 살았을 경우
         {
-            AudioManager.Inst.PlaySFX(damageSound);
+            AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Player, "Hit"));
 
             StartCoroutine("DamageInvincible");
         }
     }
+    [Header("Player Interact Setting")]
     [SerializeField]
     private float hitInvincibleTime = 1.5f;
     private IEnumerator DamageInvincible()
@@ -161,38 +137,32 @@ public class PlayerInteract : HitBase
         GameManager.GameStatus = GameStatus.GameOver;
     }
 
+    [Space(5)]
     [SerializeField]
-    private ParticleSystem[] particleList;
+    private Transform particles;
 
     public static event Action BombEvent = () => Debug.Log("폭8 이벤트");
-    public ParticleSystem[] ParticleList => particleList;
 
     public void GetItem(Item item)
     {
-        particleList[(int)item.ItemType].Play();
+        particles.GetChild((int)item.ItemType).GetComponent<ParticleSystem>().Play();
+        AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Player, item.ItemType.ToString()));
+
         switch (item.ItemType)
         {
             case ItemType.Heal:
-                AudioManager.Inst.PlaySFX(healSound);
-
                 GameManager.CurHP = GameManager.MaxHP;
                 break;
 
             case ItemType.Invincible:
-                AudioManager.Inst.PlaySFX(starSound);
-
                 StartCoroutine("ItemInvincible");
                 break;
 
             case ItemType.Bomb:
-                AudioManager.Inst.PlaySFX(bombSound);
-
                 BombEvent.Invoke();
                 break;
 
             case ItemType.Weapon:
-                AudioManager.Inst.PlaySFX(weaponSound);
-
                 int thisGrade = (int)item.WeaponType % 3 == 0 ? 3 : (int)item.WeaponType % 3;
                 int currentGrade = (int)GameManager.CurWeaponType % 3 == 0 ? 3 : (int)GameManager.CurWeaponType % 3;
 
@@ -214,24 +184,20 @@ public class PlayerInteract : HitBase
     }
     public void GetItem(ItemType itemType)
     {
-        particleList[(int)itemType].Play();
+        particles.GetChild((int)itemType).GetComponent<ParticleSystem>().Play();
+        AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Player, itemType.ToString()));
+
         switch (itemType)
         {
             case ItemType.Heal:
-                AudioManager.Inst.PlaySFX(healSound);
-
                 GameManager.CurHP = GameManager.MaxHP;
                 break;
 
             case ItemType.Invincible:
-                AudioManager.Inst.PlaySFX(starSound);
-
                 StartCoroutine("ItemInvincible");
                 break;
 
             case ItemType.Bomb:
-                AudioManager.Inst.PlaySFX(bombSound);
-
                 BombEvent.Invoke();
                 break;
 
@@ -243,12 +209,12 @@ public class PlayerInteract : HitBase
 
     public void LevelUP(bool isUP)
     {
-        sprite.sprite = levelSprite[GameManager.Level - 1];
+        sprite.sprite = ResourceLoader.SpriteLoad(FolderName.Player, "Player", GameManager.Level);
 
         if (isUP) //레벨 업 이벤트의 경우
         {
-            AudioManager.Inst.PlaySFX(levelUPSound);
-            particleList[4].Play(); // 4번 인덱스 파티클 = 레벨업 파티클}
+            AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Player, "LevelUp"));
+            particles.GetChild(4).GetComponent<ParticleSystem>().Play(); // 4번 인덱스 파티클 = 레벨업 파티클}
         }
     }
 

@@ -10,27 +10,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 
-    [Header("BGM List")]
-    [SerializeField]
-    private AudioClip titleBGM;
-
-    [Space(5)]
-    [SerializeField]
-    private AudioClip[] stageBGM;
-    [SerializeField]
-    private AudioClip bossBGM;
-
-    [Space(5)]
-    [SerializeField]
-    private AudioClip clearBGM;
-    [SerializeField]
-    private AudioClip overBGM;
-
-
-    [SerializeField]
-    private Sprite[] itemIconList = new Sprite[3];
-    public Sprite[] ItemIconList => itemIconList;
-
     [SerializeField]
     private Weapon[] weaponList = new Weapon[7];
     public Weapon[] WeaponList => weaponList;
@@ -76,7 +55,7 @@ public class GameManager : Singleton<GameManager>
         }
         else if (newScene.buildIndex == (int)SCENE.Title)
         {
-            AudioManager.Inst.ChangeBGM(Inst.titleBGM);
+            AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "TItle"));
         }
     }
     #endregion
@@ -100,7 +79,7 @@ public class GameManager : Singleton<GameManager>
     {
         isBossExist = true;
         bossCount++;
-        AudioManager.Inst.ChangeBGM(Inst.bossBGM);
+        AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Boss"));
 
         BossEvent.Invoke(true);
     }
@@ -115,7 +94,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            AudioManager.Inst.ChangeBGM(Inst.stageBGM[Inst.stage - 1]);
+            AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Stage", Inst.stage));
         }
         BossEvent.Invoke(false);
     }
@@ -359,7 +338,7 @@ public class GameManager : Singleton<GameManager>
             Inst.stage = value;
 
             if (!Inst.isBossExist)
-                AudioManager.Inst.ChangeBGM(Inst.stageBGM[value - 1]);
+                AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Stage", Inst.stage));
             PopupManager.Inst.ChangeStage();
 
             StageChangeEvent.Invoke();
@@ -402,12 +381,12 @@ public class GameManager : Singleton<GameManager>
                         break;
 
                     case GameStatus.GameOver:
-                        AudioManager.Inst.ChangeBGM(Inst.overBGM);
+                        AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "GameOver"));
                         GameEnd();
                         break;
 
                     case GameStatus.GameClear:
-                        AudioManager.Inst.ChangeBGM(Inst.clearBGM);
+                        AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "GameClear"));
                         GameEnd();
                         break;
                 }
@@ -447,11 +426,12 @@ public enum GameStatus
 public enum WeaponType
 {
     Normal,
+
     Green1,
     Green2,
     Green3,
+
     Red1,
     Red2,
-    Red3,
-
+    Red3
 }

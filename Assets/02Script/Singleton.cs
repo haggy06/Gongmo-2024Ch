@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System;
 
-public abstract class Singleton<T> : MonoBehaviour where T :MonoBehaviour
+public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     protected static T instance;
     public static T Inst
@@ -17,16 +17,10 @@ public abstract class Singleton<T> : MonoBehaviour where T :MonoBehaviour
             {
                 instance = (T)FindObjectOfType(typeof(T));
                 if (instance == null) // 씬 내에 아예 인스턴스가 없을 경우
-                    try
-                    {
-                        T inst = Instantiate(Resources.Load<T>(Path.Combine("MonoSingletons", typeof(T).Name))); // Resources 폴더에서 개체 소환
-                        instance = inst;
-                    }
-                    catch (NullReferenceException) // 로드에 실패했을 경우
-                    {
-                        Debug.LogError(typeof(T).Name + " 로드에 실패함. Resources/MonoSingletons 폴더에 " + typeof(T).Name + "이라는 프리팹이 있는지 확인해주세요.");
-                        return null;
-                    }
+                {
+                    T inst = ResourceLoader.SingletonLoad<T>(); // Resources 폴더에서 개체 소환
+                    instance = inst;
+                }
             }
 
             return instance;

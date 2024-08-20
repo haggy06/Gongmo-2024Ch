@@ -186,10 +186,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  initDirection: 0
+  initDirection: 4
   awakeSound: {fileID: 0}
   lifeTime: 2
-  speed: 5
 --- !u!114 &6980607943146908657
 MonoBehaviour:
   m_ObjectHideFlags: 0

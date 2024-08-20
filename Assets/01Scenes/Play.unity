@@ -276,7 +276,7 @@ MonoBehaviour:
     spawnInterval: 1.5
     stageEnemies:
     - {fileID: -7680781342307492984, guid: 46aa52275115b744ebd516da67922a12, type: 3}
-    - {fileID: 7717175295170909320, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
+    - {fileID: 4838937425653859042, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
     - {fileID: 1376351695601066097, guid: 11f780d848a3036458f7b631f92c2d5c, type: 3}
     - {fileID: 1678442953460981853, guid: b4407444229b6694da34e81a1869b15f, type: 3}
   bossSpawn: {x: 0, y: 16}
@@ -319,7 +319,7 @@ MonoBehaviour:
   - {fileID: 3606821907084117894, guid: 65abd3367186dd84a8e06d86c2c4b7e6, type: 3}
   - {fileID: 900160486133903276, guid: e1045ccfa0fae0748aea5cf474c40b0a, type: 3}
   - {fileID: -7324515346953516344, guid: 0a3780812921a3f448d485ebdf81c543, type: 3}
-  - {fileID: 7717175295170909320, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
+  - {fileID: 4838937425653859042, guid: 818d6cfcfcfe461459c75f1bcc04c6cc, type: 3}
   - {fileID: 6295764343010508238, guid: aa994639ccb25224c8304118c0309f13, type: 3}
   - {fileID: 1678442953460981853, guid: b4407444229b6694da34e81a1869b15f, type: 3}
   - {fileID: 2240014162936646337, guid: 34cfc6af8b58e594ea5dace6dc30e83d, type: 3}
@@ -1191,21 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topBackground: {fileID: 1534678358}
-  stageBackground_Main:
-  - {fileID: 21300000, guid: 6de62c0f0ff60fe4eaa63e60bb7d2370, type: 3}
-  - {fileID: 21300000, guid: 431acb84e7fcaa04ba4db8ae514cd6e5, type: 3}
-  - {fileID: 21300000, guid: f6b31d98b195f6b4fb0fdd9a8023ac2b, type: 3}
-  stageBackground_Fade:
-  - {fileID: 21300000, guid: 0c41e721666f43e42a7d3e069c0af844, type: 3}
-  - {fileID: 21300000, guid: 45e29e03d3e74d5489b816ec390f2946, type: 3}
   topForeground: {fileID: 1590824518}
-  stageForeground_Main:
-  - {fileID: 21300000, guid: a9c12e463b807b84ca297810042a2c01, type: 3}
-  - {fileID: 21300000, guid: 448bbed9b56e63e4682ad0ec0ec9a93e, type: 3}
-  - {fileID: 21300000, guid: cca1bf8a94caf304cbf3d45b8e839446, type: 3}
-  stageForeground_Fade:
-  - {fileID: 21300000, guid: 2376965123f6c4b4da09d49afe0dbbdf, type: 3}
-  - {fileID: 21300000, guid: 2a6ba5705134f644dbab28e7cc9af794, type: 3}
 --- !u!1 &1497895069
 GameObject:
   m_ObjectHideFlags: 0

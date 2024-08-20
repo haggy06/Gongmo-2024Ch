@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ScrollManager : MonoBehaviour
 {
-
     [SerializeField]
     private SpriteRenderer topBackground;
     public SpriteRenderer TopBackground
@@ -13,13 +12,9 @@ public class ScrollManager : MonoBehaviour
         set
         {
             topBackground = value;
-            topBackground.sprite = stageBackground_Main[GameManager.Stage - 1];
+            topBackground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "Background", GameManager.Stage);
         }
     }
-    [SerializeField]
-    private Sprite[] stageBackground_Main = new Sprite[3];
-    [SerializeField]
-    private Sprite[] stageBackground_Fade = new Sprite[2];
 
     [Space(5)]
     [SerializeField]
@@ -29,13 +24,9 @@ public class ScrollManager : MonoBehaviour
         set
         {
             topForeground = value;
-            topForeground.sprite = stageForeground_Main[GameManager.Stage - 1];
+            topForeground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "Foreground", GameManager.Stage);
         }
     }
-    [SerializeField]
-    private Sprite[] stageForeground_Main = new Sprite[3];
-    [SerializeField]
-    private Sprite[] stageForeground_Fade = new Sprite[2];
 
     private void Start()
     {
@@ -46,8 +37,8 @@ public class ScrollManager : MonoBehaviour
     {
         if (GameManager.Stage > 1) // 2스테이지 이상일 경우
         {
-            topBackground.sprite = stageBackground_Fade[GameManager.Stage - 2];
-            topForeground.sprite = stageForeground_Fade[GameManager.Stage - 2];
+            topBackground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "FadeBG", GameManager.Stage);
+            topForeground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "FadeFG", GameManager.Stage);
         }
     }
 }

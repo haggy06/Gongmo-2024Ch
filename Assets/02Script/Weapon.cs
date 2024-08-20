@@ -5,7 +5,6 @@ public struct Weapon
 {
     public string name;
 
-    public Sprite icon;
     public PoolObject bullet;
     public PoolObject skill;
 

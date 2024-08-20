@@ -160,27 +160,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 10
   curHP: 0
-  damageResistance: 0
-  levelSprite:
-  - {fileID: 21300000, guid: b2f198afb97254543834f5fcbed0589b, type: 3}
-  - {fileID: 21300000, guid: 0b0eac9638e533848abc8c6b84e47a74, type: 3}
-  - {fileID: 21300000, guid: 1ab21357a421ef446a9cff33b910e613, type: 3}
-  - {fileID: 21300000, guid: e84cbde917a577242b16ad6de56844b2, type: 3}
-  - {fileID: 21300000, guid: 71e07a87ac08ee94cb3a6bafe4aa4c41, type: 3}
-  damageSound: {fileID: 8300000, guid: a6eb23db80febcf4ba9c1c9de9a0717f, type: 3}
-  deadSound: {fileID: 8300000, guid: 3c1096331c2ed1e49a24d101a2382c05, type: 3}
-  levelUPSound: {fileID: 8300000, guid: e57e4ee4945ea7047a974f2b81025463, type: 3}
-  healSound: {fileID: 8300000, guid: 3a5e0c67179824a4ebb7de90ad6ec857, type: 3}
-  starSound: {fileID: 8300000, guid: 0d74c1f8b868b6746ad5f401bb09a5c5, type: 3}
-  bombSound: {fileID: 8300000, guid: 687dfec5918a806438f8508172a6caa5, type: 3}
-  weaponSound: {fileID: 8300000, guid: c27ff61b1dbec1c43ab1e67a1f716a13, type: 3}
   hitInvincibleTime: 1.5
-  particleList:
-  - {fileID: 6829689140095426756}
-  - {fileID: 4288534640509160562}
-  - {fileID: 1908876581649283170}
-  - {fileID: 3169781938931758266}
-  - {fileID: 765229030960119847}
+  particles: {fileID: 3181588002861223435}
 --- !u!1 &4165774555215812243
 GameObject:
   m_ObjectHideFlags: 0

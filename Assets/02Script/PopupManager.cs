@@ -9,9 +9,6 @@ using TMPro;
 
 public class PopupManager : Singleton<PopupManager>
 {
-
-    [SerializeField]
-    private AudioClip buttonSound;
     [SerializeField]
     private PopupBase fadePopup;
 
@@ -58,19 +55,11 @@ public class PopupManager : Singleton<PopupManager>
 
     [Space(5)]
     [SerializeField]
-    private AudioClip moribundHPSound;
-
-    [Space(5)]
-    [SerializeField]
     private Image hpFill;
     [SerializeField]
     private ImageBlink hpIcon;
     [SerializeField]
     private TextMeshProUGUI hpText; // "현재 체력 / 최대 체력"
-
-    [Space(5)]
-    [SerializeField]
-    private AudioClip skillChargedSound;
 
     [Space(5)]
     [SerializeField]
@@ -106,9 +95,6 @@ public class PopupManager : Singleton<PopupManager>
     #region _Boss Interfaces_
     [Header("Boss Interfaces")]
     [SerializeField]
-    private AudioClip warningSound;
-
-    [SerializeField]
     private PopupBase bossWarningPopup;
     [SerializeField]
     private Image warningLine;
@@ -124,12 +110,6 @@ public class PopupManager : Singleton<PopupManager>
 
     #region _Game End Popup_
     [Header("Game End Popup")]
-    [SerializeField]
-    private AudioClip gameOverSound;
-    [SerializeField]
-    private AudioClip gameClearSound;
-
-    [Space(5)]
     [SerializeField]
     private PopupBase gameEndPopup;
 
@@ -184,7 +164,7 @@ public class PopupManager : Singleton<PopupManager>
     }
     public void ButtonClickSound()
     {
-        AudioManager.Inst.PlaySFX(buttonSound);
+        AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Ect, "Button"));
     }
 
     #region _Scene Move_
@@ -260,7 +240,7 @@ public class PopupManager : Singleton<PopupManager>
             if (!moribundHP)
             {
                 moribundHP = true;
-                AudioManager.Inst.PlaySFX(moribundHPSound);
+                AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Ect, "Emergency"));
 
                 hpIcon.BlinkStart();
             }
@@ -284,7 +264,7 @@ public class PopupManager : Singleton<PopupManager>
             if (!skillBlink)
             {
                 skillBlink = true;
-                AudioManager.Inst.PlaySFX(skillChargedSound);
+                AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Ect, "Skill"));
 
                 skillIcon.BlinkStart();
             }
@@ -329,10 +309,8 @@ public class PopupManager : Singleton<PopupManager>
     }
     public void ChangeWeapon()
     {
-        Weapon info = GameManager.Inst.WeaponList[(int)GameManager.CurWeaponType];
-
-        weaponImage.sprite = info.icon;
-        weaponText.text = info.name;
+        weaponImage.sprite = ResourceLoader.SpriteLoad(FolderName.Icon, GameManager.CurWeaponType.ToString());
+        weaponText.text = GameManager.Inst.WeaponList[(int)GameManager.CurWeaponType].name;
     }
 
 
@@ -351,7 +329,7 @@ public class PopupManager : Singleton<PopupManager>
     public const float BossWarningTime = 3f;
     private IEnumerator BossCor()
     {
-        AudioManager.Inst.PlaySFX(warningSound);
+        AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Ect, "Warning"));
 
         bossWarningPopup.PopupOpen();
 
@@ -376,13 +354,13 @@ public class PopupManager : Singleton<PopupManager>
 
         if (GameManager.GameStatus == GameStatus.GameClear)
         {
-            AudioManager.Inst.PlaySFX(gameClearSound);
+            AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Ect, "GameClear"));
 
             gameEndText.text = "게임 클리어!!!";
         }
         else
         {
-            AudioManager.Inst.PlaySFX(gameOverSound);
+            AudioManager.Inst.PlaySFX(ResourceLoader.AudioLoad(FolderName.Ect, "GameOver"));
 
             gameEndText.text = "게임 오버...";
         }

@@ -29,26 +29,26 @@ public class Coral : EnemyBase
     [SerializeField]
     protected int splintNumber;
 
-    private SpriteRenderer sprite;
+    private SpriteRenderer _sprite;
     protected override void Awake()
     {
         base.Awake();
 
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        _sprite = GetComponentInChildren<SpriteRenderer>();
     }
     public override void Init(Vector2 position, float angle)
     {
         base.Init(position, angle);
 
-        sprite.sprite = neatSprite;
-        sprite.color = coralColorArray[Random.Range(0, coralColorArray.Length)];
+        _sprite.sprite = neatSprite;
+        _sprite.color = coralColorArray[Random.Range(0, coralColorArray.Length)];
         enemyInteract.SaveOriginalColor();
     }
 
     protected override void HalfHP()
     {
         AudioManager.Inst.PlaySFX(crackSound);
-        sprite.sprite = crackedSprite;
+        _sprite.sprite = crackedSprite;
         anim.SetInteger(EntityAnimHash.Pattern, 1);
     }
 
