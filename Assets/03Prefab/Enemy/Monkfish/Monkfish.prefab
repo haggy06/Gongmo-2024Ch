@@ -384,12 +384,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4838937425653859042}
         m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PatternInvoke_Immediate
+        m_MethodName: PatternInvoke
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -450,18 +450,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 3761264241901488342}
-        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
-        m_MethodName: set_sprite
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 1dbd33ef3825ae64188cafdf24c180f9, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6900101645621578421}
         m_TargetAssemblyTypeName: HitBase, Assembly-CSharp
         m_MethodName: set_DamageResistance
@@ -474,7 +462,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 323065657595969612}
+      - m_Target: {fileID: 6295764343010508238, guid: aa994639ccb25224c8304118c0309f13, type: 3}
         m_TargetAssemblyTypeName: MonkfishProjectile, Assembly-CSharp
         m_MethodName: Subscribe2DetectedEvent
         m_Mode: 2
@@ -498,22 +486,10 @@ MonoBehaviour:
   HalfHPPattern:
     m_PersistentCalls:
       m_Calls: []
-  useDeadPattern: 1
+  useDeadPattern: 0
   DeadPattern:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 323065657595969612}
-        m_TargetAssemblyTypeName: MonkfishProjectile, Assembly-CSharp
-        m_MethodName: CancleSub2DetectedEvent
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1346016631535878475}
-          m_ObjectArgumentAssemblyTypeName: SubPattern, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   attackPivot: {fileID: 4559497096457419340}
   leaveColor: 0
   patternAttacks:
@@ -605,28 +581,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3761264241901488342}
-        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
-        m_MethodName: set_sprite
-        m_Mode: 2
+      - m_Target: {fileID: 4838937425653859042}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: Debug_Log
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: d49a1110b6e8c4846836629c21e833b8, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0.25
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 323065657595969612}
-        m_TargetAssemblyTypeName: MonkfishProjectile, Assembly-CSharp
-        m_MethodName: CancleSub2DetectedEvent
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1346016631535878475}
-          m_ObjectArgumentAssemblyTypeName: SubPattern, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0.25
-          m_StringArgument: 
+          m_StringArgument: "\uBC1C\uAC01"
           m_BoolArgument: 0
         m_CallState: 2
   localPosition: 1

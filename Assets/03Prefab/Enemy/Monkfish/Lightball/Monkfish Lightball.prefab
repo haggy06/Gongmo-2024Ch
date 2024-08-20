@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 2.5
   zigZag: 0
   sinHeightRange: {x: 0, y: 0}
   sinFrequencyRange: {x: 0, y: 0}

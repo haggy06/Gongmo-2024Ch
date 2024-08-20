@@ -8,7 +8,7 @@ using UnityEditor;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyBase : PoolObject
 {
-    public int pattern
+    public int curPattern
     {
         get
         {
@@ -331,6 +331,10 @@ public class EnemyBase : PoolObject
     {
         AudioManager.Inst.PlaySFX(sfx);
     }
+    public void Debug_Log(string str)
+    {
+        Debug.Log(str + " (" +  curPattern + ")");
+    }
     #endregion
     public void PatternInvoke_Immediate(int index)
     {
@@ -353,7 +357,7 @@ public class EnemyBase : PoolObject
     {
         if (!anim)
         {
-            Debug.LogError("Animator 럾이 PatternInvoke 불가능");
+            Debug.LogError("Animator 없이 PatternInvoke 불가능");
             return;
         }
             int patternIndex = anim.GetInteger(EntityAnimHash.Pattern);
