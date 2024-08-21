@@ -268,7 +268,7 @@ MonoBehaviour:
     spawnInterval: 1.5
     stageEnemies:
     - {fileID: 8770362708389342740, guid: 60e9a7d462a71ff478c0dc818f966128, type: 3}
-    - {fileID: 202356956874478986, guid: 95c015d082447ef4fad2b5f2907f4365, type: 3}
+    - {fileID: 3931688614911057757, guid: 95c015d082447ef4fad2b5f2907f4365, type: 3}
     - {fileID: 1900529660193959990, guid: cade60cc598d73e47afec8032116d6b6, type: 3}
     - {fileID: 6893804080770013113, guid: b8abdf8b1d73afd499683072ecf7098b, type: 3}
     - {fileID: -80272098306791964, guid: 7f55afc49a87e8846aab9d5d053dc619, type: 3}
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialNumber: 2
   initialObject:
-  - {fileID: 202356956874478986, guid: 95c015d082447ef4fad2b5f2907f4365, type: 3}
+  - {fileID: 3931688614911057757, guid: 95c015d082447ef4fad2b5f2907f4365, type: 3}
   - {fileID: -80272098306791964, guid: 7f55afc49a87e8846aab9d5d053dc619, type: 3}
   - {fileID: 7498341319475493607, guid: ec4787b4ee78aa34fa0589b46cfd95c4, type: 3}
   - {fileID: 401784265413754032, guid: c00b11bea7990884c99dcd7d69435a08, type: 3}
@@ -343,7 +343,7 @@ MonoBehaviour:
   - {fileID: 368679716353774781, guid: 98da2136d2746dd4f9a82cbef8e4dd03, type: 3}
   - {fileID: 7469500978298084603, guid: bc726525bc4f74b4cae4a4b8d1f1f077, type: 3}
   - {fileID: 8211168510727461971, guid: 5b87170aa80bca647a1aa0f6f2feeda7, type: 3}
-  - {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
+  - {fileID: 3931688614911057757, guid: ad75f98c72ea79f41bc909a606248f88, type: 3}
   - {fileID: 8839447063963443242, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
   - {fileID: 4145137421009171231, guid: 964ee5065bc22724184e232be1b1fe81, type: 3}
   - {fileID: 4145137421009171231, guid: bad2d8b1751b4f147819a141e23ae346, type: 3}

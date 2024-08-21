@@ -4,21 +4,24 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
 public class ImageBlink : MonoBehaviour
 {
     [SerializeField]
     private float blinkSpeed = 1f;
+
+    [Space(5)]
     [SerializeField]
     private Color color1 = Color.white;
-    public Color Color1 => color1;
-
     [SerializeField]
     private Color color2 = Color.yellow;
+
+    public Color Color1 => color1;
     public Color Color2 => color2;
 
     private Image image;
-    public Image Img
+    private SpriteRenderer sRenderer;
+
+    public Image Image
     {
         get
         {
@@ -30,6 +33,18 @@ public class ImageBlink : MonoBehaviour
             return image;
         }
     }
+    public SpriteRenderer SRenderer
+    {
+        get
+        {
+            if (sRenderer == null)
+            {
+                sRenderer = GetComponent<SpriteRenderer>();
+            }
+
+            return sRenderer;
+        }
+    }
 
     public void BlinkStart()
     {
@@ -39,13 +54,17 @@ public class ImageBlink : MonoBehaviour
     /// <summary>
     /// color1로 끝나면 true, color2로 끝나면 false
     /// </summary>
-    public void BlinkStop(bool endColor = true)
+    public void BlinkStop(bool endColor)
     {
         StopCoroutine("BlinkCor");
 
-        Img.color = endColor ? color1 : color2;
+        if (Image)
+            Image.color = endColor ? color1 : color2;
+        else if (SRenderer)
+            SRenderer.color = endColor ? color1 : color2;
+        else
+            Debug.LogError(name + "에 Image도 SpriteRenderer도 없음");
     }
-    [Space(15), SerializeField]
     private Color color;
     private IEnumerator BlinkCor()
     {
@@ -53,7 +72,15 @@ public class ImageBlink : MonoBehaviour
         color = color1; // 시작 컬러는 color1로 고정
         while (true) // 깜빡이는 중이거나 종료 컬러에 도달하지 않은 동안 반복
         {
-            Img.color = color;
+            if (Image)
+                Image.color = color;
+            else if (SRenderer)
+                SRenderer.color = color;
+            else
+            {
+                Debug.LogError(name + "에 Image도 SpriteRenderer도 없음");
+                break;
+            }
 
             time += Time.deltaTime;
 

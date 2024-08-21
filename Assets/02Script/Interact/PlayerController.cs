@@ -225,6 +225,14 @@ public class PlayerController : Singleton<PlayerController>
             GameManager.UseCheat = true;
             Time.timeScale = Time.timeScale > 0.5f ? 0f : 1f;
         }
+
+        if (Input.GetKeyDown(KeyCode.Q)) // ½ºÅ³ Â÷Â¡
+        {
+            Debug.Log("½ºÅ³ Â÷Â¡");
+
+            GameManager.UseCheat = true;
+            GameManager.Skill = 100f;
+        }
         #endregion
     }
 

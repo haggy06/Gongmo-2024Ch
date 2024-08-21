@@ -13,12 +13,6 @@ public class TrackingPlayer : MoveBase
     private bool lookPlayer = true;
 
     [Space(5)]
-    [SerializeField, Tooltip("빙빙 돌지 여부.")]
-    private bool spin = false;
-    [SerializeField]
-    private float spinSpeed = 0f;
-
-    [Space(5)]
     [Range(0.1f, 10f), Tooltip("방향을 꺾는 데 소요되는 시간")]
     public float driftTime = 1f;
 
@@ -52,7 +46,5 @@ public class TrackingPlayer : MoveBase
 
         if (lookPlayer)
             transform.eulerAngles = Vector3.forward * lookPlayerAngle;
-        else if (spin)
-            transform.Rotate(Vector3.forward * (spinSpeed * Time.fixedDeltaTime));
     }
 }

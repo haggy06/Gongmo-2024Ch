@@ -250,11 +250,9 @@ MonoBehaviour:
   localPosition: 0
   randomNumber: 1
   rotationRange: {x: 0, y: 0}
-  positionRange1: {x: -10.5, y: -10}
-  positionRange2: {x: 10.5, y: 10}
+  positionRange1: {x: -10.5, y: -7}
+  positionRange2: {x: 10.5, y: 7}
   scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []
   bossName: "\uB300\uC655 \uC624\uC9D5\uC5B4"
   initialPosition: {x: 0, y: 5, z: 0}
   comebackSpeed: 3
@@ -370,7 +368,7 @@ MonoBehaviour:
         m_MethodName: SpawnObject_Random
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
+          m_ObjectArgument: {fileID: 3931688614911057757, guid: ad75f98c72ea79f41bc909a606248f88, type: 3}
           m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: -5
@@ -408,7 +406,7 @@ MonoBehaviour:
         m_MethodName: SpawnObject_Random
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8870922222857892361, guid: feea044981eb63141ac788c03dea384a, type: 3}
+          m_ObjectArgument: {fileID: 3931688614911057757, guid: ad75f98c72ea79f41bc909a606248f88, type: 3}
           m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: -5

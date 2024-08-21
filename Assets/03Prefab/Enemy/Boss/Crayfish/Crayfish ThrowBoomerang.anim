@@ -1100,7 +1100,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.1
-    functionName: ChangeSprite
+    functionName: PatternInvoke_Sub
     data: 
     objectReferenceParameter: {fileID: 21300000, guid: 084cc54155b2bc14fb7c47beca34c150, type: 3}
     floatParameter: 0
@@ -1114,9 +1114,9 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.5
-    functionName: ChangeSprite
+    functionName: PatternInvoke_Sub
     data: 
     objectReferenceParameter: {fileID: 21300000, guid: 5447f1ed625f2d24bbcc7750e0228229, type: 3}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 1
     messageOptions: 0

@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 4945918529220772311}
   - component: {fileID: -8887379820548017085}
   - component: {fileID: -80272098306791964}
-  - component: {fileID: 3901847646525677764}
+  - component: {fileID: 5857106054323589167}
+  - component: {fileID: 3149356931755867021}
   m_Layer: 7
   m_Name: Tornado
   m_TagString: Untagged
@@ -163,11 +164,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 0
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 0
   canAttack: 0
 --- !u!114 &-80272098306791964
 MonoBehaviour:
@@ -181,12 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 10009
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 1
   awakeSound: {fileID: 0}
-  attackableCount: 1
   lifeTime: 10
   speed: 5
   spreadTiming: 1
@@ -201,7 +202,7 @@ MonoBehaviour:
   targetEntity: 0
   driftTime: 1
   searchRadius: 5
---- !u!114 &3901847646525677764
+--- !u!114 &5857106054323589167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,8 +211,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4929151589467585400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc16792c91688454b82d766265e02405, type: 3}
+  m_Script: {fileID: 11500000, guid: 90228a1fb468bc74eb5495d411c20138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPush: 0
-  sinkPower: 6.5
+  sinkPower: 8
+--- !u!114 &3149356931755867021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929151589467585400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805206de42dd0cc4c8911de43e1091b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 180

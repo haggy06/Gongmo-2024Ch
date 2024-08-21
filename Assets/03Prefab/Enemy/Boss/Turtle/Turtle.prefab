@@ -246,11 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 70
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 70
   canAttack: 1
 --- !u!1 &3352487120483959895
 GameObject:
@@ -299,7 +301,7 @@ GameObject:
   - component: {fileID: 8839447063963443242}
   - component: {fileID: 585384958150907587}
   - component: {fileID: 752638183810065231}
-  - component: {fileID: 6723387299625496235}
+  - component: {fileID: 4784916000211594264}
   m_Layer: 7
   m_Name: Turtle
   m_TagString: Untagged
@@ -434,7 +436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11070
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   initDirection: 0
@@ -467,7 +468,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6723387299625496235}
+      - m_Target: {fileID: 4784916000211594264}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -600,14 +601,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  localPosition: 1
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 6218669534582386309}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []
   bossName: "\uC7A5\uB85C \uAC70\uBD81"
   initialPosition: {x: 0, y: 7, z: 0}
   comebackSpeed: 7
@@ -783,7 +782,6 @@ MonoBehaviour:
         m_CallState: 2
   triggerWithScreen: 1
   triggerEntity: 0
-  triggerCount: 0
 --- !u!114 &752638183810065231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +821,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6723387299625496235}
+      - m_Target: {fileID: 4784916000211594264}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -863,7 +861,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6723387299625496235}
+      - m_Target: {fileID: 4784916000211594264}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -899,25 +897,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6723387299625496235
+--- !u!114 &4784916000211594264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3433050783441460575}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baf68e38ae119e345b0baac4fd68e504, type: 3}
+  m_Script: {fileID: 11500000, guid: 805206de42dd0cc4c8911de43e1091b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  tracking: 0
-  impulseOnAwake: 0
-  lookPlayer: 0
-  spin: 1
   spinSpeed: 360
-  driftTime: 1
 --- !u!1 &3493579179780746126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1234,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 800
   curHP: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 50
@@ -1259,9 +1253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 90
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 90
   canAttack: 1

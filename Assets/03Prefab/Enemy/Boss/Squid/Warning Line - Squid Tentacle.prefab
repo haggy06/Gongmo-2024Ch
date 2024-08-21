@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6118409730585560461
+--- !u!1 &3935376775560300442
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8118228408341989086}
-  - component: {fileID: 3992439275556889042}
-  - component: {fileID: 6428444934527254838}
-  - component: {fileID: 8870922222857892361}
+  - component: {fileID: 6623620889145758203}
+  - component: {fileID: 8849724634319398425}
+  - component: {fileID: 3931688614911057757}
   m_Layer: 7
   m_Name: Warning Line - Squid Tentacle
   m_TagString: Untagged
@@ -19,28 +18,173 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8118228408341989086
+--- !u!4 &6623620889145758203
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6118409730585560461}
+  m_GameObject: {fileID: 3935376775560300442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.373495, y: 0.21340343, z: 0}
+  m_LocalPosition: {x: -10.6, y: 4.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4487905791600967692}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &8849724634319398425
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935376775560300442}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &3931688614911057757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935376775560300442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyWhenBomb: 0
+  parentPool: {fileID: 0}
+  initDirection: 3
+  awakeSound: {fileID: 0}
+  awakeColor: []
+  initEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8063417725314036693}
+        m_TargetAssemblyTypeName: ImageBlink, Assembly-CSharp
+        m_MethodName: BlinkStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  usePattern: 1
+  patternNumber: 1
+  patternTerm: 2.5
+  isDistancePattern: 0
+  detectionRadius: 0
+  usePatternList: 0
+  patternList: 
+  patternTermInList: 1
+  useHalfHPPattern: 0
+  HalfHPPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  useDeadPattern: 0
+  DeadPattern:
+    m_PersistentCalls:
+      m_Calls: []
+  attackPivot: {fileID: 0}
+  leaveColor: 0
+  patternAttacks:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3931688614911057757}
+        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8211168510727461971, guid: 5b87170aa80bca647a1aa0f6f2feeda7, type: 3}
+          m_ObjectArgumentAssemblyTypeName: PoolObject, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3931688614911057757}
+        m_TargetAssemblyTypeName: PoolObject, Assembly-CSharp
+        m_MethodName: ExitFromPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  localPosition: 1
+  randomNumber: 0
+  rotationRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
+  scatterPositions: {fileID: 0}
+--- !u!1 &6957413929650852770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4487905791600967692}
+  - component: {fileID: 5424259415558728579}
+  - component: {fileID: 8063417725314036693}
+  - component: {fileID: 8838205931770156311}
+  m_Layer: 7
+  m_Name: Hitbase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4487905791600967692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957413929650852770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 6623620889145758203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3992439275556889042
+--- !u!212 &5424259415558728579
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6118409730585560461}
+  m_GameObject: {fileID: 6957413929650852770}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,7 +220,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: c0e004e9bbb469647a3a39aef6d982c1, type: 3}
-  m_Color: {r: 1, g: 0.39215687, b: 0.39215687, a: 0.78431374}
+  m_Color: {r: 1, g: 0.39215687, b: 0.39215687, a: 0.60784316}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -86,37 +230,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6428444934527254838
+--- !u!114 &8063417725314036693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6118409730585560461}
+  m_GameObject: {fileID: 6957413929650852770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c90de387ae7c79448ce425ff4896c0c, type: 3}
+  m_Script: {fileID: 11500000, guid: f8b93d8ac607a3a49996d209c3c2fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8870922222857892361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6118409730585560461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a5997aaa9f95e644a9e795034e51537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolObjectID: 11193
-  destroyWhenBomb: 0
-  parentPool: {fileID: 0}
-  initDirection: 3
-  awakeSound: {fileID: 0}
   blinkSpeed: 1
-  color1: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.21568628}
-  color2: {r: 1, g: 0.21568628, b: 0.21568628, a: 0.60784316}
-  warningTime: 1.5
-  loadedEnemy: {fileID: 8211168510727461971, guid: 5b87170aa80bca647a1aa0f6f2feeda7, type: 3}
+  color1: {r: 1, g: 0.39215687, b: 0.39215687, a: 0.60784316}
+  color2: {r: 1, g: 0, b: 0, a: 0.21568628}
+--- !u!114 &8838205931770156311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957413929650852770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5479d8db9d40bf049a2c142292cd69d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 2
+  invincible: 0
+  maxHP: 10
+  curHP: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
+  skillEff: 0.1
+  itemDropProbability: 0.1
+  skillPerDead: 5
+  expPerDead: 20
+  scorePerDead: 20

@@ -154,11 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
-  owner: 2
-  target: 12
   damage: 70
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
+  owner: 2
+  target: 4
   canAttack: 1
 --- !u!50 &2796611247848964801
 Rigidbody2D:
@@ -199,15 +201,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c0632caf319114b9f6148ea7d89ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 10013
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
-  attackableCount: 100
+  initDirection: 0
+  awakeSound: {fileID: 0}
   lifeTime: 15
   speed: 8
   spreadTiming: 1
   subObject: {fileID: 0}
-  spawnMyPos: 0
+  SubProjSound: {fileID: 0}
+  spawnForward: 0
+  spawnBackward: 0
   projPair: 1
   angleDiff: 0
   useTracking: 0

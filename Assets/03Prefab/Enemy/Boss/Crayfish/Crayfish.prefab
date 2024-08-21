@@ -133,11 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 80
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 80
   canAttack: 1
 --- !u!1 &6471891026335837347
 GameObject:
@@ -219,11 +221,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 80
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 80
   canAttack: 1
 --- !u!1 &7796272099473974183
 GameObject:
@@ -268,6 +272,7 @@ GameObject:
   - component: {fileID: 1997538830987161160}
   - component: {fileID: 1934750245695838875}
   - component: {fileID: 6763671544516816178}
+  - component: {fileID: 1010559816860650540}
   - component: {fileID: 2531458524249832630}
   - component: {fileID: 4996772050373437398}
   - component: {fileID: 4899636124785498123}
@@ -359,6 +364,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1010559816860650540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804185642637300167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798472d44da5ff2478c3ebe37360903e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subPatterns:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7990425111854436603}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 084cc54155b2bc14fb7c47beca34c150, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7990425111854436603}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: 5447f1ed625f2d24bbcc7750e0228229, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2531458524249832630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1712a3db8f257cb43a5f46737528dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11080
   destroyWhenBomb: 0
   parentPool: {fileID: 0}
   initDirection: 0
@@ -549,14 +594,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  localPosition: 1
   randomNumber: 0
   rotationRange: {x: 0, y: 0}
-  positionRange: {x: 0, y: 0}
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 7990425111854436603}
-  edgeCasePatterns: []
   bossName: "\uC7A5\uAD70 \uAC00\uC7AC"
   initialPosition: {x: 0, y: 4, z: 0}
   comebackSpeed: 10
@@ -624,11 +667,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 100
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 100
   canAttack: 1
 --- !u!1 &9051491665896577291
 GameObject:
@@ -767,6 +812,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 1000
   curHP: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 100

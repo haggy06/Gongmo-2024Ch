@@ -137,7 +137,8 @@ MonoBehaviour:
   invincible: 0
   maxHP: 80
   curHP: 0
-  damageResistance: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  useDeadParticle: 1
   skillEff: 0.1
   itemDropProbability: 0.1
   skillPerDead: 7
@@ -327,11 +328,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 75
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 75
   canAttack: 1
 --- !u!114 &1900529660193959990
 MonoBehaviour:
@@ -345,7 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1e079f5d16f5642b6e410a88d4bdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 11002
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
   initDirection: 3
@@ -370,7 +372,7 @@ MonoBehaviour:
   DeadPattern:
     m_PersistentCalls:
       m_Calls: []
-  attackPivot: {fileID: 0}
+  attackPivot: {fileID: 8801019980386344225}
   leaveColor: 0
   patternAttacks:
   - m_PersistentCalls:
@@ -437,34 +439,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  localPosition: 1
   randomNumber: 1
   rotationRange: {x: -180, y: 180}
-  positionRange: {x: 0, y: 0}
+  positionRange1: {x: 0, y: 0}
+  positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  edgeCasePatterns:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -6850969260887086886}
-        m_TargetAssemblyTypeName: MoveBase, Assembly-CSharp
-        m_MethodName: set_MoveSpeed
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 3
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1900529660193959990}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 9efbfd5e33712c749b392c4ef08c4f05, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 3
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

@@ -247,7 +247,7 @@ public class PopupManager : Singleton<PopupManager>
         {
             moribundHP = false;
 
-            hpIcon.BlinkStop();
+            hpIcon.BlinkStop(true);
         }
 
         hpText.text = GameManager.CurHP + " / " + GameManager.MaxHP;
@@ -271,7 +271,7 @@ public class PopupManager : Singleton<PopupManager>
         {
             skillBlink = false;
 
-            skillIcon.BlinkStop();
+            skillIcon.BlinkStop(true);
         }
 
         skillText.text = GameManager.Skill.ToString("F1") + "%";
@@ -283,13 +283,13 @@ public class PopupManager : Singleton<PopupManager>
             levelText.text = "Lv.MAX";
             levelFill.fillAmount = 1f;
 
-            levelIcon.Img.color = Color.yellow;
+            levelIcon.Image.color = Color.yellow;
         }
         else
         {
             levelText.text = "Lv." + GameManager.Level.ToString();
 
-            levelIcon.Img.color = Color.white;
+            levelIcon.Image.color = Color.white;
         }
     }
     public void ChangeEXP()
