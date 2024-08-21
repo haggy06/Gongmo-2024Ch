@@ -19,13 +19,21 @@ public class SubPattern_Trigger : MonoBehaviour
     {
         triggerCount = 0;
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        DetectionCheck(collision.gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        DetectionCheck(collision.gameObject);
+    }
+
+    private void DetectionCheck(GameObject gameObject)
     {
         if (enabled)
         {
-            if ((triggerWithScreen && collision.gameObject.layer == (int)LAYER.Ground) ||
-            (collision.TryGetComponent<HitBase>(out HitBase hitBase) && MyCalculator.CompareFlag((int)hitBase.EntityType, (int)triggerEntity)))
+            if ((triggerWithScreen && gameObject.layer == (int)LAYER.Ground) ||
+            (gameObject.TryGetComponent<HitBase>(out HitBase hitBase) && MyCalculator.CompareFlag((int)hitBase.EntityType, (int)triggerEntity)))
             {
 
                 triggerCount++;
