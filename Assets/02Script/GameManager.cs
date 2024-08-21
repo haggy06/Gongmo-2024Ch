@@ -409,6 +409,17 @@ public class GameManager : Singleton<GameManager>
         PopupManager.Inst.GameEnd();
     }
 }
+[Serializable]
+public struct Weapon
+{
+    public string name;
+
+    public PoolObject bullet;
+    public PoolObject skill;
+
+    public float coolDown;
+    public int skillGauge;
+}
 
 public enum GameStatus
 {

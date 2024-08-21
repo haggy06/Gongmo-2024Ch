@@ -47,7 +47,7 @@ public class EnemyBase : PoolObject
 
     #region _Distance Pattern Setting_
     [Header("Distance Pattern Setting")]
-    [SerializeField, Tooltip("플레이어와의 거리에 따른 패턴을 사용할 경우 true")]
+    [SerializeField, Tooltip("근접 시 1번 패턴, 원거리 시 2번 패턴 실행")]
     protected bool isDistancePattern = false;
     [SerializeField]
     protected float detectionRadius;
