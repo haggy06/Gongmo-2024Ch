@@ -116,8 +116,6 @@ public class Projectile : PoolObject
 
     protected virtual void FixedUpdate()
     {
-        //transform.Translate(Vector2.right * speed * Time.fixedDeltaTime); // 오브젝트 방향 기준 앞(오른쪽)으로 평행이동
-
         if (useTracking) // 트래킹을 할 경우(= 이동 방향이 중간에 바뀔 경우)
         {
             if (target && target.gameObject.activeInHierarchy) // 타겟이 지정되어 있고 활성화되어 있을 경우

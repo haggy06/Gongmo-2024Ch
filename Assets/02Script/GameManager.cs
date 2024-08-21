@@ -283,11 +283,6 @@ public class GameManager : Singleton<GameManager>
                 }
                 Inst.level = value;
 
-                /*
-                float rate = (10f / 11f) * Mathf.Abs(levelDiff);
-                MaxHP = Mathf.Clamp((int)Mathf.Round(Inst.maxHP * rate), 200, int.MaxValue); // 체력 롤백(시작 체력 밑으론 떨어지지 않음)
-                DamageScope = Mathf.Clamp(Inst.damageScope * rate, 1f, float.PositiveInfinity); // 공격력 롤백(1배 밑으론 떨어지지 않음)
-                */
                 MaxHP -= 25;
                 DamageScope -= 0.1f;
 

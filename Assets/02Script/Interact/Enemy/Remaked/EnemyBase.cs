@@ -289,33 +289,6 @@ public class EnemyBase : PoolObject
             }
         }
     }
-
-    /*
-    public void SpawnObject_Down(PoolObject poolObject)
-    {
-        PoolObject pObject = parentPool.GetPoolObject(poolObject);
-
-        pObject.Init(attackPivot.position, -90f);
-        if (leaveColor)
-        {
-            SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
-            if (sRenderer)
-                sRenderer.color = enemyInteract.OriginalColor;
-        }
-    }
-    public void SpawnObject_Player(PoolObject poolObject)
-    {
-        PoolObject pObject = parentPool.GetPoolObject(poolObject);
-
-        pObject.Init(attackPivot.position, MyCalculator.Vec2Deg(PlayerController.Inst.transform.position - attackPivot.position));
-        if (leaveColor)
-        {
-            SpriteRenderer sRenderer = pObject.GetComponentInChildren<SpriteRenderer>();
-            if (sRenderer)
-                sRenderer.color = enemyInteract.OriginalColor;
-        }
-    }
-    */
     #endregion
     #region _Ect Methods_
     public void ChangeVelo_Player(float moveSpeed)
@@ -426,28 +399,3 @@ public static class PatternCheck
         return MyCalculator.Distance(detectionCenter, PlayerController.Inst.transform.position) > detectionRadius;
     }
 }
-
-/*
-#if UNITY_EDITOR
-[CustomEditor(typeof(EnemyBase))]
-public class Editor_EnemyBase : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        if (GUILayout.Button("Duplicate Component Data"))
-        {
-            EnemyBase script = (EnemyBase)target;
-            foreach (EnemyBase enemyBase in script.GetComponents<EnemyBase>())
-            {
-                if (enemyBase != script)
-                {
-                    //script
-                }
-            }
-        }
-    }
-}
-#endif
-*/

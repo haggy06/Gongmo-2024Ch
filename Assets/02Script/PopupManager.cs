@@ -159,8 +159,6 @@ public class PopupManager : Singleton<PopupManager>
         retryButton.onClick.AddListener(() => SceneMove(SCENE.Play));
         menuButton.onClick.AddListener(() => SceneMove(SCENE.Title));
         #endregion
-
-        // SceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene()); // 중간에 시작해 제대로 초기화가 안 되는 걸 막기 위함
     }
     public void ButtonClickSound()
     {

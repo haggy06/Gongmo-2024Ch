@@ -54,7 +54,6 @@ public class ObjectPool : MonoBehaviour
             {
                 Debug.LogWarning(poolObject.name + "에 해당하는 컨테이너 없음");
 
-                //container = Instantiate(new GameObject(), transform).transform; // 컨테이너를 새로 만들고
                 container = new GameObject().transform;
                 container.parent = transform;
                 container.name = poolObject.name + " Pool";
@@ -90,7 +89,6 @@ public class ObjectPool : MonoBehaviour
             pool = new Stack<PoolObject>();
             poolDictionary.Add(poolObject.name, pool);
 
-            //Transform container = Instantiate(new GameObject(), transform).transform;
             Transform container = new GameObject().transform;
             container.parent = transform;
             container.name = poolObject.gameObject.name + " Pool";

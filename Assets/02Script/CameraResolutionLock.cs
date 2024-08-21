@@ -4,31 +4,6 @@ using UnityEngine;
 
 public class CameraResolutionLock : MonoBehaviour
 {
-    /*
-    private void FixedUpdate()
-    {
-        //FixResolution(cam, 16, 9);
-        //SetResolution(16, 9);
-    }
-    */
-    /*
-    private static void FixResolution(Camera targetCam, int x, int y)
-    {
-        Resolution resolution = Screen.currentResolution;
-        print(Screen.currentResolution);
-
-        if (resolution.width * x < resolution.height * y)
-        {
-            Screen.SetResolution(resolution.width, (int)(resolution.height * (y * x)), true);
-        }
-        else
-        {
-            Screen.SetResolution((int)(resolution.width * (x * y)), resolution.height, true);
-        }
-
-        print(Screen.currentResolution);
-    }
-    */
     private static float cWidth;
     private static float cHeight;
     public static bool CheckResolution()
@@ -39,8 +14,6 @@ public class CameraResolutionLock : MonoBehaviour
     {
         cWidth = Screen.width; // 기기 너비 저장
         cHeight = Screen.height; // 기기 높이 저장
-
-        //Screen.SetResolution(setWidth, (int)((deviceHeight / deviceWidth) * setWidth), true); // SetResolution 함수 제대로 사용하기
 
         if (width / height < cWidth / cHeight) // 현재 해상도가 가로로 더 큰 경우
         {
