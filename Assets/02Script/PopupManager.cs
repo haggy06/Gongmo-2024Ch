@@ -21,8 +21,6 @@ public class PopupManager : Singleton<PopupManager>
     [Space(5)]
     [SerializeField]
     private Image clearMedal;
-    [SerializeField]
-    private Sprite[] medalSprites = new Sprite[3];
 
     [Space(5)]
     [SerializeField]
@@ -222,7 +220,7 @@ public class PopupManager : Singleton<PopupManager>
             {
                 clearMedal.enabled = true;
 
-                clearMedal.sprite = medalSprites[clearStatus - 1];
+                clearMedal.sprite = ResourceLoader.SpriteLoad(FolderName.Icon, "Medal", clearStatus);
             }
             else
             {
