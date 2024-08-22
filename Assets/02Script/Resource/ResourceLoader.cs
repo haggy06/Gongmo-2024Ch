@@ -40,9 +40,9 @@ public static class ResourceLoader
         return value;
     }
 
-    public static T SingletonLoad<T>() where T : MonoBehaviour
+    public static T PrefabLoad<T>() where T : Object
     {
-        T value = Resources.Load<T>(Path.Combine("Singleton", typeof(T).Name));
+        T value = Resources.Load<T>(Path.Combine("Prefab", typeof(T).Name));
         if (value == null)
             Debug.LogError(typeof(T).Name + " 로드 실패");
 

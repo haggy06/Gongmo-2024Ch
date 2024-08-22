@@ -10,8 +10,8 @@ using UnityEngine.EventSystems;
 public class PopupBase : MonoBehaviour
 {
     [SerializeField]
-    private Button firstButton;
-    private Button lastButton = null; // 이 팝업 전에 열려 있던 팝업이 있을 경우 임시로 저장해 둘 필드
+    private Selectable firstButton;
+    private Selectable lastButton = null; // 이 팝업 전에 열려 있던 팝업이 있을 경우 임시로 저장해 둘 필드
 
     [SerializeField]
     private float fadeDuration = 0.5f;

@@ -8,11 +8,10 @@ public class HorizontalRepeatMove : MoveBase
     private float howMuchMove;
 
     private float lastValue = 0;
-    private float time = 0f;
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         lastValue = 0f;
-        time = 0f;
     }
     private void FixedUpdate()
     {

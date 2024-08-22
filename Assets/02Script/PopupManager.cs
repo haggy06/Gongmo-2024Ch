@@ -28,15 +28,24 @@ public class PopupManager : Singleton<PopupManager>
     [SerializeField]
     private Button PlayButton;
     [SerializeField]
-    private Button infoButton;
-    [SerializeField]
     private Button gameQuitButton;
 
     [Space(5)]
     [SerializeField]
     private PopupBase infoPopup;
+    #endregion
+
+    #region _Setting Popup_
+    [Header("Setting Popup")]
+
     [SerializeField]
-    private Button infoCloseButton;
+    private PopupBase settingPopup;
+
+    [Space(5)]
+    [SerializeField]
+    private Slider bgmSlider;
+    [SerializeField]
+    private Slider sfxSlider;
     #endregion
 
     #region _Player Interfaces_
@@ -144,21 +153,29 @@ public class PopupManager : Singleton<PopupManager>
     {
         base.Awake();
 
-        tableText.text = "";
-        for (int i = 0; i < GameManager.levelUpTable.Length; i++)
+        if (Inst == this)
         {
-            tableText.text += "레벨 " + (i + 1) + " : " + GameManager.levelUpTable[i] + "\n";
+            tableText.text = "";
+            for (int i = 0; i < GameManager.levelUpTable.Length; i++)
+            {
+                tableText.text += "레벨 " + (i + 1) + " : " + GameManager.levelUpTable[i] + "\n";
+            }
+            
+            #region _Set Button Event_
+            PlayButton.onClick.AddListener(() => SceneMove(SCENE.Play));
+            gameQuitButton.onClick.AddListener(() => Application.Quit());
+
+            bgmSlider.onValueChanged.AddListener((value) => AudioManager.Inst.ChangeVolume(VolumChannel.BGM, value));
+            sfxSlider.onValueChanged.AddListener((value) => AudioManager.Inst.ChangeVolume(VolumChannel.SFX, value));
+
+            retryButton.onClick.AddListener(() => SceneMove(SCENE.Play));
+            menuButton.onClick.AddListener(() => SceneMove(SCENE.Title));
+            #endregion
+            bgmSlider.value = PlayerPrefs.GetFloat("BGM");
+            sfxSlider.value = PlayerPrefs.GetFloat("SFX");
+
+            Instantiate(ResourceLoader.PrefabLoad<UnityEngine.EventSystems.EventSystem>(), transform); // 씬 바뀔 때마다 이벤트 시스템 많다고 경고 뜨길래
         }
-        #region _Set Button Event_
-        PlayButton.onClick.AddListener(() => SceneMove(SCENE.Play));
-        infoButton.onClick.AddListener(() => infoPopup.PopupOpen());
-        gameQuitButton.onClick.AddListener(() => Application.Quit());
-
-        infoCloseButton.onClick.AddListener(() => infoPopup.PopupClose());
-
-        retryButton.onClick.AddListener(() => SceneMove(SCENE.Play));
-        menuButton.onClick.AddListener(() => SceneMove(SCENE.Title));
-        #endregion
     }
     public void ButtonClickSound()
     {
@@ -184,6 +201,7 @@ public class PopupManager : Singleton<PopupManager>
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
 
+        settingPopup.PopupHide();
         infoPopup.PopupHide();
         titlePopup.PopupHide();
 

@@ -22,7 +22,7 @@ public class TrackingPlayer : MoveBase
         rigid2D = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
         if (!Mathf.Approximately(impulseOnAwake, 0f)) 
             Invoke("ImpulseOnAwake", Time.deltaTime);

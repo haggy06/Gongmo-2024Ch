@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   donDestroy: 1
+  audioMixer: {fileID: 24100000, guid: d488ba01e430a7a42b95e2114725029f, type: 2}
+  sfxChannel: {fileID: 4034080608284384217, guid: d488ba01e430a7a42b95e2114725029f, type: 2}
   bgmSpeacker: {fileID: 1371605154502497202}
   speackerBox: {fileID: 8750434866459946106}
-  sfxChannel: {fileID: 4034080608284384217, guid: d488ba01e430a7a42b95e2114725029f, type: 2}
   fbxSpeakers: []
 --- !u!82 &1371605154502497202
 AudioSource:

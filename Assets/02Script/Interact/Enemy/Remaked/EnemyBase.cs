@@ -311,11 +311,18 @@ public class EnemyBase : PoolObject
     #endregion
     public void PatternInvoke_Immediate(int index)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            Debug.LogError("개체 비활성화 상태에선 PatternInvoke 불가능");
+            return;
+        }
+
         if (index < 1)
         {
             Debug.LogWarning("Pattern 상태가 1 이하임. (" + index + ")");
             return;
         }
+
         try
         {
             patternAttacks[index - 1].Invoke();
@@ -328,17 +335,26 @@ public class EnemyBase : PoolObject
     }
     public void PatternInvoke(int noStabilize)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            Debug.LogError("개체 비활성화 상태에선 PatternInvoke 불가능");
+            return;
+        }
+
         if (!anim)
         {
             Debug.LogError("Animator 없이 PatternInvoke 불가능");
             return;
         }
+
             int patternIndex = anim.GetInteger(EntityAnimHash.Pattern);
         if (patternIndex < 1)
         {
             Debug.LogWarning("Pattern 상태가 1 이하임.");
             return;
         }
+
+
         try
         {
             patternAttacks[patternIndex - 1].Invoke();

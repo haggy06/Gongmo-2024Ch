@@ -75,14 +75,7 @@ public class ObjectPool : MonoBehaviour
 
         if (poolDictionary.TryGetValue(poolObject.name, out pool)) // 이미 풀이 있을 경우 불러옴
         {
-            if (poolObjectContainers.TryGetValue(poolObject.name, out Transform container))
-            {
-                Debug.LogWarning("이미 " + poolObject.name + "에 대한 오브젝트 풀이 있음 (" + container.name + ")");
-            }
-            else
-            {
-                Debug.LogWarning("이미 " + poolObject.name + "에 대한 오브젝트 풀이 있음.");
-            }
+            Debug.Log("이미 " + poolObject.name + "에 대한 오브젝트 풀이 있음.");
         }
         else // 풀이 없을 경우
         {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6623620889145758203}
   - component: {fileID: 8849724634319398425}
   - component: {fileID: 3931688614911057757}
+  - component: {fileID: 7967940225703255002}
   m_Layer: 7
   m_Name: Warning Line - Squid Tentacle
   m_TagString: Untagged
@@ -128,7 +129,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3931688614911057757}
         m_TargetAssemblyTypeName: PoolObject, Assembly-CSharp
-        m_MethodName: ExitFromPool
+        m_MethodName: ReturnToPool
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -144,6 +145,18 @@ MonoBehaviour:
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
+--- !u!114 &7967940225703255002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935376775560300442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c90de387ae7c79448ce425ff4896c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6957413929650852770
 GameObject:
   m_ObjectHideFlags: 0

@@ -5126,8 +5126,6 @@ MonoBehaviour:
   tracking: 1
   impulseOnAwake: 0.5
   lookPlayer: 0
-  spin: 0
-  spinSpeed: 0
   driftTime: 2
 --- !u!114 &-2697292291328197485
 MonoBehaviour:
@@ -5161,13 +5159,13 @@ MonoBehaviour:
   HalfHPPattern:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2697292291328197485}
-        m_TargetAssemblyTypeName: EnemyBase, Assembly-CSharp
-        m_MethodName: PlayParticle
-        m_Mode: 2
+      - m_Target: {fileID: 1279532117126994086}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1279532117126994086}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5210,5 +5208,3 @@ MonoBehaviour:
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []

@@ -8,7 +8,7 @@ using System;
 
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    protected static T instance;
+    private static T instance;
     public static T Inst
     {
         get
@@ -18,7 +18,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 instance = (T)FindObjectOfType(typeof(T));
                 if (instance == null) // 씬 내에 아예 인스턴스가 없을 경우
                 {
-                    T inst = ResourceLoader.SingletonLoad<T>(); // Resources 폴더에서 개체 소환
+                    T inst = ResourceLoader.PrefabLoad<T>(); // Resources 폴더에서 개체 소환
                     instance = inst;
                 }
             }

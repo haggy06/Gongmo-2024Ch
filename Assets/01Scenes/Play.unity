@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63f511d8bfcb8c458d73c45245623d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossInterval: 2
+  bossInterval: 70
   stageInfoArray:
   - stageBoss: {fileID: 8839447063963443242, guid: 2af284eed135bc248911221b4ef88a9e, type: 3}
     spawnInterval: 2

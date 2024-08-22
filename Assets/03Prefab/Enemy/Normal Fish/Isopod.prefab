@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: -7239050878876245385}
   - component: {fileID: -1362423431985401539}
   - component: {fileID: 1376351695601066097}
+  - component: {fileID: 2684619652921878856}
   m_Layer: 7
   m_Name: Isopod
   m_TagString: Untagged
@@ -314,8 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   zigZag: 1
-  sinHeightRange: {x: 40, y: 80}
-  sinFrequencyRange: {x: 0.25, y: 0.75}
 --- !u!114 &1376351695601066097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,5 +360,18 @@ MonoBehaviour:
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []
+--- !u!114 &2684619652921878856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136462182213093516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3259a6868956546825c55fd1ee7145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  sinHeightRange: {x: 25, y: 100}
+  sinFrequencyRange: {x: 0.1, y: 0.8}

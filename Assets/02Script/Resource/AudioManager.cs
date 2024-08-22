@@ -14,14 +14,48 @@ public class AudioManager : Singleton<AudioManager>
     }
 
     [SerializeField]
-    private AudioSource bgmSpeacker;
+    private AudioMixer audioMixer;
 
+    [Space(5)]
+    [SerializeField]
+    private AudioMixerGroup sfxChannel;
+
+    [Space(10)]
+    [SerializeField]
+    private AudioSource bgmSpeacker;
     [SerializeField]
     private Transform speackerBox;
     [SerializeField]
-    private AudioMixerGroup sfxChannel;
-    [SerializeField]
     private List<AudioSource> fbxSpeakers = new List<AudioSource>();
+
+    private void Start()
+    {
+        string channelName;
+        
+        channelName = VolumChannel.BGM.ToString();
+        audioMixer.SetFloat(channelName, DB(PlayerPrefs.GetFloat(channelName)));
+
+        channelName = VolumChannel.SFX.ToString();
+        audioMixer.SetFloat(channelName, DB(PlayerPrefs.GetFloat(channelName)));
+    }
+    public void ChangeVolume(VolumChannel channel, float volume) // volume은 1~10의 정수(자료형은 실수지만 아무튼)
+    {
+        string channelName = channel.ToString();
+
+        PlayerPrefs.SetFloat(channelName, volume);
+        audioMixer.SetFloat(channelName, DB(volume));
+    }
+    private float DB(float volume)
+    {
+        if (Mathf.Approximately(volume, 0f))
+        {
+            return -80f;
+        }
+        else
+        {
+            return 20 * Mathf.Log10(volume / 10f);
+        }
+    }
 
     public void ChangeBGM(AudioClip bgm)
     {
@@ -83,4 +117,10 @@ public class AudioManager : Singleton<AudioManager>
 
         return speacker;
     }
+}
+
+public enum VolumChannel 
+{
+    BGM,
+    SFX,
 }
