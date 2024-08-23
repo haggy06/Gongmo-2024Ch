@@ -4956,11 +4956,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 1
   isDotDamage: 0
+  damage: 70
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 1
   owner: 4
   target: 2
-  damage: 50
   canAttack: 1
 --- !u!114 &5998575058052409440
 MonoBehaviour:
@@ -4974,9 +4976,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d052db12a2cb04f8e2f7e97d9efe81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 2115
-  awakeSound: {fileID: 8300000, guid: efea01831aa035a49bbf5fdc7549a5a0, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 8300000, guid: efea01831aa035a49bbf5fdc7549a5a0, type: 3}
   attackTime: 0.3
   lifeTime: 1

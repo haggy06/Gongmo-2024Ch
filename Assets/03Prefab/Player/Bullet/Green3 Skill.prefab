@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 8
   invincible: 0
-  maxHP: 750
+  maxHP: 600
   curHP: 0
   hitColor: {r: 0, g: 0.21568628, b: 0.39215687, a: 1}
   useDeadParticle: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDotDamage: 1
-  damage: 30
+  damage: 20
   infinityAttack: 1
   attackableNumber: 1
   isSkill: 1
@@ -341,8 +341,6 @@ MonoBehaviour:
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []
 --- !u!114 &898014838862929092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,10 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  zigZag: 0
-  sinHeightRange: {x: 0, y: 0}
-  sinFrequencyRange: {x: 0, y: 0}
+  moveSpeed: 2.5
 --- !u!1 &9212183745104488404
 GameObject:
   m_ObjectHideFlags: 0

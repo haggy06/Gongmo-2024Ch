@@ -85,6 +85,8 @@ public class GameManager : Singleton<GameManager>
     }
     public void BossDisappear()
     {
+        BossEvent.Invoke(false);
+
         isBossExist = false;
         PopupManager.Inst.BossDisappear();
 
@@ -96,7 +98,6 @@ public class GameManager : Singleton<GameManager>
         {
             AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Stage", Inst.stage));
         }
-        BossEvent.Invoke(false);
     }
 
 

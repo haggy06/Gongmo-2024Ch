@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 8
   invincible: 0
-  maxHP: 500
+  maxHP: 400
   curHP: 0
   hitColor: {r: 0, g: 0.21568628, b: 0.39215687, a: 1}
   useDeadParticle: 0
@@ -301,8 +301,6 @@ MonoBehaviour:
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []
 --- !u!114 &1873582874198643667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +314,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
-  zigZag: 0
-  sinHeightRange: {x: 0, y: 0}
-  sinFrequencyRange: {x: 0, y: 0}

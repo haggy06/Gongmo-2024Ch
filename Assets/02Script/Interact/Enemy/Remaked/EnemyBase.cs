@@ -242,6 +242,9 @@ public class EnemyBase : PoolObject
     #region _Spawn Methods_
     public void SpawnObject(PoolObject poolObject)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         PoolObject pObject = parentPool.GetPoolObject(poolObject);
 
         pObject.Init(attackPivot.position, transform.eulerAngles.z);
@@ -254,6 +257,9 @@ public class EnemyBase : PoolObject
     }
     public void SpawnObject_Scatter(PoolObject poolObject)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         Transform attackPos;
         PoolObject pObject;
         for (int i = 0; i < scatterPositions.childCount; i++)
@@ -272,6 +278,9 @@ public class EnemyBase : PoolObject
     }
     public void SpawnObject_Random(PoolObject poolObject)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         PoolObject pObject;
         for (int i = 0; i < randomNumber; i++)
         {
@@ -293,11 +302,17 @@ public class EnemyBase : PoolObject
     #region _Ect Methods_
     public void ChangeVelo_Player(float moveSpeed)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         rigid2D.velocity = (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed;
         print("속도 변경 : " + (PlayerController.Inst.transform.position - transform.position).normalized * moveSpeed);
     }
     public void SetRotation(float euler)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         transform.eulerAngles = Vector3.forward * euler;
     }
     public void PlaySound(AudioClip sfx)

@@ -139,7 +139,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 8300000, guid: 8832aa43ac8b00c459da35a6ef71aa9c, type: 3}
-  attackableCount: 1
   lifeTime: 2
   speed: 20
   spreadTiming: 13
@@ -167,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDotDamage: 0
-  damage: 70
+  damage: 80
   infinityAttack: 0
   attackableNumber: 1
   isSkill: 1
