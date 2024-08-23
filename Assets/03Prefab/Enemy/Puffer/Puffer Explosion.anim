@@ -464,7 +464,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlaySound
+    functionName: PatternInvoke_Sub
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: 9efbfd5e33712c749b392c4ef08c4f05, type: 3}
     floatParameter: 0
