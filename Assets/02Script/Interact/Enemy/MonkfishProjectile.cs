@@ -13,6 +13,11 @@ public class MonkfishProjectile : PoolObject
 
         Invoke("BlinkStart", lifeTime);
     }
+    public override void ReturnToPool()
+    {
+        base.ReturnToPool();
+    }
+
     private void BlinkStart()
     {
         if (gameObject.activeInHierarchy)

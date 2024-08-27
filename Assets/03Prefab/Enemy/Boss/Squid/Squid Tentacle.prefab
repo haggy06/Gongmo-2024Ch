@@ -125,9 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 130
-  zigZag: 0
-  sinHeightRange: {x: 0, y: 0}
-  sinFrequencyRange: {x: 0, y: 0}
 --- !u!114 &8211168510727461971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,8 +234,6 @@ MonoBehaviour:
   positionRange1: {x: 0, y: 0}
   positionRange2: {x: 0, y: 0}
   scatterPositions: {fileID: 0}
-  sRenderer: {fileID: 0}
-  edgeCasePatterns: []
 --- !u!114 &5568276305126824958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +252,7 @@ MonoBehaviour:
   attackableNumber: 1
   isSkill: 0
   owner: 2
-  target: 4
+  target: 12
   canAttack: 1
 --- !u!1 &6163689917238628511
 GameObject:

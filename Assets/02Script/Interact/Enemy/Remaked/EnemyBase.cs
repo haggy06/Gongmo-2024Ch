@@ -86,6 +86,7 @@ public class EnemyBase : PoolObject
 
     [SerializeField]
     protected bool leaveColor = false;
+    public bool LeaveColor { set => leaveColor = value; }
 
     [Space(5)]
     [SerializeField, Tooltip("패턴의 caseNumber 순서에 맞게 이벤트 삽입")]

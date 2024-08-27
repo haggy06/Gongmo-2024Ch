@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6291975795125495350}
   - component: {fileID: 3021285208539888518}
   - component: {fileID: 2240014162936646337}
+  - component: {fileID: 2125969012355888308}
   m_Layer: 0
   m_Name: Jellyfish Electricity
   m_TagString: Untagged
@@ -4938,11 +4939,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366de37b9696e554a9cc075f167d7f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkill: 0
   isDotDamage: 0
+  damage: 60
+  infinityAttack: 1
+  attackableNumber: 1
+  isSkill: 0
   owner: 2
   target: 4
-  damage: 60
   canAttack: 1
 --- !u!114 &2240014162936646337
 MonoBehaviour:
@@ -4956,9 +4959,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d052db12a2cb04f8e2f7e97d9efe81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectID: 12013
-  awakeSound: {fileID: 8300000, guid: 22af0fe897ce06a4c85636541f307ef7, type: 3}
   destroyWhenBomb: 1
   parentPool: {fileID: 0}
+  initDirection: 0
+  awakeSound: {fileID: 8300000, guid: 22af0fe897ce06a4c85636541f307ef7, type: 3}
   attackTime: 0.2
   lifeTime: 1
+--- !u!114 &2125969012355888308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947527484139588667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3908cf8f5ce2a2244860ef695bd62a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2.5

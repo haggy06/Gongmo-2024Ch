@@ -5,5 +5,5 @@ public enum EntityType
 
     Enemy = 1 << 1,
     Player = 1 << 2,
-    Enviroment = 1 << 3,
+    Barrier = 1 << 3,
 }
