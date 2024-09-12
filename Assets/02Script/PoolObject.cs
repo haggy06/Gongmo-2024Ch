@@ -31,7 +31,7 @@ public class PoolObject : MonoBehaviour
 
     public virtual void ReturnToPool()
     {
-        if (transform.root.TryGetComponent<PoolObject>(out _))
+        if (transform.root != transform && transform.root.TryGetComponent<PoolObject>(out _))
         {
             Debug.Log("자식 형태의 PoolObject는 반납되지 않음");
             return;
