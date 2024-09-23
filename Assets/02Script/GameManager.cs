@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Stage", Inst.stage));
+            AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Stage" + Inst.stage));
         }
     }
 
@@ -334,7 +334,7 @@ public class GameManager : Singleton<GameManager>
             Inst.stage = value;
 
             if (!Inst.isBossExist)
-                AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Stage", Inst.stage));
+                AudioManager.Inst.ChangeBGM(ResourceLoader.AudioLoad(FolderName.BGM, "Stage" + Inst.stage));
             PopupManager.Inst.ChangeStage();
 
             StageChangeEvent.Invoke();

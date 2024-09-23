@@ -172,7 +172,7 @@ public class PopupManager : Singleton<PopupManager>
             bgmSlider.value = PlayerPrefs.GetFloat("BGM");
             sfxSlider.value = PlayerPrefs.GetFloat("SFX");
 
-            Instantiate(ResourceLoader.PrefabLoad<UnityEngine.EventSystems.EventSystem>(), transform); // 씬 바뀔 때마다 이벤트 시스템 많다고 경고 뜨길래
+            Instantiate(ResourceLoader.PrefabLoad("EventSystem"), transform); // 씬 바뀔 때마다 이벤트 시스템 많다고 경고 뜨길래
         }
     }
     public void ButtonClickSound()
@@ -220,7 +220,7 @@ public class PopupManager : Singleton<PopupManager>
             {
                 clearMedal.enabled = true;
 
-                clearMedal.sprite = ResourceLoader.SpriteLoad(FolderName.Icon, "Medal", clearStatus);
+                clearMedal.sprite = ResourceLoader.SpriteLoad(FolderName.Icon, "Medal" + clearStatus);
             }
             else
             {

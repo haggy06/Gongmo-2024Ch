@@ -12,7 +12,7 @@ public class ScrollManager : MonoBehaviour
         set
         {
             topBackground = value;
-            topBackground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "Background", GameManager.Stage);
+            topBackground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "Background" + GameManager.Stage);
         }
     }
 
@@ -24,7 +24,7 @@ public class ScrollManager : MonoBehaviour
         set
         {
             topForeground = value;
-            topForeground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "Foreground", GameManager.Stage);
+            topForeground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "Foreground" + GameManager.Stage);
         }
     }
 
@@ -37,8 +37,8 @@ public class ScrollManager : MonoBehaviour
     {
         if (GameManager.Stage > 1) // 2스테이지 이상일 경우
         {
-            topBackground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "FadeBG", GameManager.Stage);
-            topForeground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "FadeFG", GameManager.Stage);
+            topBackground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "FadeBG" + GameManager.Stage);
+            topForeground.sprite = ResourceLoader.SpriteLoad(FolderName.Background, "FadeFG" + GameManager.Stage);
         }
     }
 }

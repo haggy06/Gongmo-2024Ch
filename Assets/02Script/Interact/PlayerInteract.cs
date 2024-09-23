@@ -209,7 +209,7 @@ public class PlayerInteract : HitBase
 
     public void LevelUP(bool isUP)
     {
-        sprite.sprite = ResourceLoader.SpriteLoad(FolderName.Player, "Player", GameManager.Level);
+        sprite.sprite = ResourceLoader.SpriteLoad(FolderName.Player, "Player" + GameManager.Level);
 
         if (isUP) //레벨 업 이벤트의 경우
         {
