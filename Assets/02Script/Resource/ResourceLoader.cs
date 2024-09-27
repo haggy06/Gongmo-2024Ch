@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.IO;
+using System;
 
 public static class ResourceLoader
 { 
-    private static Dictionary<KeyValuePair<FolderName, string>, Sprite> spriteCache = new Dictionary<KeyValuePair<FolderName, string>, Sprite>(); // 불러온 리소스  
+    private static Dictionary<Tuple<FolderName, string>, Sprite> spriteCache = new Dictionary<Tuple<FolderName, string>, Sprite>(); // 불러온 리소스  
     public static Sprite SpriteLoad(FolderName folder, string resourceName)
     {
         Sprite value;
-        KeyValuePair<FolderName, string> key = new KeyValuePair<FolderName, string>(folder, resourceName);
+        Tuple<FolderName, string> key = new Tuple<FolderName, string>(folder, resourceName);
 
         if (!spriteCache.TryGetValue(key, out value)) // 캐싱된 리소스가 있을 경우 불러옴
         { // 캐싱된 리소스가 없을 경우
@@ -25,11 +26,11 @@ public static class ResourceLoader
         return value;
     }
 
-    private static Dictionary<KeyValuePair<FolderName, string>, AudioClip> audioCache = new Dictionary<KeyValuePair<FolderName, string>, AudioClip>(); // 불러온 리소스  
+    private static Dictionary<Tuple<FolderName, string>, AudioClip> audioCache = new Dictionary<Tuple<FolderName, string>, AudioClip>(); // 불러온 리소스  
     public static AudioClip AudioLoad(FolderName folder, string resourceName)
     {
         AudioClip value;
-        KeyValuePair<FolderName, string> key = new KeyValuePair<FolderName, string>(folder, resourceName);
+        Tuple<FolderName, string> key = new Tuple<FolderName, string>(folder, resourceName);
 
         if (!audioCache.TryGetValue(key, out value)) // 캐싱된 리소스가 있을 경우 불러옴
         { // 캐싱된 리소스가 없을 경우
