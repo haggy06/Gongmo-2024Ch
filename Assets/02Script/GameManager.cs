@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     #region _Scene Change Event_
     protected override void SceneChanged(Scene replacedScene, Scene newScene)
     {
+        isBossExist = false;
         bossCount = 0;
         GameStatus = GameStatus.Play;
 
@@ -403,8 +404,7 @@ public class GameManager : Singleton<GameManager>
             {
                 HighScore = Inst.score;
             }
-        }
-        
+        }        
 
         GameEndEvent.Invoke(GameStatus);
         PopupManager.Inst.GameEnd();

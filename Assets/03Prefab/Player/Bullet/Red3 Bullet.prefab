@@ -159,7 +159,6 @@ MonoBehaviour:
   parentPool: {fileID: 0}
   initDirection: 0
   awakeSound: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
-  attackableCount: 1
   lifeTime: 0.5
   speed: 10
   spreadTiming: 9
