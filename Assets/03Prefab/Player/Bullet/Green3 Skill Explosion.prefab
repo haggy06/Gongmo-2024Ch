@@ -675,7 +675,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 7.5, y: 1, z: 1}
+    m_Scale: {x: 1, y: 7.5, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4942,8 +4942,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 7.5, y: 1}
-  m_Direction: 1
+  m_Size: {x: 1, y: 7.5}
+  m_Direction: 0
 --- !u!114 &6788359003870056648
 MonoBehaviour:
   m_ObjectHideFlags: 0

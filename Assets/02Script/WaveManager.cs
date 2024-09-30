@@ -58,12 +58,12 @@ public class WaveManager : MonoBehaviour
         {
             StageInfo curStageInfo = stageInfoArray[GameManager.Stage - 1];
 
+            yield return YieldReturn.WaitForSeconds(curStageInfo.spawnInterval);
+
             PoolObject randomObject = curStageInfo.stageEnemies[Random.Range(0, curStageInfo.stageEnemies.Length)];
             Vector2 randomPosition = new Vector2(Random.Range(spawnRange1.x, spawnRange2.x), Random.Range(spawnRange1.y, spawnRange2.y));
 
             pool.GetPoolObject(randomObject).Init(randomPosition, 0f);
-
-            yield return YieldReturn.WaitForSeconds(curStageInfo.spawnInterval);
         }
     }
 
